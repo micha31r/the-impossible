@@ -1,0 +1,25 @@
+body {
+	width: 100vw;
+	height: 100vh;
+	font-family: 'Varela Round', sans-serif;
+}
+
+.header { 
+  height: 90px;
+  padding: 20px
+}
+
+.icon {
+	height: 100%;
+	margin: 0;
+}
+
+.header > h5 {
+	display: inline;
+	line-height: 100%;
+	margin-left: 10px;
+}
+
+.title {
+	font-size: 7rem;
+}
