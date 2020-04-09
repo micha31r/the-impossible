@@ -1,25 +1,147 @@
+:root {
+	/* css variables */
+	--navbar-width: 90px;
+	--navbar-padding: 20px;
+	--navlink-padding: 10px;
+}
+
 body {
 	width: 100vw;
 	height: 100vh;
 	font-family: 'Varela Round', sans-serif;
+	overflow: scroll;
 }
 
-.header { 
-  height: 90px;
-  padding: 20px
+nav { 
+	width: 100%;
+	min-height: var(--navbar-width);
+	height: max-content;
+	border: 0px;
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-color: rgb(230,230,230);
+}
+
+nav h4 {
+	display: inline;
+	line-height: 100%;
+	margin-left: 20px;
+}
+
+nav ul {
+	display: inline;
+	list-style-type: none;
+	margin: 0;
+  	padding: 0;
+}
+
+nav li {
+	display: inline;
+	margin: 0;
+  	padding: 0;
+}
+
+nav button {
+	height: calc(var(--navbar-width) - (var(--navbar-padding) * 2));
+	border: none;
+	color: #292b2c;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 2.5px;
+	border-color: rgba(0,0,0,0); 
+	background-color: #FFF;
+}
+
+@keyframes underline {
+	to {
+		border-color: rgba(0,0,0,1); 
+	}
+}
+
+@keyframes purplelink {
+	to {
+		color: rgb(115,69,182);
+	}
+}
+
+@media only screen and (max-width: 590px) {
+	.brand {
+		display: block !important;
+		text-align: center !important;
+		border: 0px !important;
+		border-style: solid !important;
+		border-bottom-width: 1px !important;
+		border-color: rgb(230,230,230) !important;
+		padding-bottom: var(--navbar-padding) !important;
+		width: 100% !important;
+	}
+	.collapse-link {
+		display: block !important;
+		padding: var(--navlink-padding) !important;
+		float: none !important;
+		width: 100% !important;
+	}
+	nav ul {
+		display: block !important;
+		text-align: center !important;
+	}
+	nav button {
+		float: none !important;
+		margin: 0 !important;
+		height: max-content !important;
+	}
+}
+
+.brand { 
+	display: inline-block;
+	padding: var(--navbar-padding);
 }
 
 .icon {
-	height: 100%;
+	height: calc(var(--navbar-width) - (var(--navbar-padding) * 2));
 	margin: 0;
 }
 
-.header > h5 {
-	display: inline;
-	line-height: 100%;
+.brand-name {
 	margin-left: 10px;
+	font-size: 1.3rem !important;
+}
+
+.collapse-link {
+	float: right;
+	display: inline-block;
+	padding: var(--navbar-padding);
+}
+
+.explore {
+	margin-right: 30px;
+}
+
+.explore:hover {
+	animation-name: purplelink;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+.auth {
+	margin-left: 5px;
+}
+
+.auth:hover {
+	animation-name: underline;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+.content {
+	overflow: scroll;
 }
 
 .title {
-	font-size: 7rem;
+	font-size: 3rem;
+	text-align: center;
+}
+
+.title-wrapper {
+	width: 100%;
 }
