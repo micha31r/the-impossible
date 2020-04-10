@@ -8,15 +8,28 @@
 {% block content %}
 	<!-- My CSS -->
 	<link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+	<!-- Expand js -->
+	<script type="text/javascript" src="{% static 'script/expand.js' %}"></script>
+	<!-- Set window trigger to reset collapsible menu -->
+	<script type="text/javascript">
+		window.addEventListener(
+			"resize", 
+			function() {
+				reset_expand('collapse-link', 'collapse-link-trigger');
+			}
+		);
+	</script>
+
 	<nav>
 		<div class="brand">
 			<img class="icon" src="{% static 'image/logo.svg' %}">
-	    	<button class="d-inline-block align-center brand-name" onclick="window.location.href='{% url 'home_page' %}'"><b>The Impossible</b></button>
+	    	<button class="brand-name" onclick="window.location.href='{% url 'home_page' %}'"><b>The Impossible</b></button>
 	    </div>
-    	<div class="collapse-link">
+	   	<button id='collapse-link-trigger' name="open" onclick="expand('collapse-link', 'collapse-link-trigger');"></button>
+    	<div class="collapse-link" id="collapse-link" onresize="reset_expand('collapse-link', 'collapse-link-trigger');">
 	    	<ul>
 	    		<li>
-		    		<button class="explore">Explore</button>
+		    		<button class="explore" onclick="window.location.href='www.google.com'">Explore</button>
 		    	</li>
 		    	<li>
 		    		<button class="auth">Login</button>
@@ -27,11 +40,11 @@
 		    </ul>
 		</div>
 	</nav>
-	<div class="content">
+	<!-- <div class="content">
 		<div class="row h-100">
 			<div class="col-sm-12 my-auto title-wrapper">
 				<h1 class="title">Share Your Ideas</h1>
 			</div>
 		</div>
-	</div>
+	</div> -->
 {% endblock %}

@@ -1,11 +1,12 @@
 :root {
 	/* css variables */
-	--navbar-width: 90px;
+	--navbar-height: 90px;
 	--navbar-padding: 20px;
 	--navlink-padding: 10px;
 }
 
 body {
+	min-width: 300px;
 	width: 100vw;
 	height: 100vh;
 	font-family: 'Varela Round', sans-serif;
@@ -14,7 +15,7 @@ body {
 
 nav { 
 	width: 100%;
-	min-height: var(--navbar-width);
+	min-height: var(--navbar-height);
 	height: max-content;
 	border: 0px;
 	border-style: solid;
@@ -42,9 +43,9 @@ nav li {
 }
 
 nav button {
-	height: calc(var(--navbar-width) - (var(--navbar-padding) * 2));
+	height: calc(var(--navbar-height) - (var(--navbar-padding) * 2));
 	border: none;
-	color: #292b2c;
+	color: rgb(41,43,44);
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 2.5px;
@@ -52,20 +53,48 @@ nav button {
 	background-color: #FFF;
 }
 
+#collapse-link-trigger {
+	display: none;
+	position: absolute;
+	background-color: rgba(255,255,255,0);
+	width: 100%;
+	height: var(--navbar-height);
+	top: 0px;
+	z-index: 2;
+	color: rgb(210,210,210);
+}
+
 @keyframes underline {
 	to {
-		border-color: rgba(0,0,0,1); 
+		border-color: rgba(0,0,0,0.8); 
 	}
 }
 
 @keyframes purplelink {
 	to {
-		color: rgb(115,69,182);
+		color: rgb(85,39,152);
+	}
+}
+
+@keyframes popuplink {
+	from {
+		top: 0px;
+	}
+	to {
+		top: var(--navbar-height);
 	}
 }
 
 @media only screen and (max-width: 590px) {
+	nav {
+		border: none !important;
+	}
+	nav ul {
+		display: block !important;
+		text-align: center !important;
+	}
 	.brand {
+		position: absolute !important;
 		display: block !important;
 		text-align: center !important;
 		border: 0px !important;
@@ -76,29 +105,34 @@ nav button {
 		width: 100% !important;
 	}
 	.collapse-link {
-		display: block !important;
+		display: none !important;
 		padding: var(--navlink-padding) !important;
 		float: none !important;
 		width: 100% !important;
+		border-width: 0px !important;
+		border-style: solid !important;
+		border-bottom-width: 1px !important;
+		border-color: rgb(230,230,230) !important;
 	}
-	nav ul {
-		display: block !important;
-		text-align: center !important;
-	}
-	nav button {
+	.explore, .auth {
 		float: none !important;
 		margin: 0 !important;
 		height: max-content !important;
+	}
+	#collapse-link-trigger {
+		display: block;
 	}
 }
 
 .brand { 
 	display: inline-block;
 	padding: var(--navbar-padding);
+	background-color: #FFF;
+	z-index: 2;
 }
 
 .icon {
-	height: calc(var(--navbar-width) - (var(--navbar-padding) * 2));
+	height: calc(var(--navbar-height) - (var(--navbar-padding) * 2));
 	margin: 0;
 }
 
@@ -111,6 +145,7 @@ nav button {
 	float: right;
 	display: inline-block;
 	padding: var(--navbar-padding);
+	background-color: #FFF;
 }
 
 .explore {
