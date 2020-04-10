@@ -5,7 +5,6 @@ from .forms import (
 	LoginForm,
 )
 
-# Login page
 def login_page(request):
 	ctx = {} # Context variables
 	next_page = request.GET.get("next") # Get url of the next page
