@@ -13,6 +13,8 @@ nav {
 	border-style: solid;
 	border-bottom-width: 1px;
 	border-color: rgb(230,230,230);
+	font-family: 'Varela Round', sans-serif;
+	margin-bottom: 20px;
 }
 
 nav h4 {
