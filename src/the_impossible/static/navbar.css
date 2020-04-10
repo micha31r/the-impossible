@@ -37,6 +37,7 @@ nav li {
 }
 
 nav button {
+	outline: none !important;
 	height: calc(var(--navbar-height) - (var(--navbar-padding) * 2));
 	border: none;
 	color: rgb(41,43,44);
