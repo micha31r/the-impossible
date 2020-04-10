@@ -1,9 +1,11 @@
 from django.urls import path
 
-# from .views import (
-
-# )
+from .views import (
+	login_page,
+	logout_view
+)
 
 urlpatterns = [
-	# path('manage/view/<slug:school_id>/', subject_management_view, name="subject_management"),
+	path('login/', login_page, name="login_page"),
+	path('logout/', logout_view, name="logout_view"),
 ]

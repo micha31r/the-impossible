@@ -1,4 +1,4 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}
@@ -6,40 +6,8 @@
 {% endblock %}
 
 {% block content %}
-	<!-- My CSS -->
+	{% include 'navbar.html' %}
 	<link rel="stylesheet" type="text/css" href="{% static 'home_page/home.css' %}">
-	<!-- Expand js -->
-	<script type="text/javascript" src="{% static 'home_page/expand.js' %}"></script>
-	<!-- Set window trigger to reset collapsible menu -->
-	<script type="text/javascript">
-		window.addEventListener(
-			"resize", 
-			function() {
-				reset_expand('collapse-link', 'collapse-link-trigger');
-			}
-		);
-	</script>
-
-	<nav>
-		<div class="brand">
-			<img class="icon" src="{% static 'logo.svg' %}">
-	    	<button class="brand-name" onclick="window.location.href='{% url 'home_page' %}'"><b>The Impossible</b></button>
-	    </div>
-	   	<button id='collapse-link-trigger' name="open" onclick="expand('collapse-link', 'collapse-link-trigger');"></button>
-    	<div class="collapse-link" id="collapse-link" onresize="reset_expand('collapse-link', 'collapse-link-trigger');">
-	    	<ul>
-	    		<li>
-		    		<button class="explore" onclick="window.location.href='www.google.com'">Explore</button>
-		    	</li>
-		    	<li>
-		    		<button class="auth">Login</button>
-		    	</li>
-		    	<li>
-		    		<button class="auth"><b>Sign Up</b></button>
-		    	</li>
-		    </ul>
-		</div>
-	</nav>
 	<!-- <div class="content">
 		<div class="row h-100">
 			<div class="col-sm-12 my-auto title-wrapper">

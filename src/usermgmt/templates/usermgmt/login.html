@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	<title>Login - The Impossible</title>
+{% endblock %}
+
+{% block content %}
+	{% if obj_error %}
+		<div class="flex-wrapper alert-wrapper">
+			<div class="alert alert-danger" role="alert">
+		  		{{ obj_error }}
+			</div>
+		</div>
+	{% endif %}
+	<form method="post">
+    	{% csrf_token %}
+		{{ login_form.as_p }}
+		<br>
+		<button class="btn btn-primary" type="submit">Login</button>
+	</form>
+	<!-- Js to prevent form resubmission -->
+	<!-- https://www.webtrickshome.com/faq/how-to-stop-form-resubmission-on-page-refresh -->
+	<script>
+		if ( window.history.replaceState ) window.history.replaceState( null, null, window.location.href );
+	</script>
+{% endblock %}
