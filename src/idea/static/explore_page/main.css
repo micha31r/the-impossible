@@ -1,0 +1,91 @@
+body {
+	min-width: 300px;
+	width: 100vw;
+	height: 100vh;
+	/*font-family: 'Varela Round', sans-serif;*/
+	overflow: scroll;
+}
+
+a:hover {
+	color: currentColor;
+	text-decoration: none;
+	background-color: #FFF;
+}
+
+.wrapper {
+	padding: 40px;
+}
+
+/* https://tobiasahlin.com/blog/masonry-with-css/ */
+.flex-container {
+    display: flex;
+	flex-flow: column wrap;
+	align-content: space-between;
+	height: 1400px;
+	width: 100%;
+	overflow: scroll;
+}
+
+.flex-wrapper {
+	position: relative;
+	width: 32%;
+	margin-bottom: 2%;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+/* Re-order items into 3 rows */
+.flex-wrapper:nth-of-type(3n+1) { order: 1; }
+.flex-wrapper:nth-of-type(3n+2) { order: 2; }
+.flex-wrapper:nth-of-type(3n) { order: 3; }
+
+/* Force new columns */
+.break {
+  flex-basis: 100%;
+  width: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+	/*border: none;*/
+}
+
+.page-link-wrapper {
+	padding: 20px;
+	width: 100%;
+	height: max-content;
+	text-align: right;
+}
+
+.left-arrow, .right-arrow {
+	height: 0.8rem;
+}
+
+.change-page > .left-arrow, .right-arrow {
+	fill: rgb(95,70,235);
+}
+
+.change-page-unavailable > .left-arrow, .right-arrow  {
+	fill: lightgrey;
+}
+
+.word-omission {
+	display: inline-block;
+	color: grey;
+}
+
+.page-link, .current-page-link {
+	display: inline-block;
+	border: 0;
+	padding: 0;
+	margin: 5px;
+}
+
+.current-page-link {
+	color: black;
+	border-style: solid;
+	border-color: black;
+	border-bottom-width: 2px;
+}

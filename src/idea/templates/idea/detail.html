@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	<title>Idea</title>
+{% endblock %}
+
+{% block content %}
+	<h2>{{ idea.name }}</h2>
+	<h5>{{ idea.short_description }}</h5>
+	<h5>By {{ idea.author }}</h5>
+	<hr>
+
+	<!-- Content -->
+	<p>{{ idea.full_description }}</p>
+	<hr>
+
+	<!-- Info -->
+	<p>Created at {{ idea.timestamp }}</p>
+	<p>Last Edited {{ idea.last_edit }}</p>
+
+	<!-- Js to prevent form resubmission -->
+	<!-- https://www.webtrickshome.com/faq/how-to-stop-form-resubmission-on-page-refresh -->
+	<script>
+		if ( window.history.replaceState ) window.history.replaceState( null, null, window.location.href );
+	</script>
+{% endblock %}

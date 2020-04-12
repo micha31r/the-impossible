@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tags %}
+
+{% block title %}
+	<title>Explore - The Impossible</title>
+{% endblock %}
+
+{% block custom_nav_link %}
+	<li>
+		<button class="explore" onclick="window.location.href='{% url 'explore_page' week_num=0 page_num=1  %}'">Add Idea</button>
+	</li>
+{% endblock %}
+
+{% block content %}
+	<div class="wrapper">
+		<link rel="stylesheet" type="text/css" href="{% static 'explore_page/main.css' %}">
+
+		<h5>Recommanded</h5>
+		<h2>Weekly Ideas</h2>
+
+		<!-- Display time period -->
+		<h5>{{ from_date }} to {{ to_date }}</h5>
+
+		<!-- Change Week -->
+		{% if previous_week_num %}
+			<a href="{% url 'explore_page' week_num=previous_week_num page_num=1 %}">Previous Week</a>
+		{% endif %}
+		{% if next_week_num >= 0 %}
+			<a href="{% url 'explore_page' week_num=next_week_num page_num=1 %}">Next Week</a>
+		{% endif %}
+
+		<!-- Display Ideas -->
+		<!-- https://tobiasahlin.com/blog/masonry-with-css/ -->
+		<div class="flex-container">
+			{% for idea in ideas %}
+				<div class="flex-wrapper">
+					<div class="card" style="width: 100%;">
+						<div class="card-body">
+							<h5 class="card-title">{{ idea.name }}</h5>
+							<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:80 }}</h6>
+							<p class="card-text">{{ idea.full_description|truncatechars:300 }}</p>
+							<hr>
+							<button class="btn btn-outline-dark" onclick="window.location.href='{% url 'detail_page' pk=idea.pk %}'">View</button>
+							<button class="btn btn-dark" onclick="window.location.href='#'">Add Solution</button>
+							{% if user == idea.author.user %}
+								<button class="btn btn-warning" onclick="window.location.href='#'">Edit</button>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			<span class="flex-wrapper break"></span>
+			<span class="flex-wrapper break"></span>
+		</div>
+
+		<!-- Page selector -->
+		<div class="page-link-wrapper">
+			<!-- Previous page link -->
+			<a href="{% url 'explore_page' week_num=week_num page_num=page_num|add:'-1' %}" class="{% if page_num|add:'-1' > 0 %} change-page {% else %} change-page-unavailable {% endif %}">
+				<svg class="left-arrow" width="27" height="41" viewBox="0 0 27 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M26 5.99999L5.99999 26L0.34314 20.3431L20.3431 0.34314L26 5.99999Z"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M21 41L0.999991 21L6.65685 15.3431L26.6568 35.3431L21 41Z"/>
+				</svg>
+			</a>
+
+			<!-- Link omission (...) -->
+			{% if page_num|add:'-5' > 1 %}
+				<p class="word-omission">..</p>
+			{% endif %}
+
+			<!-- All page links -->
+			{% for i in max_page|times %}
+				<!-- Only show a maximum of 10 page links -->
+				{% if i|add:1 < page_num|add:5 and i|add:1 > page_num|add:'-5' %}
+					<a class="{% if i|add:1 == page_num %} current-page-link {% else %} page-link {% endif %}" href="{% url 'explore_page' week_num=week_num page_num=i|add:1 %}"><b>{{ i|add:1 }}</b></a>
+				{% endif %}
+			{% endfor %}
+
+			<!-- Link omission (...) -->
+			{% if page_num|add:5 < max_page %}
+				<p class="word-omission">...</p>
+			{% endif %}
+
+			<!-- Next page link -->
+			<a href="{% url 'explore_page' week_num=week_num page_num=page_num|add:1 %}" class="{% if page_num|add:1 < max_page %} change-page {% else %} change-page-unavailable {% endif %}">
+				<svg class="right-arrow" width="27" height="41" viewBox="0 0 27 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00001 5.99999L21 26L26.6569 20.3431L6.65686 0.34314L1.00001 5.99999Z"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M6.00001 41L26 21L20.3432 15.3431L0.343155 35.3431L6.00001 41Z"/>
+				</svg>
+			</a>
+		</div>
+	</div>
+	<!-- Js to prevent form resubmission -->
+	<!-- https://www.webtrickshome.com/faq/how-to-stop-form-resubmission-on-page-refresh -->
+	<script>
+		if ( window.history.replaceState ) window.history.replaceState( null, null, window.location.href );
+	</script>
+{% endblock %}

@@ -1,0 +1,41 @@
+:root {
+	/* css variables */
+	--footer-height: 50px;
+	--footer-padding: 20px;
+	--footer-padding-side: 50px;
+}
+
+footer {
+	min-height: var(--footer-height);
+	height: max-content;
+	background-color: #FFF;
+	padding: var(--footer-padding);
+	padding-left: var(--footer-padding-side);
+	padding-right: var(--footer-padding-side);
+	border: 0;
+	border-style: solid;
+	border-top-width: 1px;
+	border-color: rgb(230,230,230);
+	font-family: 'Varela Round', sans-serif;
+}
+
+footer button {
+	outline: none !important;
+	height: calc(var(--navbar-height) - (var(--navbar-padding) * 2));
+	border: none;
+	color: rgb(41,43,44);
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: rgba(0,0,0,0); 
+	background-color: #FFF;
+}
+
+footer .icon {
+	height: calc(var(--navbar-height) - (var(--navbar-padding) * 3));
+}
+
+footer .brand-name {
+	margin-left: 10px;
+	font-size: 1.3rem !important;
+}

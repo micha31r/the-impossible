@@ -25,16 +25,15 @@
 
 	<div class="collapse-link" id="collapse-link" onresize="reset_expand('collapse-link', 'collapse-link-trigger');">
     	<ul>
-    		<li>
-	    		<button class="explore" onclick="window.location.href='www.google.com'">Explore</button>
-	    	</li>
+    		{% block custom_nav_link %}
+	    	{% endblock %}
 	    	<li class="link-seperator"></li>
 	    	{% if not user.is_authenticated %}
 		    	<li>
 		    		<button class="auth" onclick="window.location.href='{% url 'login_page' %}'">Login</button>
 		    	</li>
 		    	<li>
-		    		<button class="auth"><b>Sign Up</b></button>
+		    		<button class="auth" onclick="window.location.href='{% url 'signup_page' %}'"><b>Sign Up</b></button>
 		    	</li>
 		    {% else %}
 		   		<li>

@@ -43,12 +43,12 @@ nav button {
 	color: rgb(41,43,44);
 	border-width: 1px;
 	border-style: solid;
-	border-radius: 2.5px;
+	border-radius: 5px;
 	border-color: rgba(0,0,0,0); 
 	background-color: #FFF;
 }
 
-#collapse-link-trigger {
+nav #collapse-link-trigger {
 	display: none;
 	position: absolute;
 	background-color: rgba(255,255,255,0);
@@ -115,7 +115,7 @@ nav button {
 		display: block !important;
 		text-align: center !important;
 	}
-	.brand {
+	nav .brand {
 		position: absolute !important;
 		display: block !important;
 		text-align: center !important;
@@ -126,7 +126,7 @@ nav button {
 		padding-bottom: var(--navbar-padding) !important;
 		width: 100% !important;
 	}
-	.collapse-link {
+	nav .collapse-link {
 		display: none !important;
 		padding: var(--navlink-padding) !important;
 		float: none !important;
@@ -136,68 +136,69 @@ nav button {
 		border-bottom-width: 1px !important;
 		border-color: rgb(230,230,230) !important;
 	}
-	.explore, .auth {
+	nav .explore, .auth {
 		float: none !important;
-		margin: 0 !important;
+	}
+	nav .explore, .auth, .account, .logout {
 		height: max-content !important;
 	}
-	#collapse-link-trigger {
+	nav #collapse-link-trigger {
 		display: block;
 	}
 }
 
-.brand { 
+nav .brand { 
 	display: inline-block;
 	padding: var(--navbar-padding);
 	background-color: #FFF;
 	z-index: 2;
 }
 
-.icon {
+nav .icon {
 	height: calc(var(--navbar-height) - (var(--navbar-padding) * 2));
 	margin: 0;
 }
 
-.brand-name {
+nav .brand-name {
 	margin-left: 10px;
 	font-size: 1.3rem !important;
 }
 
-.collapse-link {
+nav .collapse-link {
 	float: right;
 	display: inline-block;
 	padding: var(--navbar-padding);
 	background-color: #FFF;
 }
 
-.link-seperator {
+nav .link-seperator {
 	border: 0px;
 	border-style: solid;
 	border-right-width: 1px;
 	border-color: rgb(200,200,200);
 }
 
-.explore {
+nav .explore {
 	background-color: rgba(255,255,255,0);
 }
 
-.explore:hover {
+nav .explore:hover {
 	animation-name: purple, scale;
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
 }
 
-.explore:not(:hover) {
+nav .explore:not(:hover) {
 	animation-name: reverse-scale;
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
 }
 
-.auth, .account, .logout {
+nav .auth, nav .account, nav .logout {
 	margin-left: 5px;
 }
 
-.auth:hover, .account:hover, .logout:hover {
+nav .auth:hover, nav .account:hover, nav .logout:hover {
 	animation-name: underline;
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;

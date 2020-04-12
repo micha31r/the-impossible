@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-	<title>Login - The Impossible</title>
+	<title>Sign Up - The Impossible</title>
 {% endblock %}
 
 {% block content %}
@@ -15,11 +15,11 @@
 	{% endif %}
 	<form method="post">
     	{% csrf_token %}
-		{{ login_form.as_p }}
+		{{ signup_form.as_p }}
 		<br>
-		<button class="btn btn-primary" type="submit">Login</button>
+		<button class="btn btn-primary" type="submit">Sign Up</button>
 	</form>
-	<a href="{% url 'signup_page' %}">Not Registered?</a>
+	<a href="{% url 'login_page' %}">Already Registered?</a>
 	<!-- Js to prevent form resubmission -->
 	<!-- https://www.webtrickshome.com/faq/how-to-stop-form-resubmission-on-page-refresh -->
 	<script>
