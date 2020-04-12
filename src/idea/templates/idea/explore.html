@@ -16,42 +16,46 @@
 	<div class="wrapper">
 		<link rel="stylesheet" type="text/css" href="{% static 'explore_page/main.css' %}">
 
-		<h5>Recommanded</h5>
-		<h2>Weekly Ideas</h2>
+		<div class="header">
+			<h5>Recommanded</h5>
+			<h2>Weekly Ideas</h2>
 
-		<!-- Display time period -->
-		<h5>{{ from_date }} to {{ to_date }}</h5>
+			<!-- Display time period -->
+			<h5>{{ from_date }} to {{ to_date }}</h5>
 
-		<!-- Change Week -->
-		{% if previous_week_num %}
-			<a href="{% url 'explore_page' week_num=previous_week_num page_num=1 %}">Previous Week</a>
-		{% endif %}
-		{% if next_week_num >= 0 %}
-			<a href="{% url 'explore_page' week_num=next_week_num page_num=1 %}">Next Week</a>
-		{% endif %}
+			<!-- Change Week -->
+			{% if previous_week_num %}
+				<a href="{% url 'explore_page' week_num=previous_week_num page_num=1 %}">Previous Week</a>
+			{% endif %}
+			{% if next_week_num >= 0 %}
+				<a href="{% url 'explore_page' week_num=next_week_num page_num=1 %}">Next Week</a>
+			{% endif %}
+		</div>
 
 		<!-- Display Ideas -->
 		<!-- https://tobiasahlin.com/blog/masonry-with-css/ -->
-		<div class="flex-container">
-			{% for idea in ideas %}
-				<div class="flex-wrapper">
-					<div class="card" style="width: 100%;">
-						<div class="card-body">
-							<h5 class="card-title">{{ idea.name }}</h5>
-							<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:80 }}</h6>
-							<p class="card-text">{{ idea.full_description|truncatechars:300 }}</p>
-							<hr>
-							<button class="btn btn-outline-dark" onclick="window.location.href='{% url 'detail_page' pk=idea.pk %}'">View</button>
-							<button class="btn btn-dark" onclick="window.location.href='#'">Add Solution</button>
-							{% if user == idea.author.user %}
-								<button class="btn btn-warning" onclick="window.location.href='#'">Edit</button>
-							{% endif %}
+		<div class="overflow-wrapper">
+			<div class="flex-container">
+				{% for idea in ideas %}
+					<div class="flex-wrapper">
+						<div class="card" style="width: 100%;">
+							<div class="card-body">
+								<h5 class="card-title">{{ idea.name }}</h5>
+								<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:80 }}</h6>
+								<p class="card-text">{{ idea.full_description|truncatechars:300 }}</p>
+								<hr>
+								<button class="btn btn-outline-dark" onclick="window.location.href='{% url 'detail_page' pk=idea.pk %}'">View</button>
+								<button class="btn btn-dark" onclick="window.location.href='#'">Add Solution</button>
+								{% if user == idea.author.user %}
+									<button class="btn btn-warning" onclick="window.location.href='#'">Edit</button>
+								{% endif %}
+							</div>
 						</div>
 					</div>
-				</div>
-			{% endfor %}
-			<span class="flex-wrapper break"></span>
-			<span class="flex-wrapper break"></span>
+				{% endfor %}
+				<span class="flex-wrapper break"></span>
+				<span class="flex-wrapper break"></span>
+			</div>
 		</div>
 
 		<!-- Page selector -->
@@ -83,7 +87,7 @@
 			{% endif %}
 
 			<!-- Next page link -->
-			<a href="{% url 'explore_page' week_num=week_num page_num=page_num|add:1 %}" class="{% if page_num|add:1 < max_page %} change-page {% else %} change-page-unavailable {% endif %}">
+			<a href="{% url 'explore_page' week_num=week_num page_num=page_num|add:1 %}" class="{% if page_num|add:1 <= max_page %} change-page {% else %} change-page-unavailable {% endif %}">
 				<svg class="right-arrow" width="27" height="41" viewBox="0 0 27 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M1.00001 5.99999L21 26L26.6569 20.3431L6.65686 0.34314L1.00001 5.99999Z"/>
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M6.00001 41L26 21L20.3432 15.3431L0.343155 35.3431L6.00001 41Z"/>

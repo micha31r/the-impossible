@@ -9,11 +9,20 @@ body {
 a:hover {
 	color: currentColor;
 	text-decoration: none;
-	background-color: #FFF;
+	background-color: #FFF !important;
 }
 
 .wrapper {
 	padding: 40px;
+}
+
+.header {
+	margin-bottom: 50px;
+}
+
+.overflow-wrapper {
+	height: 100vh;
+	overflow-y: scroll;
 }
 
 /* https://tobiasahlin.com/blog/masonry-with-css/ */
@@ -21,6 +30,7 @@ a:hover {
     display: flex;
 	flex-flow: column wrap;
 	align-content: space-between;
+	/* Must be fixed height */
 	height: 1400px;
 	width: 100%;
 	overflow: scroll;
@@ -63,11 +73,11 @@ a:hover {
 	height: 0.8rem;
 }
 
-.change-page > .left-arrow, .right-arrow {
+.change-page .left-arrow, .change-page .right-arrow {
 	fill: rgb(95,70,235);
 }
 
-.change-page-unavailable > .left-arrow, .right-arrow  {
+.change-page-unavailable .left-arrow, .change-page-unavailable .right-arrow  {
 	fill: lightgrey;
 }
 

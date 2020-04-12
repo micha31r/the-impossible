@@ -13,7 +13,7 @@ from usermgmt.models import (
 )
 
 MINIMUM_DATE = datetime.date(datetime(2020, 4, 9))
-ITEM_PER_PAGE = 20
+ITEM_PER_PAGE = 7
 
 # Note: week_num starts at 0 while page_num starts at 1
 def explore_page(request,week_num,page_num):
