@@ -12,10 +12,6 @@ a:hover {
 	background-color: #FFF !important;
 }
 
-button {
-	margin-top: 2.5px;
-	margin-bottom: 2.5px;
-}
 
 .wrapper {
 	padding: 40px;
@@ -28,10 +24,15 @@ button {
 .overflow-wrapper {
 	height: 100vh;
 	overflow-y: scroll;
-/*	border-width: 1px;
+	/*border-width: 1px;
 	border-style: solid;
 	border-color: #000;
 	border-radius: 5px;*/
+}
+
+.overflow-wrapper button {
+	margin-top: 2.5px;
+	margin-bottom: 2.5px;
 }
 
 /* https://tobiasahlin.com/blog/masonry-with-css/ */
@@ -47,15 +48,67 @@ button {
 
 .flex-wrapper {
 	position: relative;
-	width: 32%;
 	margin-bottom: 2%;
 	box-sizing: border-box;
 }
 
-/* Re-order items into 3 rows */
-.flex-wrapper:nth-of-type(3n+1) { order: 1; }
-.flex-wrapper:nth-of-type(3n+2) { order: 2; }
-.flex-wrapper:nth-of-type(3n) { order: 3; }
+@media only screen and (min-width: 1700px) {
+	.flex-wrapper {
+		width: 15%;
+	}
+	.flex-wrapper:nth-of-type(6n+1) { order: 1; }
+	.flex-wrapper:nth-of-type(6n+2) { order: 2; }
+	.flex-wrapper:nth-of-type(6n+3) { order: 3; }
+	.flex-wrapper:nth-of-type(6n+4) { order: 4; }
+	.flex-wrapper:nth-of-type(6n+5) { order: 5; }
+	.flex-wrapper:nth-of-type(6n) { order: 6; }
+}
+
+@media only screen and (max-width: 1699px) {
+	.flex-wrapper {
+		width: 19%;
+	}
+	.flex-wrapper:nth-of-type(5n+1) { order: 1; }
+	.flex-wrapper:nth-of-type(5n+2) { order: 2; }
+	.flex-wrapper:nth-of-type(5n+3) { order: 3; }
+	.flex-wrapper:nth-of-type(5n+4) { order: 4; }
+	.flex-wrapper:nth-of-type(5n) { order: 5; }
+}
+
+@media only screen and (max-width: 1399px) {
+	.flex-wrapper {
+		width: 24%;
+	}
+	.flex-wrapper:nth-of-type(4n+1) { order: 1; }
+	.flex-wrapper:nth-of-type(4n+2) { order: 2; }
+	.flex-wrapper:nth-of-type(4n+3) { order: 3; }
+	.flex-wrapper:nth-of-type(4n) { order: 4; }
+}
+
+@media only screen and (max-width: 1099px) {
+	.flex-wrapper {
+		width: 32%;
+	}
+	.flex-wrapper:nth-of-type(3n+1) { order: 1; }
+	.flex-wrapper:nth-of-type(3n+2) { order: 2; }
+	.flex-wrapper:nth-of-type(3n) { order: 3; }
+}
+
+@media only screen and (max-width: 799px) {
+	.flex-wrapper {
+		width: 48%;
+	}
+	.flex-wrapper:nth-of-type(2n+1) { order: 1; }
+	.flex-wrapper:nth-of-type(2n) { order: 2; }
+}
+
+@media only screen and (max-width: 499px) {
+	.flex-wrapper {
+		width: 100%;
+	}
+	.flex-wrapper:nth-of-type(2n) { order: 1; }
+}
+
 
 /* Force new columns */
 .break {
