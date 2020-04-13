@@ -2,22 +2,39 @@
 {% load static %}
 
 {% block title %}
-	<title>Idea</title>
+	<title>{{ idea.name }} - The Impossible</title>
 {% endblock %}
 
 {% block content %}
-	<h2>{{ idea.name }}</h2>
-	<h5>{{ idea.short_description }}</h5>
-	<h5>By {{ idea.author }}</h5>
-	<hr>
+	<link rel="stylesheet" type="text/css" href="{% static 'explore_page/main.css' %}">
 
-	<!-- Content -->
-	<p>{{ idea.full_description }}</p>
-	<hr>
+	<link rel="stylesheet" type="text/css" href="{% static 'detail_page/main.css' %}">
 
-	<!-- Info -->
-	<p>Created at {{ idea.timestamp }}</p>
-	<p>Last Edited {{ idea.last_edit }}</p>
+	<div class="wrapper">
+		<h2>{{ idea.name }}</h2>
+		<h5>{{ idea.short_description }}</h5>
+		<h5>By {{ idea.author }}</h5>
+		<hr>
+
+		<!-- Content -->
+		<p>{{ idea.full_description }}</p>
+		<hr>
+
+		<!-- Info -->
+		<p>Created at {{ idea.timestamp }}</p>
+		<p>Last Edited {{ idea.last_edit }}</p>
+		<button type="submit" value="True" name="like-button" class="btn like-button">
+			{{ idea.liked_user.count }}
+			<svg class="thumbup-yellow" viewBox="0 0 101 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M26 36H75C81.0751 36 86 40.9249 86 47V47C86 53.0751 81.0751 58 75 58H26V36Z"/>
+			<path d="M26 104H75C81.0751 104 86 108.925 86 115V115C86 121.075 81.0751 126 75 126H26V104Z"/>
+			<path d="M26 81H83C89.6274 81 95 86.3726 95 93V93C95 99.6274 89.6274 105 83 105H26V81Z"/>
+			<path d="M26 57H88.5C95.4036 57 101 62.5964 101 69.5V69.5C101 76.4036 95.4036 82 88.5 82H26V57Z"/>
+			<path d="M0 63C0 46.4315 13.4315 33 30 33V33V126V126C13.4315 126 0 112.569 0 96V63Z"/>
+			<path d="M0 15C0 6.71573 6.71573 0 15 0V0C23.2843 0 30 6.71573 30 15V65H0V15Z"/>
+			</svg>
+		</button>
+	</div>
 
 	<!-- Js to prevent form resubmission -->
 	<!-- https://www.webtrickshome.com/faq/how-to-stop-form-resubmission-on-page-refresh -->

@@ -47,6 +47,11 @@ def explore_page(request,week_num,page_num):
 def detail_page(request,pk):
 	ctx = {} # Context variables
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
+	# Add view count
+	profile = get_object_or_404(Profile, user=request.user)
+	idea.viewed_user.add(profile)
+	# if request.POST:
+		# value = button.
 	template_file = "idea/detail.html"
 	return render(request,template_file,ctx)
 

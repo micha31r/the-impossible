@@ -43,6 +43,8 @@
 						<div class="card" style="width: 100%;">
 							<div class="card-body">
 								<h5 class="card-title">{{ idea.name }}</h5>
+								<p>Views {{ idea.viewed_user.count }}</p>
+								<p>Likes {{ idea.liked_user.count }}</p>
 								<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:80 }}</h6>
 								<p class="card-text">{{ idea.full_description|truncatechars:300 }}</p>
 								<hr>

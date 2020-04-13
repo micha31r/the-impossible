@@ -1,0 +1,17 @@
+
+.like-button {
+	height: 50px;
+	width: max-content;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 1.5rem;
+}
+
+.thumbup-grey {
+	height: 100%;
+	fill: rgb(200,200,200);
+}
+
+.thumbup-yellow {
+	height: 100%;
+	fill: rgb(240,190,0);
+}
