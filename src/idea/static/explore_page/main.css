@@ -24,7 +24,7 @@ a:hover {
 .overflow-wrapper {
 	height: 100vh;
 	overflow-y: scroll;
-	/*border-width: 1px;
+/*	border-width: 1px;
 	border-style: solid;
 	border-color: #000;
 	border-radius: 5px;*/
