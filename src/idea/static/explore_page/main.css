@@ -12,6 +12,11 @@ a:hover {
 	background-color: #FFF !important;
 }
 
+button {
+	margin-top: 2.5px;
+	margin-bottom: 2.5px;
+}
+
 .wrapper {
 	padding: 40px;
 }
@@ -23,6 +28,10 @@ a:hover {
 .overflow-wrapper {
 	height: 100vh;
 	overflow-y: scroll;
+/*	border-width: 1px;
+	border-style: solid;
+	border-color: #000;
+	border-radius: 5px;*/
 }
 
 /* https://tobiasahlin.com/blog/masonry-with-css/ */
@@ -31,7 +40,7 @@ a:hover {
 	flex-flow: column wrap;
 	align-content: space-between;
 	/* Must be fixed height */
-	height: 1400px;
+	height: 800px;
 	width: 100%;
 	overflow: scroll;
 }
@@ -40,7 +49,6 @@ a:hover {
 	position: relative;
 	width: 32%;
 	margin-bottom: 2%;
-	border-radius: 3px;
 	box-sizing: border-box;
 }
 

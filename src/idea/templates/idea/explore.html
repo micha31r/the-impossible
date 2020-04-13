@@ -15,6 +15,8 @@
 {% block content %}
 	<div class="wrapper">
 		<link rel="stylesheet" type="text/css" href="{% static 'explore_page/main.css' %}">
+		
+		<script type="text/javascript" src="{% static 'explore_page/resize.js' %}"></script>
 
 		<div class="header">
 			<h5>Recommanded</h5>
@@ -95,9 +97,4 @@
 			</a>
 		</div>
 	</div>
-	<!-- Js to prevent form resubmission -->
-	<!-- https://www.webtrickshome.com/faq/how-to-stop-form-resubmission-on-page-refresh -->
-	<script>
-		if ( window.history.replaceState ) window.history.replaceState( null, null, window.location.href );
-	</script>
 {% endblock %}
