@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
+from django.contrib.auth.models import User
 
 from .models import (
 	Idea,
@@ -50,8 +51,24 @@ def detail_page(request,pk):
 	# Add view count
 	profile = get_object_or_404(Profile, user=request.user)
 	idea.viewed_user.add(profile)
-	# if request.POST:
-		# value = button.
 	template_file = "idea/detail.html"
 	return render(request,template_file,ctx)
+
+@login_required
+def like_view(request):
+	data = {}
+	try:
+		# Get data
+		pk = request.GET.get('pk', None)
+		username = request.GET.get('username', None)
+		# Retrieve objects
+		idea = Idea.objects.filter(pk=pk).first()
+		user = User.objects.filter(username=username).first()
+		profile = Profile.objects.filter(user=user).first()
+		# Add like
+		idea.liked_user.add(profile)
+		data['like_count'] = idea.liked_user.count()
+	except:
+		data['failed'] = True
+	return JsonResponse(data)
 

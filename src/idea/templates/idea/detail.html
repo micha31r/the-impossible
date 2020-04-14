@@ -10,6 +10,8 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'detail_page/main.css' %}">
 
+	<script type="text/javascript" src="{% static 'detail_page/ajax.js' %}"></script>
+
 	<div class="wrapper">
 		<h2>{{ idea.name }}</h2>
 		<h5>{{ idea.short_description }}</h5>
@@ -23,8 +25,9 @@
 		<!-- Info -->
 		<p>Created at {{ idea.timestamp }}</p>
 		<p>Last Edited {{ idea.last_edit }}</p>
-		<button type="submit" value="True" name="like-button" class="btn like-button">
-			{{ idea.liked_user.count }}
+		
+		<p class="like-count">{{ idea.liked_user.count }}</p>
+		<button class="btn like-button" onclick="like_post('{{ idea.pk }}','{{ user.username }}');">
 			<svg class="thumbup-yellow" viewBox="0 0 101 126" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M26 36H75C81.0751 36 86 40.9249 86 47V47C86 53.0751 81.0751 58 75 58H26V36Z"/>
 			<path d="M26 104H75C81.0751 104 86 108.925 86 115V115C86 121.075 81.0751 126 75 126H26V104Z"/>

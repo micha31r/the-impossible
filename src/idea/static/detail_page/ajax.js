@@ -1,18 +1,25 @@
 // Like button ajax
-function like_ajax(id) {
-    // $("#id_username").change(function () {
-    // var username = $(this).val();
-    $.ajax({
-        url: `/idea/like/${id}`,
-        data: {
-            'username': username
-        },
-        dataType: 'json',
-        success: function (data) {
-            if (data.is_taken) {
-                alert("A user with this username already exists.");
-            }
+function like_post(pk,username) {
+    $(".like-button").click(
+        function() {
+            $.ajax(
+                {
+                    url: `/idea/like/`,
+                    data: {
+                        'pk':pk,
+                        'username':username
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.failed) {
+                            console.log("Like Failed");
+                        } else {
+                            console.log("123");
+                            $(".like-count").html(data.like_count);
+                        }
+                    }
+                }
+            );
         }
-    });
-    // });
+    );
 }
