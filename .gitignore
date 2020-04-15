@@ -8,7 +8,7 @@ __pycache__/
 
 # Custom
 .DS_Store
-.settings.py
+settings.py
 
 # Distribution / packaging
 .Python
