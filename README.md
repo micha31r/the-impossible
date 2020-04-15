@@ -10,6 +10,7 @@ __Current library versions:__
   * Sqlparse 0.3.1
 
 ## Start a local server for testing:
+(Contact me for settings.py)
 ```bash
 # Clone this repository
 git clone https://github.com/micha31r/The-Impossible.git
