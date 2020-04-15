@@ -16,6 +16,8 @@ __Current library versions:__
 git clone https://github.com/micha31r/The-Impossible.git
 # Go into repository
 cd The-Impossible
+# Create a virtual environment
+python3 -m venv .
 # Activate python virtual environment on Mac
 source bin/activate && cd src
 # (On Windows)
