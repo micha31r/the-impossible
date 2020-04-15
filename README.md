@@ -10,7 +10,7 @@ __Current library versions:__
   * Sqlparse 0.3.1
 
 ## Start a local server for testing:
-(Contact me for settings.py)
+(secret key and database is excluded from repository)
 ```bash
 # Clone this repository
 git clone https://github.com/micha31r/The-Impossible.git
@@ -21,6 +21,12 @@ source bin/activate && cd src
 # (On Windows)
 Scripts\activate
 cd src
+# Add your own secret key in the_impossible/secret_key.txt
+...
+# Create database and create superuser
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
 # Runserver
 python manage.py runserver
 ```
