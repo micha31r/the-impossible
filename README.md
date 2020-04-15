@@ -21,7 +21,8 @@ source bin/activate && cd src
 # (On Windows)
 Scripts\activate
 cd src
-# Add your own secret key in the_impossible/secret_key.txt
+# Create a file under the_impossible folder called secret_key.txt
+# Then add ur own secret key, (Generate one from https://djecrety.ir/)
 ...
 # Create database and create superuser
 python manage.py makemigrations
