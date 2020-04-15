@@ -14,7 +14,6 @@ function like_post(pk,username) {
                         if (data.failed) {
                             console.log("Like Failed");
                         } else {
-                            console.log("123");
                             $(".like-count").html(data.like_count);
                         }
                     }
