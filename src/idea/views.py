@@ -15,7 +15,6 @@ from usermgmt.models import (
 	Profile,
 )
 
-
 MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2020, 4, 9))
 ITEM_PER_PAGE = 10
 
