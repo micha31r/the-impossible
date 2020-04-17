@@ -2,8 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404, JsonResponse
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from datetime import datetime, timedelta
 from django.contrib.auth.models import User
+import datetime
+
+from .utils import *
 
 from .models import (
 	Idea,
@@ -13,20 +15,22 @@ from usermgmt.models import (
 	Profile,
 )
 
-MINIMUM_DATE = datetime.date(datetime(2020, 4, 9))
+
+MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2020, 4, 9))
 ITEM_PER_PAGE = 10
 
-# Note: week_num starts at 0 while page_num starts at 1
 def explore_page(request,week_num,page_num):
 	ctx = {} # Context variables
 	ctx["week_num"] = week_num
 	ctx["page_num"] = page_num
-	today = datetime.now().date()
-	ctx['from_date'] = timestamp_from = datetime.now().date() - timedelta(days=(week_num+1)*7)
-	ctx['to_date'] = timestamp_to = timestamp_from + timedelta(days=8)
+	today = datetime.datetime.now().date()
+	# Note: current date is not the date, its year/week/1
+	current_date = int_date(f"{today.strftime('%Y')}-{week_num}-1")
+	ctx['from_date'] = timestamp_from = current_week_dates(*current_date)
+	ctx['to_date'] = timestamp_to = timestamp_from + datetime.timedelta(days=7)
 	# Check if previous and next week numbers are valid
-	if timestamp_from > MINIMUM_DATE: ctx["previous_week_num"] = week_num + 1
-	if week_num >= 1: ctx["next_week_num"] = week_num - 1
+	if timestamp_from > MINIMUM_DATE: ctx["previous_week_num"] = week_num - 1
+	if week_num < current_week(): ctx["next_week_num"] = week_num + 1
 	if True: # request.user.is_authenticated
 		# Filter by date
 		# https://stackoverflow.com/questions/4923612/filter-by-timestamp-in-query
@@ -34,13 +38,14 @@ def explore_page(request,week_num,page_num):
 			timestamp__gte = timestamp_from,
     		timestamp__lt = timestamp_to,
 		).distinct()
-		if ideas.count() > 1:
-			# Split data into pages
-			ideas = Paginator(ideas,ITEM_PER_PAGE)
-			ctx["max_page"] = ideas.num_pages
-			try: current_page = ideas.page(page_num) # Get the ideas on the current page
-			except: raise Http404()
-			ctx["ideas"] = current_page 
+		# print(timestamp_from,timestamp_to)
+		# if ideas.count() > 1:
+		# Split data into pages
+		ideas = Paginator(ideas,ITEM_PER_PAGE)
+		ctx["max_page"] = ideas.num_pages
+		try: current_page = ideas.page(page_num) # Get the ideas on the current page
+		except: raise Http404()
+		ctx["ideas"] = current_page 
 	template_file = "idea/explore.html"
 	return render(request,template_file,ctx)
 
