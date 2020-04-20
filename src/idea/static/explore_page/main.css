@@ -118,8 +118,33 @@ a:hover {
   padding: 0;
 }
 
-.card {
-	/*border: none;*/
+.view-count, .like-count {
+	height: 1.2rem;
+	font-size: 1.1rem;
+	line-height: 1.1rem;
+	color: rgb(90,92,154);
+	font-family: 'Varela Round', sans-serif;
+}
+
+.like-count {
+	color: rgb(255,55,127);
+}
+
+.view-svg, .like-svg {
+	display: inline !important;
+	height: 1.2rem;
+	margin-right: 5px;
+	vertical-align: text-top;
+}
+
+.like-svg {
+	fill: rgb(255,55,127);
+	width: 1.2rem;
+}
+
+.text-seperator {
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 .page-link-wrapper {

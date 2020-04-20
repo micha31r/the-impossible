@@ -37,8 +37,6 @@ def explore_page(request,week_num,page_num):
 			timestamp__gte = timestamp_from,
     		timestamp__lt = timestamp_to,
 		).distinct()
-		# print(timestamp_from,timestamp_to)
-		# if ideas.count() > 1:
 		# Split data into pages
 		ideas = Paginator(ideas,ITEM_PER_PAGE)
 		ctx["max_page"] = ideas.num_pages
