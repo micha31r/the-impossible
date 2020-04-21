@@ -1,6 +1,6 @@
 // Like button ajax
 function like_post(pk,username) {
-    $(".like-button").click(
+    $(document).ready(
         function() {
             $.ajax(
                 {
@@ -14,7 +14,9 @@ function like_post(pk,username) {
                         if (data.failed) {
                             console.log("Like Failed");
                         } else {
-                            $(".like-count").html(data.like_count);
+                            $(`#like-count-${pk}`).html(data.updated_like_count);
+                            $(`#like-count-${pk}`).attr('name', data.action);
+                            $(`#like-svg-${pk}`).attr('name', data.action);
                         }
                     }
                 }

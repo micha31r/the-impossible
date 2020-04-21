@@ -126,10 +126,6 @@ a:hover {
 	font-family: 'Varela Round', sans-serif;
 }
 
-.like-count {
-	color: rgb(255,55,127);
-}
-
 .view-svg, .like-svg {
 	display: inline !important;
 	height: 1.2rem;
@@ -137,9 +133,21 @@ a:hover {
 	vertical-align: text-top;
 }
 
-.like-svg {
+.like-button {
+	border: none;
+	background-color: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.like-svg, .like-count {
+	fill: darkgrey;
+	color: darkgrey;
+}
+
+*[name="liked"] {
 	fill: rgb(255,55,127);
-	width: 1.2rem;
+	color: rgb(255,55,127);
 }
 
 .text-seperator {
