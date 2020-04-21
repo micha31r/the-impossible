@@ -7,6 +7,8 @@ import datetime
 
 from .utils import *
 
+from .ajax_check import encode
+
 from .models import (
 	Idea,
 )
@@ -31,8 +33,8 @@ def explore_page(request,week_num,page_num):
 	if timestamp_from > MINIMUM_DATE: ctx["previous_week_num"] = week_num - 1
 	if week_num < current_week(): ctx["next_week_num"] = week_num + 1
 	if request.user.is_authenticated: 
-		# user = User.objects.get(user=request.user)
 		ctx["profile"] = Profile.objects.filter(user=request.user).first()
+		ctx["encoded_string"] = encode(request.user.username)
 		# Filter by date
 		# https://stackoverflow.com/questions/4923612/filter-by-timestamp-in-query
 		ideas = Idea.objects.filter(
@@ -62,21 +64,25 @@ def detail_page(request,pk):
 def like_view(request):
 	data = {}
 	try:
-		# Get data
-		pk = request.GET.get('pk', None)
-		username = request.GET.get('username', None)
-		# Retrieve objects
-		idea = Idea.objects.filter(pk=pk).first()
-		user = User.objects.filter(username=username).first()
-		profile = Profile.objects.filter(user=user).first()
-		# Add like
-		if profile in idea.liked_user.all(): 	# -|
-			data["action"] = "unliked"			# Unliked
-			idea.liked_user.remove(profile) 	# -|
-		else: 									# -|			
-			idea.liked_user.add(profile)		# Liked
-			data["action"] = "liked"			# -|
-		data['updated_like_count'] = idea.liked_user.count()
+		# Check if request is send by the correct user
+		if request.GET.get('encoded_string') == encode(request.GET.get('username')):
+			# Get object pk
+			pk = request.GET.get('pk', None)
+			username = request.GET.get('username', None)
+			# Retrieve objects
+			idea = Idea.objects.filter(pk=pk).first()
+			user = User.objects.filter(username=username).first()
+			profile = Profile.objects.filter(user=user).first()
+			# Add like
+			if profile in idea.liked_user.all(): 	# -|
+				data["action"] = "unliked"			# Unliked
+				idea.liked_user.remove(profile) 	# -|
+			else: 									# -|			
+				idea.liked_user.add(profile)		# Liked
+				data["action"] = "liked"			# -|
+			data['updated_like_count'] = idea.liked_user.count()
+		else:
+			raise CustomError("AjaxInvalid")
 	except:
 		data['failed'] = True
 	return JsonResponse(data)
