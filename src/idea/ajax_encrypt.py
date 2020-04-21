@@ -7,6 +7,7 @@ characters_2 = "mnbvcxzlkj3hgfds1aqwerty2uio8pASDFG4HJK5LMNB7VCX9ZQWER6TY0UPOI"
 special_numbers = [3267000013,5915587277,1500450271]
 
 # Some random code to create a seemingly random string
+# This should be secure as long as this function remain secret
 def encrypt(text,recursion=False):
 	# Hash string
 	text = hashlib.sha512(text.encode()).hexdigest()
