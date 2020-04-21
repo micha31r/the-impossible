@@ -1,5 +1,5 @@
 // Like button ajax
-function like_post(pk,username,encoded_string) {
+function like_post(pk,username,encrypted_string) {
     $(document).ready(
         function() {
             $.ajax(
@@ -8,7 +8,7 @@ function like_post(pk,username,encoded_string) {
                     data: {
                         'pk':pk,
                         'username':username,
-                        'encoded_string':encoded_string
+                        'encrypted_string':encrypted_string
                     },
                     dataType: 'json',
                     success: function(data) {

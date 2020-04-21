@@ -7,7 +7,7 @@ import datetime
 
 from .utils import *
 
-from .ajax_check import encode
+from .ajax_encrypt import encrypt
 
 from .models import (
 	Idea,
@@ -34,7 +34,7 @@ def explore_page(request,week_num,page_num):
 	if week_num < current_week(): ctx["next_week_num"] = week_num + 1
 	if request.user.is_authenticated: 
 		ctx["profile"] = Profile.objects.filter(user=request.user).first()
-		ctx["encoded_string"] = encode(request.user.username)
+		ctx["encrypted_string"] = encrypt(request.user.username)
 		# Filter by date
 		# https://stackoverflow.com/questions/4923612/filter-by-timestamp-in-query
 		ideas = Idea.objects.filter(
@@ -65,7 +65,7 @@ def like_view(request):
 	data = {}
 	try:
 		# Check if request is send by the correct user
-		if request.GET.get('encoded_string') == encode(request.GET.get('username')):
+		if request.GET.get('encrypted_string') == encrypt(request.GET.get('username')):
 			# Get object pk
 			pk = request.GET.get('pk', None)
 			username = request.GET.get('username', None)
