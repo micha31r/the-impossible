@@ -23,7 +23,10 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'navbar.css' %}">
 
 		<!-- Expand js -->
-		<script type="text/javascript" src="{% static 'home_page/expand.js' %}"></script>
+		<script type="text/javascript" src="{% static 'expand.js' %}"></script>
+
+		<!-- Utils js -->
+		<script type="text/javascript" src="{% static 'utils.js' %}"></script>
 
 		<!-- Set window trigger to reset collapsible menu -->
 		<script type="text/javascript">
@@ -47,7 +50,7 @@
 		    	<ul>
 					{% block custom_nav_link %}
 						<li>
-							<button class="explore" onclick="window.location.href='{% url 'explore_page' week_num=0 page_num=1  %}'">Explore</button>
+							<button class="explore" onclick="window.location.href='{% url 'explore_page' week_num=date.week page_num=1  %}'">Explore</button>
 						</li>
 					{% endblock %}
 			    	<li class="link-seperator"></li>

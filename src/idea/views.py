@@ -22,9 +22,10 @@ ITEM_PER_PAGE = 10
 
 def explore_page(request,week_num,page_num):
 	ctx = {} # Context variables
+	ctx["date"] = date = Date()
 	ctx["week_num"] = week_num
 	ctx["page_num"] = page_num
-	today = datetime.datetime.now().date()
+	today = date.now()
 	# Note: current date is not the date, its year/week/1
 	current_date = int_date(f"{today.strftime('%Y')}-{week_num}-1")
 	ctx['from_date'] = timestamp_from = current_week_dates(*current_date)
@@ -35,24 +36,25 @@ def explore_page(request,week_num,page_num):
 	if request.user.is_authenticated: 
 		ctx["profile"] = Profile.objects.filter(user=request.user).first()
 		ctx["encrypted_string"] = encrypt(request.user.username)
-		# Filter by date
-		# https://stackoverflow.com/questions/4923612/filter-by-timestamp-in-query
-		ideas = Idea.objects.filter(
-			timestamp__gte = timestamp_from,
-    		timestamp__lt = timestamp_to,
-		).distinct()
-		# Split data into pages
-		ideas = Paginator(ideas,ITEM_PER_PAGE)
-		ctx["max_page"] = ideas.num_pages
-		try: current_page = ideas.page(page_num) # Get the ideas on the current page
-		except: raise Http404()
-		ctx["ideas"] = current_page 
+	# Filter by date
+	# https://stackoverflow.com/questions/4923612/filter-by-timestamp-in-query
+	ideas = Idea.objects.filter(
+		timestamp__gte = timestamp_from,
+		timestamp__lt = timestamp_to,
+	).distinct()
+	# Split data into pages
+	ideas = Paginator(ideas,ITEM_PER_PAGE)
+	ctx["max_page"] = ideas.num_pages
+	try: current_page = ideas.page(page_num) # Get the ideas on the current page
+	except: raise Http404()
+	ctx["ideas"] = current_page 
 	template_file = "idea/explore.html"
 	return render(request,template_file,ctx)
 
 @login_required
 def detail_page(request,pk):
 	ctx = {} # Context variables
+	ctx["date"] = Date()
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
 	# Add view count
 	profile = get_object_or_404(Profile, user=request.user)

@@ -3,4 +3,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}">
 	<img class="icon" src="{% static 'logo_no_dots.svg' %}">
 	<button class=".brand-name" onclick="window.location.href='{% url 'home_page' %}'">The Impossible © 2020</button>
+	<p><b id="date"></b></p>
+	<script type="text/javascript">
+		current_date("date");
+	</script>
 </footer>

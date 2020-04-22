@@ -16,11 +16,37 @@ def week_day(date):
 def current_week():
 	return int(datetime.datetime.now().date().strftime('%W'))
 
+def current_day():
+    return int(datetime.datetime.now().date().strftime('%d'))
+
+def current_month():
+    return int(datetime.datetime.now().date().strftime('%m'))
+
+def current_year():
+    return int(datetime.datetime.now().date().strftime('%Y'))
+
 # Get the date for a specific week day
 def current_week_dates(year, week, day):
 	# https://stackoverflow.com/questions/396913/in-python-how-do-i-find-the-date-of-the-first-monday-of-a-given-week
     date = datetime.date(year, 1, 4) 
     return date + datetime.timedelta(weeks=week, days=-date.weekday()+day-1)
+
+# Date class
+class Date:
+    def now(self):
+        return datetime.datetime.now().date()
+
+    def week(self):
+        return current_week()
+
+    def day(self):
+        return current_day()
+
+    def month(self):
+        return current_month()
+
+    def year(self):
+        return current_year()
 
 # Custom error
 class CustomError(Exception):
