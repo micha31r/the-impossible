@@ -52,7 +52,6 @@
 								<p class="card-text">{{ idea.full_description|truncatechars:300 }}</p>
 								<hr>
 								<button class="btn btn-outline-dark" onclick="window.location.href='{% url 'detail_page' pk=idea.pk %}'">View</button>
-								<button class="btn btn-dark" onclick="window.location.href='#'">Add Solution</button>
 								{% if user == idea.author.user %}
 									<button class="btn btn-warning" onclick="window.location.href='#'">Edit</button>
 								{% endif %}
