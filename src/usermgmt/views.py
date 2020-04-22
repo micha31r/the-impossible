@@ -12,8 +12,11 @@ from .models import (
 	Profile,
 )
 
+from idea.utils import *
+
 def signup_page(request):
 	ctx = {} # Context variables
+	ctx["date"] = Date()
 	next_page = request.GET.get("next") # Get url of the next page
 	if request.user.is_authenticated:
 		return redirect(next_page or "home_page")
@@ -53,6 +56,7 @@ def signup_page(request):
 
 def login_page(request):
 	ctx = {} # Context variables
+	ctx["date"] = Date()
 	next_page = request.GET.get("next") # Get url of the next page
 	if request.user.is_authenticated:
 		return redirect(next_page or "home_page")

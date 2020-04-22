@@ -25,9 +25,6 @@
 		<!-- Expand js -->
 		<script type="text/javascript" src="{% static 'expand.js' %}"></script>
 
-		<!-- Utils js -->
-		<script type="text/javascript" src="{% static 'utils.js' %}"></script>
-
 		<!-- Set window trigger to reset collapsible menu -->
 		<script type="text/javascript">
 			window.addEventListener(
@@ -38,6 +35,7 @@
 			);
 		</script>
 
+		<!-- Navigation bar -->
 		<nav>
 			<div class="brand">
 				<img class="icon" src="{% static 'logo.svg' %}">
@@ -54,6 +52,8 @@
 						</li>
 					{% endblock %}
 			    	<li class="link-seperator"></li>
+
+			    	<!-- If user is not logged in -->
 			    	{% if not user.is_authenticated %}
 				    	<li>
 				    		<button class="auth" onclick="window.location.href='{% url 'login_page' %}'">Login</button>
@@ -62,6 +62,7 @@
 				    		<button class="auth" onclick="window.location.href='{% url 'signup_page' %}'"><b>Sign Up</b></button>
 				    	</li>
 				    {% else %}
+				    <!-- If user is logged in -->
 				   		<li>
 				    		<button class="account" onclick="window.location.href='#'">Account</button>
 				    	</li>
