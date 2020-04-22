@@ -140,6 +140,10 @@ a:hover {
 	margin: 0px;
 }
 
+.like-button:focus {
+	outline: none;
+}
+
 .like-svg, .like-count {
 	fill: darkgrey;
 	color: darkgrey;
