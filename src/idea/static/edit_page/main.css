@@ -6,7 +6,6 @@
 input, textarea {
 	width: calc(100% - var(--margin-right));
 	padding: 10px;
-	text-indent: 10px;
 	border-style: solid;
 	border-color: grey;
 	border-width: 0px;
