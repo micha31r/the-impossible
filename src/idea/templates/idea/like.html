@@ -1,0 +1,21 @@
+{% load static %}
+{% load tags %}
+
+<!-- Like button and view count -->
+
+<link rel="stylesheet" type="text/css" href="{% static 'like.css' %}">
+
+<!-- Like button ajax -->
+<script type="text/javascript" src="{% static 'explore_page/ajax.js' %}"></script>
+		
+<p>
+	<button class="like-button" onclick="{% if user.is_authenticated %}like_post('{{ idea.pk }}','{{ user.username }}','{{ encrypted_string }}'); {% else %} window.location.href='{% url 'login_page' %}' {% endif %}">
+		<svg class="like-svg" id="like-svg-{{ idea.pk }}" name="{% if profile in idea.liked_user.all %}liked{% endif %}" viewBox="0 0 154 141" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M115.498 0.00329988C136.764 0.00329988 154 18.957 154 42.3383C154.003 107.088 77.0016 139.218 77.0016 141C77.0016 139.218 0 107.088 0 42.335C0 18.9537 17.2361 0 38.4992 0C59.7623 0 77.0016 16.6047 76.9984 39.9893C76.9984 16.6113 94.2344 0.00329988 115.498 0.00329988Z"/>
+		</svg>
+	</button>
+	<span class="like-count" id="like-count-{{ idea.pk }}" name="{% if profile in idea.liked_user.all %}liked{% endif %}">{{ idea.liked_user.count|ntt }}</span>
+	<span class="text-seperator"></span>
+	<img src="{% static 'view.svg' %}" class="view-svg">
+	<span class="view-count">{{ idea.viewed_user.count }}</span>
+</p>

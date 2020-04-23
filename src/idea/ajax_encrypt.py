@@ -10,6 +10,7 @@ special_numbers = [3267000013,5915587277,1500450271]
 # This should be secure as long as this function remain secret
 def encrypt(text,recursion=False):
 	# Hash string
+	text = ''.join(ch for ch in text if ch.isalnum()) # Remove all symbols from text
 	text = hashlib.sha512(text.encode()).hexdigest()
 	length = len(text)
 	numbers = []

@@ -1,0 +1,19 @@
+body {
+	width: 100vw;
+	height: 100vh;
+	/*font-family: 'Varela Round', sans-serif;*/
+	overflow: scroll;
+}
+
+.wrapper {
+	padding: 40px;
+}
+
+.btn-purple {
+	background-color: rgb(90,92,154);
+	color: white;
+}
+
+.btn-purple:hover {
+	color: rgb(190,192,254);
+}

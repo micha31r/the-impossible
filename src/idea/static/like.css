@@ -1,0 +1,40 @@
+.view-count, .like-count {
+	height: 1.2rem;
+	font-size: 1.1rem;
+	line-height: 1.1rem;
+	color: rgb(90,92,154);
+	font-family: 'Varela Round', sans-serif;
+}
+
+.view-svg, .like-svg {
+	display: inline !important;
+	height: 1.2rem;
+	margin-right: 5px;
+	vertical-align: text-top;
+}
+
+.like-button {
+	border: none !important;
+	background-color: #FFF !important;
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.like-button:focus {
+	outline: none;
+}
+
+.like-svg, .like-count {
+	fill: darkgrey;
+	color: darkgrey;
+}
+
+*[name="liked"] {
+	fill: rgb(255,55,127);
+	color: rgb(255,55,127);
+}
+
+.text-seperator {
+	margin-left: 10px;
+	margin-right: 10px;
+}

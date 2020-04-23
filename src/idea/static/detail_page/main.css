@@ -1,17 +1,14 @@
-
-.like-button {
-	height: 50px;
-	width: max-content;
+.timestamp {
 	font-family: 'Varela Round', sans-serif;
-	font-size: 1.5rem;
+	margin-top: 20px;
+	width: 100%;
+	text-align: right;
 }
 
-.thumbup-grey {
-	height: 100%;
-	fill: rgb(200,200,200);
+.timestamp p {
+	margin: 0;
 }
 
-.thumbup-yellow {
-	height: 100%;
-	fill: rgb(240,190,0);
+.timestamp .time {
+	color: grey;
 }

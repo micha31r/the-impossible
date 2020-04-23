@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load tags %}
 
 {% block title %}
 	<title>{{ idea.name }} - The Impossible</title>
@@ -10,27 +9,18 @@
 	<!-- Explore page css -->
 	<link rel="stylesheet" type="text/css" href="{% static 'explore_page/main.css' %}">
 
-	<!-- Main css -->
+	<!-- Detail page css -->
 	<link rel="stylesheet" type="text/css" href="{% static 'detail_page/main.css' %}">
 
+	<!-- Main css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'edit_page/main.css' %}">
+
 	<div class="wrapper">
-		<h2>{{ idea.name }}</h2>
-		<h5>{{ idea.short_description }}</h5>
-		<h5>By {{ idea.author }}</h5>
-		<hr>
-
-		<!-- Content -->
-		<p>{{ idea.full_description }}</p>
-		<hr>
-		
-		<!-- Like button and view count -->
-		{% include 'idea/like.html' %}	
-
-		<button class="btn btn-dark" onclick="window.location.href='#'">Add Solution</button>
-
-		{% if user == idea.author.user %}
-			<button class="btn btn-purple" onclick="window.location.href='{% url 'edit_page' pk=idea.id %}'">Edit</button>
-		{% endif %}
+		<form method="post">
+	    	{% csrf_token %}
+			{{ form.as_p }}
+			<button class="btn btn-purple" type="submit">Make Changes</button>
+		</form>
 
 		<!-- Timestamp -->
 		<div class="timestamp">

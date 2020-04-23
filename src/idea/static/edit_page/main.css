@@ -1,0 +1,49 @@
+:root {
+	/* css variables */
+	--margin-right: 60%;
+}
+
+input, textarea {
+	width: calc(100% - var(--margin-right));
+	padding: 10px;
+	text-indent: 10px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 0px;
+	border-radius: 5px;
+	background-color: rgb(245,245,245);
+}
+
+input::placeholder, textarea::placeholder {
+	color: rgb(170,170,210);
+}
+
+input:focus, textarea:focus {
+	outline: none;
+	background-color: rgb(230,230,240);
+}
+
+input {
+	font-size: 3rem;
+}
+
+textarea {
+	height: calc(5rem + 10px);
+	min-height: calc(5rem + 10px);
+	max-height: 30rem;
+	font-size: 1.5rem;
+}
+
+textarea[name="full_description"] {
+	min-height: 20rem;
+	font-size: 1rem;
+}
+
+@media only screen and (max-width: 680px) {
+	:root{
+		--margin-right: 0%;
+	}
+	.timestamp {
+		text-align: left !important;
+	}
+}

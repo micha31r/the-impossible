@@ -1,19 +1,7 @@
-body {
-	min-width: 300px;
-	width: 100vw;
-	height: 100vh;
-	/*font-family: 'Varela Round', sans-serif;*/
-	overflow: scroll;
-}
-
 a:hover {
 	color: currentColor;
 	text-decoration: none;
 	background-color: #FFF !important;
-}
-
-.wrapper {
-	padding: 40px;
 }
 
 .header {
@@ -116,47 +104,6 @@ a:hover {
   border: none;
   margin: 0;
   padding: 0;
-}
-
-.view-count, .like-count {
-	height: 1.2rem;
-	font-size: 1.1rem;
-	line-height: 1.1rem;
-	color: rgb(90,92,154);
-	font-family: 'Varela Round', sans-serif;
-}
-
-.view-svg, .like-svg {
-	display: inline !important;
-	height: 1.2rem;
-	margin-right: 5px;
-	vertical-align: text-top;
-}
-
-.like-button {
-	border: none;
-	background-color: #FFF;
-	padding: 0px;
-	margin: 0px;
-}
-
-.like-button:focus {
-	outline: none;
-}
-
-.like-svg, .like-count {
-	fill: darkgrey;
-	color: darkgrey;
-}
-
-*[name="liked"] {
-	fill: rgb(255,55,127);
-	color: rgb(255,55,127);
-}
-
-.text-seperator {
-	margin-left: 10px;
-	margin-right: 10px;
 }
 
 .page-link-wrapper {

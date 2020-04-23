@@ -14,6 +14,8 @@ from .models import (
 
 from idea.utils import *
 
+from the_impossible.ERROR import *
+
 def signup_page(request):
 	ctx = {} # Context variables
 	ctx["date"] = Date()
@@ -31,25 +33,28 @@ def signup_page(request):
 		password = signup_form.cleaned_data.get("password")
 		password_confirmation = signup_form.cleaned_data.get("password_confirmation")
 		# Make sure no user has the same username or email
-		if not User.objects.filter(username=username).first() and not User.objects.filter(email=email).first():
-			if password == password_confirmation: # Confirm password
-				# Create user object
-				user = User.objects.create_user(
-					username=username,
-					email=email,
-					password=password
-				)
-				user.first_name = first_name.capitalize()
-				user.last_name = last_name.capitalize()
-				user.save()
-				if user:
-					# Create a profile
-					profile = Profile.objects.create(
-						user=user
+		if not User.objects.filter(username=username).first():
+			if not User.objects.filter(email=email).first():
+				if password == password_confirmation: # Confirm password
+					# Create user object
+					user = User.objects.create_user(
+						username=username,
+						email=email,
+						password=password
 					)
-					# Log user in
-					login(request, user)
-					return redirect(next_page or "home_page") # Redirect to the next page
+					user.first_name = first_name.capitalize()
+					user.last_name = last_name.capitalize()
+					user.save()
+					if user:
+						# Create a profile
+						profile = Profile.objects.create(
+							user=user
+						)
+						# Log user in
+						login(request, user)
+						return redirect(next_page or "home_page") # Redirect to the next page
+			else: ctx["error"] = SERVER_ERROR["SIGNUP_EMAIL_TAKEN"]
+		else: ctx["error"] = SERVER_ERROR["SIGNUP_USERNAME_TAKEN"]
 	signup_form = SignUpForm()
 	template_file = "usermgmt/signup.html"
 	return render(request,template_file,ctx)
@@ -71,7 +76,7 @@ def login_page(request):
 			return redirect(next_page or "home_page") # Redirect to the next page
 		else: 
 			# Display error if user is not found
-			ctx["obj_error"] = f"User {OBJECT_ERROR[0]}"
+			ctx["error"] = SERVER_ERROR["LOGIN_NO_USER"]
 	login_form = LoginForm()
 	template_file = "usermgmt/login.html"
 	return render(request,template_file,ctx)
