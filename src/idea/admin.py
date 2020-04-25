@@ -1,7 +1,17 @@
 from django.contrib import admin
 from .models import (
+	Tag,
 	Idea,
 )
+
+# https://stackoverflow.com/questions/48372252/django-admin-accessing-reverse-many-to-many
+class IdeaInline(admin.TabularInline):
+	model = Idea.tags.through
+
+
+class TagAdmin(admin.ModelAdmin):
+	inlines = [IdeaInline]
+
 
 class IdeaAdmin(admin.ModelAdmin):
     # Display custom fields in Django admin
@@ -15,4 +25,5 @@ class IdeaAdmin(admin.ModelAdmin):
 
     readonly_fields = ["timestamp"]
 
+admin.site.register(Tag,TagAdmin)
 admin.site.register(Idea,IdeaAdmin)

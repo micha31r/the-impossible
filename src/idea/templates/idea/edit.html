@@ -18,8 +18,51 @@
 	<div class="wrapper">
 		<form method="post">
 	    	{% csrf_token %}
-			{{ form.as_p }}
-			<button class="btn btn-purple" type="submit">Make Changes</button>
+	    	<table>
+	    		<tr>
+	    			<td class="idea-content">
+						<p>{{ form.name }}</p>
+						<p>{{ form.short_description }}</p>
+						<p>{{ form.full_description }}</p>
+					</td>
+					<td class="idea-setting">
+						<h1><b>Settings</b></h1>
+						<br>
+						<table class="tags">
+							<tr>
+								<td class="select-tags">
+									<!-- Tags -->
+									<h5><b>{{ form.tags.label }}:</b></h5>
+									<p>{{ form.tags }}</p>
+								</td>
+								<td>
+									<table>
+										<tr>
+											<th>
+												<h6><b>Exsisting Tags:</b></h6>
+											</th>
+										</tr>
+										{% for tag in idea.tags.all %}
+											<tr class="exsisting-tag-tr">
+												<td class="exsisting-tag-td">
+													<p>{{ tag }}</p>
+												</td>
+												<td class="exsisting-tag-td">
+													<button class="btn delete-tag" onclick="window.location.href='{% url 'remove_tag_view' pk=idea.id tag_name=tag.name %}'; return false;">✖</button>
+												</td>
+											</tr>
+										{% endfor %}
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- Publish stats -->
+						<h5><b>{{ form.publish_stats.label }}:</b></h5>
+						<p>{{ form.publish_stats }}</p>
+						<button class="btn btn-purple" type="submit" name="save-changes">Save Changes</button>
+					</td>
+				</tr>
+			</table>
 		</form>
 
 		<!-- Timestamp -->

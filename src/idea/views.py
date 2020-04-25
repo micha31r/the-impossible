@@ -6,20 +6,13 @@ from django.contrib.auth.models import User
 import datetime
 
 from .utils import *
-
-from .ajax_encrypt import encrypt
-
-from .models import (
-	Idea,
-)
-
-from usermgmt.models import (
-	Profile,
-)
-
+from .models import *
 from .forms import *
+from usermgmt.models import *
 
 from the_impossible.ERROR import *
+
+from .ajax_encrypt import encrypt
 
 MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2020, 4, 9))
 ITEM_PER_PAGE = 12
@@ -82,30 +75,46 @@ def create_view(request):
 @login_required
 def edit_page(request,pk):
 	ctx = {} # Context variables
+	template_file = "idea/edit.html"
 	ctx["date"] = Date()
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
 	profile = Profile.objects.filter(user=request.user).first()
 	if idea.author == profile:
 		ctx["form"] = form = IdeaForm(request.POST or None)
-		if form.is_valid():
+		# Set default values
+		form.fields["name"].initial = idea.name
+		form.fields["short_description"].initial = idea.short_description
+		form.fields["full_description"].initial = idea.full_description
+		form.fields["publish_stats"].initial = idea.publish_stats
+		# Show avaliable tags
+		qs = Tag.objects.all().distinct()
+		for tag in idea.tags.all():
+			qs = qs.exclude(name=tag.name)
+		form.fields["tags"].queryset = qs
+		# Form validation
+		if form.is_valid() and "save-changes" in request.POST:
 			inputs = form.cleaned_data
+			# Changed idea content
 			idea.name = inputs.get("name")
 			idea.short_description = inputs.get("short_description")
 			idea.full_description = inputs.get("full_description")
+			# Change publish setting
+			idea.publish_stats = inputs.get("publish_stats")
+			# Add tags
+			for tag in inputs.get('tags'):
+				idea.tags.add(tag)
 			idea.save()
-			ctx["form"] = form = IdeaForm(request.POST or None)
-		else:
-			# Set default values for the form
-			initial = {
-				"name":idea.name,
-				"short_description":idea.short_description,
-				"full_description":idea.full_description,
-			}
-			ctx["form"] = form = IdeaForm(initial=initial)
+			# Refresh page
+			return redirect("edit_page", pk=idea.id)
 	else:
 		ctx["error"] = SERVER_ERROR["ACCESS"]
-	template_file = "idea/edit.html"
 	return render(request,template_file,ctx)
+
+def remove_tag_view(request,pk,tag_name):
+	idea = get_object_or_404(Idea,pk=pk)
+	tag = get_object_or_404(Tag,name=tag_name)
+	idea.tags.remove(tag)
+	return redirect('edit_page',pk=pk)
 
 def like_view(request):
 	data = {}

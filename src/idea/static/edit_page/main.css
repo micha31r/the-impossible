@@ -1,16 +1,26 @@
 :root {
 	/* css variables */
-	--margin-right: 60%;
+	--margin-right: 50%;
+}
+
+form p {
+	margin-bottom: 0px;
+}
+
+td {
+	height: 100%;
+	vertical-align: top;
 }
 
 input, textarea {
-	width: calc(100% - var(--margin-right));
+	width: 100%;
 	padding: 10px;
 	border-style: solid;
 	border-color: grey;
 	border-width: 0px;
 	border-radius: 5px;
 	background-color: rgb(245,245,245);
+	margin-bottom: 20px;
 }
 
 input::placeholder, textarea::placeholder {
@@ -40,6 +50,31 @@ textarea {
 textarea[name="full_description"] {
 	min-height: 20rem;
 	font-size: 1rem;
+	margin-bottom: 0px;
+}
+
+select {
+	border: 0;
+	background-color: rgb(230,230,230);
+}
+
+select[name="tags"] {
+	height: 30vh;
+	padding-left: 5px;
+	margin-bottom: 20px;
+	border-left-width: 1px;
+	border-style: solid;
+	overflow: auto;
+	background-color: #FFF;
+}
+
+select[name="tags"]:focus {
+	outline: none;
+}
+
+button[name="submit"] {
+	vertical-align: bottom;
+	margin-top: 20px;
 }
 
 @media only screen and (max-width: 680px) {
@@ -49,4 +84,40 @@ textarea[name="full_description"] {
 	.timestamp {
 		text-align: left !important;
 	}
+}
+
+.tags {
+	width: 100%;
+}
+
+.exsisting-tag-tr {
+	padding: 5px;
+	height: max-content;
+}
+
+.exsisting-tag-td {
+	height: 100%;
+	vertical-align: middle;
+}
+
+.delete-tag {
+	padding: 0;
+	margin: 0;
+}
+
+.select-tags {
+	width: 50%;
+}
+
+.idea-content {
+	width: calc(100% - var(--margin-right));
+	padding-right: 5vw;
+	border: 0;
+	border-color: rgb(230,230,230);
+	border-style: solid;
+	border-right-width: 1px;
+}
+
+.idea-setting {
+	padding-left: 5vw;
 }
