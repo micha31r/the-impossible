@@ -98,6 +98,7 @@ button[name="submit"] {
 .exsisting-tag-td {
 	height: 100%;
 	vertical-align: middle;
+	padding: 0;
 }
 
 .delete-tag {
