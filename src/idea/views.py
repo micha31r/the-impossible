@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, JsonResponse
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
@@ -66,6 +66,18 @@ def detail_page(request,pk):
 	ctx["encrypted_string"] = encrypt(request.user.username)
 	template_file = "idea/detail.html"
 	return render(request,template_file,ctx)
+
+@login_required
+def create_view(request):
+	profile = get_object_or_404(Profile,user=request.user)
+	obj = Idea.objects.create(
+		name="untitled",
+		short_description="",
+		full_description="",
+		author=profile
+	)
+	obj.save()
+	return redirect("edit_page",pk=obj.id)
 
 @login_required
 def edit_page(request,pk):
