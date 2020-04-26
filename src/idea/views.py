@@ -6,13 +6,17 @@ from django.contrib.auth.models import User
 import datetime
 
 from .utils import *
-from .models import *
 from .forms import *
-from usermgmt.models import *
 
 from the_impossible.ERROR import *
 
 from .ajax_encrypt import encrypt
+
+from usermgmt.models import Profile
+from .models import (
+	Tag, 
+	Idea
+)
 
 MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2020, 4, 9))
 ITEM_PER_PAGE = 12

@@ -1,7 +1,10 @@
 from django.forms import ModelForm, TextInput, Textarea
 from django import forms
 
-from .models import *
+from .models import (
+    Tag,
+    Idea
+)
 
 class IdeaForm(ModelForm):
     class Meta:
