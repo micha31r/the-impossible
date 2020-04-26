@@ -125,9 +125,15 @@ button[name="save-changes"] {
 	border: 0px;
 }
 
+.exsisting-tag-wrapper {
+	height: 30vh;
+	overflow: scroll;
+}
+
 .exsisting-tag-tr {
 	padding: 5px;
 	height: max-content;
+	height: 10
 }
 
 .exsisting-tag-td {

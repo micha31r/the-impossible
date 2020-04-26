@@ -39,23 +39,21 @@
 									<p>{{ form.tags }}</p>
 								</td>
 								<td>
-									<table>
-										<tr>
-											<th>
-												<h5><b>Exsisting Tags({{ idea.tags.count }}):</b></h5>
-											</th>
-										</tr>
-										{% for tag in idea.tags.all %}
-											<tr class="exsisting-tag-tr">
-												<td class="exsisting-tag-td">
-													<p>{{ tag }}</p>
-												</td>
-												<td class="exsisting-tag-td">
-													<button class="btn delete-tag" onclick="window.location.href='{% url 'remove_tag_view' pk=idea.id tag_pk=tag.id %}'; return false;">✖</button>
-												</td>
-											</tr>
-										{% endfor %}
-									</table>
+									<h5><b>Exsisting Tags({{ idea.tags.count }}):</b></h5>
+									<div class="exsisting-tag-wrapper">
+										<table>
+											{% for tag in idea.tags.all %}
+												<tr class="exsisting-tag-tr">
+													<td class="exsisting-tag-td">
+														<p>{{ tag }}</p>
+													</td>
+													<td class="exsisting-tag-td">
+														<button class="btn delete-tag" onclick="window.location.href='{% url 'remove_tag_view' pk=idea.id tag_pk=tag.id %}'; return false;">✖</button>
+													</td>
+												</tr>
+											{% endfor %}
+										</table>
+									</div>
 								</td>
 							</tr>
 							<tr>
