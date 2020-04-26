@@ -38,7 +38,7 @@ def explore_page(request,week_num,page_num):
 	ideas = Idea.objects.filter(
 		timestamp__gte = timestamp_from,
 		timestamp__lt = timestamp_to,
-	).distinct().reverse()
+	).distinct().order_by("id").reverse()
 	# Split data into pages
 	ideas = Paginator(ideas,ITEM_PER_PAGE)
 	ctx["max_page"] = ideas.num_pages
