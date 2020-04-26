@@ -35,14 +35,14 @@
 							<tr>
 								<td class="select-tags">
 									<!-- Tags -->
-									<h5><b>{{ form.tags.label }}:</b></h5>
+									<h5><b>{{ form.tags.label }}({{ tags.count }}):</b></h5>
 									<p>{{ form.tags }}</p>
 								</td>
 								<td>
 									<table>
 										<tr>
 											<th>
-												<h5><b>Exsisting Tags:</b></h5>
+												<h5><b>Exsisting Tags({{ idea.tags.count }}):</b></h5>
 											</th>
 										</tr>
 										{% for tag in idea.tags.all %}

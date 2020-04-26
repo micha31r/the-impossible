@@ -94,7 +94,7 @@ def edit_page(request,pk):
 		qs = Tag.objects.all().distinct()
 		for tag in idea.tags.all():
 			qs = qs.exclude(name=tag.name)
-		form.fields["tags"].queryset = qs
+		form.fields["tags"].queryset = ctx["tags"] = qs
 		# Form validation
 		if form.is_valid() and "save-changes" in request.POST:
 			inputs = form.cleaned_data
