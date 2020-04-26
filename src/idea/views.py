@@ -110,9 +110,9 @@ def edit_page(request,pk):
 		ctx["error"] = SERVER_ERROR["ACCESS"]
 	return render(request,template_file,ctx)
 
-def remove_tag_view(request,pk,tag_name):
+def remove_tag_view(request,pk,tag_pk):
 	idea = get_object_or_404(Idea,pk=pk)
-	tag = get_object_or_404(Tag,name=tag_name)
+	tag = get_object_or_404(Tag,pk=tag_pk)
 	idea.tags.remove(tag)
 	return redirect('edit_page',pk=pk)
 

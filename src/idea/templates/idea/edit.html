@@ -15,17 +15,20 @@
 	<!-- Main css -->
 	<link rel="stylesheet" type="text/css" href="{% static 'edit_page/main.css' %}">
 
+	<!-- Resize js -->
+	<script type="text/javascript" src="{% static 'edit_page/resize.js' %}"></script>
+
 	<div class="wrapper">
 		<form method="post">
 	    	{% csrf_token %}
 	    	<table>
-	    		<tr>
-	    			<td class="idea-content">
+	    		<tr id="append-origin">
+	    			<td id="idea-content">
 						<p>{{ form.name }}</p>
 						<p>{{ form.short_description }}</p>
 						<p>{{ form.full_description }}</p>
 					</td>
-					<td class="idea-setting">
+					<td id="idea-setting">
 						<h1><b>Settings</b></h1>
 						<br>
 						<table class="tags">
@@ -48,7 +51,7 @@
 													<p>{{ tag }}</p>
 												</td>
 												<td class="exsisting-tag-td">
-													<button class="btn delete-tag" onclick="window.location.href='{% url 'remove_tag_view' pk=idea.id tag_name=tag.name %}'; return false;">✖</button>
+													<button class="btn delete-tag" onclick="window.location.href='{% url 'remove_tag_view' pk=idea.id tag_pk=tag.id %}'; return false;">✖</button>
 												</td>
 											</tr>
 										{% endfor %}
@@ -62,6 +65,8 @@
 						<button class="btn btn-purple" type="submit" name="save-changes">Save Changes</button>
 					</td>
 				</tr>
+				<tr id="append-target">
+				</tr>
 			</table>
 		</form>
 
@@ -71,10 +76,4 @@
 			<p>Last Edited <span class="time">{{ idea.last_edit }}</span></p>
 		</div>
 	</div>
-
-	<!-- Js to prevent form resubmission -->
-	<!-- https://www.webtrickshome.com/faq/how-to-stop-form-resubmission-on-page-refresh -->
-	<script>
-		if ( window.history.replaceState ) window.history.replaceState( null, null, window.location.href );
-	</script>
 {% endblock %}

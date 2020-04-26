@@ -14,6 +14,6 @@ urlpatterns = [
 	path('detail/<int:pk>/', detail_page, name="detail_page"),
 	path('create/', create_view, name="create_view"),
 	path('edit/<int:pk>/', edit_page, name="edit_page"),
-	path('remove-tag/<int:pk>/<slug:tag_name>/', remove_tag_view, name="remove_tag_view"),
+	path('remove-tag/<int:pk>/<int:tag_pk>/', remove_tag_view, name="remove_tag_view"),
 	path('like/', like_view, name="like_view"),
 ]

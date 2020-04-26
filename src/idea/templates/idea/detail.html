@@ -38,10 +38,4 @@
 			<p>Last Edited <span class="time">{{ idea.last_edit }}</span></p>
 		</div>
 	</div>
-
-	<!-- Js to prevent form resubmission -->
-	<!-- https://www.webtrickshome.com/faq/how-to-stop-form-resubmission-on-page-refresh -->
-	<script>
-		if ( window.history.replaceState ) window.history.replaceState( null, null, window.location.href );
-	</script>
 {% endblock %}
