@@ -7,6 +7,10 @@ form p {
 	margin-bottom: 0px;
 }
 
+table {
+	width: 100%;
+}
+
 td {
 	height: 100%;
 	vertical-align: top;
@@ -96,9 +100,6 @@ button[name="save-changes"] {
 		border-right-width: 0px !important;
 		border-bottom-width: 1px !important;
 		border-style: solid !important;
-	}
-	table {
-		width: 100% !important;
 	}
 	#idea-setting {
 		padding: 0px !important;
