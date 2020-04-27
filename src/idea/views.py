@@ -80,7 +80,7 @@ def create_view(request):
 def edit_page(request,pk):
 	ctx = {} # Context variables
 	template_file = "idea/edit.html"
-	ctx["date"] = Date()
+	ctx["date"] = date = Date()
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
 	profile = Profile.objects.filter(user=request.user).first()
 	if idea.author == profile:
@@ -100,6 +100,9 @@ def edit_page(request,pk):
 		# Form validation
 		if form.is_valid():
 			data = form.cleaned_data
+			if data.get("delete") == 2:
+				idea.delete()
+				return redirect("explore_page",date.week(),1)
 			# Changed idea content
 			idea.name = data.get("name")
 			idea.short_description = data.get("short_description")

@@ -4,7 +4,13 @@ from .models import (
     Idea
 )
 
+DELETE_CHOICE = (
+    (1, "Keep"),
+    (2, "Delete"),
+)
+
 class IdeaForm(forms.ModelForm):
+    delete = forms.IntegerField(label="",required=False,initial=1,widget=forms.Select(choices=DELETE_CHOICE))
     tags_remain = forms.CharField(label="",required=False)
 
     class Meta:

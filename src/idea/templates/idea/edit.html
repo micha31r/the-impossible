@@ -18,6 +18,9 @@
 	<!-- Resize js -->
 	<script type="text/javascript" src="{% static 'edit_page/resize.js' %}"></script>
 
+	<!-- Delete confirm js -->
+	<script type="text/javascript" src="{% static 'edit_page/delete_confirm.js' %}"></script>
+
 	<div class="wrapper">
 		<form method="post">
 	    	{% csrf_token %}
@@ -49,6 +52,12 @@
 									<!-- Publish stats -->
 									<h5><b>{{ form.publish_stats.label }}:</b></h5>
 									<p>{{ form.publish_stats }}</p>
+								</td>
+								<td>
+									<!-- Delete button -->
+									<h5><b>Delete Idea:</b></h5>
+									<p id="hidden" style="display:none;">{{ form.delete }}</p>
+									<button class="btn btn-warning" id="confirm-button" onclick="click_confirm('hidden','confirm-button'); return false;">Reveal</button>
 								</td>
 							</tr>
 							<tr>
