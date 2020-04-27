@@ -9,6 +9,7 @@ class IdeaForm(forms.ModelForm):
 
     class Meta:
         model = Idea
+        # Don't use "__all__", in this case the form won't validate
         fields = [
             "name",
             "short_description",
