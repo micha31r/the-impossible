@@ -73,12 +73,13 @@ select::-webkit-scrollbar {
 
 select[name="tags"], select[name="tags_remain"] {
 	height: 30vh;
-	padding-left: 5px;
+	padding: 5px;
 	margin-bottom: 20px;
-	border-left-width: 1px;
-	border-style: solid;
+	border-radius: 5px;
 	overflow: auto;
-	background-color: #FFF;
+	min-width: 100px;
+	background-color: #E9E9E9;
+	width: 80%;
 }
 
 select[name="tags"]:focus, select[name="tags_remain"]:focus {
@@ -89,7 +90,7 @@ button[name="save-changes"] {
 	margin-top: 5vh !important;
 }
 
-@media only screen and (max-width: 690px) {
+@media only screen and (max-width: 830px) {
 	.timestamp {
 		text-align: left !important;
 	}
@@ -107,7 +108,7 @@ button[name="save-changes"] {
 	}
 }
 
-@media only screen and (max-width: 400px) { 
+@media only screen and (max-width: 460px) { 
 	#exsisting-tag {
 		padding-top: 20px;
 	}
