@@ -81,10 +81,6 @@ select[name="tags"], select[name="tags_remain"] {
 	background-color: #FFF;
 }
 
-select[name="tags"] {
-	border: 0;
-}
-
 select[name="tags"]:focus, select[name="tags_remain"]:focus {
 	outline: none;
 }
@@ -144,26 +140,10 @@ button[name="save-changes"] {
 	overflow: scroll;
 }
 
-.exsisting-tag-tr {
-	height: max-content;
-	padding: 5px;
-}
-
-.exsisting-tag-td {
-	height: 100%;
-	vertical-align: middle;
-	padding: 0;
-}
-
-.delete-tag {
-	padding: 0;
-	margin: 0;
-}
-
 .select-tags {
 	width: 50%;
 }
 
-#publish-stats {
+#publish-stats td {
 	padding-top: 20px;
 }
