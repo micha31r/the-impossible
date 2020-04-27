@@ -112,6 +112,12 @@ button[name="save-changes"] {
 	#exsisting-tag {
 		padding-top: 20px;
 	}
+	#delete-button {
+		padding-top: 20px;
+	}
+	td {
+		width: 100% !important;
+	}
 }
 
 #idea-content {
@@ -145,6 +151,6 @@ button[name="save-changes"] {
 	width: 50%;
 }
 
-#publish-stats td {
+.publish-stats td {
 	padding-top: 20px;
 }

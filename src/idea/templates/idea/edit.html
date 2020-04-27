@@ -47,19 +47,20 @@
 								</td>
 							</tr>
 							<tr id="append-target2"></tr>
-							<tr id="publish-stats">
+							<tr class="publish-stats" id="append-origin3">
 								<td>
 									<!-- Publish stats -->
 									<h5><b>{{ form.publish_stats.label }}:</b></h5>
 									<p>{{ form.publish_stats }}</p>
 								</td>
-								<td>
+								<td id="delete-button">
 									<!-- Delete button -->
 									<h5><b>Delete Idea:</b></h5>
 									<p id="hidden" style="display:none;">{{ form.delete }}</p>
 									<button class="btn btn-warning" id="confirm-button" onclick="click_confirm('hidden','confirm-button'); return false;">Reveal</button>
 								</td>
 							</tr>
+							<tr id="append-target3"></tr>
 							<tr>
 								<td>
 									<button class="btn btn-purple" type="submit" name="save-changes">Save Changes</button>
