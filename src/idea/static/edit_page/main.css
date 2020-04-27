@@ -73,13 +73,17 @@ select::-webkit-scrollbar {
 
 select[name="tags"], select[name="tags_remain"] {
 	height: 30vh;
+	width: 80%;
+	min-height: 150px;
+	max-height: 200px;
+	min-width: 200px;
+	max-width: 300px;
 	padding: 5px;
 	margin-bottom: 20px;
 	border-radius: 5px;
 	overflow: auto;
 	min-width: 100px;
 	background-color: #E9E9E9;
-	width: 80%;
 }
 
 select[name="tags"]:focus, select[name="tags_remain"]:focus {
