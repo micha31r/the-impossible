@@ -71,7 +71,7 @@ select::-webkit-scrollbar {
 	display: none;
 }
 
-select[name="tags"] {
+select[name="tags"], select[name="tags_remain"] {
 	height: 30vh;
 	padding-left: 5px;
 	margin-bottom: 20px;
@@ -81,7 +81,11 @@ select[name="tags"] {
 	background-color: #FFF;
 }
 
-select[name="tags"]:focus {
+select[name="tags"] {
+	border: 0;
+}
+
+select[name="tags"]:focus, select[name="tags_remain"]:focus {
 	outline: none;
 }
 
@@ -107,6 +111,12 @@ button[name="save-changes"] {
 	}
 }
 
+@media only screen and (max-width: 400px) { 
+	#exsisting-tag {
+		padding-top: 20px;
+	}
+}
+
 #idea-content {
 	width: calc(100% - var(--margin-right));
 	padding-right: 5vw;
@@ -127,13 +137,16 @@ button[name="save-changes"] {
 
 .exsisting-tag-wrapper {
 	height: 30vh;
+	padding: 5px;
+	border: 0;
+	border-left-width: 1px;
+	border-style: solid;
 	overflow: scroll;
 }
 
 .exsisting-tag-tr {
-	padding: 5px;
 	height: max-content;
-	height: 10
+	padding: 5px;
 }
 
 .exsisting-tag-td {
@@ -149,4 +162,8 @@ button[name="save-changes"] {
 
 .select-tags {
 	width: 50%;
+}
+
+#publish-stats {
+	padding-top: 20px;
 }

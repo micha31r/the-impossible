@@ -22,7 +22,7 @@
 		<form method="post">
 	    	{% csrf_token %}
 	    	<table>
-	    		<tr id="append-origin">
+	    		<tr id="append-origin1">
 	    			<td id="idea-content">
 						<p>{{ form.name }}</p>
 						<p>{{ form.short_description }}</p>
@@ -32,33 +32,28 @@
 						<h1><b>Settings</b></h1>
 						<br>
 						<table class="tags">
-							<tr>
+							<tr id="append-origin2">
 								<td class="select-tags">
 									<!-- Tags -->
 									<h5><b>{{ form.tags.label }}({{ tags.count }}):</b></h5>
-									<p>{{ form.tags }}</p>
+									<p>{{ form.tags_remain }}</p>
 								</td>
-								<td>
+								<td id="exsisting-tag">
 									<h5><b>Exsisting Tags({{ idea.tags.count }}):</b></h5>
 									<div class="exsisting-tag-wrapper">
 										<table>
-											{% for tag in idea.tags.all %}
-												<tr class="exsisting-tag-tr">
-													<td class="exsisting-tag-td">
-														<p>{{ tag }}</p>
-													</td>
-													<td class="exsisting-tag-td">
-														<button class="btn delete-tag" onclick="window.location.href='{% url 'remove_tag_view' pk=idea.id tag_pk=tag.id %}'; return false;">✖</button>
-													</td>
-												</tr>
-											{% endfor %}
+											<tr class="exsisting-tag-tr">
+												<td class="exsisting-tag-td">
+													{{ form.tags }}
+												</td>
+											</tr>
 										</table>
 									</div>
 								</td>
 							</tr>
-							<tr>
+							<tr id="append-target2"></tr>
+							<tr id="publish-stats">
 								<td>
-									<br>
 									<!-- Publish stats -->
 									<h5><b>{{ form.publish_stats.label }}:</b></h5>
 									<p>{{ form.publish_stats }}</p>
@@ -72,7 +67,7 @@
 						</table>
 					</td>
 				</tr>
-				<tr id="append-target">
+				<tr id="append-target1">
 				</tr>
 			</table>
 		</form>

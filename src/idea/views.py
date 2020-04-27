@@ -89,36 +89,35 @@ def edit_page(request,pk):
 		form.fields["name"].initial = idea.name
 		form.fields["short_description"].initial = idea.short_description
 		form.fields["full_description"].initial = idea.full_description
+		form.fields["tags"].queryset = idea.tags
 		form.fields["publish_stats"].initial = idea.publish_stats
 		# Show avaliable tags
 		qs = Tag.objects.all().distinct()
 		for tag in idea.tags.all():
 			qs = qs.exclude(name=tag.name)
-		form.fields["tags"].queryset = ctx["tags"] = qs
+		ctx["tags"] = qs
+		form.fields["tags_remain"].widget = forms.SelectMultiple(choices=[(choice.id, choice) for choice in qs])
 		# Form validation
-		if form.is_valid() and "save-changes" in request.POST:
-			inputs = form.cleaned_data
+		if form.is_valid():
+			data = form.cleaned_data
 			# Changed idea content
-			idea.name = inputs.get("name")
-			idea.short_description = inputs.get("short_description")
-			idea.full_description = inputs.get("full_description")
+			idea.name = data.get("name")
+			idea.short_description = data.get("short_description")
+			idea.full_description = data.get("full_description")
 			# Change publish setting
-			idea.publish_stats = inputs.get("publish_stats")
+			idea.publish_stats = data.get("publish_stats")
 			# Add tags
-			for tag in inputs.get('tags'):
+			for tag in eval(data.get('tags_remain') or "[]"): # convert
 				idea.tags.add(tag)
+			# Remove tags
+			for tag in data.get('tags'):
+				idea.tags.remove(tag)
 			idea.save()
 			# Refresh page
 			return redirect("edit_page", pk=idea.id)
 	else:
 		ctx["error"] = SERVER_ERROR["ACCESS"]
 	return render(request,template_file,ctx)
-
-def remove_tag_view(request,pk,tag_pk):
-	idea = get_object_or_404(Idea,pk=pk)
-	tag = get_object_or_404(Tag,pk=tag_pk)
-	idea.tags.remove(tag)
-	return redirect('edit_page',pk=pk)
 
 def like_view(request):
 	data = {}
