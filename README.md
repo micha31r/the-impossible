@@ -1,9 +1,9 @@
 # The Impossible
 platform to share ideas and turn them into reality
 
-![Explore Section](https://github.com/micha31r/The-Impossible/readme_images/preview_imgs/explore.png)
+![Explore Section](preview_imgs/explore.png)
 
-![Discover Section](https://github.com/micha31r/The-Impossible/readme_images/preview_imgs/discover.png)
+![Discover Section](preview_imgs/discover.png)
 
 __Current *site* version:__ *v0.1*
 
