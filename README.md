@@ -1,11 +1,11 @@
 # The Impossible
-A platform to:
+** A platform to: **
 * share ideas and turn them into reality
-* find collaborators to work on a project
+* find collaborators to work on projects
 
-Preview 1
+(Preview 1)
 ![Explore Section](preview_imgs/explore.png)
-Preview 2
+(Preview 2)
 ![Discover Section](preview_imgs/discover.png)
 
 __Current *site* version:__ *v0.1*
