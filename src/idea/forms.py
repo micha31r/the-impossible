@@ -22,6 +22,7 @@ class IdeaForm(forms.ModelForm):
             "full_description",
             "tags",
             "publish_stats",
+            "header_img",
         ]
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Title (Max 80)'}),

@@ -3,7 +3,7 @@ from django.http import Http404, JsonResponse
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-import datetime
+import datetime, random
 
 from .utils import *
 from .forms import *
@@ -54,8 +54,14 @@ def explore_page(request,week_num,page_num):
 	ctx["ideas"] = current_page 
 
 	# Discover Section
-	# timestamp_to = timestamp_from + datetime.timedelta(days=7)
-
+	# Retrieve all ideas from the past 6 months
+	ideas = Idea.objects.filter(
+		timestamp__gte = date.now() - datetime.timedelta(days=182),
+		timestamp__lte = date.now() + datetime.timedelta(days=1),
+		publish_stats = 2
+	).exclude(header_img="")
+	random.seed(datetime.datetime.now())
+	ctx["random_ideas"] = random.sample(list(ideas), min(ideas.count(),5))
 	template_file = "idea/explore.html"
 	return render(request,template_file,ctx)
 
@@ -73,7 +79,17 @@ def detail_page(request,pk):
 
 @login_required
 def create_view(request):
+	date = Date()
 	profile = get_object_or_404(Profile,user=request.user)
+
+	if profile.daily_limit <= 0: 
+		# If it's still the same day then show error
+		if profile.daily_limit_timestamp.strftime("%Y-%m-%d") == str(date.now()):
+			# Remember to change redirect page
+			return redirect("home_page")
+		profile.daily_limit = 5
+		profile.save()
+	
 	obj = Idea.objects.create(
 		name="untitled",
 		short_description="",
@@ -81,6 +97,8 @@ def create_view(request):
 		author=profile
 	)
 	obj.save()
+	profile.daily_limit -= 1
+	profile.save()
 	return redirect("edit_page",pk=obj.id)
 
 @login_required
@@ -91,7 +109,7 @@ def edit_page(request,pk):
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
 	profile = Profile.objects.filter(user=request.user).first()
 	if idea.author == profile:
-		ctx["form"] = form = IdeaForm(request.POST or None)
+		ctx["form"] = form = IdeaForm(request.POST or None, request.FILES or None)
 		# Set default values
 		form.fields["name"].initial = idea.name
 		form.fields["short_description"].initial = idea.short_description
@@ -110,6 +128,8 @@ def edit_page(request,pk):
 			if data.get("delete") == 2:
 				idea.delete()
 				return redirect("explore_page",date.week(),1)
+			# Save image
+			idea.header_img =  request.FILES.get("header_img")
 			# Changed idea content
 			idea.name = data.get("name")
 			idea.short_description = data.get("short_description")

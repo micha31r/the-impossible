@@ -14,4 +14,4 @@ urlpatterns = [
 	path('create/', create_view, name="create_view"),
 	path('edit/<int:pk>/', edit_page, name="edit_page"),
 	path('like/', like_view, name="like_view"),
-]
+] 

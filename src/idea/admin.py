@@ -1,8 +1,7 @@
 from django.contrib import admin
 from .models import (
 	Tag,
-	Idea,
-    RecommendedIdea
+	Idea
 )
 
 # https://stackoverflow.com/questions/48372252/django-admin-accessing-reverse-many-to-many
@@ -28,4 +27,3 @@ class IdeaAdmin(admin.ModelAdmin):
 
 admin.site.register(Tag,TagAdmin)
 admin.site.register(Idea,IdeaAdmin)
-admin.site.register(RecommendedIdea)

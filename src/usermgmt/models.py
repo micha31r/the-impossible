@@ -9,6 +9,10 @@ class Profile(models.Model):
         on_delete=models.SET_NULL,
         null=True
     )
+    # Only allow each user to post 5 ideas per day
+	daily_limit = models.IntegerField(default=5)
+	daily_limit_timestamp = models.DateTimeField(auto_now=True)
+
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
 
 	def __str__(self):

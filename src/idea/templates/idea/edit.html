@@ -22,7 +22,7 @@
 	<script type="text/javascript" src="{% static 'edit_page/delete_confirm.js' %}"></script>
 
 	<div class="wrapper">
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 	    	{% csrf_token %}
 	    	<table>
 	    		<tr id="append-origin1">
@@ -68,6 +68,9 @@
 							</tr>
 						</table>
 					</td>
+				</tr>
+				<tr>
+					<p>{{ form.header_img }}</p>
 				</tr>
 				<tr id="append-target1">
 				</tr>

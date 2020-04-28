@@ -21,7 +21,7 @@
 		<!-- Masonry container resize function -->
 		<script type="text/javascript" src="{% static 'explore_page/resize.js' %}"></script>
 
-		<div class="header">
+		<div class="explore-header">
 			<h5>Explore All</h5>
 			<h2>Weekly Ideas</h2>
 
@@ -45,9 +45,9 @@
 					<div class="flex-wrapper">
 						<div class="card" style="width: 100%;">
 							<div class="card-body">
-
+								
 								<!-- Title -->
-								<h5 class="card-title">{{ idea.name }}</h5>
+								<h5 class="card-title"><a href="{% url 'detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
 
 								<!-- Like button and view count -->
 								{% include 'idea/like.html' %}	
@@ -57,11 +57,9 @@
 
 								<!-- Content -->
 								<p class="card-text">{{ idea.full_description|truncatechars:300 }}</p>
-								<hr>
-								<button class="btn btn-outline-dark" onclick="window.location.href='{% url 'detail_page' pk=idea.pk %}'">View</button>
-								{% if user == idea.author.user %}
-									<button class="btn btn-purple" onclick="window.location.href='{% url 'edit_page' pk=idea.id %}'">Edit</button>
-								{% endif %}
+
+								<!-- Author -->
+								<p class="author">By {{ idea.author }}</p>
 							</div>
 						</div>
 					</div>
@@ -111,10 +109,35 @@
 			</a>
 		</div>
 	</div>
-	<hr>
+	<hr class="section-seperator">
 	<div class="wrapper">
 		<!-- Discover -->
-		
+		<div class="horizontal-overflow-wrapper">
+			<div class="discover-header">
+				<h1>Discover</h1>
+			</div>
+			<br>
+			<div class="horizontal-container">
+				{% for idea in random_ideas %}
+					<div class="discover-card">
+
+						<a href="{% url 'detail_page' pk=idea.pk %}"><img class="header-img" src="{{ idea.header_img.url }}"></a>
+
+						<!-- Title -->
+						<h5 class="card-title"><a href="{% url 'detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
+
+						<!-- Short description -->
+						<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:50 }}</h6>
+
+						<!-- Content -->
+						<p class="card-text">{{ idea.full_description|truncatechars:80 }}</p>
+
+						<!-- Author -->
+						<p class="author">By {{ idea.author }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
 	</div>
 	<hr>
 	<div class="wrapper">

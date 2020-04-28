@@ -39,6 +39,8 @@ class Idea(models.Model):
 	tags = models.ManyToManyField(Tag, related_name="tagged", blank=True)
 
     # Content
+	header_img = models.FileField(upload_to='uploads/%Y/%m/%d/', blank=True)
+
 	name = models.CharField(max_length=80,blank=False,unique=False)
 	short_description = models.TextField(max_length=150,blank=False,unique=False)
 	full_description = models.TextField(max_length=2000,blank=False,unique=False)
@@ -53,7 +55,3 @@ class Idea(models.Model):
 
 	def __str__(self):
 		return self.name
-
-class RecommendedIdea(models.Model):
-	idea = models.ManyToManyField(Idea, blank=True)
-
