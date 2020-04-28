@@ -3,12 +3,12 @@
 * share ideas and turn them into reality
 * find collaborators to work on projects
 
-##
+## Preview
 
-*(Preview 1)*
-![Discover Section](preview_imgs/discover.png)
-*(Preview 2)*
 ![Explore Section](preview_imgs/explore.png)
+![Discover Section](preview_imgs/discover.png)
+
+##
 
 __Current *site* version:__ *v0.1*
 
