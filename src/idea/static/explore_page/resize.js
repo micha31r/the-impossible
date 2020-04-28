@@ -2,7 +2,7 @@ function auto_height(recursion) {
 	var element = document.getElementsByClassName("flex-container")[0];
 	// Reset element height
 	if (!recursion) { 
-		element.style.height = "800px";
+		element.style.height = "400px";
 	}
 	if (element.scrollWidth > element.clientWidth) {
 		// Adjust to the new height

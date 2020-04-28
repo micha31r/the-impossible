@@ -9,7 +9,7 @@ a:hover {
 }
 
 .overflow-wrapper {
-	height: 100vh;
+	height: 80vh;
 	overflow-y: scroll;
 /*	border-width: 1px;
 	border-style: solid;
@@ -28,7 +28,7 @@ a:hover {
 	flex-flow: column wrap;
 	align-content: space-between;
 	/* Must be fixed height */
-	height: 800px;
+	height: 400px;
 	width: 100%;
 	overflow: scroll;
 }
@@ -95,7 +95,6 @@ a:hover {
 	}
 	.flex-wrapper:nth-of-type(2n) { order: 1; }
 }
-
 
 /* Force new columns */
 .break {

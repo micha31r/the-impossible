@@ -17,15 +17,16 @@
 		<!-- Main css -->
 		<link rel="stylesheet" type="text/css" href="{% static 'explore_page/main.css' %}">
 		
+		<!-- Explore -->
 		<!-- Masonry container resize function -->
 		<script type="text/javascript" src="{% static 'explore_page/resize.js' %}"></script>
 
 		<div class="header">
-			<h5>Explore</h5>
+			<h5>Explore All</h5>
 			<h2>Weekly Ideas</h2>
 
 			<!-- Display time period -->
-			<h5>{{ from_date }} to {{ to_date }}</h5>
+			<h5>{{ from_date }} <i>to</i> {{ to_date }}</h5>
 
 			<!-- Change Week -->
 			{% if previous_week_num %}
@@ -109,5 +110,15 @@
 				</svg>
 			</a>
 		</div>
+	</div>
+	<hr>
+	<div class="wrapper">
+		<!-- Discover -->
+		
+	</div>
+	<hr>
+	<div class="wrapper">
+		<!-- Announcement -->
+		
 	</div>
 {% endblock %}

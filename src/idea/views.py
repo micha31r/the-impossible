@@ -27,7 +27,9 @@ def explore_page(request,week_num,page_num):
 	ctx["week_num"] = week_num
 	ctx["page_num"] = page_num
 	today = date.now()
-	# Note: current date is not the date, its year/week/1
+
+	# Explore Section
+	# Note: current date is not normal date format, its year/week/1
 	current_date = int_date(f"{today.strftime('%Y')}-{week_num}-1")
 	ctx['from_date'] = timestamp_from = current_week_dates(*current_date)
 	ctx['to_date'] = timestamp_to = timestamp_from + datetime.timedelta(days=7)
@@ -50,6 +52,10 @@ def explore_page(request,week_num,page_num):
 	try: current_page = ideas.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
 	ctx["ideas"] = current_page 
+
+	# Discover Section
+	# timestamp_to = timestamp_from + datetime.timedelta(days=7)
+
 	template_file = "idea/explore.html"
 	return render(request,template_file,ctx)
 

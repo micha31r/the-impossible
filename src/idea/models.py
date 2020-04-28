@@ -53,3 +53,7 @@ class Idea(models.Model):
 
 	def __str__(self):
 		return self.name
+
+class RecommendedIdea(models.Model):
+	idea = models.ManyToManyField(Idea, blank=True)
+
