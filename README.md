@@ -1,7 +1,7 @@
 # The Impossible
 A platform to:
-	share ideas and turn them into reality
-	find collaborators to work on a project
+	* share ideas and turn them into reality
+	* find collaborators to work on a project
 
 Preview 1
 ![Explore Section](preview_imgs/explore.png)
