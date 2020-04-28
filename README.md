@@ -6,6 +6,9 @@
 ## Preview
 
 ![Explore Section](preview_imgs/explore.png)
+
+##
+
 ![Discover Section](preview_imgs/discover.png)
 
 ##
