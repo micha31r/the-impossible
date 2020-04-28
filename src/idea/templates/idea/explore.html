@@ -85,21 +85,21 @@
 			</a>
 
 			<!-- Link omission (...) -->
-			{% if page_num|add:'-5' > 1 %}
+			{% if page_num|add:'-3' > 0 %}
 				<p class="word-omission">..</p>
 			{% endif %}
 
 			<!-- All page links -->
 			{% for i in max_page|times %}
-				<!-- Only show a maximum of 10 page links -->
-				{% if i|add:1 < page_num|add:5 and i|add:1 > page_num|add:'-5' %}
+				<!-- Only show a maximum of 5 page links -->
+				{% if i|add:1 < page_num|add:3 and i|add:1 > page_num|add:'-3' %}
 					<a class="{% if i|add:1 == page_num %} current-page-link {% else %} page-link {% endif %}" href="{% url 'explore_page' week_num=week_num page_num=i|add:1 %}"><b>{{ i|add:1 }}</b></a>
 				{% endif %}
 			{% endfor %}
 
 			<!-- Link omission (...) -->
-			{% if page_num|add:5 < max_page %}
-				<p class="word-omission">...</p>
+			{% if page_num|add:3 < max_page|add:1 %}
+				<p class="word-omission">..</p>
 			{% endif %}
 
 			<!-- Next page link -->
