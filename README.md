@@ -1,8 +1,11 @@
 # The Impossible
-platform to share ideas and turn them into reality
+A platform to:
+	share ideas and turn them into reality
+	find collaborators to work on a project
 
+Preview 1
 ![Explore Section](preview_imgs/explore.png)
-
+Preview 2
 ![Discover Section](preview_imgs/discover.png)
 
 __Current *site* version:__ *v0.1*
