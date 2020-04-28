@@ -37,12 +37,20 @@ a:hover {
 	height: 400px;
 	width: 100%;
 	overflow: scroll;
+	background-color: rgb(245,245,245);
+	padding: 15px;
+	border-radius: 5px;
 }
 
 .flex-wrapper {
 	position: relative;
 	margin-bottom: 2%;
 	box-sizing: border-box;
+}
+
+.card {
+	border: 0;
+	box-shadow: 0px 10px 10px rgb(230,230,235);
 }
 
 .card-title a {
@@ -84,6 +92,10 @@ a:hover {
 	margin: 0;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+.discover-card .card-title {
+	margin-bottom: 20px;
 }
 
 .section-seperator {
