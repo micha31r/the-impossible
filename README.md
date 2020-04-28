@@ -1,7 +1,7 @@
 # The Impossible
 platform to share ideas and turn them into reality
 
-![Explore Section]("readme_image/explore.png")
+![Explore Section](readme_image/explore.png)
 
 __Current *site* version:__ *v0.1*
 
