@@ -3,10 +3,12 @@
 * share ideas and turn them into reality
 * find collaborators to work on projects
 
-(Preview 1)
-![Explore Section](preview_imgs/explore.png)
-(Preview 2)
+##
+
+*(Preview 1)*
 ![Discover Section](preview_imgs/discover.png)
+*(Preview 2)*
+![Explore Section](preview_imgs/explore.png)
 
 __Current *site* version:__ *v0.1*
 
@@ -42,5 +44,3 @@ python manage.py createsuperuser
 # Runserver
 python manage.py runserver
 ```
-##
-*MD Written with [StackEdit](https://stackedit.io/).*
