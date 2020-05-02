@@ -28,6 +28,7 @@ urlpatterns = [
     path('', home_page, name="home_page"),
     path('user/', include("usermgmt.urls")),
     path('idea/', include("idea.urls")),
+    path('userupload/', include("userupload.urls")),
 ]
 
 if settings.DEBUG:

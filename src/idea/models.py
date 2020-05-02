@@ -6,6 +6,11 @@ from usermgmt.models import (
 	Profile,
 )
 
+from userupload.models import (
+	File,
+	Link
+)
+
 User = settings.AUTH_USER_MODEL
 
 PUBLISH_OPTION = (
@@ -35,11 +40,11 @@ class Idea(models.Model):
         Profile,
         on_delete=models.CASCADE
     )
-	publish_stats = models.IntegerField(default=1, choices=PUBLISH_OPTION)
-	tags = models.ManyToManyField(Tag, related_name="tagged", blank=True)
+	publish_stats = models.IntegerField(default=1,choices=PUBLISH_OPTION)
+	tags = models.ManyToManyField(Tag, related_name="tagged",blank=True)
 
     # Content
-	header_img = models.FileField(upload_to='uploads/%Y/%m/%d/', blank=True)
+	header_img = models.ForeignKey(File,on_delete=models.SET_NULL,blank=True,null=True)
 
 	name = models.CharField(max_length=80,blank=False,unique=False)
 	short_description = models.TextField(max_length=150,blank=False,unique=False)

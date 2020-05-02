@@ -12,7 +12,7 @@ from .models import (
 	Profile,
 )
 
-from idea.utils import *
+from the_impossible.utils import *
 
 from the_impossible.ERROR import *
 

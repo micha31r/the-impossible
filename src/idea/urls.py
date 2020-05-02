@@ -9,9 +9,9 @@ from .views import (
 )
 
 urlpatterns = [
-	path('explore/<int:week_num>/<int:page_num>/', explore_page, name="explore_page"),
-	path('detail/<int:pk>/', detail_page, name="detail_page"),
-	path('create/', create_view, name="create_view"),
-	path('edit/<int:pk>/', edit_page, name="edit_page"),
-	path('like/', like_view, name="like_view"),
+	path('explore/<int:week_num>/<int:page_num>/', explore_page, name="idea_explore_page"),
+	path('detail/<int:pk>/', detail_page, name="idea_detail_page"),
+	path('create/', create_view, name="idea_create_view"),
+	path('edit/<int:pk>/', edit_page, name="idea_edit_page"),
+	path('like/', like_view, name="idea_like_view"),
 ] 

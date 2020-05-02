@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import datetime, random
 
-from .utils import *
+from the_impossible.utils import *
+
 from .forms import *
 
 from the_impossible.ERROR import *
@@ -59,7 +60,7 @@ def explore_page(request,week_num,page_num):
 		timestamp__gte = date.now() - datetime.timedelta(days=182),
 		timestamp__lte = date.now() + datetime.timedelta(days=1),
 		publish_stats = 2
-	).exclude(header_img="")
+	) #.exclude(header_img="")
 	random.seed(datetime.datetime.now())
 	ctx["random_ideas"] = random.sample(list(ideas), min(ideas.count(),5))
 	template_file = "idea/explore.html"
@@ -99,7 +100,7 @@ def create_view(request):
 	obj.save()
 	profile.daily_limit -= 1
 	profile.save()
-	return redirect("edit_page",pk=obj.id)
+	return redirect("idea_edit_page",pk=obj.id)
 
 @login_required
 def edit_page(request,pk):
@@ -107,9 +108,8 @@ def edit_page(request,pk):
 	template_file = "idea/edit.html"
 	ctx["date"] = date = Date()
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
-	profile = Profile.objects.filter(user=request.user).first()
-	if idea.author == profile:
-		ctx["form"] = form = IdeaForm(request.POST or None, request.FILES or None)
+	if idea.author.user == request.user:
+		ctx["form"] = form = IdeaForm(request.POST or None)
 		# Set default values
 		form.fields["name"].initial = idea.name
 		form.fields["short_description"].initial = idea.short_description
@@ -127,9 +127,7 @@ def edit_page(request,pk):
 			data = form.cleaned_data
 			if data.get("delete") == 2:
 				idea.delete()
-				return redirect("explore_page",date.week(),1)
-			# Save image
-			idea.header_img =  request.FILES.get("header_img")
+				return redirect("idea_explore_page",date.week(),1)
 			# Changed idea content
 			idea.name = data.get("name")
 			idea.short_description = data.get("short_description")
@@ -144,7 +142,7 @@ def edit_page(request,pk):
 				idea.tags.remove(tag)
 			idea.save()
 			# Refresh page
-			return redirect("edit_page", pk=idea.id)
+			return redirect("idea_edit_page", pk=idea.id)
 	else:
 		ctx["error"] = SERVER_ERROR["ACCESS"]
 	return render(request,template_file,ctx)

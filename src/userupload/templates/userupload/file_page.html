@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+	<script type="text/javascript" src="{% static 'userupload/file_page/blur.js' %}"></script>
+
+	<script type="text/javascript" src="{% static 'userupload/file_page/resize.js' %}"></script>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'userupload/file_page/main.css' %}">
+
+	<div class="wrapper">
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="form-wrapper">
+				{{ form.description }}
+				<!-- The real file input is hidden -->
+				<p hidden>{{ form.file }}</p>
+
+				<!-- This button replaces the default input -->
+				<div id="file-wrapper" style="{% if file_type == 'image' %} background-image:url('{{ file.file.url }}'); {% endif %}">
+					<div id="blur"></div>
+					<img id="hidden" src="{{ file.file.url }}">
+					<table>
+						<tr>
+							<td class="align-middle">
+								<button class="btn btn-light" id="file-button" onclick="$('#id_file').click(); return false;">Choose File</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<button class="btn btn-purple-outline btn-bold submit" type="submit">Save Changes</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}

@@ -15,5 +15,23 @@ body {
 }
 
 .btn-purple:hover {
+	background-color: rgb(70,72,134);
 	color: rgb(190,192,254);
+}
+
+.btn-purple-outline {
+	border-width: 1px;
+	border-color: rgb(90,92,154);
+	border-style: solid;
+	color: rgb(90,92,154);
+}
+
+.btn-purple-outline:hover {
+	background-color: rgb(90,92,154);
+	color: #FFF;
+}
+
+.btn-bold {
+	border-width: 2px;
+	font-weight: bold;
 }

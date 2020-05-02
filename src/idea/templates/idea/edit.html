@@ -22,7 +22,7 @@
 	<script type="text/javascript" src="{% static 'edit_page/delete_confirm.js' %}"></script>
 
 	<div class="wrapper">
-		<form method="post" enctype="multipart/form-data">
+		<form method="post">
 	    	{% csrf_token %}
 	    	<table>
 	    		<tr id="append-origin1">
@@ -69,10 +69,23 @@
 						</table>
 					</td>
 				</tr>
-				<tr>
-					<p>{{ form.header_img }}</p>
-				</tr>
 				<tr id="append-target1">
+				</tr>
+			</table>
+			<table style="margin-top: 50px;">
+				<tr>
+					<td>
+						<h1><b>Images</b></h1>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						{% if idea.header_img.pk %}
+							<a href="{% url 'userupload_file_page' pk=idea.header_img.pk referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %}">Replace Header Image</a>
+						{% else %}
+							<a href="{% url 'userupload_file_page' pk=None referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %}">Add Header Image</a>
+						{% endif %}
+					</td>
 				</tr>
 			</table>
 		</form>

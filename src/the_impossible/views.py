@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from idea.utils import *
+from .utils import *
 
 # Home page
 def home_page(request):

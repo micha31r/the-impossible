@@ -29,7 +29,7 @@
 		<button class="btn btn-dark" onclick="window.location.href='#'">Add Solution</button>
 
 		{% if user == idea.author.user %}
-			<button class="btn btn-purple" onclick="window.location.href='{% url 'edit_page' pk=idea.id %}'">Edit</button>
+			<button class="btn btn-purple" onclick="window.location.href='{% url 'idea_edit_page' pk=idea.id %}'">Edit</button>
 		{% endif %}
 
 		<!-- Timestamp -->

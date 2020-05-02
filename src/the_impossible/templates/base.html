@@ -51,7 +51,7 @@
 		    	<ul>
 					{% block custom_nav_link %}
 						<li>
-							<button class="explore" onclick="window.location.href='{% url 'explore_page' week_num=date.week page_num=1  %}'">Explore</button>
+							<button class="explore" onclick="window.location.href='{% url 'idea_explore_page' week_num=date.week page_num=1  %}'">Explore</button>
 						</li>
 					{% endblock %}
 			    	<li class="link-seperator"></li>

@@ -1,6 +1,10 @@
 :root {
 	/* css variables */
 	--margin-right: 55%;
+
+	/* header image dimension */
+	--header-img-width: 290px;
+	--header-img-height: 168px;
 }
 
 form p {
@@ -106,6 +110,9 @@ button[name="save-changes"] {
 		border-bottom-width: 1px !important;
 		border-style: solid !important;
 	}
+	.header-img {
+		padding-right: 0px !important;
+	}
 	#idea-setting {
 		padding: 0px !important;
 		padding-top: 5vh !important;
@@ -158,3 +165,47 @@ button[name="save-changes"] {
 .publish-stats td {
 	padding-top: 20px;
 }
+
+.header-img-td {
+	width: max-content;
+}
+
+#id_header_img {
+	display: none;
+	font-size: 1rem;
+}
+
+.header-img-wrapper {
+	width: var(--header-img-width);
+	height: var(--header-img-height);
+	border-radius: 5px;
+	background-color: rgb(250,250,250);
+	background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.header-img-wrapper table {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+#blur {
+	position: absolute;
+	width: var(--header-img-width);
+	height: var(--header-img-height);
+ 	border-radius: 5px;
+	background-color: rgb(0,0,0);
+	transition: opacity 0.5s;
+	opacity: 0;
+	z-index: 1; 
+}
+
+.header-img-button {
+	background-color: #FFF;
+}
+
+
+
