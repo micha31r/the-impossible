@@ -60,7 +60,7 @@ def explore_page(request,week_num,page_num):
 		timestamp__gte = date.now() - datetime.timedelta(days=182),
 		timestamp__lte = date.now() + datetime.timedelta(days=1),
 		publish_stats = 2
-	) #.exclude(header_img="")
+	).exclude(header_img=None)
 	random.seed(datetime.datetime.now())
 	ctx["random_ideas"] = random.sample(list(ideas), min(ideas.count(),5))
 	template_file = "idea/explore.html"

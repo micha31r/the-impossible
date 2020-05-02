@@ -121,7 +121,7 @@
 				{% for idea in random_ideas %}
 					<div class="discover-card">
 
-						<a href="{% url 'idea_detail_page' pk=idea.pk %}"><img class="header-img" src="{{ idea.header_img.url }}"></a>
+						<a href="{% url 'idea_detail_page' pk=idea.pk %}"><img class="header-img" src="{{ idea.header_img.file.url }}"></a>
 
 						<!-- Title -->
 						<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
