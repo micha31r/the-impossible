@@ -154,6 +154,7 @@ a:hover {
 @media only screen and (max-width: 799px) {
 	.flex-wrapper {
 		width: 48%;
+		margin-bottom: 3%;
 	}
 	.flex-wrapper:nth-of-type(2n+1) { order: 1; }
 	.flex-wrapper:nth-of-type(2n) { order: 2; }
@@ -162,6 +163,7 @@ a:hover {
 @media only screen and (max-width: 499px) {
 	.flex-wrapper {
 		width: 100%;
+		margin-bottom: 5%;
 	}
 	.flex-wrapper:nth-of-type(2n) { order: 1; }
 }
