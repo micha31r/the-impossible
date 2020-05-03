@@ -49,12 +49,11 @@ input:focus {
 }
 
 #tooltip {
-  /* ... */
-  display: none;
+	display: none;
 }
 
 #tooltip[data-show] {
-  display: block;
+	display: block;
 }
 
 #hidden {

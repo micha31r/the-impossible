@@ -2,6 +2,8 @@
 	/* css variables */
 	--margin-right: 55%;
 	--margin-between-element: 20px;
+	--td-vertical-padding: 5vh;
+	--td-horizontal-padding: 5vw;
 
 	/* header image dimension */
 	--header-img-width: 290px;
@@ -95,6 +97,11 @@ select[name="tags"]:focus, select[name="tags_remain"]:focus {
 	outline: none;
 }
 
+img {
+	height: 100%;
+	border-radius: 5px;
+}
+
 @media only screen and (max-width: 830px) {
 	.timestamp {
 		text-align: left !important;
@@ -102,15 +109,15 @@ select[name="tags"]:focus, select[name="tags_remain"]:focus {
 	#idea-content {
 		width: 100% !important;
 		padding: 0px !important;
-		padding-bottom: 5vh !important;
+		padding-bottom: var(--td-vertical-padding) !important;
 		border-right-width: 0px !important;
 		border-bottom-width: 1px !important;
 		border-style: solid !important;
 	}
 	#idea-setting {
 		padding: 0px !important;
-		padding-top: 5vh !important;
-		padding-bottom: 5vh !important;
+		padding-top: var(--td-vertical-padding) !important;
+		padding-bottom: var(--td-vertical-padding) !important;
 		border-right-width: 0px !important;
 		border-bottom-width: 1px !important;
 		border-color: rgb(230,230,230);
@@ -136,7 +143,7 @@ select[name="tags"]:focus, select[name="tags_remain"]:focus {
 
 #idea-content {
 	width: calc(100% - var(--margin-right));
-	padding-right: 5vw;
+	padding-right: var(--td-horizontal-padding);
 	border: 0;
 	border-color: rgb(230,230,230);
 	border-style: solid;
@@ -144,7 +151,12 @@ select[name="tags"]:focus, select[name="tags_remain"]:focus {
 }
 
 #idea-setting {
-	padding-left: 5vw;
+	padding-left: var(--td-horizontal-padding);
+}
+
+#idea-image {
+	padding-top: var(--td-vertical-padding);
+	padding-bottom: var(--td-vertical-padding);
 }
 
 .tags {
@@ -173,46 +185,33 @@ select[name="tags"]:focus, select[name="tags_remain"]:focus {
 	padding-top: var(--margin-between-element);
 }
 
-.header-img-td {
+.file-wrapper {
+	min-width: var(--header-img-height);
 	width: max-content;
-}
-
-#id_header_img {
-	display: none;
-	font-size: 1rem;
-}
-
-.header-img-wrapper {
-	width: var(--header-img-width);
 	height: var(--header-img-height);
 	border-radius: 5px;
-	background-color: rgb(250,250,250);
-	background-size: cover;
-    background-position: center;
-    text-align: center;
+	background-color: rgb(225,225,225);
 }
 
-.header-img-wrapper table {
-	position: relative;
+.file-button {
+	margin: 0;
+	padding: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 2;
 }
 
-#blur {
-	position: absolute;
+#tooltip {
+	display: none;
+}
+
+#tooltip[data-show] {
+	display: block;
+}
+
+/* Header image has a fixed size */
+img:nth-child(1) {
 	width: var(--header-img-width);
 	height: var(--header-img-height);
- 	border-radius: 5px;
-	background-color: rgb(0,0,0);
-	transition: opacity 0.5s;
-	opacity: 0;
-	z-index: 1; 
 }
-
-.header-img-button {
-	background-color: #FFF;
-}
-
 
 
