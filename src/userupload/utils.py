@@ -7,9 +7,9 @@ def file_extension(name):
 def file_is_valid(name):
 	# Return file type
 	for k,v in SUPPORTED_FILE_TYPE.items():
-		if file_extension(name) not in v:
-			return False
-	return True
+		if file_extension(name) in v:
+			return True
+	return False
 
 # Remove foregin key or many to many reference and delete file
 def file_validate_or_remove(obj,referred_obj_field,expected_file_type):
@@ -20,10 +20,13 @@ def file_validate_or_remove(obj,referred_obj_field,expected_file_type):
 			setattr(obj,globals()[referred_obj_field],None)
 			file = File.objects.filter(pk=file_pk).first()
 			file.delete()
+			return True
 	except:
 		try:
 			for file in getattr(obj,globals()[referred_obj_field]).all():
 				if file_extension(file.file.name) not in SUPPORTED_FILE_TYPE[expected_file_type]:
 					getattr(obj,globals()[referred_obj_field]).remove(file)
 					file.delete()
+					return True
 		except: pass
+	return False

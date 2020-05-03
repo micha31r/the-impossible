@@ -25,6 +25,15 @@
 	<script type="text/javascript" src="{% static 'idea/edit_page/delete_confirm.js' %}"></script>
 
 	<div class="wrapper">
+		<!-- Show error -->
+		{% if error %}
+			<div class="flex-wrapper alert-wrapper">
+				<div class="alert alert-danger" role="alert">
+			  		{{ error }}
+				</div>
+			</div>
+		{% endif %}
+		
 		<form method="post">
 	    	{% csrf_token %}
 	    	<table>
