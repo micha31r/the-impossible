@@ -16,7 +16,8 @@ SUPPORTED_FILE_TYPE = {
 		"svg"
 	],
 	"other":[ 
-		"zip"
+		"zip",
+		"pdf",
 	]
 }
 
