@@ -21,11 +21,15 @@ from django.conf.urls.static import static
 
 from .views import (
 	home_page,
+    access_error_page,
+    four_zero_four_page,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name="home_page"),
+    path('noaccess', access_error_page, name="access_error_page"),
+    path('404', four_zero_four_page, name="four_zero_four_page"),
     path('user/', include("usermgmt.urls")),
     path('idea/', include("idea.urls")),
     path('userupload/', include("userupload.urls")),

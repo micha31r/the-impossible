@@ -6,10 +6,7 @@ from usermgmt.models import (
 	Profile,
 )
 
-from userupload.models import (
-	File,
-	Link
-)
+from userupload.models import File
 
 User = settings.AUTH_USER_MODEL
 

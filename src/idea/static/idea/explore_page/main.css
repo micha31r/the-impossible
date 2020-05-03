@@ -84,6 +84,7 @@ a:hover {
 .horizontal-overflow-wrapper {
 	height: max-content;
 	overflow-x: scroll;
+	overflow-y: hidden;
 }
 
 .horizontal-container {

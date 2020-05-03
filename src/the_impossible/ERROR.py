@@ -13,6 +13,9 @@ SERVER_ERROR = {
 	# Access
 	"ACCESS"					:"You don't have access",
 
+	# File
+	"FILE"						:"Invalid file type",
+
 	# Other/unknown
 	"UNKNOWN"					:"We've encountered some issues (0v0)",
 }

@@ -11,6 +11,8 @@ from .forms import *
 
 from the_impossible.ERROR import *
 
+from userupload.utils import *
+
 from .ajax_encrypt import encrypt
 
 from usermgmt.models import Profile
@@ -109,6 +111,10 @@ def edit_page(request,pk):
 	ctx["date"] = date = Date()
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
 	if idea.author.user == request.user:
+		# Remove file if it's not an image
+		file_validate_or_remove(idea,"header_img","image")
+		file_validate_or_remove(idea,"body_img","image")
+
 		ctx["form"] = form = IdeaForm(request.POST or None)
 		# Set default values
 		form.fields["name"].initial = idea.name
@@ -144,7 +150,7 @@ def edit_page(request,pk):
 			# Refresh page
 			return redirect("idea_edit_page", pk=idea.id)
 	else:
-		ctx["error"] = SERVER_ERROR["ACCESS"]
+		return redirect("access_error_page")
 	return render(request,template_file,ctx)
 
 def like_view(request):

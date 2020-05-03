@@ -5,6 +5,10 @@ body {
 	overflow: scroll;
 }
 
+.alert-danger {
+	font-size: 1.2rem;
+}
+
 .wrapper {
 	padding: 40px;
 }

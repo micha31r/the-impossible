@@ -1,8 +1,5 @@
 from django import forms
-from .models import (
-    File,
-    Link
-)
+from .models import File
  
 class FileForm(forms.ModelForm):
     class Meta:
@@ -17,20 +14,4 @@ class FileForm(forms.ModelForm):
         labels={
             "description":"",
             "file":""
-        }
-
-
-class LinkForm(forms.ModelForm):
-    class Meta:
-        model = Link
-        fields = [
-            "description",
-            "link",
-        ]
-        widgets = {
-            'description': forms.TextInput(attrs={'placeholder': 'Description (Max 120)'})
-        }
-        labels={
-            "description":"",
-            "link":""
         }

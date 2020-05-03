@@ -2,16 +2,31 @@
 {% load static %}
 
 {% block content %}
+	<!-- Mobile js -->
+	<script type="text/javascript" src="{% static 'mobile.js' %}"></script>
+
+	<!-- Blur js -->
 	<script type="text/javascript" src="{% static 'userupload/file_page/blur.js' %}"></script>
 
+	<!-- Resize js -->
 	<script type="text/javascript" src="{% static 'userupload/file_page/resize.js' %}"></script>
 
+	<!-- Main css -->
 	<link rel="stylesheet" type="text/css" href="{% static 'userupload/file_page/main.css' %}">
 
 	<div class="wrapper">
 		<form method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 			<div class="form-wrapper">
+				<!-- Show error -->
+				{% if error %}
+					<div class="flex-wrapper alert-wrapper">
+						<div class="alert alert-danger" role="alert">
+					  		{{ error }}
+						</div>
+					</div>
+				{% endif %}
+
 				{{ form.description }}
 				<!-- The real file input is hidden -->
 				<p hidden>{{ form.file }}</p>
@@ -31,9 +46,11 @@
 				<button class="btn btn-purple-outline btn-bold submit" type="submit" data-toggle="popover" data-trigger="hover" title="Note" data-content="New image will show after changes are saved">Save Changes</button>
 				<!-- Show tooltip after hover -->
 				<script type="text/javascript">
-					$('.submit').popover({
-						trigger: 'hover'
-					})
+					if (!window.mobileAndTabletCheck()) {
+						$('.file-button').popover({
+							trigger: 'hover'
+						})
+					}
 				</script>
 			</div>
 		</form>

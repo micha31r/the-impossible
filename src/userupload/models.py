@@ -37,12 +37,3 @@ class File(models.Model):
 	timestamp = models.DateTimeField(auto_now_add=True) 
 	last_edit = models.DateTimeField(auto_now=True)
 
-class Link(models.Model):
-	description = models.CharField(max_length=100)
-	link = models.URLField()
-	# Timestamp
-	timestamp = models.DateTimeField(auto_now_add=True) 
-	last_edit = models.DateTimeField(auto_now=True)
-
-
-
