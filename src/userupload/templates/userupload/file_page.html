@@ -31,5 +31,11 @@
 				<button class="btn btn-purple-outline btn-bold submit" type="submit">Save Changes</button>
 			</div>
 		</form>
+
+		<!-- Timestamp -->
+		<div class="timestamp">
+			<p>Created at <span class="time">{{ file.timestamp }}</span></p>
+			<p>Last Edited <span class="time">{{ file.last_edit }}</span></p>
+		</div>
 	</div>
 {% endblock %}

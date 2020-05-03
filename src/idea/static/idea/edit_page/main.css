@@ -1,6 +1,7 @@
 :root {
 	/* css variables */
 	--margin-right: 55%;
+	--margin-between-element: 20px;
 
 	/* header image dimension */
 	--header-img-width: 290px;
@@ -28,7 +29,7 @@ input, textarea {
 	border-width: 0px;
 	border-radius: 5px;
 	background-color: rgb(245,245,245);
-	margin-bottom: 20px;
+	margin-bottom: var(--margin-between-element);
 }
 
 input::placeholder, textarea::placeholder {
@@ -83,7 +84,7 @@ select[name="tags"], select[name="tags_remain"] {
 	min-width: 200px;
 	max-width: 300px;
 	padding: 5px;
-	margin-bottom: 20px;
+	margin-bottom: var(--margin-between-element);
 	border-radius: 5px;
 	overflow: auto;
 	min-width: 100px;
@@ -121,10 +122,10 @@ button[name="save-changes"] {
 
 @media only screen and (max-width: 460px) { 
 	#exsisting-tag {
-		padding-top: 20px;
+		padding-top: var(--margin-between-element);
 	}
 	#delete-button {
-		padding-top: 20px;
+		padding-top: var(--margin-between-element);
 	}
 	td {
 		width: 100% !important;
@@ -163,7 +164,7 @@ button[name="save-changes"] {
 }
 
 .publish-stats td {
-	padding-top: 20px;
+	padding-top: var(--margin-between-element);
 }
 
 .header-img-td {

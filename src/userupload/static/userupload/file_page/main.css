@@ -1,6 +1,7 @@
 :root {
 	/* css variables */
 	--margin-right: 55%;
+	--margin-between-element: 20px;
 
 	/* file display dimension */
 	/* for images and videos only */
@@ -17,7 +18,7 @@ input {
 	border-width: 0px;
 	border-radius: 5px;
 	background-color: rgb(245,245,245);
-	margin-bottom: 20px;
+	margin-bottom: var(--margin-between-element);
 	font-size: 2rem;
 }
 
@@ -37,6 +38,9 @@ input:focus {
 @media only screen and (max-width: 830px) {
 	.form-wrapper {
 		width: 100% !important;
+	}
+	.timestamp {
+		text-align: left !important;
 	}
 }
 
@@ -62,7 +66,7 @@ input:focus {
 	background-size: cover;
     background-position: center;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: var(--margin-between-element);
 }
 
 #file-wrapper table {
@@ -86,4 +90,19 @@ input:focus {
 #file-button {
 	transition: opacity 0.3s;
 	opacity: 0;
+}
+
+.timestamp {
+	font-family: 'Varela Round', sans-serif;
+	margin-top: var(--margin-between-element);
+	width: 100%;
+	text-align: right;
+}
+
+.timestamp p {
+	margin: 0;
+}
+
+.timestamp .time {
+	color: grey;
 }
