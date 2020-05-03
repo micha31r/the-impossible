@@ -67,6 +67,7 @@ select {
 	background-color: rgb(230,230,230);
 	word-break: break-all;
 	height: 2rem;
+	margin-bottom: var(--margin-between-element);
 	/* Hide scrollbar for IE and Edge */
 	-ms-overflow-style: none;
 }
@@ -84,7 +85,6 @@ select[name="tags"], select[name="tags_remain"] {
 	min-width: 200px;
 	max-width: 300px;
 	padding: 5px;
-	margin-bottom: var(--margin-between-element);
 	border-radius: 5px;
 	overflow: auto;
 	min-width: 100px;
@@ -93,10 +93,6 @@ select[name="tags"], select[name="tags_remain"] {
 
 select[name="tags"]:focus, select[name="tags_remain"]:focus {
 	outline: none;
-}
-
-button[name="save-changes"] {
-	margin-top: 5vh !important;
 }
 
 @media only screen and (max-width: 830px) {
@@ -111,12 +107,17 @@ button[name="save-changes"] {
 		border-bottom-width: 1px !important;
 		border-style: solid !important;
 	}
-	.header-img {
-		padding-right: 0px !important;
-	}
 	#idea-setting {
 		padding: 0px !important;
 		padding-top: 5vh !important;
+		padding-bottom: 5vh !important;
+		border-right-width: 0px !important;
+		border-bottom-width: 1px !important;
+		border-color: rgb(230,230,230);
+		border-style: solid !important;
+	}
+	.header-img {
+		padding-right: 0px !important;
 	}
 }
 
@@ -126,6 +127,7 @@ button[name="save-changes"] {
 	}
 	#delete-button {
 		padding-top: var(--margin-between-element);
+		padding-bottom: var(--margin-between-element);
 	}
 	td {
 		width: 100% !important;
@@ -164,6 +166,10 @@ button[name="save-changes"] {
 }
 
 .publish-stats td {
+	padding-top: var(--margin-between-element);
+}
+
+.save-changes {
 	padding-top: var(--margin-between-element);
 }
 

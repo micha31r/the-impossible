@@ -28,7 +28,13 @@
 						</tr>
 					</table>
 				</div>
-				<button class="btn btn-purple-outline btn-bold submit" type="submit">Save Changes</button>
+				<button class="btn btn-purple-outline btn-bold submit" type="submit" data-toggle="popover" data-trigger="hover" title="Note" data-content="New image will show after changes are saved">Save Changes</button>
+				<!-- Show tooltip after hover -->
+				<script type="text/javascript">
+					$('.submit').popover({
+						trigger: 'hover'
+					})
+				</script>
 			</div>
 		</form>
 

@@ -1,6 +1,6 @@
 :root {
 	/* css variables */
-	--margin-right: 55%;
+	--form-width: 600px;
 	--margin-between-element: 20px;
 
 	/* file display dimension */
@@ -45,7 +45,16 @@ input:focus {
 }
 
 .form-wrapper {
-	width: calc(100% - var(--margin-right));
+	width: var(--form-width);
+}
+
+#tooltip {
+  /* ... */
+  display: none;
+}
+
+#tooltip[data-show] {
+  display: block;
 }
 
 #hidden {
