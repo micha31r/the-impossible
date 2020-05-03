@@ -72,27 +72,38 @@
 				</tr>
 				<tr id="append-target1">
 				</tr>
-				<tr>
-					<td id="idea-image">
-						<h1><b>Images</b></h1>
-						<br>
-						<div class="horizontal-overflow-wrapper">
-							<div class="horizontal-container">
-								<div class="file-wrapper">
-									<button class="btn file-button" data-toggle="popover" data-trigger="hover" 
-									title="Header image" data-content="Click to change" onclick="window.location.href='{% if idea.header_img %} {% url 'userupload_file_page' pk=idea.header_img.pk referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %} {% else %} {% url 'userupload_file_page' pk=None referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %} {% endif %}'; return false;"><img id="hidden" src="{{ idea.header_img.file.url }}"></button>
-									<!-- Show tooltip after hover -->
-									<script type="text/javascript">
-										$('.file-button').popover({
-											trigger: 'hover'
-										})
-									</script>
-								</div>
-							</div>
-						</div>
-					</td>
-				</tr>
 			</table>
+			<div class="idea-image">
+				<h1><b>Images</b></h1>
+				<br>
+				<div class="horizontal-overflow-wrapper">
+					<div class="horizontal-container">
+						<!-- Header image -->
+						<div class="file-wrapper">
+							<button class="btn file-button" data-toggle="popover" data-trigger="hover" 
+							title="Header image" data-content="Click to change" onclick="window.location.href='{% if idea.header_img %} {% url 'userupload_file_page' pk=idea.header_img.pk referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %} {% else %} {% url 'userupload_file_page' pk=None referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %} {% endif %}'; return false;"><img class="header-img" src="{{ idea.header_img.file.url }}"></button>
+						</div>
+						<!-- Body images -->
+						{% for image in idea.body_img.all %}
+							<div class="file-wrapper">
+								<button class="btn file-button" data-toggle="popover" data-trigger="hover" 
+							title="Body image" data-content="Click to change" onclick="window.location.href='{% url 'userupload_file_page' pk=image.pk referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='body_img' %}'; return false;"><img src="{{ image.file.url }}"></button>
+							</div>
+						{% endfor %}
+						<!-- Add body image -->
+						<div class="file-wrapper">
+								<button class="btn file-button file-button-add" data-toggle="popover" data-trigger="hover" 
+							title="Body image" data-content="Click to add" onclick="window.location.href='{% url 'userupload_file_page' pk=None referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='body_img' %}'; return false;">+</button>
+						</div>
+						<!-- Show tooltip after hover -->
+						<script type="text/javascript">
+							$('.file-button').popover({
+								trigger: 'hover'
+							})
+						</script>
+					</div>
+				</div>
+			</div>
 		</form>
 
 		<!-- Timestamp -->
