@@ -160,7 +160,8 @@ nav .icon {
 
 nav .brand-name {
 	margin-left: 10px;
-	font-size: 1.3rem !important;
+	font-family: 'Arciform', sans-serif;
+	font-size: 1.5rem;
 }
 
 nav .collapse-link {
@@ -181,13 +182,13 @@ nav .explore {
 	background-color: rgba(255,255,255,0);
 }
 
-nav .explore:hover {
+nav .explore:hover, nav .auth:hover, nav .account:hover, nav .logout:hover {
 	animation-name: purple, scale;
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
 }
 
-nav .explore:not(:hover) {
+nav .explore:not(:hover), nav .auth:not(:hover), nav .account:not(:hover), nav .logout:not(:hover) {
 	animation-name: reverse-scale;
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
@@ -197,8 +198,8 @@ nav .auth, nav .account, nav .logout {
 	margin-left: 5px;
 }
 
-nav .auth:hover, nav .account:hover, nav .logout:hover {
+/*nav .auth:hover, nav .account:hover, nav .logout:hover {
 	animation-name: border;
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
-}
+}*/
