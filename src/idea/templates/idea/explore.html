@@ -69,6 +69,16 @@
 				<span class="flex-wrapper break"></span>
 				<span class="flex-wrapper break"></span>
 				<span class="flex-wrapper break"></span>
+				<!-- Show message is no post -->
+				{% if ideas|length == 0 %}
+					<table class="no-content-text">
+					    <tr>
+					    	<td class="align-middle">
+								<p>Nothing to show</p>
+							</td>
+						</tr>
+					</table>
+				{% endif %}
 			</div>
 		</div>
 

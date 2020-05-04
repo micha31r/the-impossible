@@ -7,6 +7,10 @@ register = template.Library()
 def times(value):
 	return range(value)
 
+@register.filter(name="length")
+def length(value):
+	return len(value)
+
 # Convert number to number to text e.g: 1100 -> 1.1k 
 @register.filter(name="ntt")
 def ntt(value):
