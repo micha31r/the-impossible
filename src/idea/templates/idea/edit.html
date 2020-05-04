@@ -93,7 +93,19 @@
 						<!-- Header image -->
 						<div class="file-wrapper">
 							<button class="btn file-button" data-toggle="popover" data-trigger="hover" 
-							title="Header image" data-content="Click to change" onclick="window.location.href='{% if idea.header_img %} {% url 'userupload_file_page' pk=idea.header_img.pk referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %} {% else %} {% url 'userupload_file_page' pk=None referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %} {% endif %}'; return false;"><img class="header-img" src="{{ idea.header_img.file.url }}"></button>
+							title="Header image" data-content="Click to change" onclick="window.location.href='{% if idea.header_img %} {% url 'userupload_file_page' pk=idea.header_img.pk referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %} {% else %} {% url 'userupload_file_page' pk=None referred_obj_name='Idea' referred_obj_pk=idea.pk referred_obj_field='header_img' %} {% endif %}'; return false;">
+								{% if idea.header_img.file %}
+									<img class="header-img" src="{{ idea.header_img.file.url }}">
+								{% else %}
+									<table class="no-content-text header-img">
+									    <tr>
+									    	<td class="align-middle">
+												<h1><span>No Header Image</span></h1>
+											</td>
+										</tr>
+									</table>
+								{% endif %}
+							</button>
 						</div>
 						<!-- Body images -->
 						{% for image in idea.body_img.all %}

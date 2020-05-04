@@ -194,6 +194,13 @@ img {
 	background-color: rgb(225,225,225);
 	margin-left: 5px;
 	margin-right: 5px;
+	/* Hide scrollbar for IE and Edge */
+	-ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.file-wrapper::-webkit-scrollbar {
+	display: none;
 }
 
 .file-button {
@@ -201,10 +208,12 @@ img {
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	border: 0;
 }
 
 .file-button-add {
 	font-size: 5rem;
+	font-family: "Arciform", sans-serif;
 	color: rgb(190,190,190);
 }
 
@@ -214,6 +223,11 @@ img {
 
 #tooltip[data-show] {
 	display: block;
+}
+
+.no-content-text h1 {
+	font-size: 2rem;
+	line-height: 2rem;
 }
 
 /* Header image has a fixed size */
