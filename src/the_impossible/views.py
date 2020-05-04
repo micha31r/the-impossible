@@ -14,7 +14,5 @@ def access_error_page(request):
 	template_file = "access_error.html"
 	return render(request,template_file,ctx)
 
-def four_zero_four_page(request):
-	ctx = {}
-	template_file = "404.html"
-	return render(request,template_file,ctx)
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
