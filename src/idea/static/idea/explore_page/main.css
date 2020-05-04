@@ -51,15 +51,31 @@ a:hover {
 .no-content-text {
 	width:100%;
 	height:100%; 
+	text-align: center;
 }
 
-.no-content-text p {
+.no-content-text h1, .no-content-text a {
 	font-family: 'Arciform', sans-serif;
 	font-size: 5rem;
 	line-height: 5rem;
-	text-align: center;
 	color: lightgrey;
 	word-break: break-all;
+	margin: 0;
+}
+
+.no-content-text span {
+	color: black;
+}
+
+.no-content-text a {
+	font-size: 2rem;
+	line-height: 2rem;
+	transition: color 0.4s;
+}
+
+.no-content-text a:hover {
+	color: #6886c5;
+	background-color: rgba(255,255,255,0) !important;
 }
 
 .flex-wrapper {
