@@ -135,10 +135,10 @@ nav #collapse-link-trigger {
 		border-bottom-width: 1px !important;
 		border-color: rgb(230,230,230) !important;
 	}
-	nav .explore, .auth {
+	nav .custom, .auth {
 		float: none !important;
 	}
-	nav .explore, .auth, .account, .logout {
+	nav .custom, .auth, .account, .logout {
 		height: max-content !important;
 	}
 	nav #collapse-link-trigger {
@@ -178,17 +178,17 @@ nav .link-seperator {
 	border-color: rgb(200,200,200);
 }
 
-nav .explore {
+nav .custom {
 	background-color: rgba(255,255,255,0);
 }
 
-nav .explore:hover, nav .auth:hover, nav .account:hover, nav .logout:hover {
+nav .custom:hover, nav .auth:hover, nav .account:hover, nav .logout:hover {
 	animation-name: purple, scale;
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
 }
 
-nav .explore:not(:hover), nav .auth:not(:hover), nav .account:not(:hover), nav .logout:not(:hover) {
+nav .custom:not(:hover), nav .auth:not(:hover), nav .account:not(:hover), nav .logout:not(:hover) {
 	animation-name: reverse-scale;
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
