@@ -11,7 +11,7 @@ from userupload.models import File
 User = settings.AUTH_USER_MODEL
 
 PUBLISH_OPTION = (
-	(1,"Private"),
+	(1,"Draft"),
     (2,"Public"),
     (3,"Followers only"),
 )
