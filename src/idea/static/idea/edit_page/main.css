@@ -110,7 +110,6 @@ img {
 		width: 100% !important;
 		padding: 0px !important;
 		padding-bottom: var(--td-vertical-padding) !important;
-		border-right-width: 0px !important;
 		border-bottom-width: 1px !important;
 		border-style: solid !important;
 	}
@@ -118,7 +117,6 @@ img {
 		padding: 0px !important;
 		padding-top: var(--td-vertical-padding) !important;
 		padding-bottom: var(--td-vertical-padding) !important;
-		border-right-width: 0px !important;
 		border-bottom-width: 1px !important;
 		border-color: rgb(230,230,230);
 		border-style: solid !important;
@@ -143,11 +141,7 @@ img {
 
 #idea-content {
 	width: calc(100% - var(--margin-right));
-	padding-right: var(--td-horizontal-padding);
-	border: 0;
 	border-color: rgb(230,230,230);
-	border-style: solid;
-	border-right-width: 1px;
 }
 
 #idea-setting {
