@@ -142,7 +142,7 @@ nav #collapse-link-trigger {
 		height: max-content !important;
 	}
 	nav #collapse-link-trigger {
-		display: block;
+		display: block !important;
 	}
 }
 
