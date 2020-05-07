@@ -2,7 +2,7 @@ body {
 	width: 100vw;
 	height: 100vh;
 	/*font-family: 'Varela Round', sans-serif;*/
-	overflow: scroll;
+	overflow-x: hidden;
 }
 
 .alert-danger {

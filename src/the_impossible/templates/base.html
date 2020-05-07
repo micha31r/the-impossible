@@ -52,16 +52,18 @@
 		<!-- Navbar absolute position js -->
 		<script type="text/javascript" src="{% static 'component/navbar/navbar_absolute_position.js' %}"></script>
 
+		<div id="mask">
+		</div>
+
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-sm navbar-light">
 			<a class="navbar-brand" href="{% url 'home_page' %}">
 	      		<img src="{% static 'component/base/logo.svg' %}" width="50" height="50" alt="">
 	      		<span>The Impossible</span>
 	      	</a>
-		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  	<button class="navbar-toggler" type="button" onclick="$('.navbar-collapse').css('animation-name','appear');$('.navbar-collapse').css('animation-delay','0.5s');$('#mask').css('animation-name','enlarge');$('#mask').css('display','block');$('#mask').css('position','fixed');" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    	<img class="expand-icon" src="{% static 'component/feather_svg/align-justify.svg' %}">
 		  	</button>
-
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			  		<!-- Don't delete this or navbar right won't float right -->
 			  		<ul class="navbar-nav mr-auto"></ul>
@@ -106,7 +108,7 @@
 					  					<h1 class="second-navbar-brand">The Impossible</h1>
 					  				</td>
 					  				<td class="backarrow-td">
-					  					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					  					<button class="navbar-toggler" type="button" onclick="$('.navbar-collapse').css('animation-name','reverse-appear');$('.navbar-collapse').css('animation-delay','0s');$('#mask').css('animation-name','reverse-enlarge');" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(180,180,180)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 		  								</button>
 					  				</td>
