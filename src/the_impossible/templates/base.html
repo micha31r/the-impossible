@@ -33,7 +33,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 		<!-- Base js -->
-		<script type="text/javascript" src="{% static 'component/base/base.js' %}"></script>
+		<script type="text/javascript" src="{% static 'component/base/main.js' %}"></script>
 
 		<!-- Create auto task queue -->
 		<script type="text/javascript">
@@ -44,13 +44,16 @@
 		</script>
 
 		<!-- Cross page css-->
-		<link rel="stylesheet" type="text/css" href="{% static 'component/base/base.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'component/base/main.css' %}">
 
 		<!-- Navbar css -->
-		<link rel="stylesheet" type="text/css" href="{% static 'component/navbar/navbar.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'component/navbar/main.css' %}">
 
 		<!-- Navbar absolute position js -->
-		<script type="text/javascript" src="{% static 'component/navbar/navbar_absolute_position.js' %}"></script>
+		<script type="text/javascript" src="{% static 'component/navbar/absolute_position.js' %}"></script>
+
+		<!-- Navbar expand js -->
+		<script type="text/javascript" src="{% static 'component/navbar/expand.js' %}"></script>
 
 		<div id="mask">
 		</div>
@@ -61,7 +64,7 @@
 	      		<img src="{% static 'component/base/logo.svg' %}" width="50" height="50" alt="">
 	      		<span>The Impossible</span>
 	      	</a>
-		  	<button class="navbar-toggler" type="button" onclick="$('.navbar-collapse').css('animation-name','appear');$('.navbar-collapse').css('animation-delay','0.5s');$('#mask').css('animation-name','enlarge');$('#mask').css('display','block');$('#mask').css('position','fixed');" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  	<button class="navbar-toggler" type="button" onclick="expand();" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    	<img class="expand-icon" src="{% static 'component/feather_svg/align-justify.svg' %}">
 		  	</button>
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -108,7 +111,7 @@
 					  					<h1 class="second-navbar-brand">The Impossible</h1>
 					  				</td>
 					  				<td class="backarrow-td">
-					  					<button class="navbar-toggler" type="button" onclick="$('.navbar-collapse').css('animation-name','reverse-appear');$('.navbar-collapse').css('animation-delay','0s');$('#mask').css('animation-name','reverse-enlarge');" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					  					<button class="navbar-toggler" type="button" onclick="contract();" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(180,180,180)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 		  								</button>
 					  				</td>
