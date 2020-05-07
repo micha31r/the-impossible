@@ -11,10 +11,12 @@ function resize() {
     $("#hidden").css("display", "none"); 
 }
 
-window.onload = function() {
-	resize();
-	window.addEventListener(
-		"resize", 
-		resize
-	);
-}
+auto_run.queue(
+	function() {
+		resize();
+		window.addEventListener(
+			"resize", 
+			resize
+		);
+	}
+);

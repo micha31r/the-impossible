@@ -1,0 +1,27 @@
+// Create a task queue for window.onload
+class AutoRun {
+	constructor() {
+		this.tasks = [];
+	}
+
+	// Add task
+	queue(func) {
+		this.tasks.push(func);
+	}
+
+	// Remove task
+	unqueue(func) {
+		for (var i=0; i<this.tasks.length; i++) {
+			if (this.tasks[i] === func) {
+				this.tasks.push(func);
+			}
+		}
+	}
+
+	// Execute all tasks
+	execute() {
+		for (var i=0; i<this.tasks.length; i++) {
+			this.tasks[i]();
+		}
+	}
+}

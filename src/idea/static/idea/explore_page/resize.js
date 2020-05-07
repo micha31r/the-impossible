@@ -13,11 +13,12 @@ function auto_height(recursion) {
 	} 
 }
 
-window.addEventListener(
-	"resize", 
-	function(){ auto_height(); }
+auto_run.queue(
+	function() {
+		auto_height();
+		window.addEventListener(
+			"resize", 
+			function(){ auto_height(); }
+		);
+	}
 );
-
-window.onload = function() {
-	auto_height();
-}

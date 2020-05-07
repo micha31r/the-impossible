@@ -16,6 +16,6 @@
 	</button>
 	<span class="like-count" id="like-count-{{ idea.pk }}" name="{% if profile in idea.liked_user.all %}liked{% endif %}">{{ idea.liked_user.count|ntt }}</span>
 	<span class="text-seperator"></span>
-	<img src="{% static 'view.svg' %}" class="view-svg">
+	<img src="{% static 'idea/view.svg' %}" class="view-svg">
 	<span class="view-count">{{ idea.viewed_user.count }}</span>
 </p>

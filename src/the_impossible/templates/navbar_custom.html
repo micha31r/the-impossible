@@ -1,9 +1,11 @@
 {% load static %}
-<!-- My CSS -->
-<link rel="stylesheet" type="text/css" href="{% static 'navbar.css' %}">
+<!-- Custom navbar from scratch -->
+
+<!-- Navbar css -->
+<link rel="stylesheet" type="text/css" href="{% static 'component/navbar_custom/navbar_custom.css' %}">
 
 <!-- Expand js -->
-<script type="text/javascript" src="{% static 'home_page/expand.js' %}"></script>
+<script type="text/javascript" src="{% static 'component/navbar_custom/expand.js' %}"></script>
 
 <!-- Set window trigger to reset collapsible menu -->
 <script type="text/javascript">
@@ -15,9 +17,10 @@
 	);
 </script>
 
+<!-- Navigation bar -->
 <nav>
 	<div class="brand">
-		<img class="icon" src="{% static 'logo.svg' %}">
+		<img class="icon" src="{% static 'component/base/logo.svg' %}">
     	<button class="brand-name" onclick="window.location.href='{% url 'home_page' %}'"><b>The Impossible</b></button>
     </div>
 
@@ -25,9 +28,14 @@
 
 	<div class="collapse-link" id="collapse-link" onresize="reset_expand('collapse-link', 'collapse-link-trigger');">
     	<ul>
-    		{% block custom_nav_link %}
-	    	{% endblock %}
+			{% block custom_nav_link %}
+				<li>
+					<button class="custom" onclick="window.location.href='{% url 'idea_explore_page' week_num=date.week page_num=1  %}'">Explore</button>
+				</li>
+			{% endblock %}
 	    	<li class="link-seperator"></li>
+
+	    	<!-- If user is not logged in -->
 	    	{% if not user.is_authenticated %}
 		    	<li>
 		    		<button class="auth" onclick="window.location.href='{% url 'login_page' %}'">Login</button>
@@ -36,6 +44,7 @@
 		    		<button class="auth" onclick="window.location.href='{% url 'signup_page' %}'"><b>Sign Up</b></button>
 		    	</li>
 		    {% else %}
+		    <!-- If user is logged in -->
 		   		<li>
 		    		<button class="account" onclick="window.location.href='#'">Account</button>
 		    	</li>

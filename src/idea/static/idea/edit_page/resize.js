@@ -21,10 +21,12 @@ function resize() {
 	}
 }
 
-window.onload = function() {
-	resize();
-	window.addEventListener(
-		"resize", 
-		resize
-	);
-}
+auto_run.queue( 
+	function() {
+		resize();
+		window.addEventListener(
+			"resize", 
+			resize
+		);
+	}
+);

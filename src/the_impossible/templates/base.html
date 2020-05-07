@@ -7,93 +7,101 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Reset CSS -->
-		<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'component/base/reset.css' %}">
 		
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 		<!-- favicon image -->
-        <link rel="icon" href="{% static 'logo.png' %}">
+        <link rel="icon" href="{% static 'component/base/logo.png' %}">
 
 		<!-- Fonts -->
 		<!-- Varela Round -->
 		<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 
 		<!-- Arciform Sans cross platform-->
-		<link href="{% static 'Arciform.ttf' %}" rel="stylesheet">
+		<link href="{% static 'component/font/Arciform.ttf' %}" rel="stylesheet">
 
 		{% block title %}
 		{% endblock %}
 	</head>
 	<body>
-		<!-- Cross page css-->
-		<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
-
-		<!-- Navbar css -->
-		<link rel="stylesheet" type="text/css" href="{% static 'navbar.css' %}">
-
-		<!-- Expand js -->
-		<script type="text/javascript" src="{% static 'expand.js' %}"></script>
-
-		<!-- Set window trigger to reset collapsible menu -->
-		<script type="text/javascript">
-			window.addEventListener(
-				"resize", 
-				function() {
-					reset_expand('collapse-link', 'collapse-link-trigger');
-				}
-			);
-		</script>
-
-		<!-- Navigation bar -->
-		<nav>
-			<div class="brand">
-				<img class="icon" src="{% static 'logo.svg' %}">
-		    	<button class="brand-name" onclick="window.location.href='{% url 'home_page' %}'"><b>The Impossible</b></button>
-		    </div>
-
-		   	<button id='collapse-link-trigger' name="open" onclick="expand('collapse-link', 'collapse-link-trigger');"></button>
-
-			<div class="collapse-link" id="collapse-link" onresize="reset_expand('collapse-link', 'collapse-link-trigger');">
-		    	<ul>
-					{% block custom_nav_link %}
-						<li>
-							<button class="custom" onclick="window.location.href='{% url 'idea_explore_page' week_num=date.week page_num=1  %}'">Explore</button>
-						</li>
-					{% endblock %}
-			    	<li class="link-seperator"></li>
-
-			    	<!-- If user is not logged in -->
-			    	{% if not user.is_authenticated %}
-				    	<li>
-				    		<button class="auth" onclick="window.location.href='{% url 'login_page' %}'">Login</button>
-				    	</li>
-				    	<li>
-				    		<button class="auth" onclick="window.location.href='{% url 'signup_page' %}'"><b>Sign Up</b></button>
-				    	</li>
-				    {% else %}
-				    <!-- If user is logged in -->
-				   		<li>
-				    		<button class="account" onclick="window.location.href='#'">Account</button>
-				    	</li>
-				    	<li>
-				    		<button class="logout" onclick="window.location.href='{% url 'logout_view' %}'">Logout</button>
-				    	</li>
-				    {% endif %}
-			    </ul>
-			</div>
-		</nav>
-
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+		<!-- Base js -->
+		<script type="text/javascript" src="{% static 'component/base/base.js' %}"></script>
+
+		<!-- Create auto task queue -->
+		<script type="text/javascript">
+			auto_run = new AutoRun();
+			window.onload = function() {
+				auto_run.execute();
+			}
+		</script>
+
+		<!-- Cross page css-->
+		<link rel="stylesheet" type="text/css" href="{% static 'component/base/base.css' %}">
+
+		<!-- Navbar css -->
+		<link rel="stylesheet" type="text/css" href="{% static 'component/navbar/navbar.css' %}">
+
+		<!-- Navbar absolute position js -->
+		<script type="text/javascript" src="{% static 'component/navbar/navbar_absolute_position.js' %}"></script>
+
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-sm navbar-light">
+			<a class="navbar-brand" href="#">
+	      		<img src="{% static 'component/base/logo.svg' %}" width="50" height="50" alt="">
+	      		<span>The Impossible</span>
+	      	</a>
+		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    	<img class="expand-icon" src="{% static 'component/feather_svg/align-justify.svg' %}">
+		  	</button>
+
+			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			  		<!-- Don't delete this or navbar right won't float right -->
+			  		<ul class="navbar-nav mr-auto"></ul>
+		  			<ul class="navbar-nav navbar-right" id="navbar-append-origin1">
+			    		<li class="nav-item">
+			        		<button class="dropdown-item" href="#">Explore</button>
+			     		</li>
+			    		{% if user.is_authenticated %}
+			    			<li class="nav-item nav-auth">
+				        		<button class="dropdown-item" href="#">Account</button>
+				     		</li>
+				    		<li class="nav-item nav-auth">
+				        		<button class="dropdown-item" href="#">Logout</button>
+				     		</li>
+			     		{% else %}
+			     			<li class="nav-item nav-auth">
+				        		<button class="dropdown-item" href="#">Login</button>
+				     		</li>
+				    		<li class="nav-item nav-auth">
+				        		<button class="dropdown-item" href="#">Sign Up</button>
+				     		</li>
+			     		{% endif %}
+			    	</ul>
+		  			<div class="navbar-overflow-container">
+		  				<div id="navbar-wrapper">
+					  		<h1 class="second-navbar-brand">The Impossible</h1>
+					  		<ul class="navbar-nav navbar-right" id="navbar-append-target1">
+					  		</ul>
+					  		<ul id="navbar-append-target2">
+			    			</ul>
+			    		</div>
+			  		</div>
+				</div>
+			</nav>
+		</nav>
+
 		{% block content %}
 		{% endblock %}
 
-		<script type="text/javascript" src="{% static 'no_resubmission.js' %}"></script>
+		<script type="text/javascript" src="{% static 'component/base/no_resubmission.js' %}"></script>
 
 		{% include 'footer.html' %}
 	</body>
