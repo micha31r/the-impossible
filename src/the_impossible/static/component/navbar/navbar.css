@@ -34,14 +34,13 @@ nav {
 
 @media only screen and (max-width: 575px) {
 	.navbar-overflow-container {
-		/*display: block !important;*/
 		width: 100vw !important;
 		height: 100vh !important;
 	}
-	#navbar-wrapper {
+	.navbar-wrapper {
 		width: 100vw !important;
-		min-height: 540px !important;
-		height: 100vh !important;
+		min-height: 100vh !important;
+		height: max-content !important;
 		background-color: #000 !important;
 		padding: 10% !important;
 	}
@@ -61,25 +60,41 @@ nav {
 		margin-bottom: 20px;
 		color: white !important;
 	}
-	.navbar-right {
-		/*position: fixed !important;
-		bottom: -20px !important;*/
+	#navbar-append-target1 {
+		margin-top: 50px !important;
+	}
+	#navbar-append-target2 {
+		margin: 0px !important;
+		margin-top: 30% !important;
+		color: white !important;
+	}
+	.dropdown-item {
+		width: 100% !important;
+		padding: 10px !important;
+		color: white !important;
+		line-height: 1.2rem !important;
+		min-width: 40% !important;
+		width: max-content !important;
 	}
 	.nav-item {
-		display: inline-block !important;
+		width: 100% !important;
 		position: static !important;
 	}
 	.nav-auth {
-		display: none !important;
+		text-align: center !important;
 	}
-	.dropdown-item {
-		padding: 10px !important;
-		min-width: 40% !important;
-		width: max-content !important;
-		color: white !important;
-		line-height: 1.2rem !important;
+	.nav-auth button {
+		width: 100% !important;
+		padding: 15px !important;
+		background-color: rgb(50,50,50) !important;
 	}
-	.dropdown-item:hover {
+	.nav-auth:nth-child(2) button {
+		background-color: rgb(30,30,30) !important;
+	}
+	.nav-hidden {
+		display: block !important;
+	}
+	.dropdown-item:hover, .nav-auth:nth-child(2) button:hover {
 		animation: none !important;
 		background-color: white !important;
 		color: black !important;
@@ -89,7 +104,14 @@ nav {
 	}
 }
 
+.backarrow-td {
+	height: 100%; 
+	vertical-align: top;
+}
 
+.backarrow-td button {
+	padding: 0px;
+}
 
 .navbar-brand span, .second-navbar-brand {
 	font-family: 'Arciform', sans-serif;
@@ -106,6 +128,10 @@ nav {
 
 .navbar-toggler {
 	border: 0;
+}
+
+.nav-hidden {
+	display: none;
 }
 
 .dropdown-item {

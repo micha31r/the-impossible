@@ -54,7 +54,7 @@
 
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-sm navbar-light">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="{% url 'home_page' %}">
 	      		<img src="{% static 'component/base/logo.svg' %}" width="50" height="50" alt="">
 	      		<span>The Impossible</span>
 	      	</a>
@@ -67,27 +67,51 @@
 			  		<ul class="navbar-nav mr-auto"></ul>
 		  			<ul class="navbar-nav navbar-right" id="navbar-append-origin1">
 			    		<li class="nav-item">
-			        		<button class="dropdown-item" href="#">Explore</button>
+			        		<button class="dropdown-item" onclick="window.location.href='{% url 'idea_explore_page' week_num=date.week page_num=1  %}'">Explore</button>
 			     		</li>
 			    		{% if user.is_authenticated %}
 			    			<li class="nav-item nav-auth">
-				        		<button class="dropdown-item" href="#">Account</button>
+				        		<button class="dropdown-item" onclick="window.location.href='#'">Account</button>
 				     		</li>
 				    		<li class="nav-item nav-auth">
-				        		<button class="dropdown-item" href="#">Logout</button>
+				        		<button class="dropdown-item" onclick="window.location.href='{% url 'logout_view' %}'">Logout</button>
 				     		</li>
 			     		{% else %}
 			     			<li class="nav-item nav-auth">
-				        		<button class="dropdown-item" href="#">Login</button>
+				        		<button class="dropdown-item" onclick="window.location.href='{% url 'login_page' %}'">Login</button>
 				     		</li>
 				    		<li class="nav-item nav-auth">
-				        		<button class="dropdown-item" href="#">Sign Up</button>
+				        		<button class="dropdown-item" onclick="window.location.href='{% url 'signup_page' %}'">Sign Up</button>
 				     		</li>
 			     		{% endif %}
+			     		<!-- Only show these link in small viewport devices -->
+			     		<li class="nav-item nav-hidden">
+			        		<button class="dropdown-item" onclick="window.location.href='#'">Interact</button>
+			     		</li>
+			     		<li class="nav-item nav-hidden">
+			        		<button class="dropdown-item" onclick="window.location.href='#'">Connect</button>
+			     		</li>
+			     		<li class="nav-item nav-hidden">
+				        		<button class="dropdown-item" onclick="window.location.href='#'">About Us</button>
+			     		</li>
+			    		<li class="nav-item nav-hidden">
+			        		<button class="dropdown-item" onclick="window.location.href='#'">Contact</button>
+			     		</li>
 			    	</ul>
 		  			<div class="navbar-overflow-container">
-		  				<div id="navbar-wrapper">
-					  		<h1 class="second-navbar-brand">The Impossible</h1>
+		  				<div class="navbar-wrapper">
+		  					<table>
+		  						<tr>
+		  							<td>
+					  					<h1 class="second-navbar-brand">The Impossible</h1>
+					  				</td>
+					  				<td class="backarrow-td">
+					  					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(180,180,180)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+		  								</button>
+					  				</td>
+					  			</tr>
+					  		</table>
 					  		<ul class="navbar-nav navbar-right" id="navbar-append-target1">
 					  		</ul>
 					  		<ul id="navbar-append-target2">
