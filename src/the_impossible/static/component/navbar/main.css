@@ -236,3 +236,7 @@ nav {
 .hide-svg svg {
 	display: none;
 }
+
+nav button:focus {
+	outline: none !important;
+}
