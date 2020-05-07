@@ -123,6 +123,10 @@ nav {
 		min-width: 40% !important;
 		width: max-content !important;
 	}
+	.dropdown-item span {
+		margin-left: 10px; 
+		vertical-align: middle;
+	}
 	.nav-item {
 		width: 100% !important;
 		position: static !important;
@@ -224,4 +228,8 @@ nav {
 	animation-name: reverse-scale;
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
+}
+
+.hide-svg svg {
+	display: none;
 }
