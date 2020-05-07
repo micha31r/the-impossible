@@ -33,8 +33,8 @@
 
 @keyframes enlarge {
 	from {
-		width: 50%;
-		height: 50%;
+		width: 50vh;
+		height: 50vh;
 	}
 	to {
 		width: 300vh;
@@ -57,8 +57,8 @@
 		height: 300vh;
 	}
 	to {
-		width: 50%;
-		height: 50%;
+		width: 50vh;
+		height: 50vh;
 	}
 }
 
@@ -160,8 +160,8 @@ nav {
 	border-top-right-radius: 0px;
 	position: absolute;
 	background-color: #000;
-	top: -50%;
-	right: -50%;
+	top: -50vh;
+	right: -50vh;
 	z-index: 2;
 	overflow: hidden;
 }
@@ -179,7 +179,7 @@ nav {
 
 .navbar-brand span, .second-navbar-brand {
 	font-family: 'Arciform', sans-serif;
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 	margin-left: 15px;
 	vertical-align: middle;
 }
