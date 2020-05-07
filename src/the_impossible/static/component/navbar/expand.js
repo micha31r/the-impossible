@@ -15,7 +15,6 @@ function navbar_contract() {
 	$('.navbar-collapse').css('animation-delay','0s');
 	if ($(window).height() >= 320 && $(window).width() >= 300 && aspect_diff() < 400) {
 		$('#mask').css('animation-name','reverse-enlarge');
-		$('.navbar-collapse').css('animation-delay','0.5s');
 	} else {
 		$('#mask').css('display','none');
 	}
