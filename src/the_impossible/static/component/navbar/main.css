@@ -117,7 +117,6 @@ nav {
 		color: white !important;
 	}
 	.dropdown-item {
-		width: 100% !important;
 		padding: 10px !important;
 		color: white !important;
 		line-height: 1.2rem !important;
@@ -142,13 +141,22 @@ nav {
 	.nav-hidden {
 		display: block !important;
 	}
-	.dropdown-item:hover, .nav-auth:nth-child(2) button:hover {
+	.dropdown-item:hover {
 		animation: none !important;
-		background-color: white !important;
-		color: black !important;
+		margin-left: -2px !important;
+		border-left-width: 2px !important;
+		border-color: #FFF !important;
+		border-style: solid !important;
 	}
 	.dropdown-item:not(:hover) {
 		animation: none !important;
+	}
+	.nav-auth button:hover {
+		animation: none !important;
+		border: 0px !important;
+		margin: 0px !important;
+		background-color: white !important;
+		color: black !important;
 	}
 }
 
