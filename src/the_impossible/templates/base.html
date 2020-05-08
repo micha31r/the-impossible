@@ -19,8 +19,15 @@
 		<!-- Varela Round -->
 		<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 
-		<!-- Arciform Sans cross platform-->
-		<link href="{% static 'component/font/Arciform.ttf' %}" rel="stylesheet">
+		<!-- Arciform Sans --> 
+		<!-- <link href="{% static 'component/font/Arciform.ttf' %}" rel="stylesheet" type="application/font"> -->
+		
+		<style>
+			@font-face {
+			  font-family: Arciform;
+			  src: url({% static 'component/font/Arciform.ttf' %});
+			}
+		</style>
 
 		{% block title %}
 		{% endblock %}
