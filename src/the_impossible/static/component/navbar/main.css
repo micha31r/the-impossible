@@ -65,10 +65,10 @@
 nav {
 	font-family: 'Varela Round', sans-serif;
 	padding: 20px !important;
-	border: 0;
+	/*border: 0;
 	border-color: rgb(240,240,240);
 	border-bottom-width: 1px;
-	border-style: solid;
+	border-style: solid;*/
 	font-size: 1.1rem;
 }
 
