@@ -62,6 +62,17 @@
 	}
 }
 
+.navbar-notification {
+	padding: 20px;
+	background-color: #000;
+}
+
+.navbar-notification p {
+	margin: 0px;
+	font-size: 1.1rem;
+	color: #FFF;
+}
+
 nav {
 	font-family: 'Varela Round', sans-serif;
 	padding: 20px !important;

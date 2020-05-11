@@ -10,13 +10,12 @@ nav {
 	border: 0;
 }
 
+/* Intro */
+
 .intro {
 	margin: 20px;
 	margin-top: 60px;
 	margin-bottom: 60px;
-}
-
-.title-wrapper {
 }
 
 .title {
@@ -45,3 +44,17 @@ nav {
 .getstarted:hover {
 	background-color: rgb(60,40,245);
 }
+
+/* About */
+
+.about h1 {
+	font-family: 'Arciform';
+	font-size: 3.5rem;
+}
+
+.about p {
+	font-family: 'Arciform';
+	font-size: 1.5rem;
+}
+
+
