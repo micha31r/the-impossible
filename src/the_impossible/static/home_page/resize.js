@@ -15,13 +15,13 @@ auto_run.queue(
 
 auto_run.queue(
 	function() {
-		// $("#navbar-notification-close").css("background-color","#FFF");
-		// $("#navbar-notification-close-svg").css("stroke","#000");
 		$("#navbar-notification-close").hover(
+			// Hover
 			function() {
 				$("#navbar-notification-close").css("background-color","#FFF");
 				$("#navbar-notification-close-svg").css("stroke","#000");
 			},
+			// Un-hover
 			function() {
 				$("#navbar-notification-close").css("background-color","#000");
 				$("#navbar-notification-close-svg").css("stroke","#FFF");
