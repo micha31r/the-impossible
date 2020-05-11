@@ -6,6 +6,32 @@ body {
 	overflow: scroll;
 }
 
+
+#navbar-notification {
+	background-color: #000;
+	padding: 20px;
+	padding-right: 50px;
+}
+
+#navbar-notification p {
+	display: inline-block;
+	margin: 0px;
+	font-size: 1.2rem;
+	line-height: 1.2rem;
+	color: #FFF;
+	font-family: 'Arciform', sans-serif;
+}
+
+#navbar-notification-close {
+	position: absolute;
+	right: 20px;
+	border: 0;
+	padding: 0;
+	width: 1.2rem;
+	height: 1.2rem;
+	background-color: #000;
+}
+
 nav {
 	border: 0;
 }
@@ -48,12 +74,12 @@ nav {
 /* About */
 
 .about h1 {
-	font-family: 'Arciform';
+	font-family: 'Arciform', sans-serif;
 	font-size: 3.5rem;
 }
 
 .about p {
-	font-family: 'Arciform';
+	font-family: 'Arciform', sans-serif;
 	font-size: 1.5rem;
 }
 
