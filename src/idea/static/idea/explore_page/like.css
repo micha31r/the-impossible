@@ -30,8 +30,8 @@
 }
 
 *[name="liked"] {
-	fill: rgb(255,55,127);
-	color: rgb(255,55,127);
+	fill: rgb(252,52,104);
+	/*color: rgb(255,55,127);*/
 }
 
 .text-seperator {

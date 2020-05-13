@@ -2,6 +2,29 @@
 	/* header image dimension */
 	--header-img-width: 290px;
 	--header-img-height: 168px;
+	/* card button size */
+	--card-button-size: 50px;
+	--card-button-margin-left: 10px;
+}
+
+@keyframes show-card-button {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+		display: block;
+	}
+}
+
+@keyframes hide-card-button {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		display: none;
+	}
 }
 
 a:hover {
@@ -105,9 +128,40 @@ a:hover {
 	width: 100%;
 }
 
+.card-btn-circle {
+	display: none;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	margin-left: var(--card-button-margin-left);
+	width: var(--card-button-size);
+	height: var(--card-button-size);
+	/* Move button up */
+	margin-top: calc(var(--card-button-size) / -2) !important;
+	/* Remove space from bottom */
+	margin-bottom: calc(var(--card-button-size) / -2) !important;
+	border-radius: 100%;
+	background-color: #FFF;
+	opacity: 0;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+}
+
+.circle-btn-bookmark:hover {
+	background-color: rgb(246,227,147);
+}
+
+.circle-btn-like {
+	margin-left: calc(var(--card-button-size) + (var(--card-button-margin-left) * 2));
+}
+
+.circle-btn-like:hover {
+	background-color: rgb(255,194,205);
+}
+
 .card-title a {
 	color: black;
-	transition: color 0.3s
+	transition: color 0.3s;
 }
 
 .card-title a:hover {
@@ -115,10 +169,11 @@ a:hover {
 	color: #4d4c7d;
 }
 
-.author {
+.author, .views {
 	font-size: 0.8rem;
 	color: grey;
 	margin: 0;
+	width: 100%;
 }
 
 .header-img {

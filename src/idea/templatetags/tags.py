@@ -11,7 +11,7 @@ def times(value):
 def length(value):
 	return len(value)
 
-# Convert number to number to text e.g: 1100 -> 1.1k 
+# Convert number to text e.g: 1100 -> 1.1k 
 @register.filter(name="ntt")
 def ntt(value):
 	string = ""

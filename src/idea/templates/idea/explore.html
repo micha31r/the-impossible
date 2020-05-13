@@ -37,29 +37,26 @@
 			{% endif %}
 		</div>
 
+		<script type="text/javascript" src="{% static 'idea/show_button.js' %}"></script>
 		<!-- Display Ideas -->
 		<!-- https://tobiasahlin.com/blog/masonry-with-css/ -->
 		<div class="overflow-wrapper">
 			<div class="flex-container">
 				{% for idea in ideas %}
 					<div class="flex-wrapper">
-						<div class="card">
+						<div class="card" id="card-{{ idea.pk }}">
 
 							<!-- Header image -->
 							{% if idea.header_img.file %}
 								<div class="card-img-wrapper">
 									<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
 								</div>
+
+								{% include 'idea/card_like.html' %}
 							{% endif %}
 
 							<div class="card-body">
 
-								<!-- Show like button here if there is a header image -->
-								{% if idea.header_img.file %}
-									<!-- Like button and view count -->
-									{% include 'idea/like.html' %}
-								{% endif %}	
-								
 								<!-- Title -->
 								<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
 
@@ -77,6 +74,9 @@
 
 								<!-- Author -->
 								<p class="author">By {{ idea.author }}</p>
+
+								<!-- Views -->
+								<p class="views">Views {{ idea.viewed_user.count|ntt }}</p>
 							</div>
 						</div>
 					</div>
