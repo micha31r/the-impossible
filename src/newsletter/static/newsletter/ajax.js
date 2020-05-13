@@ -1,5 +1,5 @@
 // Subscribe to mailing list ajax
-function email_subscribe(pk,username,encrypted_string) {
+function subscribe_ajax(pk,username,encrypted_string) {
     $(document).ready(
         function() {
             $.ajax(

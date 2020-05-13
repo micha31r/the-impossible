@@ -17,10 +17,10 @@
 		<!-- Main css -->
 		<link rel="stylesheet" type="text/css" href="{% static 'idea/explore_page/main.css' %}">
 		
-		<!-- Explore -->
 		<!-- Masonry container resize function -->
 		<script type="text/javascript" src="{% static 'idea/explore_page/resize.js' %}"></script>
 
+		<!-- Explore -->
 		<div class="explore-header">
 			<h5>Explore All</h5>
 			<h2>Weekly Ideas</h2>
@@ -129,16 +129,15 @@
 		</div>
 	</div>
 	<hr class="section-seperator">
+
+	<!-- Announcement -->
 	<div class="wrapper">
-		<!-- Announcement -->
-		<h1>Don't want to missout?</h1>
-		<p>Join our weekly mailing list for new and innovative ideas!</p>
-		<p>Unsubscribe at any time!</p>
-		<input type="text" name="email">
+		{% include 'newsletter/main.html' %}
 	</div>
 	<hr class="section-seperator">
+
+	<!-- Discover -->
 	<div class="wrapper">
-		<!-- Discover -->
 		<div class="discover-header">
 			<h1>Discover</h1>
 		</div>
