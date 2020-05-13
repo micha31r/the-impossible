@@ -1,3 +1,9 @@
+:root {
+	/* card button size */
+	--card-button-size: 50px;
+	--card-button-margin-left: 10px;
+}
+
 .card-btn-circle {
 	display: none;
 	position: relative;

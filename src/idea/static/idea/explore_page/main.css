@@ -2,9 +2,6 @@
 	/* header image dimension */
 	--header-img-width: 290px;
 	--header-img-height: 168px;
-	/* card button size */
-	--card-button-size: 50px;
-	--card-button-margin-left: 10px;
 }
 
 @keyframes show-card-button {
@@ -126,6 +123,10 @@ a:hover {
 
 .card-img-wrapper img {
 	width: 100%;
+}
+
+.card-title {
+	margin-top: 5px;
 }
 
 .card-title a {
