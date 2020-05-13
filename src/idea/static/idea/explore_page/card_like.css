@@ -34,3 +34,7 @@
 .circle-btn-like:hover {
 	background-color: rgb(255,194,205);
 }
+
+*[name="liked"] {
+	fill: rgb(252,52,104);
+}
