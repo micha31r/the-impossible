@@ -13,11 +13,24 @@
 	vertical-align: text-top;
 }
 
-.like-button {
+.like-button, .bookmark-button {
 	border: none !important;
 	background-color: #FFF !important;
 	padding: 0px !important;
 	margin: 0px !important;
+}
+
+.card-button-wrapper {
+	margin: 0px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	border-bottom-right-radius: 10px;
+	background-color: #FFF;
+	position: absolute;
+	display: none;
+	opacity: 0;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
 }
 
 .like-button:focus {
@@ -30,8 +43,7 @@
 }
 
 *[name="liked"] {
-	fill: rgb(255,55,127);
-	color: rgb(255,55,127);
+	fill: rgb(252,52,104);
 }
 
 .text-seperator {

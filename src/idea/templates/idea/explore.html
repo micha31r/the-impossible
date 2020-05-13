@@ -52,19 +52,19 @@
 									<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
 								</div>
 
+								<!-- Circle like button -->
 								{% include 'idea/card_like.html' %}
 							{% endif %}
 
 							<div class="card-body">
-
-								<!-- Title -->
-								<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
-
 								<!-- Show like button here if there is no header image -->
 								{% if idea.header_img.file == None %}
 									<!-- Like button and view count -->
 									{% include 'idea/like.html' %}
 								{% endif %}	
+
+								<!-- Title -->
+								<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
 
 								<!-- Short description -->
 								<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:50 }}</h6>

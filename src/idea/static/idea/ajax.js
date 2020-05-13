@@ -15,7 +15,6 @@ function like_idea_ajax(pk,username,encrypted_string) {
                         if (data.failed) {
                             console.log("Like Failed");
                         } else {
-                            $(`#like-count-${pk}`).html(data.updated_like_count);
                             $(`#like-count-${pk}`).attr('name', data.action);
                             $(`#like-svg-${pk}`).attr('name', data.action);
                         }
