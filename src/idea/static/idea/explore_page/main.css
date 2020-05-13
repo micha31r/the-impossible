@@ -25,6 +25,7 @@ a:hover {
 	max-height: 100vh;
 	height: max-content;
 	overflow-y: scroll;
+	border-radius: 10px;
 /*	border-width: 1px;
 	border-style: solid;
 	border-color: #000;
@@ -87,8 +88,21 @@ a:hover {
 }
 
 .card {
+	width: 100%;
 	border: 0;
+	border-radius: 10px;
 	box-shadow: 0px 10px 10px rgb(230,230,235);
+}
+
+.card-img-wrapper {
+	height: 130px;
+	overflow: hidden;
+	border-top-right-radius: 10px; 
+	border-top-left-radius: 10px;
+}
+
+.card-img-wrapper img {
+	width: 100%;
 }
 
 .card-title a {

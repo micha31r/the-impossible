@@ -44,7 +44,7 @@ class Idea(models.Model):
 	header_img = models.ForeignKey(File,on_delete=models.SET_NULL,blank=True,null=True)
 	body_img = models.ManyToManyField(File,related_name="body_image",blank=True)
 
-	name = models.CharField(max_length=80,blank=False,unique=False)
+	name = models.CharField(max_length=70,blank=False,unique=False)
 	short_description = models.TextField(max_length=150,blank=False,unique=False)
 	full_description = models.TextField(max_length=2000,blank=False,unique=False)
 	

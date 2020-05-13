@@ -43,7 +43,15 @@
 			<div class="flex-container">
 				{% for idea in ideas %}
 					<div class="flex-wrapper">
-						<div class="card" style="width: 100%;">
+						<div class="card">
+
+							<!-- Header image -->
+							{% if idea.header_img.file %}
+								<div class="card-img-wrapper">
+									<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
+								</div>
+							{% endif %}
+
 							<div class="card-body">
 								
 								<!-- Title -->
@@ -53,10 +61,10 @@
 								{% include 'idea/like.html' %}	
 
 								<!-- Short description -->
-								<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:80 }}</h6>
+								<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:50 }}</h6>
 
 								<!-- Content -->
-								<p class="card-text">{{ idea.full_description|truncatechars:300 }}</p>
+								<p class="card-text">{{ idea.full_description|truncatechars:100 }}</p>
 
 								<!-- Author -->
 								<p class="author">By {{ idea.author }}</p>
