@@ -53,12 +53,21 @@
 							{% endif %}
 
 							<div class="card-body">
+
+								<!-- Show like button here if there is a header image -->
+								{% if idea.header_img.file %}
+									<!-- Like button and view count -->
+									{% include 'idea/like.html' %}
+								{% endif %}	
 								
 								<!-- Title -->
 								<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
 
-								<!-- Like button and view count -->
-								{% include 'idea/like.html' %}	
+								<!-- Show like button here if there is no header image -->
+								{% if idea.header_img.file == None %}
+									<!-- Like button and view count -->
+									{% include 'idea/like.html' %}
+								{% endif %}	
 
 								<!-- Short description -->
 								<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:50 }}</h6>
