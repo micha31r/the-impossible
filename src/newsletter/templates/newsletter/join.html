@@ -7,5 +7,11 @@
 <h1>Don't want to missout?</h1>
 <p>Join our weekly mailing list for new and innovative ideas!</p>
 <p>Unsubscribe at any time!</p>
-<input type="email" id="email" placeholder="Email">
-<button class="btn btn-light" onclick="join_newsletter_ajax($('#email').val());">Subscribe</button>
+
+<!-- status -->
+<p id="join-status" style="display:none;"></p>
+
+<div id="join-form">
+	<input type="email" id="email" placeholder="Email">
+	<button class="btn btn-light" onclick="join_newsletter_ajax($('#email').val());">Subscribe</button>
+</div>

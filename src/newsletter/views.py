@@ -15,13 +15,14 @@ def email_is_valid(email):
 def join_view(request):
 	data = {}
 	email = request.GET.get('email', None)
-	if email_is_valid:
+	if email_is_valid(email) and request.is_ajax():
 		exsisting_emails = Newsletter.objects.filter(email=email)
 		# Check if email is already used
 		for obj in exsisting_emails:
+			print(obj)
 			if obj.email == email:
 				data['exsist'] = True
-		if not data['exsist']:
+		if 'exsist' not in data:
 			obj = Newsletter.objects.create(email=email,frequency=2)
 			obj.save()
 	else:
