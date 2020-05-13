@@ -20,7 +20,6 @@ __Current library versions:__
   * Sqlparse 0.3.1
 
 ## Start a local server for testing:
-(secret key and database is excluded from repository)
 ```bash
 # Clone this repository
 git clone https://github.com/micha31r/The-Impossible.git
