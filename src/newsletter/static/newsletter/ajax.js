@@ -1,23 +1,19 @@
 // Subscribe to mailing list ajax
-function subscribe_ajax(pk,username,encrypted_string) {
+function join_newsletter_ajax(email) {
     $(document).ready(
         function() {
             $.ajax(
                 {
-                    url: `/idea/like/`,
+                    url: `/newsletter/join/`,
                     data: {
-                        'pk':pk,
-                        'username':username,
-                        'encrypted_string':encrypted_string
+                        'email':email,
                     },
                     dataType: 'json',
                     success: function(data) {
                         if (data.failed) {
-                            console.log("Like Failed");
+                            console.log("Join Failed");
                         } else {
-                            $(`#like-count-${pk}`).html(data.updated_like_count);
-                            $(`#like-count-${pk}`).attr('name', data.action);
-                            $(`#like-svg-${pk}`).attr('name', data.action);
+                            
                         }
                     }
                 }

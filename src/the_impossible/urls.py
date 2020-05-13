@@ -33,6 +33,7 @@ urlpatterns = [
     path('user/', include("usermgmt.urls")),
     path('idea/', include("idea.urls")),
     path('userupload/', include("userupload.urls")),
+    path('newsletter/', include("newsletter.urls")),
 ]
 
 if settings.DEBUG:

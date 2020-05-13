@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'idea/like.css' %}">
 
 <!-- Like button ajax -->
-<script type="text/javascript" src="{% static 'idea/explore_page/ajax.js' %}"></script>
+<script type="text/javascript" src="{% static 'idea/ajax.js' %}"></script>
 		
 <p>
 	<button class="like-button" onclick="{% if user.is_authenticated %}like_idea_ajax('{{ idea.pk }}','{{ user.username }}','{{ encrypted_string }}'); {% else %} window.location.href='{% url 'login_page' %}' {% endif %}">
