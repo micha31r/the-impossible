@@ -1,5 +1,5 @@
 // Like button ajax
-function like_post(pk,username,encrypted_string) {
+function like_idea(pk,username,encrypted_string) {
     $(document).ready(
         function() {
             $.ajax(
