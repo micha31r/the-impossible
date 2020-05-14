@@ -15,11 +15,15 @@
 		</button>
 	</div>
 {% endblock %}
+
+{% block navbar_logo %}
+	<img src="{% static 'component/base/logo_white.svg' %}" width="50" height="50" alt="logo">
+{% endblock %}
 	
 {% block content %}
 	<link rel="stylesheet" type="text/css" href="{% static 'home_page/main.css' %}">
 
-	<div class="wrapper">
+	<div class="wrapper intro-wrapper">
 		<div class="intro">
 			<div class="title-wrapper">
 				<h1 class="title"><b>Ideas<br>today, reality<br>tomorrow</b></h1>
@@ -32,6 +36,14 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Main wave -->
+	<svg class="wave" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320"><path fill="#FFF" fill-opacity="1" d="M0,224L34.3,213.3C68.6,203,137,181,206,176C274.3,171,343,181,411,186.7C480,192,549,192,617,170.7C685.7,149,754,107,823,90.7C891.4,75,960,85,1029,101.3C1097.1,117,1166,139,1234,128C1302.9,117,1371,75,1406,53.3L1440,32L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path></svg>
+
+	<!-- Sub wave -->
+	<svg class="wave" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320"><path d="M0 224L34.3 213.3C68.6 203 137 181 206 176C274.3 171 343 181 411 186.7C480 192 549 192 617 170.7C685.7 149 754 107 823 90.7C891.4 75 960 85 1029 101.3C1097.1 117 1166 139 1234 128C1302.9 117 1371 75 1406 53.3L1440 32V-3.04077e-05C1440 -3.04077e-05 1383 -2.40006 1246 53.3C1109 109 957 14 803 39C649 64 559.617 211.498 408.617 183.499C257.617 155.499 189 136 107 156C25 176 0 224 0 224Z" fill="#EEE"/></svg>
+
+
 	<div class="wrapper">
 		<div class="about">
 			<h1>About us</h1>

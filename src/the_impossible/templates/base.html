@@ -72,7 +72,9 @@
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-sm navbar-light">
 			<a class="navbar-brand" href="{% url 'home_page' %}">
-	      		<img src="{% static 'component/base/logo.svg' %}" width="50" height="50" alt="logo">
+				{% block navbar_logo %}
+	      			<img src="{% static 'component/base/logo.svg' %}" width="50" height="50" alt="logo">
+	      		{% endblock %}
 	      		<span>The Impossible</span>
 	      	</a>
 		  	<button class="navbar-toggler" type="button" onclick="navbar_expand();" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

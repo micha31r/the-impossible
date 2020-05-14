@@ -6,8 +6,27 @@ body {
 	overflow: scroll;
 }
 
+/* Custom nav styles */
+
 nav {
 	border: 0;
+	background-color: rgba(0,0,0,0) !important;
+	position: relative !important;
+	transform: translateY(100%);
+	margin-top: -100px;
+}
+
+nav * {
+	color: white !important;
+}
+
+.dropdown-item:hover {
+	animation: none !important;
+	text-decoration: underline;
+}
+
+.dropdown-item:not(:hover) {
+	animation: none !important;
 }
 
 @media only screen and (max-width: 550px) {
@@ -73,21 +92,32 @@ nav {
 
 /* Intro */
 
+.intro-wrapper {
+	/*background: rgb(122,113,168);
+	background: linear-gradient(145deg, rgba(122,113,168,1) 0%, rgba(93,55,148,1) 44%, rgba(52,44,88,1) 100%);*/
+	/*background: rgb(123,86,179);
+	background: linear-gradient(145deg, rgba(123,86,179,1) 0%, rgba(61,38,97,1) 69%, rgba(50,30,82,1) 100%);*/
+	background: rgb(97,104,163);
+	background: linear-gradient(205deg, rgba(97,104,163,1) 0%, rgba(62,67,147,1) 36%, rgba(45,32,75,1) 100%);
+}
+
 .intro {
 	margin: 20px;
-	margin-top: 40px;
-	margin-bottom: 60px;
+	/* Margin top need to account for the navbar because its positioned absolute */
+	margin-top: 140px; 
+	margin-bottom: 140px;
 }
 
 .title {
 	font-size: 4.5rem;
 	font-family: 'Arciform';
+	color: white;
 }
 
 .subtitle {
 	font-size: 1.5rem;
 	font-family: 'Arciform';
-	color: rgb(110,113,138);
+	color: #8E87CC;
 }
 
 .getstarted-wrapper {
@@ -104,6 +134,14 @@ nav {
 
 .getstarted:hover {
 	background-color: rgb(60,40,245);
+}
+
+.wave {
+	position: absolute; 
+	z-index: 2; 
+	left: 0; 
+	transform: rotate(180deg) translateY(100%);
+	max-height: 400px;
 }
 
 /* About */
