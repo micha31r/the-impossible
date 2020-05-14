@@ -125,15 +125,17 @@ nav * {
 }
 
 .getstarted {
+	position: relative;
 	border: 0;
 	border-radius: 0;
 	font-size: 1.1rem;
 	padding: 20px;
-	background-color: rgb(100,80,255);
+	background-color: rgb(100,100,230);
+	z-index: 3;
 }
 
 .getstarted:hover {
-	background-color: rgb(60,40,245);
+	background-color: rgb(80,80,220);
 }
 
 .wave {
