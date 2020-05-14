@@ -6,7 +6,7 @@ FREQUENCY_OPTION = (
     (3,"Monthly"),
 )
 
-class Newsletter(models.Model):
+class Subscriber(models.Model):
 
 	email = models.EmailField(max_length=250)
 	frequency = models.IntegerField(default=1,choices=FREQUENCY_OPTION)
@@ -17,3 +17,5 @@ class Newsletter(models.Model):
 
 	def __str__(self):
 		return self.email
+
+
