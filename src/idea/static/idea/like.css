@@ -27,6 +27,7 @@
 	border-bottom-right-radius: 10px;
 	background-color: #FFF;
 	position: absolute;
+	right: 0;
 	display: none;
 	opacity: 0;
 	animation-duration: 0.3s;
