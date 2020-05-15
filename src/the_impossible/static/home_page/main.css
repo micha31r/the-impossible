@@ -144,6 +144,7 @@ background: linear-gradient(205deg, rgba(68,81,148,1) 0%, rgba(46,50,119,1) 53%,
 	left: 0; 
 	transform: rotate(180deg) translateY(100%);
 	max-height: 400px;
+	min-height: 200px;
 }
 
 /* About */
@@ -158,4 +159,67 @@ background: linear-gradient(205deg, rgba(68,81,148,1) 0%, rgba(46,50,119,1) 53%,
 	font-size: 1.5rem;
 }
 
+/* SVG */
+
+.dashed-line {
+	width: 50%; 
+	position: absolute;
+	transform: translateY(-100%); 
+	right: 0;
+	min-width: 500px;
+}
+
+.shapes {
+	width: 50%; 
+	position: absolute;
+	transform: translateY(-100%); 
+	right: 0;
+}
+
+/* Example card */
+
+.card {
+	position: absolute;
+	transform: translateY(-130%);
+	right: 50px;
+	min-width: 280px;
+	max-width: 300px;
+	width: 25%;
+	border: 0;
+	border-radius: 10px;
+	box-shadow: 0px 0px 30px rgb(10,10,70);
+}
+
+.card-img-wrapper {
+	height: 120px;
+	overflow: hidden;
+	border-top-right-radius: 10px; 
+	border-top-left-radius: 10px;
+}
+
+.card-img-wrapper img {
+	width: 100%;
+}
+
+.card-btn-circle {
+	display: block !important;
+	opacity: 1 !important;
+	animation: none !important;
+}
+
+.card-title {
+	margin-top: 5px;
+}
+
+.card-title a {
+	color: black;
+	font-family: system-ui;
+}
+
+.author, .views {
+	font-size: 0.8rem;
+	color: grey;
+	margin: 0;
+	width: 100%;
+}
 

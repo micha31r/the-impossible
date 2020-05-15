@@ -37,6 +37,46 @@
 		</div>
 	</div>
 
+	<img class="dashed-line" src="{% static 'dashed_line.svg' %}">
+
+	<img class="shapes" src="{% static 'shape.svg' %}">
+
+	<div class="card">
+		<link rel="stylesheet" type="text/css" href="{% static 'idea/explore_page/card_like.css' %}">
+
+		<!-- Header image -->
+		<div class="card-img-wrapper">
+			<img src="{% static 'sunset.jpg' %}" alt="social_media">
+		</div>
+		
+		<!-- Like button -->
+		<button class="btn card-btn-circle circle-btn-like" style="display: inline; animation-name: hide-card-button;">
+			<svg id="like-svg-59" name="liked" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(252,52,104)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+		</button>
+
+		<!-- Add to collection button -->
+		<button class="btn card-btn-circle circle-btn-bookmark" style="display: inline; animation-name: hide-card-button;">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(240,165,0)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+		</button>
+
+		<div class="card-body">
+			<!-- Title -->
+			<h5 class="card-title"><a href="#">The Impossible</a></h5>
+
+			<!-- Short description -->
+			<h6 class="card-subtitle mb-2 text-muted">A platform to share ideas with the world!</h6>
+
+			<!-- Content -->
+			<p class="card-text">Set your ideas free by sharing them with others. Together, we can reshape the world!</p>
+
+			<!-- Author -->
+			<p class="author">By The Impossible</p>
+
+			<!-- Views -->
+			<p class="views">Views 1.4k</p>
+		</div>
+	</div>
+
 
 	<!-- Main wave -->
 	<svg class="wave" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320"><path fill="#FFF" fill-opacity="1" d="M0,224L34.3,213.3C68.6,203,137,181,206,176C274.3,171,343,181,411,186.7C480,192,549,192,617,170.7C685.7,149,754,107,823,90.7C891.4,75,960,85,1029,101.3C1097.1,117,1166,139,1234,128C1302.9,117,1371,75,1406,53.3L1440,32L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path></svg>
