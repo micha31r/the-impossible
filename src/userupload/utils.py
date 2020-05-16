@@ -32,6 +32,7 @@ def file_validate_or_remove(obj,referred_obj_field,expected_file_type):
 			file_pk = getattr(obj,globals()[referred_obj_field]).id
 			setattr(obj,globals()[referred_obj_field],None)
 			file = File.objects.filter(pk=file_pk).first()
+			file.file.delete(save=True)
 			file.delete()
 			return True
 	except:
@@ -39,6 +40,7 @@ def file_validate_or_remove(obj,referred_obj_field,expected_file_type):
 			for file in getattr(obj,globals()[referred_obj_field]).all():
 				if file_extension(file.file.name) not in SUPPORTED_FILE_TYPE[expected_file_type]:
 					getattr(obj,globals()[referred_obj_field]).remove(file)
+					file.file.delete(save=True)
 					file.delete()
 					return True
 		except: pass

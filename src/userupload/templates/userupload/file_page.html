@@ -22,13 +22,11 @@
 		<form method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 			<div class="form-wrapper">
-				<!-- Show error -->
+				<!-- Show errors -->
 				{% if error %}
-					<div class="flex-wrapper alert-wrapper">
-						<div class="alert alert-danger" role="alert">
-					  		{{ error }}
-						</div>
-					</div>
+					<div class="alert alert-danger" role="alert">
+		                {{ error|escape }}
+		            </div>
 				{% endif %}
 
 				{% include 'form_error.html' %}

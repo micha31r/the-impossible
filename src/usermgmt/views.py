@@ -76,7 +76,7 @@ def login_page(request):
 			return redirect(next_page or "home_page") # Redirect to the next page
 		else: 
 			# Display error if user is not found
-			ctx["error"] = SERVER_ERROR["LOGIN_NO_USER"]
+			ctx["error"] = SERVER_ERROR["LOGIN"]
 	login_form = LoginForm()
 	template_file = "usermgmt/login.html"
 	return render(request,template_file,ctx)
