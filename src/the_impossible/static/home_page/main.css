@@ -7,14 +7,13 @@ body {
 }
 
 /* Custom nav styles */
-/*
-nav {
-	border: 0;
-	background-color: rgba(0,0,0,0) !important;
-	position: relative !important;
-	transform: translateY(100%);
-	margin-top: -100px;
-}*/
+
+/* Change animation so link will NOT change color when hovered */
+@keyframes purple {
+	to {
+		color: rgb(255,255,255);
+	}
+}
 
 nav * {
 	color: white !important;
@@ -130,15 +129,6 @@ nav * {
 
 .logo-normal {
 	display: none;
-}
-
-.dropdown-item:hover {
-	animation: none !important;
-	text-decoration: underline;
-}
-
-.dropdown-item:not(:hover) {
-	animation: none !important;
 }
 
 /* Top Notification */
