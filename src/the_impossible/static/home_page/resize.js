@@ -38,9 +38,9 @@ function navbar_css() {
 		$(".intro").css("margin-bottom",`${$(".card:eq(1)").height() + 50}px`);
 	} else {
 		$(".earth").removeAttr("style");
-		$(".intro").removeAttr("style");
+		$(".intro").css("margin-bottom","");
 	}
-	
+
 	// Set and reset navbar css
 	if ($(window).width() > 575) {
 		$(".navbar").css(
@@ -57,6 +57,7 @@ function navbar_css() {
 		$(".intro").css("margin-top",`${$(".navbar").outerHeight() + 40}px`);
 	} else {
 		$(".navbar").removeAttr("style");
+		$(".intro").css("margin-top","40px");
 	}
 }
 

@@ -59,9 +59,6 @@ nav * {
 }
 
 @media only screen and (max-width: 770px) {
-	.intro {
-		/*margin-bottom: 100% !important;*/
-	}
 	.dashed-line {
 		min-width: 600px !important;
 	}
@@ -104,13 +101,22 @@ nav * {
 	.earth {
 		min-width: 200px !important;
 	}
-	.card {
+	.card-2 {
 		left: 40px !important;
+	}
+	.card {
+		right: 40px !important;
 		box-shadow: none !important;
 	}
 }
 
 @media only screen and (max-width: 400px) {
+	.card-2 {
+		display: none !important;
+	}
+	.card {
+		left: 40px !important;
+	}
 	.title {
 		font-size: 3rem !important;
 	}
@@ -251,6 +257,7 @@ nav * {
 	transform: translateY(-100%); 
 	right: 0;
 	min-width: 500px;
+	max-width: 700px;
 }
 
 .shape {
