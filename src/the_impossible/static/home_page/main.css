@@ -7,26 +7,87 @@ body {
 }
 
 /* Custom nav styles */
-
+/*
 nav {
 	border: 0;
 	background-color: rgba(0,0,0,0) !important;
 	position: relative !important;
 	transform: translateY(100%);
 	margin-top: -100px;
-}
+}*/
 
 nav * {
 	color: white !important;
 }
 
-.dropdown-item:hover {
-	animation: none !important;
-	text-decoration: underline;
+@media only screen and (max-width: 1190px) {
+	.shape {
+		width: 40% !important;
+		transform: translateY(-130%) !important; 
+	}
+	.card-2 {
+		transform: translateY(-140%) !important;
+	}
 }
 
-.dropdown-item:not(:hover) {
-	animation: none !important;
+@media only screen and (max-width: 990px) {
+	.shape {
+		display: none !important;
+	}
+}
+
+@media only screen and (max-width: 940px) {
+	.dashed-line {
+		width: 60% !important;
+	}
+	.card {
+		transform: translateY(-110%) !important;
+	}
+	.card-2 {
+		transform: translateY(-120%) !important;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	.dashed-line {
+		width: 60% !important;
+	}
+	.earth {
+		width: 10% !important;
+		transform: translateY(-200%) !important; 
+	}
+}
+
+@media only screen and (max-width: 770px) {
+	.intro {
+		/*margin-bottom: 100% !important;*/
+	}
+	.dashed-line {
+		min-width: 600px !important;
+	}
+	.earth {
+		right: 10% !important;
+		transform: translateY(0%) !important; 
+		opacity: 0.2 !important;
+	}
+	.card-2 {
+		right: 40% !important;
+	}
+}
+
+@media only screen and (max-width: 575px) {
+	nav * {
+		color: inherit !important;
+	}
+	.logo-normal {
+		display: inline !important;
+	}
+	.logo-white {
+		display: none !important;
+	}
+	.card-2 {
+		right: 30% !important;
+	}
 }
 
 @media only screen and (max-width: 550px) {
@@ -40,6 +101,13 @@ nav * {
 		margin-left: 0px !important;
 		margin-right: 0px !important;
 	}
+	.earth {
+		min-width: 200px !important;
+	}
+	.card {
+		left: 40px !important;
+		box-shadow: none !important;
+	}
 }
 
 @media only screen and (max-width: 400px) {
@@ -52,6 +120,19 @@ nav * {
 	.title {
 		font-size: 2.6rem !important;
 	}
+}
+
+.logo-normal {
+	display: none;
+}
+
+.dropdown-item:hover {
+	animation: none !important;
+	text-decoration: underline;
+}
+
+.dropdown-item:not(:hover) {
+	animation: none !important;
 }
 
 /* Top Notification */
@@ -98,26 +179,29 @@ nav * {
 	/*background: rgb(123,86,179);
 	background: linear-gradient(145deg, rgba(123,86,179,1) 0%, rgba(61,38,97,1) 69%, rgba(50,30,82,1) 100%);*/
 	background: rgb(68,81,148);
-background: linear-gradient(205deg, rgba(68,81,148,1) 0%, rgba(46,50,119,1) 53%, rgba(31,22,51,1) 100%);
+	background: linear-gradient(205deg, rgba(68,81,148,1) 0%, rgba(46,50,119,1) 53%, rgba(31,22,51,1) 100%);
 }
 
 .intro {
 	margin: 20px;
-	/* Margin top need to account for the navbar because its positioned absolute */
-	margin-top: 140px; 
+	margin-top: 40px; 
 	margin-bottom: 140px;
 }
 
 .title {
+	position: relative;
 	font-size: 4.5rem;
 	font-family: 'Arciform';
 	color: white;
+	z-index: 2;
 }
 
 .subtitle {
+	position: relative;
 	font-size: 1.5rem;
 	font-family: 'Arciform';
 	color: #8E87CC;
+	z-index: 2;
 }
 
 .getstarted-wrapper {
@@ -144,7 +228,7 @@ background: linear-gradient(205deg, rgba(68,81,148,1) 0%, rgba(46,50,119,1) 53%,
 	left: 0; 
 	transform: rotate(180deg) translateY(100%);
 	max-height: 400px;
-	min-height: 200px;
+	min-height: 250px;
 }
 
 /* About */
@@ -162,18 +246,30 @@ background: linear-gradient(205deg, rgba(68,81,148,1) 0%, rgba(46,50,119,1) 53%,
 /* SVG */
 
 .dashed-line {
-	width: 50%; 
+	width: 55%; 
 	position: absolute;
 	transform: translateY(-100%); 
 	right: 0;
 	min-width: 500px;
 }
 
-.shapes {
+.shape {
 	width: 50%; 
+	min-width: 400px;
+	max-width: 600px;
 	position: absolute;
 	transform: translateY(-100%); 
-	right: 0;
+	right: 5%;
+}
+
+.earth {
+	width: 40%; 
+	min-width: 300px;
+	max-width: 400px;
+	position: absolute;
+	transform: translateY(-150%); 
+	right: 20%;
+	opacity: 0.3;
 }
 
 /* Example card */
@@ -188,6 +284,32 @@ background: linear-gradient(205deg, rgba(68,81,148,1) 0%, rgba(46,50,119,1) 53%,
 	border: 0;
 	border-radius: 10px;
 	box-shadow: 0px 0px 30px rgb(10,10,70);
+}
+
+.card-2 {
+	transform: translateY(-160%);
+	right: 20%;
+}
+
+/* Text replacement */
+.text-line-text {
+	background-color: lightgrey;
+	height: 0.7rem;
+	width: 50%;
+	border-radius: 10px;
+	margin-bottom: 7px;
+}
+
+.text-line-text:nth-child(2) {
+	width: 40% ;
+}
+
+.text-line-text:nth-child(3) {
+	width: 60%;
+}
+
+.text-line-text:nth-child(4) {
+	width: 30%;
 }
 
 .card-img-wrapper {
