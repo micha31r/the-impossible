@@ -15,6 +15,8 @@ SERVER_ERROR = {
 
 	# File
 	"FILE"						:"Invalid file type",
+	"FILE_INVALID_DELETE"		:"Invalid file type, file is deleted",
+	"FILE_SIZE"					:"File size is too big",
 
 	# Other/unknown
 	"UNKNOWN"					:"We've encountered some issues (0v0)",

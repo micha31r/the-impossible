@@ -6,7 +6,7 @@ from .views import (
 
 urlpatterns = [
 	path(
-		'file/<slug:pk>/<str:referred_obj_name>/<int:referred_obj_pk>/<str:referred_obj_field>', 
+		'file/<slug:pk>/<str:referred_obj_name>/<int:referred_obj_pk>/<str:referred_obj_field>/<slug:expected_file_type>', 
 		file_page, 
 		name="userupload_file_page"
 	),

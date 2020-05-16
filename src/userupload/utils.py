@@ -4,11 +4,24 @@ from .models import SUPPORTED_FILE_TYPE, File
 def file_extension(name):
 	return name.split(".")[-1] 
 
-def file_is_valid(name):
+def file_is_valid(name,expected_type):
 	# Return file type
-	for k,v in SUPPORTED_FILE_TYPE.items():
-		if file_extension(name) in v:
-			return True
+	extension = file_extension(name)
+
+	# If given an expected file type
+	if expected_type != "None":
+		# Remove all symbols from text
+		expected_type = ''.join(ch for ch in expected_type if ch.isalnum())
+		if expected_type in SUPPORTED_FILE_TYPE.keys():
+			for v in SUPPORTED_FILE_TYPE[expected_type]:
+				if extension == v:
+					return True
+
+	# Else if file type is valid
+	else:
+		for k,v in SUPPORTED_FILE_TYPE.items():
+			if extension in v:
+				return True
 	return False
 
 # Remove foregin key or many to many reference and delete file

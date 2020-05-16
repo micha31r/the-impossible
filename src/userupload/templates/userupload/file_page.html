@@ -31,6 +31,8 @@
 					</div>
 				{% endif %}
 
+				{% include 'form_error.html' %}
+
 				{{ form.description }}
 				<!-- The real file input is hidden -->
 				<p hidden>{{ form.file }}</p>

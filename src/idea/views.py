@@ -116,7 +116,7 @@ def edit_page(request,pk):
 		file_deleted = file_validate_or_remove(idea,"body_img","image")
 		# Show error message
 		if file_deleted:
-			ctx["error"] = SERVER_ERROR["FILE"]
+			ctx["error"] = SERVER_ERROR["FILE_INVALID_DELETE"]
 
 		ctx["form"] = form = IdeaForm(request.POST or None)
 		# Set default values

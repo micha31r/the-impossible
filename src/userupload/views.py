@@ -19,7 +19,7 @@ from .forms import (
 )
 
 @login_required
-def file_page(request, pk, referred_obj_name, referred_obj_pk, referred_obj_field):
+def file_page(request, pk, referred_obj_name, referred_obj_pk, referred_obj_field, expected_file_type):
 	ctx = {} # Context variables
 	ctx["date"] = Date()
 	ctx["obj"] = obj = get_object_or_404(globals()[referred_obj_name], pk=referred_obj_pk)
@@ -38,8 +38,9 @@ def file_page(request, pk, referred_obj_name, referred_obj_pk, referred_obj_fiel
 					break
 
 		if form.is_valid():
-			if request.FILES.get("file"):
-				if file_is_valid(request.FILES.get("file").name):	
+			uploaded_file = request.FILES.get("file")
+			if uploaded_file:
+				if file_is_valid(uploaded_file.name,expected_file_type):	
 					data = form.cleaned_data
 
 					# Create file
@@ -47,11 +48,11 @@ def file_page(request, pk, referred_obj_name, referred_obj_pk, referred_obj_fiel
 						file = File.objects.create(
 							user=get_object_or_404(Profile,user=request.user),
 							description = data.get("description"),
-							file = request.FILES.get("file")
+							file = uploaded_file
 						)
-					else:
+					else: # replace file
 						file.description = form.cleaned_data.get("description")
-						file.file = request.FILES.get("file")
+						file.file = uploaded_file
 						file.save()
 					file.save()
 
@@ -63,8 +64,12 @@ def file_page(request, pk, referred_obj_name, referred_obj_pk, referred_obj_fiel
 						except: pass
 					obj.save()
 					return redirect(f"{referred_obj_name.lower()}_edit_page",pk=referred_obj_pk)
+				
+				# Invalid file type
 				else:
 					ctx["error"] = SERVER_ERROR["FILE"]
+
+			# If user didn't replace the old file
 			elif file.file:
 				return redirect(f"{referred_obj_name.lower()}_edit_page",pk=referred_obj_pk)
 	else:
