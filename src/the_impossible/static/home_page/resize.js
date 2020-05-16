@@ -31,6 +31,8 @@ auto_run.queue(
 	}
 );
 
+
+// Things todo with navbar
 function navbar_css() {
 	if ($(window).width() < 770) {
 		var height = $("#navbar-notification").outerHeight() + $(".navbar").outerHeight() + 50;
