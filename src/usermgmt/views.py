@@ -86,3 +86,12 @@ def logout_view(request):
     logout(request)
     return redirect("login_page")
 
+
+@login_required
+def my_page(request):
+	ctx = {}
+
+	template_file = "usermgmt/me.html"
+	return render(request,template_file,ctx)
+
+
