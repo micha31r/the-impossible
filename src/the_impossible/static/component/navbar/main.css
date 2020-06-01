@@ -1,7 +1,16 @@
 nav {
 	padding: 20px !important;
 	font-family: "Arciform", sans-serif;
+	border-bottom-style: solid;
+	border-color: rgb(225,175,30);
+	background-color: rgb(255,205,60);
 }
+
+@media only screen and (max-width: 576px) {
+	nav {
+		border-bottom-width: 2px;
+	}
+} 
 
 .navbar-brand {
 	font-size: 1.6rem;

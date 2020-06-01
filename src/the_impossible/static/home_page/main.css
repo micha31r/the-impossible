@@ -1,3 +1,11 @@
+nav {
+	z-index: 2;
+}
+
+footer {
+	display: none !important;
+}
+
 @media screen and (max-width: 500px) {
 	.explore {
 		border-radius: 20px !important;
@@ -24,4 +32,3 @@
 .explore span {
 	margin-right: 20px;
 }
-
