@@ -1,8 +1,5 @@
 # The Impossible
-**A platform to:**
-* share ideas and turn them into reality
-* find collaborators to work on projects
-* and much more
+**A platform to share ideas and turn them into reality**
 
 ## Preview
 
