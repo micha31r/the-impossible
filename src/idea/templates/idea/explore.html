@@ -22,7 +22,6 @@
 
 		<!-- Explore -->
 		<div class="explore-header">
-			<h5>Explore All</h5>
 			<h2>Weekly Ideas</h2>
 
 			<!-- Display time period -->
@@ -30,74 +29,72 @@
 
 			<!-- Change Week -->
 			{% if previous_week_num %}
-				<a href="{% url 'idea_explore_page' week_num=previous_week_num page_num=1 %}">Previous Week</a>
+				<button class="btn btn-week" onclick="window.location.href='{% url 'idea_explore_page' week_num=previous_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></button>
 			{% endif %}
 			{% if next_week_num >= 0 %}
-				<a href="{% url 'idea_explore_page' week_num=next_week_num page_num=1 %}">Next Week</a>
+				<button class="btn btn-week" onclick="window.location.href='{% url 'idea_explore_page' week_num=next_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
 			{% endif %}
 		</div>
 
 		<script type="text/javascript" src="{% static 'idea/show_button.js' %}"></script>
 		<!-- Display Ideas -->
 		<!-- https://tobiasahlin.com/blog/masonry-with-css/ -->
-		<div class="overflow-wrapper">
-			<div class="flex-container">
-				{% for idea in ideas %}
-					<div class="flex-wrapper">
-						<div class="card" id="card-{{ idea.pk }}">
+		<div class="flex-container">
+			{% for idea in ideas %}
+				<div class="flex-wrapper">
+					<div class="card" id="card-{{ idea.pk }}">
 
-							<!-- Header image -->
-							{% if idea.header_img.file %}
-								<div class="card-img-wrapper">
-									<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
-								</div>
-
-								<!-- Circle like button -->
-								{% include 'idea/card_like.html' %}
-							{% endif %}
-
-							<div class="card-body">
-								<!-- Show like button here if there is no header image -->
-								{% if idea.header_img.file == None %}
-									<!-- Like button and view count -->
-									{% include 'idea/like.html' %}
-								{% endif %}	
-
-								<!-- Title -->
-								<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
-
-								<!-- Short description -->
-								<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:50 }}</h6>
-
-								<!-- Content -->
-								<p class="card-text">{{ idea.full_description|truncatechars:100 }}</p>
-
-								<!-- Author -->
-								<p class="author">By {{ idea.author }}</p>
-
-								<!-- Views -->
-								<p class="views">Views {{ idea.viewed_user.count|ntt }}</p>
+						<!-- Header image -->
+						{% if idea.header_img.file %}
+							<div class="card-img-wrapper">
+								<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
 							</div>
+
+							<!-- Circle like button -->
+							{% include 'idea/card_like.html' %}
+						{% endif %}
+
+						<div class="card-body">
+							<!-- Show like button here if there is no header image -->
+							{% if idea.header_img.file == None %}
+								<!-- Like button and view count -->
+								{% include 'idea/like.html' %}
+							{% endif %}	
+
+							<!-- Title -->
+							<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
+
+							<!-- Short description -->
+							<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:50 }}</h6>
+
+							<!-- Content -->
+							<p class="card-text">{{ idea.full_description|truncatechars:100 }}</p>
+
+							<!-- Author -->
+							<p class="author">By {{ idea.author }}</p>
+
+							<!-- Views -->
+							<p class="views">Views {{ idea.viewed_user.count|ntt }}</p>
 						</div>
 					</div>
-				{% endfor %}
-				<span class="flex-wrapper break"></span>
-				<span class="flex-wrapper break"></span>
-				<span class="flex-wrapper break"></span>
-				<span class="flex-wrapper break"></span>
-				<span class="flex-wrapper break"></span>
-				<!-- Show message is no post -->
-				{% if ideas|length == 0 %}
-					<table class="no-content-text">
-					    <tr>
-					    	<td class="align-middle">
-								<h1><span>No</span>thing t<span>o</span> sh<span>o</span>w</h1>
-								<a href="{% url 'idea_create_view' %}">Click to add ur idea</a>
-							</td>
-						</tr>
-					</table>
-				{% endif %}
-			</div>
+				</div>
+			{% endfor %}
+			<span class="flex-wrapper break"></span>
+			<span class="flex-wrapper break"></span>
+			<span class="flex-wrapper break"></span>
+			<span class="flex-wrapper break"></span>
+			<span class="flex-wrapper break"></span>
+			<!-- Show message is no post -->
+			{% if ideas|length == 0 %}
+				<table class="no-content-text">
+				    <tr>
+				    	<td class="align-middle">
+							<h1><span>No</span>thing t<span>o</span> sh<span>o</span>w</h1>
+							<a href="{% url 'idea_create_view' %}">Click to add ur idea</a>
+						</td>
+					</tr>
+				</table>
+			{% endif %}
 		</div>
 
 		<!-- Page selector -->

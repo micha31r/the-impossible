@@ -27,7 +27,6 @@
 a:hover {
 	color: currentColor;
 	text-decoration: none;
-	background-color: #FFF !important;
 }
 
 .explore-header {
@@ -40,21 +39,11 @@ a:hover {
 	border-style: solid;
 }
 
-.overflow-wrapper {
-	min-height: 400px;
-	max-height: 100vh;
-	height: max-content;
-	overflow-y: scroll;
-	border-radius: 10px;
-/*	border-width: 1px;
-	border-style: solid;
-	border-color: #000;
-	border-radius: 5px;*/
-}
-
-.overflow-wrapper button {
-	margin-top: 2.5px;
-	margin-bottom: 2.5px;
+.btn-week {
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	background-color: #000;
 }
 
 /* https://tobiasahlin.com/blog/masonry-with-css/ */
@@ -62,13 +51,11 @@ a:hover {
     display: flex;
 	flex-flow: column wrap;
 	align-content: space-between;
-	/* Must be fixed height */
+	/* Must be fixed height for masonary to work */
 	height: 400px;
 	width: 100%;
 	overflow: scroll;
-	background-color: rgb(245,245,245);
-	padding: 15px;
-	border-radius: 5px;
+	/*background-color: rgb(255,205,60);*/
 }
 
 .no-content-text {
@@ -111,7 +98,7 @@ a:hover {
 	width: 100%;
 	border: 0;
 	border-radius: 10px;
-	box-shadow: 0px 10px 10px rgb(230,230,235);
+	box-shadow: 0px 10px 10px rgb(225,175,20);
 }
 
 .card-img-wrapper {
@@ -122,6 +109,7 @@ a:hover {
 }
 
 .card-img-wrapper img {
+	filter: grayscale(100%);
 	width: 100%;
 }
 
@@ -147,6 +135,7 @@ a:hover {
 }
 
 .header-img {
+	filter: grayscale(100%);
 	width: 100%;
 	height: var(--header-img-height);
 	margin-bottom: 20px;
@@ -261,11 +250,11 @@ a:hover {
 }
 
 .change-page .left-arrow, .change-page .right-arrow {
-	fill: rgb(95,70,235);
+	fill: #000;
 }
 
 .change-page-unavailable .left-arrow, .change-page-unavailable .right-arrow  {
-	fill: lightgrey;
+	fill: rgb(225,175,30);
 }
 
 .word-omission {

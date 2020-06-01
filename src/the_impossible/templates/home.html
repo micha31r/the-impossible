@@ -4,52 +4,11 @@
 {% block title %}
 	<title>The Impossible</title>
 {% endblock %}
-
-{% block before %}
-	<!-- <script type="text/javascript" src="{% static 'home_page/resize.js' %}"></script>
-	
-	<div id="navbar-notification">
-		<p>We are here to boost your creativity during COVID-19. Stay safe and be inspired!</p>
-		<button class="btn" id="navbar-notification-close" onclick="$('#navbar-notification').css('display','none');">
-			<svg id="navbar-notification-close-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-		</button>
-	</div> -->
-{% endblock %}
 	
 {% block content %}
 	<link rel="stylesheet" type="text/css" href="{% static 'home_page/main.css' %}">
 
-	<script type="text/javascript" src="{% static 'home_page/resize.js' %}"></script>
-
-	<div class="wrapper">
-		<svg class="black" viewBox="0 0 411 365" fill="none" xmlns="http://www.w3.org/2000/svg">
-		<path d="M200 0H411V365H0L200 0Z" fill="#000"/>
-		</svg>
-
-		<button class="btn explore" onclick="window.location.href='{% url 'idea_explore_page' week_num=date.week page_num=1  %}'">
-			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-		</button>
-
-		<div class="text">
-			<h1 class="header"><span>Ideas today,<br>reality</span><br>tomorrow</h1>
-			<br>
-			<h4>Set your ideas free and<br>let them grow</h4>
-		</div>
-	</div>
-
-	<!-- <div class="wrapper about-wrapper">
-		<div class="about">
-			<h1>About us</h1>
-			<p>
-				We are a Non-Profit organisation that allows your idea to be seen by creative eyes and turn into reality! It doesn't matter whether its a shower idea or something you have planned inside out. In our mind every idea is valuable and deserves to be uncovered.
-			</p>
-
-			<h1>Our mission</h1>
-			<p>
-				It's 2020, time to change and help the world. Ideas are important, sometimes minor ideas could have major impact on the world. Do you have any ideas that are locked up in your brain? If you can't turn them into reality, give others the oppotunity to do so! Modern Technology is advencing at an incredible rate thanks to opensource code. What would happen if our <u>ideas</u> were 'opensourced' and avaliable to everyone? Many people have incredible skills, but doesn't know what to build. In contrast, many thinker have ideas and visions but doesn't have the skills to execute it.
-
-				The Impossible is a platform where thinkers can share their ideas with the world and a place for makers to find insperation for their next project.
-			</p>
-		</div>
-	</div> -->
+	<button class="btn explore" onclick="window.location.href='{% url 'idea_explore_page' week_num=date.week page_num=1  %}'">
+		<span>Explore Fresh Ideas</span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+	</button>
 {% endblock %}
