@@ -68,13 +68,13 @@ a:hover {
 	font-family: 'Arciform', sans-serif;
 	font-size: 5rem;
 	line-height: 5rem;
-	color: lightgrey;
+	color: rgb(234,184,56);
 	word-break: break-all;
 	margin: 0;
 }
 
 .no-content-text span {
-	color: black;
+	color: rgb(224,174,46);
 }
 
 .no-content-text a {
@@ -84,7 +84,7 @@ a:hover {
 }
 
 .no-content-text a:hover {
-	color: #6886c5;
+	color: rgb(204,154,26);
 	background-color: rgba(255,255,255,0) !important;
 }
 
