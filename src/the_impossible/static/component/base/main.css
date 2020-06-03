@@ -7,13 +7,28 @@ body {
 	background-color: rgb(255,205,60);
 }
 
-.alert-danger {
+.alert {
 	font-size: 1.2rem;
+}
+
+.alert-black {
+	color: #FFF;
+	background-color: #000;
+}
+
+.alert-black svg, .alert-black img {
+	vertical-align: text-bottom;
+	margin-right: 5px;
 }
 
 .wrapper {
 	padding: 40px;
 	max-width: 1280px;
+}
+
+.section-seperator {
+	margin: 0;
+	border-top-width: 2px;
 }
 
 .btn-purple {
