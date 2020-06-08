@@ -13,6 +13,12 @@
 {% endblock %}
 
 {% block content %}
+
+	<!-- Show join newsletter if not registered -->
+	{% if not user.is_authenticated %}
+		{% include 'newsletter/join.html' %}
+	{% endif %}
+
 	<div class="wrapper">
 		<!-- Main css -->
 		<link rel="stylesheet" type="text/css" href="{% static 'idea/explore_page/main.css' %}">
@@ -137,10 +143,7 @@
 	<hr class="section-seperator">
 
 	<!-- Announcement -->
-	{% if user.is_authenticated %}
-		{% include 'newsletter/join.html' %}
-	{% else %}
-	{% endif %}
+	<!-- Stuff here -->
 	<hr class="section-seperator">
 
 	<!-- Discover -->
