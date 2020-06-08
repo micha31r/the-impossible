@@ -1,17 +1,19 @@
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'newsletter/main.css' %}">
+<div class="wrapper subscribe-wrapper">
+	<link rel="stylesheet" type="text/css" href="{% static 'newsletter/main.css' %}">
 
-<script type="text/javascript" src="{% static 'newsletter/ajax.js' %}"></script>
+	<script type="text/javascript" src="{% static 'newsletter/ajax.js' %}"></script>
 
-<h1>Don't want to missout?</h1>
-<p>Join our weekly mailing list for new and innovative ideas!</p>
-<p>Unsubscribe at any time!</p>
+	<h1>Don't want to missout?</h1>
+	<p>Join our weekly mailing list for new and innovative ideas!</p>
+	<p>Unsubscribe at any time!</p>
 
-<!-- status -->
-<p id="join-status" style="display:none;"></p>
+	<!-- status -->
+	<p id="join-status" style="display:none;"></p>
 
-<div id="join-form">
-	<input type="email" id="email" placeholder="Email address">
-	<button class="btn btn-light" onclick="join_newsletter_ajax($('#email').val());">Subscribe</button>
+	<div id="join-form">
+		<input type="email" id="email" placeholder="Email address">
+		<button class="btn btn-light" onclick="join_newsletter_ajax($('#email').val());">Subscribe</button>
+	</div>
 </div>

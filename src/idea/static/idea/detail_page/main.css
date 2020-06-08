@@ -1,8 +1,13 @@
+:root {
+	--margin-between-element: 20px;
+}
+
 .timestamp {
 	font-family: 'Varela Round', sans-serif;
-	margin-top: 20px;
+	margin-top: var(--margin-between-element);
 	width: 100%;
 	text-align: right;
+	color: rgb(186,145,37);
 }
 
 .timestamp p {
@@ -10,5 +15,5 @@
 }
 
 .timestamp .time {
-	color: grey;
+	color: #000;
 }

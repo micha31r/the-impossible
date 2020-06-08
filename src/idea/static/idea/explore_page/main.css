@@ -2,6 +2,7 @@
 	/* header image dimension */
 	--header-img-width: 290px;
 	--header-img-height: 168px;
+	--margin-between-element: 20px;
 }
 
 @keyframes show-card-button {
@@ -124,7 +125,7 @@ a:hover {
 
 .card-title a:hover {
 	text-decoration: underline;
-	color: #4d4c7d;
+	color: #777;
 }
 
 .author, .views {
@@ -138,20 +139,26 @@ a:hover {
 	filter: grayscale(100%);
 	width: 100%;
 	height: var(--header-img-height);
-	margin-bottom: 20px;
+	margin-bottom: var(--margin-between-element);
 }
 
 .horizontal-overflow-wrapper {
 	height: max-content;
 	overflow-x: scroll;
 	overflow-y: hidden;
+	border-radius: 10px;
 }
 
 .horizontal-container {
 	width: max-content;
+	background-color: #000;
+	padding: 15px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .discover-card {
+	/*background-color: #000;*/
 	vertical-align: top;
 	display: inline-block;
 	width: 300px;
@@ -162,7 +169,7 @@ a:hover {
 }
 
 .discover-card .card-title {
-	margin-bottom: 20px;
+	margin-bottom: var(--margin-between-element);
 }
 
 @media only screen and (min-width: 1700px) {
