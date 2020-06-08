@@ -21,6 +21,14 @@ body {
 	margin-right: 5px;
 }
 
+.alert-black-outline {
+	border-width: 3px;
+	border-color: #000;
+	border-style: solid;
+	color: #000;
+	text
+}
+
 .wrapper {
 	padding: 40px;
 	max-width: 1280px;
@@ -53,7 +61,6 @@ body {
 	color: #FFF;
 }
 
-.btn-bold {
-	border-width: 2px;
+.bold {
 	font-weight: bold;
 }

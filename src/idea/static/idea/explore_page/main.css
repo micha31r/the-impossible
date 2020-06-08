@@ -142,6 +142,14 @@ a:hover {
 	margin-bottom: var(--margin-between-element);
 }
 
+.discover-wrapper {
+	background-color: #000;
+}
+
+.discover-header {
+	color: white;
+}
+
 .horizontal-overflow-wrapper {
 	height: max-content;
 	overflow-x: scroll;
@@ -151,21 +159,18 @@ a:hover {
 
 .horizontal-container {
 	width: max-content;
-	background-color: #000;
-	padding: 15px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
 
 .discover-card {
-	/*background-color: #000;*/
 	vertical-align: top;
 	display: inline-block;
 	width: 300px;
 	height: max-content;
 	margin: 0;
-	padding-left: 5px;
-	padding-right: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .discover-card .card-title {

@@ -137,11 +137,14 @@
 	<hr class="section-seperator">
 
 	<!-- Announcement -->
-	{% include 'newsletter/join.html' %}
+	{% if user.is_authenticated %}
+		{% include 'newsletter/join.html' %}
+	{% else %}
+	{% endif %}
 	<hr class="section-seperator">
 
 	<!-- Discover -->
-	<div class="wrapper">
+	<div class="wrapper discover-wrapper">
 		<div class="discover-header">
 			<h1>Discover</h1>
 		</div>

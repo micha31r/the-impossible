@@ -1,19 +1,37 @@
 {% load static %}
 
-<div class="wrapper subscribe-wrapper">
+<!-- Blur the all elements behind the subscription form -->
+<div class="subscribe-blur"></div>
+
+<div class="subscribe-wrapper">
 	<link rel="stylesheet" type="text/css" href="{% static 'newsletter/main.css' %}">
+
+	<script type="text/javascript" src="{% static 'newsletter/resize.js' %}"></script>
 
 	<script type="text/javascript" src="{% static 'newsletter/ajax.js' %}"></script>
 
-	<h1>Don't want to missout?</h1>
-	<p>Join our weekly mailing list for new and innovative ideas!</p>
-	<p>Unsubscribe at any time!</p>
+	<div class="vertical-split-card">
+		<img class="vertical-card-img" src="{% static 'home_page/reflection.png' %}">
 
-	<!-- status -->
-	<p id="join-status" style="display:none;"></p>
+		<div class="vertical-card-body">
+			<h1>Don't want to missout?</h1>
+			<h4>More content? Yes please!</h4>
+			<br>
+			<p>Join our weekly mailing list for new and innovative ideas<br>Unsubscribe at any time!</p>
+			<br>
 
-	<div id="join-form">
-		<input type="email" id="email" placeholder="Email address">
-		<button class="btn btn-light" onclick="join_newsletter_ajax($('#email').val());">Subscribe</button>
+			<!-- status -->
+			<p id="join-status" style="display:none;"></p>
+
+			<div id="join-form">
+				<input type="email" id="email" placeholder="Email address">
+				<button class="btn btn-light join-newsletter-submit" onclick="join_newsletter_ajax($('#email').val());"><img src="{% static 'component/feather_svg/check.svg' %}"></button>
+			</div>
+		</div>
 	</div>
 </div>
+
+<button class="btn btn-light" id="hide-subscribe-form" onclick="$('.subscribe-blur').remove();$('.subscribe-wrapper').remove();"><img src="{% static 'component/feather_svg/x.svg' %}"></button>
+
+
+

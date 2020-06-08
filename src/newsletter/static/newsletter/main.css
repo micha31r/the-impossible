@@ -1,4 +1,73 @@
-.subscribe-wrapper {
-	/*background-color: #1d1d1d;*/
-	/*color: white;*/
+.subscribe-blur {
+	background-color: rgba(0,0,0,0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	backdrop-filter: blur(8px);
+	z-index: 2;
 }
+
+.subscribe-wrapper {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 3;
+}
+
+.subscribe-wrapper input {
+	border-radius: 500px;
+	border: 0;
+	font-size: 1rem;
+	padding: 20px;
+	background-color: #000;
+	color: #fff;
+}
+
+.subscribe-wrapper h4 {
+	opacity: 0.8;
+}
+
+.vertical-split-card {
+	width: max-content;
+	background-color: rgb(234,184,56);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.vertical-card-img {
+	display: inline-block;
+	height: 30vw;
+	vertical-align: top;
+}
+
+.subscribe-wrapper .vertical-card-body {
+	display: inline-block;
+	padding: 30px;
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+
+.join-newsletter-submit {
+	vertical-align: top;
+	padding: 20px;
+	border: 0;
+	border-radius: 500px;
+	margin-left: 5px;
+}
+
+.join-newsletter-submit svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+#hide-subscribe-form {
+	position: fixed;
+	z-index: 4;
+	top: 20px;
+	right: 20px;
+	border-radius: 500px;
+}
+
