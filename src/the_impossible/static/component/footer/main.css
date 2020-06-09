@@ -6,7 +6,7 @@
 
 footer {
 	height: max-content;
-	background-color: rgb(0,0,0,0);
+	background-color: transparent;
 	padding: var(--footer-padding);
 	padding-left: var(--footer-padding-side);
 	padding-right: var(--footer-padding-side);
@@ -27,7 +27,7 @@ footer table * {
 
 footer p {
 	margin: 0px;
-	background-color: none;
+	background-color: transparent;
 }
 
 footer button {
