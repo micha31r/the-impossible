@@ -1,4 +1,4 @@
-// This file should be linked to the end of the newsletter form in HTML
+// This file should be linked to the end of the HTML of the newsletter form 
 function newsletter_fade() {
 	$(".subscribe-blur, .subscribe-wrapper, #hide-subscribe-form").css("animation-name","newsletter-form-hide");
 }

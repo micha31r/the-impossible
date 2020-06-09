@@ -29,8 +29,7 @@ input, textarea {
 	border-style: solid;
 	border-color: grey;
 	border-width: 0px;
-	border-radius: 5px;
-	background-color: rgb(245,245,245);
+	border-radius: 10px;
 	margin-bottom: var(--margin-between-element);
 }
 
@@ -44,7 +43,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 
 input:focus, textarea:focus {
 	outline: none;
-	background-color: rgb(230,230,240);
+	background-color: rgb(255,240,200);
 }
 
 input {
@@ -66,13 +65,13 @@ textarea[name="full_description"] {
 
 select {
 	border: 0;
-	background-color: rgb(230,230,230);
+	background-color: #fff;
 	word-break: break-all;
 	height: 2rem;
 	margin-bottom: var(--margin-between-element);
 	/* Hide scrollbar for IE and Edge */
 	-ms-overflow-style: none;
-	border-radius: 20px;
+	border-radius: 10px;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -88,10 +87,8 @@ select[name="tags"], select[name="tags_remain"] {
 	min-width: 200px;
 	max-width: 300px;
 	padding: 5px;
-	border-radius: 5px;
 	overflow: auto;
 	min-width: 100px;
-	background-color: #E9E9E9;
 }
 
 select[name="tags"]:focus, select[name="tags_remain"]:focus {
@@ -185,8 +182,8 @@ img {
 	min-width: var(--header-img-height);
 	width: max-content;
 	height: var(--header-img-height);
-	border-radius: 5px;
-	background-color: rgb(235,235,235);
+	border-radius: 10px;
+	background-color: rgb(234,184,56);
 	margin-left: 5px;
 	margin-right: 5px;
 	overflow: hidden;
@@ -203,7 +200,7 @@ img {
 .file-button-add {
 	font-size: 5rem;
 	font-family: "Arciform", sans-serif;
-	color: rgb(190,190,190);
+	color: rgb(214,164,36);
 }
 
 #tooltip {
@@ -217,6 +214,8 @@ img {
 .no-content-text h1 {
 	font-size: 2rem;
 	line-height: 2rem;
+	font-family: "Arciform", sans-serif;
+	color: rgb(214,164,36);
 }
 
 /* Header image has a fixed size */
