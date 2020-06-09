@@ -34,11 +34,11 @@ input, textarea {
 }
 
 input::placeholder, textarea::placeholder {
-	color: rgb(190,190,190);
+	color: rgb(235,220,180);
 }
 
 input:focus::placeholder, textarea:focus::placeholder {
-	color: rgb(170,170,210);
+	color: rgb(215,200,160);
 }
 
 input:focus, textarea:focus {
@@ -187,8 +187,6 @@ img {
 
 .horizontal-container {
 	width: max-content;
-	padding-top: 20px;
-	padding-bottom: 20px;
 }
 
 .file-wrapper {
