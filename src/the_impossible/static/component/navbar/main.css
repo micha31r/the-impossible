@@ -7,8 +7,15 @@ nav {
 }
 
 @media only screen and (max-width: 576px) {
-	nav {
-		border-bottom-width: 2px;
+	.navbar-collapse {
+		border-radius: 10px;
+		border-width: 2px;
+		border-style: dashed;
+		border-color: rgb(224,174,46);
+		padding: 10px;
+	}
+	.nav-link {
+		padding: 0px !important;
 	}
 } 
 
