@@ -85,7 +85,7 @@ a:hover {
 
 .no-content-text a:hover {
 	color: rgb(204,154,26);
-	background-color: rgba(255,255,255,0) !important;
+	background-color: transparent !important;
 }
 
 .flex-wrapper {
@@ -274,6 +274,13 @@ a:hover {
 	border: 0;
 	padding: 0;
 	margin: 5px;
+	color: rgba(0,0,0,0.4);
+	background-color: transparent;
+}
+
+.page-link:hover {
+	background-color: transparent;
+	color: rgba(0,0,0,0.6);
 }
 
 .current-page-link {
