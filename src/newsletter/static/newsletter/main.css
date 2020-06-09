@@ -1,3 +1,25 @@
+@keyframes newsletter-form-show {
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+	to {
+		opacity: 1; 
+		visibility: visible;
+	}
+}
+
+@keyframes newsletter-form-hide {
+	from {
+		opacity: 1;
+		visibility: visible;
+	}
+	to {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
 .subscribe-blur {
 	background-color: rgba(0,0,0,0.5);
 	position: fixed;
@@ -7,6 +29,8 @@
 	height: 100vh;
 	backdrop-filter: blur(8px);
 	z-index: 2;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
 }
 
 .subscribe-wrapper {
@@ -15,6 +39,8 @@
 	left: 50%;
 	transform: translate(-50%,-50%);
 	z-index: 3;
+	animation-fill-mode: forwards;
+	animation-duration: 1s;
 }
 
 .subscribe-wrapper input {
@@ -69,5 +95,7 @@
 	top: 20px;
 	right: 20px;
 	border-radius: 500px;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
 }
 
