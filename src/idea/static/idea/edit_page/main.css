@@ -108,15 +108,16 @@ img {
 		width: 100% !important;
 		padding: 0px !important;
 		padding-bottom: var(--td-vertical-padding) !important;
-		border-bottom-width: 1px !important;
+		border-bottom-width: 2px !important;
 		border-style: solid !important;
+		border-color: rgba(0,0,0,0.1) !important;
 	}
 	#idea-setting {
 		padding: 0px !important;
 		padding-top: var(--td-vertical-padding) !important;
 		padding-bottom: var(--td-vertical-padding) !important;
-		border-bottom-width: 1px !important;
-		border-color: rgb(230,230,230);
+		border-bottom-width: 2px !important;
+		border-color: rgba(0,0,0,0.1) !important;
 		border-style: solid !important;
 	}
 	.header-img {
@@ -175,6 +176,19 @@ img {
 
 .save-changes {
 	padding-top: var(--margin-between-element);
+}
+
+.horizontal-overflow-wrapper {
+	height: max-content;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	border-radius: 10px;
+}
+
+.horizontal-container {
+	width: max-content;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .file-wrapper {
