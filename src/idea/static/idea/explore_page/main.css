@@ -30,6 +30,8 @@ a:hover {
 	text-decoration: none;
 }
 
+/* Explore */
+
 .explore-header {
 	margin-bottom: 50px;
 	padding: 5px;
@@ -138,6 +140,40 @@ a:hover {
 	width: 100%;
 }
 
+/* ------------ */
+
+/* Announcement */
+
+.announcement-wrapper {
+	background-color: rgb(224,174,46);
+}
+
+.announcement-wrapper div {
+	margin-left: 60px;
+	padding-left: 30px;
+	border-left-width: 5px;
+	border-style: solid;
+	border-color: black;
+}
+
+.announcement-wrapper h3 {
+	margin-right: 50px;
+	margin-bottom: 20px;
+}
+
+.announcement-wrapper h3, p {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.announcement-wrapper p {
+	margin: 0;
+}
+
+/* ------------ */
+
+/* Discover */
+
 .discover-wrapper {
 	background-color: #000;
 }
@@ -203,7 +239,6 @@ a:hover {
 }
 
 .discover-card .card-subtitle {
-	/*color: rgba(254,204,76,0.7)*/
 	color: #fff;
 	opacity: 0.7;
 }
@@ -217,6 +252,7 @@ a:hover {
 	opacity: 0.5;
 }
 
+/* ------------ */
 
 @media only screen and (min-width: 1700px) {
 	.flex-wrapper {
