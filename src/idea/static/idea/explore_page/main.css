@@ -40,6 +40,10 @@ a:hover {
 	border-style: solid;
 }
 
+.explore-date {
+	opacity: 0.8;
+}
+
 .btn-week {
 	width: 50px;
 	height: 50px;
@@ -134,26 +138,30 @@ a:hover {
 	width: 100%;
 }
 
-.header-img {
-	filter: grayscale(100%);
-	width: 100%;
-	height: var(--header-img-height);
-	margin-bottom: var(--margin-between-element);
-}
-
 .discover-wrapper {
 	background-color: #000;
 }
 
 .discover-header {
-	color: white;
+	color: #fff;
+}
+
+.discover-customise a {
+	color: rgb(254,204,76);
+}
+
+.discover-customise svg {
+	margin-left: 5px;
+}
+
+.discover-customise svg:hover {
+	transform: scaleX(-1);
 }
 
 .horizontal-overflow-wrapper {
 	height: max-content;
 	overflow-x: scroll;
 	overflow-y: hidden;
-	border-radius: 10px;
 }
 
 .horizontal-container {
@@ -162,7 +170,21 @@ a:hover {
 	padding-bottom: 20px;
 }
 
+.header-img {
+	filter: grayscale(100%);
+	width: 100%;
+	height: var(--header-img-height);
+}
+
+.img-border {
+	border-bottom-width: 4px !important;
+	border-style: solid;
+	border-color: rgba(254,204,76,0.7) !important;
+	margin-bottom: var(--margin-between-element);
+}
+
 .discover-card {
+	overflow: hidden;
 	vertical-align: top;
 	display: inline-block;
 	width: 300px;
@@ -175,6 +197,26 @@ a:hover {
 .discover-card .card-title {
 	margin-bottom: var(--margin-between-element);
 }
+
+.discover-card .card-title a {
+	color: #fff;
+}
+
+.discover-card .card-subtitle {
+	/*color: rgba(254,204,76,0.7)*/
+	color: #fff;
+	opacity: 0.7;
+}
+
+.discover-card .card-text {
+	color: #fff;
+	opacity: 0.4;
+}
+
+.discover-card .author {
+	opacity: 0.5;
+}
+
 
 @media only screen and (min-width: 1700px) {
 	.flex-wrapper {
