@@ -6,27 +6,29 @@
 {% endblock %}
 
 {% block content %}
-	<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/login_page/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/authenticate.css' %}"> 
 
-	<div class="wrapper row align-items-center h-100">
-		<div class="center">
-			<form method="post">
-		    	{% csrf_token %}
+	<div class="wrapper">
+		<div class="row align-items-center h-100">
+			<div class="center">
+				<form method="post">
+			    	{% csrf_token %}
 
-		    	<!-- Show error -->
-				{% if error %}
-					<div class="alert alert-danger" role="alert">
-				  		{{ error|escape }}
-					</div>
-				{% endif %}
+			    	<!-- Show error -->
+					{% if error %}
+						<div class="alert alert-danger" role="alert">
+					  		{{ error|escape }}
+						</div>
+					{% endif %}
 
-				{% include 'form_error.html' %}
+					{% include 'form_error.html' %}
 
-				{{ login_form.username }}
-				{{ login_form.password }}
-				<button class="btn btn-black bold" type="submit">Login</button>
-				<a class="alt-auth-method" href="{% url 'signup_page' %}">Not Registered?</a>
-			</form>
+					{{ login_form.username }}
+					{{ login_form.password }}
+					<button class="btn btn-black bold" type="submit">Login</button>
+					<a class="alt-auth-method" href="{% url 'signup_page' %}">Not Registered?</a>
+				</form>
+			</div>
 		</div>
 	</div>
 {% endblock %}

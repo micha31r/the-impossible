@@ -15,6 +15,7 @@ footer {
 
 .wrapper {
 	height: 100vh;
+	min-height: 500px;
 }
 
 .center {
