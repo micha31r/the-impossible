@@ -9,7 +9,7 @@ function explore_height(recursion) {
 		var new_height = element.clientHeight += 100;
 		element.style.height = `${new_height}px`;
 		// Repeat process
-		auto_height(true);
+		explore_height(true);
 	} 
 }
 
