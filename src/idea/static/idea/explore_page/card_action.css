@@ -38,3 +38,7 @@
 *[name="liked"] {
 	fill: rgb(252,52,104);
 }
+
+*[name="starred"] {
+	fill: rgb(240,165,0);
+}

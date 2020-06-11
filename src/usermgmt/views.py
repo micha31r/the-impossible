@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -10,6 +10,10 @@ from .forms import (
 
 from .models import (
 	Profile,
+)
+
+from idea.models import (
+	Idea
 )
 
 from the_impossible.utils import *
@@ -86,12 +90,14 @@ def logout_view(request):
     logout(request)
     return redirect("login_page")
 
-
 @login_required
-def my_page(request):
+def account_dashboard_page(request):
 	ctx = {}
-
-	template_file = "usermgmt/me.html"
+	ctx["date"] = Date()
+	profile = get_object_or_404(Profile,user=request.user)
+	qs = Idea.objects.filter(liked_user=profile)
+	print(qs)
+	template_file = "usermgmt/account_dashboard.html"
 	return render(request,template_file,ctx)
 
 

@@ -169,16 +169,39 @@ def like_view(request):
 			user = User.objects.filter(username=username).first()
 			profile = Profile.objects.filter(user=user).first()
 			# Add like
-			if profile in idea.liked_user.all(): 	# -|
-				data["action"] = "unliked"			# Unliked
-				idea.liked_user.remove(profile) 	# -|
-			else: 									# -|			
-				idea.liked_user.add(profile)		# Liked
-				data["action"] = "liked"			# -|
-			data['updated_like_count'] = idea.liked_user.count()
+			if profile in idea.liked_user.all(): 	
+				data["action"] = "unliked"			
+				idea.liked_user.remove(profile) 	
+			else: 											
+				idea.liked_user.add(profile)		
+				data["action"] = "liked"			
 		else:
 			raise CustomError("AjaxInvalid")
 	except:
 		data['failed'] = True
 	return JsonResponse(data)
 
+def star_view(request):
+	data = {}
+	try:
+		# Check if request is send by the correct user
+		if request.GET.get('encrypted_string') == encrypt(request.GET.get('username')) and request.is_ajax():
+			# Get object pk
+			pk = request.GET.get('pk', None)
+			username = request.GET.get('username', None)
+			# Retrieve objects
+			idea = Idea.objects.filter(pk=pk).first()
+			user = User.objects.filter(username=username).first()
+			profile = Profile.objects.filter(user=user).first()
+			# Add like
+			if profile in idea.starred_user.all(): 	
+				data["action"] = "unstarred"		
+				idea.starred_user.remove(profile)
+			else: 											
+				idea.starred_user.add(profile)		
+				data["action"] = "starred"			
+		else:
+			raise CustomError("AjaxInvalid")
+	except:
+		data['failed'] = True
+	return JsonResponse(data)

@@ -51,6 +51,7 @@ class Idea(models.Model):
 	# Likes and views
 	viewed_user = models.ManyToManyField(Profile, related_name="viewed", blank=True)
 	liked_user = models.ManyToManyField(Profile, related_name="liked", blank=True)
+	starred_user = models.ManyToManyField(Profile, related_name="starred", blank=True)
 	
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
