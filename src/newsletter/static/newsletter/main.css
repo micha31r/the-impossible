@@ -59,7 +59,7 @@
 .vertical-split-card {
 	width: max-content;
 	background-color: rgb(234,184,56);
-	border-radius: 10px;
+	border-radius: 20px;
 	overflow: hidden;
 }
 
@@ -74,6 +74,10 @@
 	padding: 30px;
 	padding-bottom: 50px;
 	padding-top: 50px;
+}
+
+.vertical-card-body p {
+	margin-right: 0;
 }
 
 .join-newsletter-submit {
@@ -98,4 +102,48 @@
 	animation-duration: 1s;
 	animation-fill-mode: forwards;
 }
+
+@media only screen and (max-width: 770px) {
+	.vertical-split-card {
+		max-width: 90vw;
+	}
+	.vertical-card-img {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.vertical-card-body {
+		padding: 30px !important;
+	}
+	.vertical-split-card h1 {
+		font-size: 1.8rem;
+	}
+	.vertical-split-card h4 {
+		font-size: 1.3rem;
+	}
+	.subscribe-wrapper input {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		background-color: #000;
+	}
+	.join-newsletter-submit {
+		padding: 15px;
+	}
+}
+
+@media only screen and (max-width: 390px) {
+	.subscribe-wrapper input {
+		width: 100%;
+	}
+	.join-newsletter-submit {
+		padding: 10px;
+		display: block;
+		width: 100%;
+		margin: 0;
+		margin-top: 10px;
+	}
+}
+
+@media only screen and (max-width: 390px) {
 
