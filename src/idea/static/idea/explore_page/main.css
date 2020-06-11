@@ -103,15 +103,14 @@ a:hover {
 .card {
 	width: 100%;
 	border: 0;
-	border-radius: 10px;
-	box-shadow: 0px 10px 10px rgb(225,175,20);
+	border-radius: 20px;
+	box-shadow: 0px 10px 15px rgb(215,165,10);
+	overflow: hidden;
 }
 
 .card-img-wrapper {
 	height: 120px;
 	overflow: hidden;
-	border-top-right-radius: 10px; 
-	border-top-left-radius: 10px;
 }
 
 .card-img-wrapper img {
@@ -145,28 +144,31 @@ a:hover {
 /* Announcement */
 
 .announcement-wrapper {
-	background-color: rgb(224,174,46);
+	/*background-color: rgb(234,184,56);*/
 	padding-left: 80px;
 }
 
 .announcement-wrapper div {
 	width: max-content;
 	max-width: 100%;
+	padding: 40px;
 	padding-left: 50px;
 	border-left-width: 5px;
 	border-style: solid;
 	border-color: black;
 }
 
-.announcement-wrapper h3, h6 {
+.announcement-wrapper h3, p {
 	margin-right: 50px;
 	margin-bottom: 20px;
 	display: inline-block;
 	vertical-align: top;
 }
 
-.announcement-wrapper h6 {
+.announcement-wrapper p {
+	max-width: 600px;
 	margin: 0;
+	font-size: 1.2rem;
 }
 
 .announcement-wrapper button {
