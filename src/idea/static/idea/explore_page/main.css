@@ -146,28 +146,33 @@ a:hover {
 
 .announcement-wrapper {
 	background-color: rgb(224,174,46);
+	padding-left: 80px;
 }
 
 .announcement-wrapper div {
-	margin-left: 60px;
-	padding-left: 30px;
+	width: max-content;
+	max-width: 100%;
+	padding-left: 50px;
 	border-left-width: 5px;
 	border-style: solid;
 	border-color: black;
 }
 
-.announcement-wrapper h3 {
+.announcement-wrapper h3, h6 {
 	margin-right: 50px;
 	margin-bottom: 20px;
-}
-
-.announcement-wrapper h3, p {
 	display: inline-block;
 	vertical-align: top;
 }
 
-.announcement-wrapper p {
+.announcement-wrapper h6 {
 	margin: 0;
+}
+
+.announcement-wrapper button {
+	display: block;
+	margin-top: 15px;
+	padding: 0;
 }
 
 /* ------------ */
@@ -184,6 +189,7 @@ a:hover {
 
 .discover-customise a {
 	color: rgb(254,204,76);
+	font-size: 1.2rem;
 }
 
 .discover-customise svg {

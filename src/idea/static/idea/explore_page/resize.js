@@ -1,4 +1,4 @@
-function auto_height(recursion) {
+function explore_height(recursion) {
 	var element = document.getElementsByClassName("flex-container")[0];
 	// Reset element height
 	if (!recursion) { 
@@ -13,12 +13,25 @@ function auto_height(recursion) {
 	} 
 }
 
+function announcement_padding() {
+	var extra = $(".announcement-wrapper").outerWidth() - $(".announcement-wrapper div").outerWidth();
+	if (extra > 0) {
+		$(".announcement-wrapper").css("padding-left",`${extra/2}px`);
+	} else {
+		$(".announcement-wrapper").css("padding-left",`40px`);
+	}
+}
+
 auto_run.queue(
 	function() {
-		auto_height();
+		explore_height();
+		announcement_padding();
 		window.addEventListener(
 			"resize", 
-			function(){ auto_height(); }
+			function() {
+				explore_height(); 
+				announcement_padding();
+			}
 		);
 	}
 );
