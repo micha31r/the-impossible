@@ -13,19 +13,25 @@ footer {
 	}
 }
 
+.wrapper {
+	height: 100vh;
+}
+
+.center {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
 .explore {
-	width: 80%;
-	max-width: 400px;
+	width: max-content;
+	max-width: 85vw;
 	font-family: "Arciform", sans-serif;
-	position: absolute;
 	background-color: #FFF;
 	padding: 30px;
 	font-size: 2rem;
 	line-height: 2rem;
 	border-radius: 500px;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
 	box-shadow: 0px 0px 30px rgb(225,165,20);
 }
 

@@ -8,7 +8,11 @@
 {% block content %}
 	<link rel="stylesheet" type="text/css" href="{% static 'home_page/main.css' %}">
 
-	<button class="btn explore" onclick="window.location.href='{% url 'idea_explore_page' week_num=date.week page_num=1  %}'">
-		<span>Explore Fresh Ideas</span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-	</button>
+	<div class="wrapper row align-items-center h-100">
+		<div class="center">
+			<button class="btn explore" onclick="window.location.href='{% url 'idea_explore_page' week_num=date.week page_num=1  %}'">
+				<span>Explore Fresh Ideas</span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+			</button>
+		</div>
+	</div>
 {% endblock %}

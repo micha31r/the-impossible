@@ -1,0 +1,34 @@
+input {
+	display: block;
+	border: 0;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: rgb(255,240,200);
+	font-size: 1.3rem;
+	margin-bottom: 10px;
+}
+
+input::placeholder {
+	color: rgb(215,200,160);
+}
+
+.wrapper {
+	height: 100vh;
+}
+
+.center {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.alt-auth-method {
+	display: block;
+	color: rgba(0,0,0,0.4);
+	margin-top: 10px;
+}
+
+.alt-auth-method:hover {
+	color: rgba(0,0,0,0.6);
+	text-decoration: none;
+}
