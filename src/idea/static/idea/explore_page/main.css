@@ -144,13 +144,14 @@ a:hover {
 
 .announcement-wrapper {
 	/*background-color: rgb(234,184,56);*/
-	padding-left: 80px;
+	padding-left: 40px;
 }
 
 .announcement-wrapper div {
 	width: max-content;
 	max-width: 100%;
 	padding: 40px;
+	padding-right: 0;
 	padding-left: 50px;
 	border-left-width: 5px;
 	border-style: solid;
@@ -318,6 +319,12 @@ a:hover {
 		margin-bottom: 5%;
 	}
 	.flex-wrapper:nth-of-type(2n) { order: 1; }
+}
+
+@media only screen and (max-width: 430px) {
+	.announcement-wrapper div {
+		padding-left: 20px;
+	}
 }
 
 /* Force new columns */
