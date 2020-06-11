@@ -60,7 +60,6 @@ a:hover {
 	/* Must be fixed height for masonary to work */
 	height: 400px;
 	width: 100%;
-	overflow: scroll;
 	/*background-color: rgb(255,205,60);*/
 }
 
