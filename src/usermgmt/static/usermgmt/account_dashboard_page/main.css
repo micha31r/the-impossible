@@ -1,19 +1,28 @@
-.user-info-container {
-	width: 100%;
-	max-width: 600px;
-	padding: 20px;
-	margin-bottom: 40px;
-	border-radius: 20px;
-	border-width: 2px;
-	border-color: rgba(0,0,0,0.1);
-	border-style: dashed;
+body {
+	background-color: #111;
 }
 
-.user-info-container div {
-	background-color: #fff;
-	padding: 20px;
-	border-radius: 20px;
-	box-shadow: 0px 10px 15px rgb(215,165,10);
+footer {
+	background-color: rgb(255,205,60) !important;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+} 
+
+.wrapper {
+	background-color: #111;
+}
+
+/* User info */
+
+.user-info {
+	background-color: rgb(255,205,60);
+	border-bottom-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+}
+
+.user-info-container {
+	width: 100%;
+	max-width: 500px;
 }
 
 .username {
@@ -21,7 +30,7 @@
 }
 
 .fullname {
-	color: rgba(0,0,0,0.5);
+	color: rgba(0,0,0,0.4);
 	margin-bottom: 15px;
 }
 
@@ -40,9 +49,15 @@
 	text-decoration: none;
 }
 
-.joined-timestamp {
+.joined-timestamp, .daily-limit  {
+	display: inline-block;
 	margin-bottom: 0;
+	margin-right: 30px;
 	font-family: "Arciform", sans-serif;
+}
+
+.daily-limit {
+	margin-right: 0;
 }
 
 .edit-profile {
@@ -51,3 +66,59 @@
 	margin-top: 20px;
 }
 
+/* ----------- */
+
+/* Masonary ideas */
+
+.header {
+	color: #444;
+	margin-left: 50px;
+	font-family: "Arciform", sans-serif;
+	display: block;
+	width: max-content;
+	padding: 20px;
+	padding-bottom: 10px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-width: 2px;
+	border-bottom-width: 0;
+	border-color: rgba(255,255,255,0.2);
+	border-style: dashed;
+}
+
+.view-all-idea {
+	display: block;
+	text-align: right;
+	margin-right: 20px;
+	margin-top: 5px;
+	color: rgb(184,134,6);
+}
+
+.view-all-idea:hover {
+	text-decoration: none;
+	color: rgb(254,204,76);
+}
+
+.flex-container {
+	border-radius: 20px;
+	border-width: 2px;
+	border-color: rgba(255,255,255,0.2);
+	border-style: dashed;
+	padding: 20px;
+}
+
+.card {
+	box-shadow: 0px 10px 15px #000 !important;
+}
+
+.no-content-text h1, .no-content-text a, .no-content-text span {
+	color: #222 !important;
+}
+
+@media only screen and (max-width: 600px) {
+	.header {
+		display: none;
+	}
+}
+
+/* ----------- */

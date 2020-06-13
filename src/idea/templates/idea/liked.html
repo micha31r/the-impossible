@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'idea/explore_page/main.css' %}">
 
 <div class="liked-idea-container">
-	{% for idea in liked_idea %}
+	{% for idea in liked_ideas %}
 		<div class="card-mini">
 			<!-- Title -->
 			<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>

@@ -95,11 +95,12 @@ def account_dashboard_page(request):
 	ctx = {}
 	ctx["date"] = Date()
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
-	ctx["liked_idea"] = liked_idea = Idea.objects.filter(liked_user=profile)[:5]
-	ctx["starred_idea"] = starred_idea = Idea.objects.filter(starred_user=profile)[:5]
+	ctx["liked_ideas"] = liked_ideas = Idea.objects.filter(liked_user=profile)[:5]
+	ctx["starred_ideas"] = starred_ideas = Idea.objects.filter(starred_user=profile)[:5]
 	# 5 Recently viewed ideas
-	ctx["viewed_idea"] = viewed_idea = Idea.objects.filter(viewed_user=profile)[:10]
-	print(liked_idea)
+	ctx["viewed_ideas"] = viewed_ideas = Idea.objects.filter(viewed_user=profile)[:10]
+	# Ideas created by this user
+	ctx["masonary_ideas"] = masonary_ideas = Idea.objects.filter(author=profile).order_by("timestamp").reverse()[:20]
 
 	template_file = "usermgmt/account_dashboard.html"
 	return render(request,template_file,ctx)
