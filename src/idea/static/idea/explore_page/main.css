@@ -5,26 +5,6 @@
 	--margin-between-element: 20px;
 }
 
-@keyframes show-card-button {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-		display: block;
-	}
-}
-
-@keyframes hide-card-button {
-	from {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
-		display: none;
-	}
-}
-
 a:hover {
 	color: currentColor;
 	text-decoration: none;
@@ -51,94 +31,6 @@ a:hover {
 	height: 50px;
 	border-radius: 100%;
 }
-
-/* https://tobiasahlin.com/blog/masonry-with-css/ */
-.flex-container {
-    display: flex;
-	flex-flow: column wrap;
-	align-content: space-between;
-	/* Must be fixed height for masonary to work */
-	height: 400px;
-	width: 100%;
-	/*background-color: rgb(255,205,60);*/
-}
-
-.no-content-text {
-	width:100%;
-	height:100%; 
-	text-align: center;
-}
-
-.no-content-text h1, .no-content-text a {
-	font-family: 'Arciform', sans-serif;
-	font-size: 5rem;
-	line-height: 5rem;
-	color: rgb(234,184,56);
-	word-break: break-all;
-	margin: 0;
-}
-
-.no-content-text span {
-	color: rgb(224,174,46);
-}
-
-.no-content-text a {
-	font-size: 2rem;
-	line-height: 2rem;
-	transition: color 0.4s;
-}
-
-.no-content-text a:hover {
-	color: rgb(204,154,26);
-	background-color: transparent !important;
-}
-
-.flex-wrapper {
-	position: relative;
-	margin-bottom: 2%;
-	box-sizing: border-box;
-}
-
-.card {
-	width: 100%;
-	border: 0;
-	border-radius: 20px;
-	box-shadow: 0px 10px 15px rgb(215,165,10);
-	overflow: hidden;
-}
-
-.card-img-wrapper {
-	height: 120px;
-	overflow: hidden;
-}
-
-.card-img-wrapper img {
-	filter: grayscale(100%);
-	width: 100%;
-}
-
-.card-title {
-	margin-top: 5px;
-}
-
-.card-title a {
-	color: black;
-	transition: color 0.3s;
-}
-
-.card-title a:hover {
-	text-decoration: underline;
-	color: #555;
-}
-
-.author, .views {
-	font-size: 0.8rem;
-	color: grey;
-	margin: 0;
-	width: 100%;
-}
-
-/* ------------ */
 
 /* Announcement */
 
@@ -262,78 +154,10 @@ a:hover {
 
 /* ------------ */
 
-@media only screen and (min-width: 1700px) {
-	.flex-wrapper {
-		width: 15%;
-	}
-	.flex-wrapper:nth-of-type(6n+1) { order: 1; }
-	.flex-wrapper:nth-of-type(6n+2) { order: 2; }
-	.flex-wrapper:nth-of-type(6n+3) { order: 3; }
-	.flex-wrapper:nth-of-type(6n+4) { order: 4; }
-	.flex-wrapper:nth-of-type(6n+5) { order: 5; }
-	.flex-wrapper:nth-of-type(6n) { order: 6; }
-}
-
-@media only screen and (max-width: 1699px) {
-	.flex-wrapper {
-		width: 19%;
-	}
-	.flex-wrapper:nth-of-type(5n+1) { order: 1; }
-	.flex-wrapper:nth-of-type(5n+2) { order: 2; }
-	.flex-wrapper:nth-of-type(5n+3) { order: 3; }
-	.flex-wrapper:nth-of-type(5n+4) { order: 4; }
-	.flex-wrapper:nth-of-type(5n) { order: 5; }
-}
-
-@media only screen and (max-width: 1399px) {
-	.flex-wrapper {
-		width: 24%;
-	}
-	.flex-wrapper:nth-of-type(4n+1) { order: 1; }
-	.flex-wrapper:nth-of-type(4n+2) { order: 2; }
-	.flex-wrapper:nth-of-type(4n+3) { order: 3; }
-	.flex-wrapper:nth-of-type(4n) { order: 4; }
-}
-
-@media only screen and (max-width: 1099px) {
-	.flex-wrapper {
-		width: 32%;
-	}
-	.flex-wrapper:nth-of-type(3n+1) { order: 1; }
-	.flex-wrapper:nth-of-type(3n+2) { order: 2; }
-	.flex-wrapper:nth-of-type(3n) { order: 3; }
-}
-
-@media only screen and (max-width: 799px) {
-	.flex-wrapper {
-		width: 48%;
-		margin-bottom: 3%;
-	}
-	.flex-wrapper:nth-of-type(2n+1) { order: 1; }
-	.flex-wrapper:nth-of-type(2n) { order: 2; }
-}
-
-@media only screen and (max-width: 499px) {
-	.flex-wrapper {
-		width: 100%;
-		margin-bottom: 5%;
-	}
-	.flex-wrapper:nth-of-type(2n) { order: 1; }
-}
-
 @media only screen and (max-width: 430px) {
 	.announcement-wrapper div {
 		padding-left: 20px;
 	}
-}
-
-/* Force new columns */
-.break {
-  flex-basis: 100%;
-  width: 0;
-  border: none;
-  margin: 0;
-  padding: 0;
 }
 
 .page-link-wrapper {

@@ -2,7 +2,6 @@
 	width: 60%;
 	max-width: 1200px;
 	min-width: 700px;
-	/*margin: auto;*/
 	padding: 20px;
 	padding-bottom: 0;
 	border-radius: 20px;
@@ -16,7 +15,7 @@
 	margin-bottom: 20px;
 	border-radius: 20px;
 	box-shadow: 0px 10px 15px rgb(215,165,10);
-	background-color: #fff;
+	background-color: rgba(255,255,255,0.7);
 	color: #000;
 }
 
@@ -24,8 +23,5 @@
 	.liked-idea-container {
 		width: 100%;
 		min-width: 0px;
-	}
-	.liked-idea-wrapper {
-		text-align: left;
 	}
 }

@@ -9,15 +9,19 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/account_dashboard_page/main.css' %}">
 
-	<div class="wrapper user-info-wrapper">
+	<div class="wrapper">
 		<div class="user-info-container">
-			<h1 class="username">{{ user.username }}</h1>
-			<h4 class="fullname">{{ user.get_full_name }}</h4>
-			<p class="bio">{{ profile.bio }}</p>
-			<a class="website" href="{{ profile.website }}">{{ profile.website }}</a>
-			<p class="joined-timestamp">{{ profile.timestamp }}</p>
+			<div>
+				<h1 class="username">@{{ user.username }}</h1>
+				<h5 class="fullname">{{ user.get_full_name }}</h5>
+				<p class="bio">{{ profile.bio }}</p>
+				<a class="website" href="{{ profile.website }}">{{ profile.website }}</a>
+				<p class="joined-timestamp"><img src="{% static 'component/feather_svg/user-plus.svg' %}"> Joined {{ profile.timestamp.date }}</p>
+				<p class="joined-timestamp"><img src="{% static 'component/feather_svg/edit.svg' %}"> Daily Limit {{ profile.daily_limit }}</p>
+				<!-- Edit button -->
+				<button class="btn btn-warning bold edit-profile" onclick="window.location.href='#'">Edit Profile</button>
+			</div>
 		</div>
+		{% include 'idea/liked_idea.html' %}
 	</div>
-
-	{% include 'idea/liked_idea.html' %}
 {% endblock %}

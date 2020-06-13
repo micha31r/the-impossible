@@ -1,9 +1,9 @@
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'idea/explore_page/card_action.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'idea/card_action/full.css' %}">
 
 <!-- Ajax -->
-<script type="text/javascript" src="{% static 'idea/ajax.js' %}"></script>
+<script type="text/javascript" src="{% static 'idea/card_action/ajax.js' %}"></script>
 
 <!-- Like button -->
 <button class="btn card-btn-circle circle-btn-like" id="card-like-{{ idea.pk }}" onclick="{% if user.is_authenticated %}like_idea_ajax('{{ idea.pk }}','{{ user.username }}','{{ encrypted_string }}'); {% else %} window.location.href='{% url 'login_page' %}' {% endif %}">

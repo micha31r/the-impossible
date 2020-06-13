@@ -47,6 +47,10 @@
 	fill: rgb(252,52,104);
 }
 
+*[name="starred"] {
+	fill: rgb(240,165,0);
+}
+
 .text-seperator {
 	margin-left: 10px;
 	margin-right: 10px;

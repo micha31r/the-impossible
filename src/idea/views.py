@@ -54,7 +54,7 @@ def explore_page(request,week_num,page_num):
 	ctx["max_page"] = ideas.num_pages
 	try: current_page = ideas.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
-	ctx["ideas"] = current_page 
+	ctx["masonary_ideas"] = current_page 
 
 	# Discover Section
 	# Retrieve all ideas from the past 6 months
