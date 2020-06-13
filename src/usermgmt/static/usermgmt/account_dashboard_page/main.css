@@ -53,7 +53,7 @@ a:hover {
 	color: rgb(212,12,164);
 }
 
-.joined-timestamp, .daily-limit  {
+.joined-timestamp, .daily-limit, .followers, .following {
 	display: inline-block;
 	margin-bottom: 0;
 	margin-right: 30px;
@@ -67,6 +67,9 @@ a:hover {
 .edit-profile {
 	display: block;
 	border-radius: 200px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 	margin-top: 20px;
 }
 
@@ -74,11 +77,13 @@ a:hover {
 
 /* Masonary ideas */
 
+.header-wrapper {
+	margin-left: 30px;
+}
+
 .header {
-	color: #444;
-	margin-left: 50px;
 	font-family: "Arciform", sans-serif;
-	display: block;
+	display: inline-block;
 	width: max-content;
 	padding: 20px;
 	padding-bottom: 10px;
@@ -88,6 +93,23 @@ a:hover {
 	border-bottom-width: 0;
 	border-color: rgba(255,255,255,0.2);
 	border-style: dashed;
+}
+
+.header a {
+	color: #444;
+}
+
+.header a:hover {
+	color: #555;
+}
+
+.header-current {
+	border-color: #666;
+	border-style: solid;
+}
+
+.header-current a {
+	color: #666;
 }
 
 .view-all-idea {
@@ -105,8 +127,8 @@ a:hover {
 .flex-container {
 	border-radius: 20px;
 	border-width: 2px;
-	border-color: rgba(255,255,255,0.2);
-	border-style: dashed;
+	border-color: #666;
+	border-style: solid;
 	padding: 20px;
 }
 
@@ -118,10 +140,17 @@ a:hover {
 	color: #222 !important;
 }
 
-@media only screen and (max-width: 600px) {
-	.header {
+@media only screen and (max-width: 685px) {
+	.header-wrapper {
 		display: none;
 	}
+	.flex-container {
+		border-color: #444;
+		border-style: dashed;
+	}
+}
+
+@media only screen and (max-width: 600px) {
 	.flex-container {
 		border: 0;
 		padding: 0;

@@ -1,7 +1,8 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.conf import settings
 
-from usermgmt.models import Profile
+User = settings.AUTH_USER_MODEL
 
 from the_impossible.utils import *
 
@@ -35,7 +36,7 @@ def validate_file_size(value):
 
 class File(models.Model):
 	user = models.ForeignKey(
-        Profile,
+        User,
         on_delete=models.CASCADE,
         null=True
     )

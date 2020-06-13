@@ -2,7 +2,7 @@ function explore_height(recursion) {
 	var element = document.getElementsByClassName("flex-container")[0];
 	// Reset element height
 	if (!recursion) { 
-		element.style.height = "400px";
+		element.style.height = "500px";
 	}
 	if (element.scrollWidth > element.clientWidth) {
 		// Adjust to the new height
