@@ -9,6 +9,10 @@ class Profile(models.Model):
         on_delete=models.SET_NULL,
         null=True
     )
+
+	bio = models.TextField(max_length=160,blank=True,unique=False)
+	website = models.URLField(max_length=160,blank=True,unique=False)
+
     # Only allow each user to post 5 ideas per day
 	daily_limit = models.IntegerField(default=5)
 	daily_limit_timestamp = models.DateTimeField(auto_now=True)

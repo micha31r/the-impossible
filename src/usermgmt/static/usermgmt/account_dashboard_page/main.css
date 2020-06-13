@@ -1,0 +1,9 @@
+.user-info-container {
+	width: max-content;
+	max-width: 800px;
+	padding: 20px;
+	border-radius: 20px;
+	border-width: 2px;
+	border-color: rgba(0,0,0,0.1);
+	border-style: dashed;
+}

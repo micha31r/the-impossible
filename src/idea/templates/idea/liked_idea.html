@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'idea/liked_idea/main.css' %}">
+
+<div class="wrapper liked-idea-wrapper">
+	<!-- <h1>Liked ideas</h1> -->
+	<div class="liked-idea-container">
+		{% for idea in liked_idea %}
+			<div class="card-mini">
+				{{ idea.name }}
+				<br>
+				{{ idea.short_description }}
+			</div>
+		{% endfor %}
+	</div>
+</div>

@@ -84,13 +84,12 @@ def detail_page(request,pk):
 def create_view(request):
 	date = Date()
 	profile = get_object_or_404(Profile,user=request.user)
-
-	if profile.daily_limit <= 0: 
-		# If it's still the same day then show error
-		if profile.daily_limit_timestamp.strftime("%Y-%m-%d") == str(date.now()):
-			# Remember to change redirect page
-			return redirect("home_page")
+	
+	if profile.daily_limit <= 0 and profile.daily_limit_timestamp.strftime("%Y-%m-%d") == str(date.now()): 
+		return redirect("home_page")
+	else:
 		profile.daily_limit = 5
+		profile.daily_limit_timestamp = date.now()
 		profile.save()
 	
 	obj = Idea.objects.create(

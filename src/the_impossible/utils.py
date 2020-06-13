@@ -1,4 +1,5 @@
 import datetime
+from django.utils import timezone
 
 # Convert stringified date to an interger turple
 def int_date(str_date): # string fields need to be seperated by dash "2020-04-17"
@@ -14,16 +15,16 @@ def week_day(date):
 
 # Return the current week 
 def current_week():
-	return int(datetime.datetime.now().date().strftime('%W'))
+	return int(timezone.now().date().strftime('%W'))
 
 def current_day():
-    return int(datetime.datetime.now().date().strftime('%d'))
+    return int(timezone.now().date().strftime('%d'))
 
 def current_month():
-    return int(datetime.datetime.now().date().strftime('%m'))
+    return int(timezone.now().date().strftime('%m'))
 
 def current_year():
-    return int(datetime.datetime.now().date().strftime('%Y'))
+    return int(timezone.now().date().strftime('%Y'))
 
 # Get the date for a specific week day
 def current_week_dates(year, week, day):
@@ -34,7 +35,7 @@ def current_week_dates(year, week, day):
 # Date class
 class Date:
     def now(self):
-        return datetime.datetime.now().date()
+        return timezone.now().date()
 
     def week(self):
         return current_week()
