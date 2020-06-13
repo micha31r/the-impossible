@@ -8,6 +8,11 @@ footer {
 	border-top-right-radius: 30px;
 } 
 
+a:hover {
+	color: currentColor;
+	text-decoration: none;
+}
+
 .wrapper {
 	background-color: #111;
 }
@@ -46,7 +51,6 @@ footer {
 
 .website:hover {
 	color: rgb(212,12,164);
-	text-decoration: none;
 }
 
 .joined-timestamp, .daily-limit  {
@@ -95,7 +99,6 @@ footer {
 }
 
 .view-all-idea:hover {
-	text-decoration: none;
 	color: rgb(254,204,76);
 }
 
@@ -119,6 +122,60 @@ footer {
 	.header {
 		display: none;
 	}
+	.flex-container {
+		border: 0;
+		padding: 0;
+	}
 }
 
 /* ----------- */
+
+.page-link-wrapper {
+	padding-top: 20px;
+	padding-left: 20px;
+	width: 100%;
+	height: max-content;
+	text-align: right;
+}
+
+.left-arrow, .right-arrow {
+	height: 0.8rem;
+}
+
+.change-page .left-arrow, .change-page .right-arrow {
+	fill: rgb(225,175,30);
+}
+
+.change-page-unavailable .left-arrow, .change-page-unavailable .right-arrow  {
+	fill: #555;
+}
+
+.word-omission {
+	display: inline-block;
+	color: grey;
+}
+
+.page-link, .current-page-link {
+	display: inline-block;
+	border: 0;
+	padding: 0;
+	margin: 5px;
+	color: rgb(225,175,30);
+	background-color: transparent;
+}
+
+.page-link:hover {
+	background-color: transparent;
+	color: rgb(195,145,0);
+}
+
+.current-page-link {
+	color: #fff;
+	border-style: solid;
+	border-color: #fff;
+	border-bottom-width: 2px;
+}
+
+.current-page-link:hover {
+	color: #fff;
+}

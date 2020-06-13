@@ -39,3 +39,22 @@ nav {
 .collapse-icon {
 	stroke: rgb(155,105,0);
 }
+
+.dropdown-menu {
+	border: 0;
+	border-radius: 20px;
+	background-color: #000;
+	overflow: hidden;
+}
+
+.dropdown-menu * {
+	color: #fff !important;
+}
+
+.dropdown-menu *:hover {
+	background-color: #333 !important;
+}
+
+.dropdown-divider {
+	border-color: #444;
+}

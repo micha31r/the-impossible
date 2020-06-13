@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -19,6 +20,8 @@ from idea.models import (
 from the_impossible.utils import *
 
 from the_impossible.ERROR import *
+
+ITEM_PER_PAGE = 20
 
 def signup_page(request):
 	ctx = {} # Context variables
@@ -91,16 +94,24 @@ def logout_view(request):
     return redirect("login_page")
 
 @login_required
-def account_dashboard_page(request):
+def account_dashboard_page(request,page_num):
 	ctx = {}
 	ctx["date"] = Date()
+	ctx["page_num"] = page_num
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 	ctx["liked_ideas"] = liked_ideas = Idea.objects.filter(liked_user=profile)[:5]
 	ctx["starred_ideas"] = starred_ideas = Idea.objects.filter(starred_user=profile)[:5]
 	# 5 Recently viewed ideas
 	ctx["viewed_ideas"] = viewed_ideas = Idea.objects.filter(viewed_user=profile)[:10]
 	# Ideas created by this user
-	ctx["masonary_ideas"] = masonary_ideas = Idea.objects.filter(author=profile).order_by("timestamp").reverse()[:20]
+	ideas = Idea.objects.filter(author=profile).order_by("timestamp").reverse()[:20]
+	# Split data into pages
+	ideas = Paginator(ideas,ITEM_PER_PAGE)
+	ctx["max_page"] = ideas.num_pages
+	try: current_page = ideas.page(page_num) # Get the ideas on the current page
+	except: raise Http404()
+	ctx["masonary_ideas"] = current_page 
+
 
 	template_file = "usermgmt/account_dashboard.html"
 	return render(request,template_file,ctx)
