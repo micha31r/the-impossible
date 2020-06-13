@@ -94,26 +94,34 @@ def logout_view(request):
     return redirect("login_page")
 
 @login_required
-def account_dashboard_page(request,page_num):
+def account_dashboard_page(request,content_filter,page_num):
 	ctx = {}
 	ctx["date"] = Date()
 	ctx["page_num"] = page_num
+	ctx["content_filter"] = content_filter
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
-	ctx["liked_ideas"] = liked_ideas = Idea.objects.filter(liked_user=profile)[:5]
-	ctx["starred_ideas"] = starred_ideas = Idea.objects.filter(starred_user=profile)[:5]
-	# 5 Recently viewed ideas
+	# Recently viewed ideas
 	ctx["viewed_ideas"] = viewed_ideas = Idea.objects.filter(viewed_user=profile)[:10]
-	# Ideas created by this user
-	ideas = Idea.objects.filter(author=profile).order_by("timestamp").reverse()[:20]
+	
+	idea = {}
+	if content_filter == "my":
+		# Ideas created by this user
+		ideas = Idea.objects.filter(author=profile).order_by("timestamp").reverse()[:20]
+	elif content_filter == "liked":
+		# Liked ideas 
+		ideas = Idea.objects.filter(liked_user=profile)
+	elif content_filter == "starred":
+		# Starred ideas 
+		ideas = Idea.objects.filter(starred_user=profile)[:5]
+	else: 
+		raise Http404()
+
 	# Split data into pages
 	ideas = Paginator(ideas,ITEM_PER_PAGE)
 	ctx["max_page"] = ideas.num_pages
 	try: current_page = ideas.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
 	ctx["masonary_ideas"] = current_page 
-
-
 	template_file = "usermgmt/account_dashboard.html"
 	return render(request,template_file,ctx)
-
 
