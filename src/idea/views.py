@@ -47,7 +47,7 @@ def explore_page(request,week_num,page_num):
 	ideas = Idea.objects.filter(
 		timestamp__gte = timestamp_from,
 		timestamp__lt = timestamp_to,
-		publish_stats = 2
+		publish_status = 2
 	).distinct().order_by("id").reverse()
 	# Split data into pages
 	ideas = Paginator(ideas,ITEM_PER_PAGE)
@@ -61,7 +61,7 @@ def explore_page(request,week_num,page_num):
 	ideas = Idea.objects.filter(
 		timestamp__gte = date.now() - datetime.timedelta(days=182),
 		timestamp__lte = date.now() + datetime.timedelta(days=1),
-		publish_stats = 2
+		publish_status = 2
 	).exclude(header_img=None)
 	random.seed(datetime.datetime.now())
 	ctx["random_ideas"] = random.sample(list(ideas), min(ideas.count(), 10))
@@ -123,7 +123,7 @@ def edit_page(request,pk):
 		form.fields["short_description"].initial = idea.short_description
 		form.fields["full_description"].initial = idea.full_description
 		form.fields["tags"].queryset = idea.tags
-		form.fields["publish_stats"].initial = idea.publish_stats
+		form.fields["publish_status"].initial = idea.publish_status
 		# Show avaliable tags
 		qs = Tag.objects.all().distinct()
 		for tag in idea.tags.all():
@@ -141,7 +141,7 @@ def edit_page(request,pk):
 			idea.short_description = data.get("short_description")
 			idea.full_description = data.get("full_description")
 			# Change publish setting
-			idea.publish_stats = data.get("publish_stats")
+			idea.publish_status = data.get("publish_status")
 			# Add tags
 			for tag in eval(data.get('tags_remain') or "[]"): # convert
 				idea.tags.add(tag)

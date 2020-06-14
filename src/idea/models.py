@@ -37,7 +37,7 @@ class Idea(models.Model):
         Profile,
         on_delete=models.CASCADE
     )
-	publish_stats = models.IntegerField(default=1,choices=PUBLISH_OPTION)
+	publish_status = models.IntegerField(default=1,choices=PUBLISH_OPTION)
 	tags = models.ManyToManyField(Tag,related_name="tagged",blank=True)
 
     # Content
