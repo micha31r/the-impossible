@@ -15,7 +15,10 @@ from userupload.utils import *
 
 from .ajax_encrypt import encrypt
 
-from usermgmt.models import Profile
+from usermgmt.models import (
+	Notification,
+	Profile,
+)
 from .models import (
 	Tag, 
 	Idea
@@ -140,6 +143,19 @@ def edit_page(request,pk):
 			idea.name = data.get("name")
 			idea.short_description = data.get("short_description")
 			idea.full_description = data.get("full_description")
+
+			# Search description for @ users
+			for word in data.get("full_description").split(" "):
+				if "@" in word:
+					username = word.split("@")[-1]
+					user = User.objects.filter(username=username).first()
+					if user:
+						# Send the mentioned user a notification
+						message = f"{request.user.username} mentioned you in >{idea.name}<"
+						msg = Notification.objects.create(message=message,message_status=2)
+						msg.save()
+						# remember to add msg to user's notification m2m field
+
 			# Change publish setting
 			idea.publish_status = data.get("publish_status")
 			# Add tags

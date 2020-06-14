@@ -12,8 +12,8 @@ PUBLISH_OPTION = (
 
 class Notification(models.Model):
 	message = models.CharField(max_length=200)
-	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
 	message_status = models.IntegerField(default=1,choices=PUBLISH_OPTION)
+	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
 
 class Profile(models.Model):
 	user = models.ForeignKey(
