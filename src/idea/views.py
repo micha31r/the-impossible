@@ -148,13 +148,23 @@ def edit_page(request,pk):
 			for word in data.get("full_description").split(" "):
 				if "@" in word:
 					username = word.split("@")[-1]
+					print(username)
 					user = User.objects.filter(username=username).first()
 					if user:
+						profile = Profile.objects.filter(user=user).first()
 						# Send the mentioned user a notification
 						message = f"{request.user.username} mentioned you in >{idea.name}<"
 						msg = Notification.objects.create(message=message,message_status=2)
 						msg.save()
-						# remember to add msg to user's notification m2m field
+						# Notify mentioned user
+						profile.notification.add(msg)
+					else: 
+						# Tell the current user that their mentioned user does not exsist
+						profile = Profile.objects.filter(user=request.user).first()
+						message = f"@{username} user does not exsist"
+						msg = Notification.objects.create(message=message,message_status=1)
+						msg.save()
+						profile.notification.add(msg)
 
 			# Change publish setting
 			idea.publish_status = data.get("publish_status")

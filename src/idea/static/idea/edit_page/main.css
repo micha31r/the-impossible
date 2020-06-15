@@ -170,7 +170,7 @@ img {
 	width: 50%;
 }
 
-.publish-stats td {
+.publish-status td {
 	padding-top: var(--margin-between-element);
 }
 

@@ -8,6 +8,7 @@ User = settings.AUTH_USER_MODEL
 PUBLISH_OPTION = (
 	(1,"Private"),
     (2,"Public"),
+    (3,"Dissmissed")
 )
 
 class Notification(models.Model):
@@ -27,6 +28,8 @@ class Profile(models.Model):
 	website = models.URLField(max_length=160,blank=True,unique=False)
 
 	following = models.ManyToManyField(User, blank=True, related_name="following")
+
+	notification = models.ManyToManyField(Notification, blank=True, related_name="notification")
 
     # Only allow each user to post 5 ideas per day
 	daily_limit = models.IntegerField(default=5)
