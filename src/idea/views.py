@@ -9,6 +9,8 @@ from the_impossible.utils import *
 
 from .forms import *
 
+from .utils import *
+
 from the_impossible.ERROR import *
 
 from userupload.utils import *
@@ -133,6 +135,9 @@ def edit_page(request,pk):
 			qs = qs.exclude(name=tag.name)
 		ctx["tags"] = qs
 		form.fields["tags_remain"].widget = forms.SelectMultiple(choices=[(choice.id, choice) for choice in qs])
+		
+		usernames_before_edit = at_filter(idea.full_description)
+
 		# Form validation
 		if form.is_valid():
 			data = form.cleaned_data
@@ -145,26 +150,24 @@ def edit_page(request,pk):
 			idea.full_description = data.get("full_description")
 
 			# Search description for @ users
-			for word in data.get("full_description").split(" "):
-				if "@" in word:
-					username = word.split("@")[-1]
-					print(username)
-					user = User.objects.filter(username=username).first()
-					if user:
-						profile = Profile.objects.filter(user=user).first()
-						# Send the mentioned user a notification
-						message = f"{request.user.username} mentioned you in >{idea.name}<"
-						msg = Notification.objects.create(message=message,message_status=2)
-						msg.save()
-						# Notify mentioned user
-						profile.notification.add(msg)
-					else: 
-						# Tell the current user that their mentioned user does not exsist
-						profile = Profile.objects.filter(user=request.user).first()
-						message = f"@{username} user does not exsist"
-						msg = Notification.objects.create(message=message,message_status=1)
-						msg.save()
-						profile.notification.add(msg)
+			usernames = set(at_filter(data.get("full_description"))) - set(usernames_before_edit)
+			for username in usernames:
+				user = User.objects.filter(username=username).first()
+				if user:
+					profile = Profile.objects.filter(user=user).first()
+					# Send the mentioned user a notification
+					message = f"@{request.user.username} mentioned you in \"{idea.name}\""
+					msg = Notification.objects.create(message=message,message_status=2)
+					msg.save()
+					# Notify mentioned user
+					profile.notification.add(msg)
+				else: 
+					# Tell the current user that their mentioned user does not exsist
+					profile = Profile.objects.filter(user=request.user).first()
+					message = f"@{username} user does not exsist"
+					msg = Notification.objects.create(message=message,message_status=1)
+					msg.save()
+					profile.notification.add(msg)
 
 			# Change publish setting
 			idea.publish_status = data.get("publish_status")

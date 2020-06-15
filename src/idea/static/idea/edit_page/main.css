@@ -1,7 +1,6 @@
 :root {
 	/* css variables */
 	--margin-right: 55%;
-	--margin-between-element: 20px;
 	--td-vertical-padding: 5vh;
 	--td-horizontal-padding: 5vw;
 
@@ -30,7 +29,7 @@ input, textarea {
 	border-color: grey;
 	border-width: 0px;
 	border-radius: 10px;
-	margin-bottom: var(--margin-between-element);
+	margin-bottom: 20px;
 }
 
 input::placeholder, textarea::placeholder {
@@ -68,7 +67,7 @@ select {
 	background-color: #fff;
 	word-break: break-all;
 	height: 2rem;
-	margin-bottom: var(--margin-between-element);
+	margin-bottom: 20px;
 	/* Hide scrollbar for IE and Edge */
 	-ms-overflow-style: none;
 	border-radius: 10px;
@@ -127,11 +126,11 @@ img {
 
 @media only screen and (max-width: 460px) { 
 	#exsisting-tag {
-		padding-top: var(--margin-between-element);
+		padding-top: 20px;
 	}
 	#delete-button {
-		padding-top: var(--margin-between-element);
-		padding-bottom: var(--margin-between-element);
+		padding-top: 20px;
+		padding-bottom: 20px;
 	}
 	td {
 		width: 100% !important;
@@ -171,11 +170,11 @@ img {
 }
 
 .publish-status td {
-	padding-top: var(--margin-between-element);
+	padding-top: 20px;
 }
 
 .save-changes {
-	padding-top: var(--margin-between-element);
+	padding-top: 20px;
 }
 
 .horizontal-overflow-wrapper {

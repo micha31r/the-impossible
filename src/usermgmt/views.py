@@ -133,6 +133,7 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	try: current_page = ideas.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
 	ctx["masonary_ideas"] = current_page 
+
 	template_file = "usermgmt/account_dashboard.html"
 	return render(request,template_file,ctx)
 

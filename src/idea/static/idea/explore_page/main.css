@@ -2,7 +2,6 @@
 	/* header image dimension */
 	--header-img-width: 290px;
 	--header-img-height: 168px;
-	--margin-between-element: 20px;
 }
 
 a:hover {
@@ -116,7 +115,7 @@ a:hover {
 	border-bottom-width: 4px !important;
 	border-style: solid;
 	border-color: rgba(254,204,76,0.7) !important;
-	margin-bottom: var(--margin-between-element);
+	margin-bottom: 20px;
 }
 
 .discover-card {
@@ -131,7 +130,7 @@ a:hover {
 }
 
 .discover-card .card-title {
-	margin-bottom: var(--margin-between-element);
+	margin-bottom: 20px;
 }
 
 .discover-card .card-title a {

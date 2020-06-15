@@ -26,10 +26,61 @@
 			}
 		</style>
 
+		<!-- Loading screen -->
+		<style>
+			@keyframes rotate-center {
+				from {
+					transform: translate(-50%,-50%) rotate(0deg);
+				}
+				to {
+					transform: translate(-50%,-50%) rotate(360deg);
+				}
+			}
+			#loader-bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #fff;
+				z-index: 100;
+			}
+			#loader {
+				position: absolute;
+				width: 10%;
+				min-width: 100px;
+				top: 50%;
+				left: 50%;
+				animation-name: rotate-center;
+				animation-duration: 1.5s;
+				animation-fill-mode: forwards;
+				animation-iteration-count: infinite;
+				z-index: 101;
+			}
+		</style>
+		<script>
+			document.onreadystatechange = function() { 
+		    if (document.readyState !== "complete") { 
+		        document.querySelector("body").style.visibility = "hidden"; 
+		        document.querySelector("#loader").style.visibility = "visible"; 
+		        document.querySelector("#loader-bg").style.visibility = "visible"; 
+		    } else { 
+		        document.querySelector("#loader").style.display = "none"; 
+		        document.querySelector("#loader-bg").style.display = "none"; 
+		        document.querySelector("body").style.visibility = "visible"; 
+		    } 
+		}; 
+		</script>
+		<!-- ------------ -->
+
 		{% block title %}
 		{% endblock %}
 	</head>
 	<body>
+		<!-- Loading screen image and background -->
+		<div id="loader-bg"></div>
+		<img src="{% static 'component/base/logo.svg' %}" id="loader">
+
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
