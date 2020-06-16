@@ -24,6 +24,10 @@ nav {
 	}
 } 
 
+.navbar-logo {
+	margin-right: 15px;
+}
+
 .navbar-brand {
 	font-size: 1.6rem;
 }
