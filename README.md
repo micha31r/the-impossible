@@ -5,6 +5,8 @@
 
 ![Explore Section](preview_imgs/explore.png)
 ![Discover Section](preview_imgs/discover.png)
+![Dashboard](preview_imgs/dashboard.png)
+![Idea Editor](preview_imgs/edit.png)
 
 ##
 
