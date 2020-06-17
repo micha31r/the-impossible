@@ -46,7 +46,7 @@ def file_page(request, pk, referred_obj_name, referred_obj_pk, referred_obj_fiel
 					# Create file
 					if not file:
 						file = File.objects.create(
-							user=get_object_or_404(Profile,user=request.user),
+							user=request.user,
 							description = data.get("description"),
 							file = uploaded_file
 						)
