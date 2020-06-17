@@ -2,7 +2,7 @@ from .models import SUPPORTED_FILE_TYPE, File
 
 # get file extension
 def file_extension(name):
-	return name.split(".")[-1] 
+	return (name.split(".")[-1]).lower()
 
 def file_is_valid(name,expected_type):
 	# Return file type

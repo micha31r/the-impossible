@@ -109,7 +109,7 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	ctx["encrypted_string"] = encrypt(request.user.username)
 	# The profile for the user being viewed
 	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
-
+	ctx["target_notifications"] = target_profile.notification.all().order_by('-timestamp')[:20]
 	# Followers
 	ctx["followers"] = User.objects.filter(profile__following__id=profile.id)
 
