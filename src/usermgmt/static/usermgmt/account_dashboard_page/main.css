@@ -89,7 +89,7 @@ a:hover {
 
 @media only screen and (max-width: 1000px) {
 	.notification-container {
-		display: none;
+		display: none !important;
 	}
 }
 
