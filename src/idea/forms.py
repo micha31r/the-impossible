@@ -26,7 +26,7 @@ class IdeaForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Title (Max 80)'}),
             'short_description': forms.Textarea(attrs={'placeholder': 'Description (Max 150)'}),
-            'full_description': forms.Textarea(attrs={'placeholder': 'Content (Max 2000)'}),
+            'full_description': forms.Textarea(attrs={'placeholder': 'Content (Max 2000), use @username to mention other users'}),
         }
         labels={
             "name":"",
