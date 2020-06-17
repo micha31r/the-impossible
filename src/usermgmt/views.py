@@ -25,7 +25,7 @@ from the_impossible.utils import *
 from the_impossible.ERROR import *
 
 ITEM_PER_PAGE = 20
-NOTIFICATION_PER_PAGE = 50
+NOTIFICATION_PER_PAGE = 5
 
 def signup_page(request):
 	ctx = {} # Context variables
@@ -151,7 +151,7 @@ def account_notification_page(request,page_num):
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 
 	# Split data into pages
-	notifications = Paginator(profile.notification.all(),NOTIFICATION_PER_PAGE)
+	notifications = Paginator(profile.notification.all().order_by("-timestamp"),NOTIFICATION_PER_PAGE)
 	ctx["max_page"] = notifications.num_pages
 	try: current_page = notifications.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
