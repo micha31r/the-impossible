@@ -34,26 +34,26 @@
 	<div class="wrapper user-info">
 		<div class="user-info-container">
 			<h1 class="username">@{{ username }}</h1>
-			<h5 class="fullname">{{ viewing_profile.user.get_full_name }}</h5>
-			<p class="bio">{{ viewing_profile.bio }}</p>
-			{% if viewing_profile.website %}
-				<a class="website" href="{{ viewing_profile.website }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(252,52,104)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> {{ viewing_profile.website }}</a>
+			<h5 class="fullname">{{ target_profile.user.get_full_name }}</h5>
+			<p class="bio">{{ target_profile.bio }}</p>
+			{% if target_profile.website %}
+				<a class="website" href="{{ target_profile.website }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(252,52,104)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> {{ target_profile.website }}</a>
 			{% endif %}
-			<p class="joined-timestamp"><img src="{% static 'component/feather_svg/calendar.svg' %}"> Joined {{ viewing_profile.timestamp.date }}</p>
-			<p class="daily-limit"><img src="{% static 'component/feather_svg/edit.svg' %}"> Daily Limit {{ viewing_profile.daily_limit }}</p>
+			<p class="joined-timestamp"><img src="{% static 'component/feather_svg/calendar.svg' %}"> Joined {{ target_profile.timestamp.date }}</p>
+			<p class="daily-limit"><img src="{% static 'component/feather_svg/edit.svg' %}"> Daily Limit {{ target_profile.daily_limit }}</p>
 			<br>
 			<p class="followers">{{ followers.count }} Followers</p>
-			<p class="following">{{ viewing_profile.following.count }} Following</p>
-			{% if viewing_profile.user == user %}
+			<p class="following">{{ target_profile.following.count }} Following</p>
+			{% if target_profile.user == user %}
 				<!-- Edit button -->
 				<button class="btn btn-dark btn-black bold edit-profile" onclick="window.location.href='#'">Edit Profile</button>
 			{% endif %}
 		</div>
 		<div class="notification-container">
 			<h2>Notifications <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></h2>
-			{% for notification in viewing_profile.notification.all reversed %}
+			{% for notification in target_profile.notification.all reversed %}
 				<div class="message-wrapper">
-					{% if notification.message_status == 1 and viewing_profile.user == user %}
+					{% if notification.message_status == 1 and target_profile.user == user %}
 						<h6>{{ notification.message }}</h6>
 						<p>{{ notification.get_message_status_display }} Message</p>
 					{% else %}
@@ -66,9 +66,9 @@
 	</div>
 	<div class="wrapper">
 		<div class="header-wrapper">
-			<h3 class="header {% if content_filter == 'my' %}header-current{% endif %}"><a href="{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}">{% if viewing_profile.user == user %}My{% endif %} Ideas</a></h3>
+			<h3 class="header {% if content_filter == 'my' %}header-current{% endif %}"><a href="{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}">{% if target_profile.user == user %}My{% endif %} Ideas</a></h3>
 			<h3 class="header {% if content_filter == 'liked' %}header-current{% endif %}"><a href="{% url 'account_dashboard_page' username=username content_filter='liked' page_num=1 %}">Liked Ideas</a></h3>
-			{% if viewing_profile.user == user %}
+			{% if target_profile.user == user %}
 				<h3 class="header {% if content_filter == 'starred' %}header-current{% endif %}"><a href="{% url 'account_dashboard_page' username=username content_filter='starred' page_num=1 %}">Starred Ideas</a></h3>
 			{% endif %}
 		</div>

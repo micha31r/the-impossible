@@ -108,7 +108,7 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 	ctx["encrypted_string"] = encrypt(request.user.username)
 	# The profile for the user being viewed
-	ctx["viewing_profile"] = viewing_profile = get_object_or_404(Profile,user=user)
+	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
 
 	# Followers
 	ctx["followers"] = User.objects.filter(profile__following__id=profile.id)
@@ -119,14 +119,14 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	idea = {}
 	if content_filter == "my":
 		# Ideas created by this user
-		ideas = Idea.objects.filter(author=viewing_profile).order_by("timestamp").reverse()[:20]
+		ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()[:20]
 	elif content_filter == "liked":
 		# Liked ideas 
-		ideas = Idea.objects.filter(liked_user=viewing_profile)
+		ideas = Idea.objects.filter(liked_user=target_profile)
 	elif content_filter == "starred":
 		if user == request.user: # Starred ideas are private
 			# Starred ideas 
-			ideas = Idea.objects.filter(starred_user=viewing_profile)[:5]
+			ideas = Idea.objects.filter(starred_user=target_profile)[:5]
 		else: raise Http404()
 	else: raise Http404()
 
