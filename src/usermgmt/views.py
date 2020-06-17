@@ -25,6 +25,7 @@ from the_impossible.utils import *
 from the_impossible.ERROR import *
 
 ITEM_PER_PAGE = 20
+NOTIFICATION_PER_PAGE = 50
 
 def signup_page(request):
 	ctx = {} # Context variables
@@ -101,13 +102,14 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	ctx = {}
 	ctx["date"] = Date()
 	ctx["page_num"] = page_num
+	# Created ideas, liked ideas or starred ideas 
 	ctx["content_filter"] = content_filter
 	ctx["username"] = username
 	user = get_object_or_404(User, username=username)
 	# The profile for the logged in user
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 	ctx["encrypted_string"] = encrypt(request.user.username)
-	# The profile for the user being viewed
+	# The profile for the viewed user
 	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
 	# Get 20 most recent notifications
 	ctx["target_notifications"] = target_profile.notification.all().order_by('-timestamp')[:20]
@@ -141,7 +143,23 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	template_file = "usermgmt/account_dashboard.html"
 	return render(request,template_file,ctx)
 
-# @login_required
-# def account_dashboard_page(request,content_filter,page_num):
+@login_required
+def account_notification_page(request,page_num):
+	ctx = {}
+	ctx["date"] = Date()
+	ctx["page_num"] = page_num
+	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
+
+	# Split data into pages
+	notifications = Paginator(profile.notification.all(),NOTIFICATION_PER_PAGE)
+	ctx["max_page"] = notifications.num_pages
+	try: current_page = notifications.page(page_num) # Get the ideas on the current page
+	except: raise Http404()
+	ctx["notifications"] = current_page 
+
+	template_file = "usermgmt/account_notification.html"
+	return render(request,template_file,ctx)
+
+
 
 

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	<title>Notification - The Impossible</title>
+{% endblock %}
+
+{% block content %}
+	<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/account_notification_page/main.css' %}"> 
+
+	<div class="wrapper">
+		<div class="row align-items-center h-100">
+			<div class="center">
+				{% include 'usermgmt/notification.html' %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,1 @@
+# Search through all users and remove notifications thats are too old

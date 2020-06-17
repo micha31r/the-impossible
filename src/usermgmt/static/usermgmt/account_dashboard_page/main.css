@@ -92,6 +92,7 @@ a:hover {
 	vertical-align: top;
 	border-radius: 20px;
 	overflow-y: scroll;
+	box-shadow: 0px 10px 15px rgb(175,125,0);
 }
 
 .notification-container h2 {

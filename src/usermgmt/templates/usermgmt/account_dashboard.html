@@ -15,7 +15,7 @@
           Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        	<a class="dropdown-item" href="#">Notification</a>
+        	<a class="dropdown-item" href="{% url 'account_notification_page' page_num='1' %}">Notification</a>
 			<a class="dropdown-item" href="#">People</a>
 			<a class="dropdown-item" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}">My Ideas</a>
 			<a class="dropdown-item" href="{% url 'account_dashboard_page' username=user.username content_filter='liked' page_num=1 %}">Liked Ideas</a>
@@ -49,20 +49,8 @@
 				<button class="btn btn-dark btn-black bold edit-profile" onclick="window.location.href='#'">Edit Profile</button>
 			{% endif %}
 		</div>
-		<div class="notification-container">
-			<h2>Notifications <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></h2>
-			{% for notification in target_notifications %}
-				<div class="message-wrapper">
-					{% if notification.message_status == 1 and target_profile.user == user %}
-						<h6>{{ notification.message }}</h6>
-						<p>{{ notification.get_message_status_display }} Message</p>
-					{% else %}
-						<h6>{{ notification.message }}</h6>
-						<p>{{ notification.get_message_status_display }} Message</p>
-					{% endif %}
-				</div>
-			{% endfor %}
-		</div>
+		<!-- Target user notification -->
+		{% include 'usermgmt/notification.html' with notifications=target_notifications %}
 	</div>
 	<div class="wrapper">
 		<div class="header-wrapper">
