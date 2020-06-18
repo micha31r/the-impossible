@@ -60,5 +60,6 @@ nav {
 }
 
 .dropdown-divider {
-	border-color: #444;
+	border-color: rgba(255,255,255,0.2);
+	border-width: 2px;
 }
