@@ -11,11 +11,19 @@ function newsletter_unfade() {
 // If function is called by window.onload then user can see the form dissapear
 $(".subscribe-blur, .subscribe-wrapper, #hide-subscribe-form").css("visibility","hidden");
 
-var interval_id = setInterval(
+auto_run.queue( 
 	function() {
-		newsletter_unfade();
-		$("#hide-subscribe-form").css("display","block");
-		clearInterval(interval_id);
-	},
-	10000 // Delay 10 seconds before showing form
+		form_action();
+	}
 );
+
+function form_action() {
+	var interval_id = setInterval(
+		function() {
+			newsletter_unfade();
+			$("#hide-subscribe-form").css("display","block");
+			clearInterval(interval_id);
+		},
+		10000 // Delay 10 seconds before showing form
+	);
+}
