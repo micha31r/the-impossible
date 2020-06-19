@@ -160,6 +160,28 @@ def account_notification_page(request,page_num):
 	template_file = "usermgmt/account_notification.html"
 	return render(request,template_file,ctx)
 
+@login_required
+def account_follow_view(request,username):
+	target_user = get_object_or_404(User,username=username)
+	profile = get_object_or_404(Profile,user=request.user)
+	if profile.following.filter(username=target_user.username).exists():
+		profile.following.remove(target_user)
+	else:
+		profile.following.add(target_user)
+	profile.save()
+	return redirect("account_dashboard_page",username=username,content_filter="my",page_num=1)
+
+@login_required
+def account_follow_page(request):
+	pass
+
+@login_required
+def account_editprofile_page(request):
+	pass
+
+@login_required
+def account_setting_page(request):
+	pass
 
 
 

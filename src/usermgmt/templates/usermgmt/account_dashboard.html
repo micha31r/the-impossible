@@ -47,6 +47,9 @@
 			{% if target_profile.user == user %}
 				<!-- Edit button -->
 				<button class="btn btn-dark btn-black bold edit-profile" onclick="window.location.href='#'">Edit Profile</button>
+			{% else %}
+				<!-- Follow button -->
+				<button class="btn btn-dark btn-black bold edit-profile" onclick="window.location.href='{% url 'account_follow_view' username=username %}'">{% if target_profile.user in profile.following.all %}Unfollow{% else %}Follow{% endif%} @{{ username }}</button>
 			{% endif %}
 		</div>
 		<!-- Target user notification -->
