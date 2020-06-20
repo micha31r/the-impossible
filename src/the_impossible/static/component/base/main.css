@@ -1,6 +1,7 @@
 body {
 	min-width: 300px;
 	width: 100vw;
+	max-width: 1500px;
 	height: 100vh;
 	/*font-family: 'Arciform', sans-serif;*/
 	overflow: scroll;

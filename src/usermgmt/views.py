@@ -172,12 +172,17 @@ def account_follow_view(request,username):
 	return redirect("account_dashboard_page",username=username,content_filter="my",page_num=1)
 
 @login_required
-def account_follow_page(request):
+def account_follower_page(request):
 	pass
 
 @login_required
 def account_editprofile_page(request):
-	pass
+	ctx = {}
+	ctx["date"] = Date()
+	ctx["user"] = profile = get_object_or_404(Profile, user=request.user)
+	ctx["form"] = SignUpForm(request.POST or None)
+	
+
 
 @login_required
 def account_setting_page(request):

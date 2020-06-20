@@ -30,3 +30,4 @@ class AutoRun {
 function aspect_diff() {
 	return Math.abs($(window).width() - $(window).height())
 }
+
