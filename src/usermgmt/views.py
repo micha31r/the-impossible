@@ -176,17 +176,10 @@ def account_follower_page(request):
 	pass
 
 @login_required
-def account_editprofile_page(request):
+def account_setting_page(request):
 	ctx = {}
 	ctx["date"] = Date()
 	ctx["user"] = profile = get_object_or_404(Profile, user=request.user)
 	ctx["form"] = SignUpForm(request.POST or None)
-
-
-
-@login_required
-def account_setting_page(request):
-	pass
-
 
 

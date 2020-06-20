@@ -32,6 +32,8 @@ class Profile(models.Model):
 
 	notification = models.ManyToManyField(Notification, blank=True, related_name="notification")
 
+	tags = models.ManyToManyField("idea.Tag", blank=True, related_name="fav_tags")
+
     # Only allow each user to post 5 ideas per day
 	daily_limit = models.IntegerField(default=5)
 	daily_limit_timestamp = models.DateTimeField(auto_now=True)
