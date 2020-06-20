@@ -233,6 +233,6 @@ img {
 .header-img {
 	width: var(--header-img-width);
 	height: var(--header-img-height);
-	filter: grayscale(100%);
+	/*filter: grayscale(100%);*/
 }
 
