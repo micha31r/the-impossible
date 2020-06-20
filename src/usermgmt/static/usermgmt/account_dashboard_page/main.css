@@ -51,11 +51,12 @@ a:hover {
 .website {
 	display: block;
 	margin-bottom: 15px;
-	color: rgb(252,52,104);
+	color: rgba(0,0,0,0.5);
+	font-weight: bold;
 }
 
 .website:hover {
-	color: rgb(212,12,164);
+	color: rgba(0,0,0,0.8);
 }
 
 .joined-timestamp, .daily-limit, .followers, .following {

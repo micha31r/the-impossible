@@ -37,7 +37,7 @@
 			<h5 class="fullname">{{ target_profile.user.get_full_name }}</h5>
 			<p class="bio">{{ target_profile.bio }}</p>
 			{% if target_profile.website %}
-				<a class="website" href="{{ target_profile.website }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(252,52,104)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> {{ target_profile.website }}</a>
+				<a class="website" href="{{ target_profile.website }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.5)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> {{ target_profile.website }}</a>
 			{% endif %}
 			<p class="joined-timestamp"><img src="{% static 'component/feather_svg/calendar.svg' %}"> Joined {{ target_profile.timestamp.date }}</p>
 			<p class="daily-limit"><img src="{% static 'component/feather_svg/edit.svg' %}"> Daily Limit {{ target_profile.daily_limit }}</p>
