@@ -25,7 +25,7 @@ from the_impossible.utils import *
 from the_impossible.ERROR import *
 
 ITEM_PER_PAGE = 20
-NOTIFICATION_PER_PAGE = 5
+NOTIFICATION_PER_PAGE = 50
 
 def signup_page(request):
 	ctx = {} # Context variables
@@ -181,7 +181,7 @@ def account_editprofile_page(request):
 	ctx["date"] = Date()
 	ctx["user"] = profile = get_object_or_404(Profile, user=request.user)
 	ctx["form"] = SignUpForm(request.POST or None)
-	
+
 
 
 @login_required
