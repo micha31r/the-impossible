@@ -116,10 +116,10 @@ def edit_page(request,pk):
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
 	if idea.author.user == request.user:
 		# Remove file if it's not an image
-		file_deleted = file_validate_or_remove(idea,"header_img","image")
-		file_deleted = file_validate_or_remove(idea,"body_img","image")
+		file_deleted1 = file_validate_or_remove(idea,"header_img","image")
+		file_deleted2 = file_validate_or_remove(idea,"body_img","image")
 		# Show error message
-		if file_deleted:
+		if file_deleted1 or file_deleted2:
 			ctx["error"] = SERVER_ERROR["FILE_INVALID_DELETE"]
 
 		ctx["form"] = form = IdeaForm(request.POST or None)
