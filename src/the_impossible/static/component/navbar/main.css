@@ -46,7 +46,7 @@ nav {
 
 .dropdown-menu {
 	border: 0;
-	border-radius: 20px;
+	border-radius: 10px;
 	background-color: #000;
 	overflow: hidden;
 }
