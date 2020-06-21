@@ -13,7 +13,7 @@ body {
 }
 
 .alert-black, .btn-black {
-	color: #FFF;
+	color: #FFF !important;
 	background-color: #000;
 }
 
@@ -22,12 +22,11 @@ body {
 	margin-right: 5px;
 }
 
-.alert-black-outline, .btn-black-outline {
+.alert-black-outline, .btn-black-outline, .btn-black {
 	border-width: 3px;
 	border-color: #000;
 	border-style: solid;
 	color: #000;
-	text
 }
 
 .wrapper {

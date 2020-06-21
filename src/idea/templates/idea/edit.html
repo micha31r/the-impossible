@@ -92,7 +92,7 @@
 						<!-- Header image -->
 						<div class="file-wrapper">
 							<button class="btn file-button" data-toggle="popover" data-trigger="hover" 
-							title="Header image" data-content="Click to change" onclick="window.location.href='{% if idea.header_img %} {% url 'userupload_idea_header_img_page' idea_pk=idea.pk file_pk=idea.header_img.pk %} {% else %} {% url 'userupload_idea_header_img_page' idea_pk=idea.pk file_pk='None' %} {% endif %}'; return false;">
+							title="Header image" data-content="Click to change" onclick="window.location.href='{% if idea.header_img %} {% url 'userupload_idea_img_page' idea_pk=idea.pk file_pk=idea.header_img.pk field='header' %} {% else %} {% url 'userupload_idea_img_page' idea_pk=idea.pk file_pk='None' field='header' %} {% endif %}'; return false;">
 								{% if idea.header_img.file %}
 									<img class="header-img" src="{{ idea.header_img.file.url }}">
 								{% else %}
@@ -110,13 +110,13 @@
 						{% for image in idea.body_img.all %}
 							<div class="file-wrapper">
 								<button class="btn file-button" data-toggle="popover" data-trigger="hover" 
-							title="Body image" data-content="Click to change" onclick="window.location.href='{% url 'userupload_idea_body_img_page' idea_pk=idea.pk file_pk=image.pk %}'; return false;"><img src="{{ image.file.url }}"></button>
+							title="Body image" data-content="Click to change" onclick="window.location.href='{% url 'userupload_idea_img_page' idea_pk=idea.pk file_pk=image.pk field='body' %}'; return false;"><img src="{{ image.file.url }}"></button>
 							</div>
 						{% endfor %}
 						<!-- Add body image -->
 						<div class="file-wrapper">
 								<button class="btn file-button file-button-add" data-toggle="popover" data-trigger="hover" 
-							title="Body image" data-content="Click to add" onclick="window.location.href='{% url 'userupload_idea_body_img_page' idea_pk=idea.pk file_pk='None' %}'; return false;">+</button>
+							title="Body image" data-content="Click to add" onclick="window.location.href='{% url 'userupload_idea_img_page' idea_pk=idea.pk file_pk='None' field='body' %}'; return false;">+</button>
 						</div>
 						<!-- Show tooltip after hover -->
 						<script type="text/javascript">
