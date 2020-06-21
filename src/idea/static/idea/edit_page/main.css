@@ -94,6 +94,10 @@ select[name="tags"]:focus, select[name="tags_remain"]:focus {
 	outline: none;
 }
 
+select[name="publish_status"] {
+	border-radius: 5px;
+}
+
 img {
 	height: 100%;
 }
