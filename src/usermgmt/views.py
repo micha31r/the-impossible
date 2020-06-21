@@ -8,6 +8,9 @@ from django.http import Http404, JsonResponse
 from .forms import (
 	LoginForm,
 	SignUpForm,
+	ProfileForm,
+	SettingForm,
+	PasswordForm,
 )
 
 from .models import (
@@ -97,7 +100,6 @@ def logout_view(request):
     logout(request)
     return redirect("login_page")
 
-@login_required
 def account_dashboard_page(request,username,content_filter,page_num):
 	ctx = {}
 	ctx["date"] = Date()
@@ -107,18 +109,16 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	ctx["username"] = username
 	user = get_object_or_404(User, username=username)
 	# The profile for the logged in user
-	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
+	if request.user.is_authenticated:
+		ctx["profile"] = Profile.objects.filter(user=request.user).first()
 	ctx["encrypted_string"] = encrypt(request.user.username)
 	# The profile for the viewed user
 	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
 	# Get 20 most recent notifications
 	ctx["target_notifications"] = target_profile.notification.all().order_by('-timestamp')[:20]
 	# Followers
-	ctx["followers"] = User.objects.filter(profile__following__id=profile.id)
+	ctx["followers"] = User.objects.filter(profile__following__id=target_profile.id)
 
-	# Recently viewed ideas
-	ctx["viewed_ideas"] = viewed_ideas = Idea.objects.filter(viewed_user=profile)[:10]
-	
 	idea = {}
 	if content_filter == "my":
 		# Ideas created by this user
@@ -139,7 +139,6 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	try: current_page = ideas.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
 	ctx["masonary_ideas"] = current_page 
-
 	template_file = "usermgmt/account_dashboard.html"
 	return render(request,template_file,ctx)
 
@@ -156,7 +155,6 @@ def account_notification_page(request,page_num):
 	try: current_page = notifications.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
 	ctx["notifications"] = current_page 
-
 	template_file = "usermgmt/account_notification.html"
 	return render(request,template_file,ctx)
 
@@ -172,14 +170,43 @@ def account_follow_view(request,username):
 	return redirect("account_dashboard_page",username=username,content_filter="my",page_num=1)
 
 @login_required
-def account_follower_page(request):
-	pass
-
-@login_required
 def account_setting_page(request):
 	ctx = {}
 	ctx["date"] = Date()
-	ctx["user"] = profile = get_object_or_404(Profile, user=request.user)
-	ctx["form"] = SignUpForm(request.POST or None)
+	profile = get_object_or_404(Profile,user=request.user)
 
+	ctx["profile_form"] = profile_form = ProfileForm(request.POST or None)
+	profile_form.fields["first_name"].initial = profile.user.first_name
+	profile_form.fields["last_name"].initial = profile.user.last_name
+	profile_form.fields["email"].initial = profile.user.email
+	profile_form.fields["bio"].initial = profile.bio
+	profile_form.fields["website"].initial = profile.website
+	profile_form.fields["location"].initial = profile.location
+
+	ctx["password_form"] = password_form = PasswordForm(request.POST or None)
+
+	if profile_form.is_valid() and 'profile_form_submit' in request.POST:
+		profile.user.first_name = profile_form.cleaned_data.get("first_name").capitalize()
+		profile.user.last_name = profile_form.cleaned_data.get("last_name").capitalize()
+		profile.user.email = profile_form.cleaned_data.get("email")
+		profile.bio = profile_form.cleaned_data.get("bio")
+		profile.website = profile_form.cleaned_data.get("website")
+		profile.location = profile_form.cleaned_data.get("location")
+		profile.user.save()
+		profile.save()
+
+	if password_form.is_valid() and 'password_form_submit' in request.POST:
+		current_passsword = password_form.cleaned_data.get("current_password")
+		new_password = password_form.cleaned_data.get("new_password")
+		user = authenticate(request, username=request.user.username, password=current_passsword)
+		if user:
+			if new_password == password_form.cleaned_data.get("password_confirmation"):
+				user.set_password(new_password)
+				user.save()
+		else:
+			pass
+			# Show error
+
+	template_file = "usermgmt/account_setting.html"
+	return render(request,template_file,ctx)
 

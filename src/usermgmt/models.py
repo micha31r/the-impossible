@@ -27,11 +27,9 @@ class Profile(models.Model):
 	profile_img = models.ForeignKey(File,on_delete=models.SET_NULL,blank=True,null=True)
 	bio = models.TextField(max_length=160,blank=True,unique=False)
 	website = models.URLField(max_length=160,blank=True,unique=False)
-
+	location = models.CharField(max_length=50,blank=True,null=True)
 	following = models.ManyToManyField(User, blank=True, related_name="following")
-
 	notification = models.ManyToManyField(Notification, blank=True, related_name="notification")
-
 	tags = models.ManyToManyField("idea.Tag", blank=True, related_name="fav_tags")
 
     # Only allow each user to post 5 ideas per day

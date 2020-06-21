@@ -13,43 +13,45 @@
 <!-- https://tobiasahlin.com/blog/masonry-with-css/ -->
 <div class="flex-container">
 	{% for idea in masonary_ideas %}
-		<div class="flex-wrapper">
-			<div class="card" id="card-{{ idea.pk }}">
+		{% if idea.author.user == user or idea.publish_status == 2 %}
+			<div class="flex-wrapper">
+				<div class="card" id="card-{{ idea.pk }}">
 
-				<!-- Header image -->
-				{% if idea.header_img.file %}
-					<div class="card-img-wrapper">
-						<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
+					<!-- Header image -->
+					{% if idea.header_img.file %}
+						<div class="card-img-wrapper">
+							<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
+						</div>
+
+						<!-- Circle like button -->
+						{% include 'idea/card_action.html' %}
+					{% endif %}
+
+					<div class="card-body">
+						<!-- Show like button here if there is no header image -->
+						{% if idea.header_img.file == None %}
+							<!-- Like button and view count -->
+							{% include 'idea/mini_card_action.html' %}
+						{% endif %}	
+
+						<!-- Title -->
+						<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
+
+						<!-- Short description -->
+						<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:50 }}</h6>
+
+						<!-- Content -->
+						<p class="card-text">{{ idea.full_description|truncatechars:100 }}</p>
+
+						<!-- Author -->
+						<p class="author">By {{ idea.author }}</p>
+
+						<!-- Views -->
+						<p class="views">Views {{ idea.viewed_user.count|ntt }}</p>
 					</div>
-
-					<!-- Circle like button -->
-					{% include 'idea/card_action.html' %}
-				{% endif %}
-
-				<div class="card-body">
-					<!-- Show like button here if there is no header image -->
-					{% if idea.header_img.file == None %}
-						<!-- Like button and view count -->
-						{% include 'idea/mini_card_action.html' %}
-					{% endif %}	
-
-					<!-- Title -->
-					<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
-
-					<!-- Short description -->
-					<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:50 }}</h6>
-
-					<!-- Content -->
-					<p class="card-text">{{ idea.full_description|truncatechars:100 }}</p>
-
-					<!-- Author -->
-					<p class="author">By {{ idea.author }}</p>
-
-					<!-- Views -->
-					<p class="views">Views {{ idea.viewed_user.count|ntt }}</p>
 				</div>
 			</div>
-		</div>
+		{% endif %}
 	{% endfor %}
 	<span class="flex-wrapper break"></span>
 	<span class="flex-wrapper break"></span>

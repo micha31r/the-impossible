@@ -6,10 +6,15 @@ input {
 	background-color: rgb(255,240,200);
 	font-size: 1.3rem;
 	margin-bottom: 10px;
+	box-shadow: 0px 10px 15px rgb(215,165,10);
 }
 
 input::placeholder {
 	color: rgb(215,200,160);
+}
+
+button[type="submit"] {
+	box-shadow: 0px 10px 15px rgb(215,165,10);
 }
 
 .wrapper {

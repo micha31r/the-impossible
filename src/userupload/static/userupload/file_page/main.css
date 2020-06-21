@@ -13,9 +13,7 @@ input {
 	width: 100%;
 	min-width: 200px;
 	padding: 10px;
-	border-style: solid;
-	border-color: grey;
-	border-width: 0px;
+	border: 0;
 	border-radius: 10px;
 	background-color: #FFF;
 	margin-bottom: var(--margin-between-element);

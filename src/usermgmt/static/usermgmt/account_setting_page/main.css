@@ -1,0 +1,77 @@
+.form-wrapper {
+	width: max-content;
+	max-width: 100%;
+	margin: auto;
+}
+
+form {
+	display: inline-block;
+	width: max-content;
+	min-width: 300px;
+	margin: auto;
+	padding: 20px;
+	vertical-align: top;
+	background-color: #000;
+	border-radius: 20px;
+	box-shadow: 0px 10px 15px rgb(215,165,10);
+	margin: 20px;
+}
+
+form h1 {
+	color: rgb(215,200,160);
+	border-color: rgb(215,200,160);
+	border-left-width: 3px;
+	border-style: solid;
+	word-break: break-all;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+/* Hide the default error list */
+.errorlist {
+	display: none;
+}
+
+label {
+	display: none;
+}
+
+input, textarea {
+	width: 100%;
+	border: 0;
+	border-radius: 10px;
+	font-size: 1rem;
+	padding: 10px;
+	background-color: #222;
+	color: #fff;
+}
+
+textarea {
+	height: 200px;
+}
+
+input:focus, textarea:focus {
+	color: #000;
+}
+
+input::placeholder, textarea::placeholder {
+	color: #444;
+}
+
+input:focus::placeholder, textarea:focus::placeholder{
+	color: rgb(215,200,160);
+}
+
+input:focus, textarea:focus {
+	outline: none;
+	background-color: rgb(255,240,200);
+}
+
+@media only screen and (max-width: 520px) {
+	form {
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		min-width: none;
+	}
+}
