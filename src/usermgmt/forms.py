@@ -72,7 +72,8 @@ class ProfileForm(forms.Form):
             attrs={
                 "placeholder":"First Name"
             }
-        )
+        ),
+        required=False
     )
     last_name = forms.CharField(
         max_length=50,
@@ -80,7 +81,8 @@ class ProfileForm(forms.Form):
             attrs={
                 "placeholder":"Last Name"
             }
-        )
+        ),
+        required=False
     )
     email = forms.EmailField(
         max_length=200,
@@ -96,7 +98,8 @@ class ProfileForm(forms.Form):
             attrs={
                 "placeholder":"Bio (160)"
             }
-        )
+        ),
+        required=False
     )
     website = forms.URLField(
         max_length=160,
@@ -104,7 +107,8 @@ class ProfileForm(forms.Form):
             attrs={
                 "placeholder":"Website"
             }
-        )
+        ),
+        required=False
     )
     location = forms.CharField(
         max_length=50,
@@ -112,7 +116,8 @@ class ProfileForm(forms.Form):
             attrs={
                 "placeholder":"Location (Planet Earth?)"
             }
-        )
+        ),
+        required=False
     )
 
 class SettingForm(forms.Form):
@@ -124,19 +129,22 @@ class PasswordForm(forms.Form):
             attrs={
                 "placeholder":"Current Password"
             }
-        )
+        ),
+        required=False
     )
     new_password = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
                 "placeholder":"New Password"
             }
-        )
+        ),
+        required=False
     )
     password_confirmation = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
                 "placeholder":"Confirm Password"
             }
-        )
+        ),
+        required=False
     )

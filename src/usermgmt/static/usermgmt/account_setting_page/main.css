@@ -29,7 +29,7 @@ form h1 {
 
 /* Hide the default error list */
 .errorlist {
-	display: none;
+	background-color: #fff;
 }
 
 label {
