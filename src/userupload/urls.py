@@ -1,13 +1,13 @@
 from django.urls import path
 
 from .views import (
-	file_page
+	idea_header_img_page,
+	idea_body_img_page,
+	delete_page
 )
 
 urlpatterns = [
-	path(
-		'file/<slug:pk>/<str:referred_obj_name>/<int:referred_obj_pk>/<str:referred_obj_field>/<slug:expected_file_type>', 
-		file_page, 
-		name="userupload_file_page"
-	),
+	path('file/idea/header/<int:idea_pk>/<slug:file_pk>/', idea_header_img_page, name="userupload_idea_header_img_page"),
+	path('file/idea/body/<int:idea_pk>/<slug:file_pk>/', idea_body_img_page, name="userupload_idea_body_img_page"),
+	path('file/<slug:redirect_name>/<int:obj_pk>/<slug:file_pk>/', delete_page, name="userupload_delete_page"),
 ] 

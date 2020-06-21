@@ -7,6 +7,16 @@ def file_extension(name):
 def file_is_valid(name,expected_type):
 	# Return file type
 	extension = file_extension(name)
+	if expected_type in SUPPORTED_FILE_TYPE.keys():
+		for v in SUPPORTED_FILE_TYPE[expected_type]:
+			if extension == v:
+				return True
+	return False
+
+"""
+def file_is_valid(name,expected_type):
+	# Return file type
+	extension = file_extension(name)
 
 	# If given an expected file type
 	if expected_type != "None":
@@ -45,3 +55,4 @@ def file_validate_or_remove(obj,referred_obj_field,expected_file_type):
 					return True
 		except: pass
 	return False
+"""

@@ -13,8 +13,6 @@ from .utils import *
 
 from the_impossible.ERROR import *
 
-from userupload.utils import *
-
 from .ajax_encrypt import encrypt
 
 from usermgmt.models import (
@@ -115,13 +113,6 @@ def edit_page(request,pk):
 	ctx["date"] = date = Date()
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
 	if idea.author.user == request.user:
-		# Remove file if it's not an image
-		file_deleted1 = file_validate_or_remove(idea,"header_img","image")
-		file_deleted2 = file_validate_or_remove(idea,"body_img","image")
-		# Show error message
-		if file_deleted1 or file_deleted2:
-			ctx["error"] = SERVER_ERROR["FILE_INVALID_DELETE"]
-
 		ctx["form"] = form = IdeaForm(request.POST or None)
 		# Set default values
 		form.fields["name"].initial = idea.name

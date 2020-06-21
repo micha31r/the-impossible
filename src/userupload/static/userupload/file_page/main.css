@@ -16,7 +16,7 @@ input {
 	border-style: solid;
 	border-color: grey;
 	border-width: 0px;
-	border-radius: 5px;
+	border-radius: 10px;
 	background-color: #FFF;
 	margin-bottom: var(--margin-between-element);
 	font-size: 2rem;
@@ -70,7 +70,7 @@ input:focus {
 #file-wrapper {
 	width: 100%;
 	max-height: 1000px;
-	border-radius: 5px;
+	border-radius: 10px;
 	background-color: rgb(206,165,57);
 	background-size: cover;
     background-position: center;

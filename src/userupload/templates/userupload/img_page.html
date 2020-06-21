@@ -37,7 +37,7 @@
 				<p hidden>{{ form.file }}</p>
 
 				<!-- This button replaces the default input -->
-				<div id="file-wrapper" style="{% if file_type == 'image' %} background-image:url('{{ file.file.url }}'); {% endif %}">
+				<div id="file-wrapper" style="background-image:url('{{ file.file.url }}');">
 					<div id="blur"></div>
 					<img id="hidden" src="{{ file.file.url }}">
 					<table>
@@ -48,7 +48,10 @@
 						</tr>
 					</table>
 				</div>
-				<button class="btn btn-dark btn-black bold submit" type="submit" data-toggle="popover" data-trigger="hover" title="Note" data-content="Image file will show once saved">Save File</button>
+				<button class="btn btn-dark btn-black bold submit" type="submit" data-toggle="popover" data-trigger="hover" title="Note" data-content="Image file will show once saved">Save Image</button>
+				{% if file %}
+					<button class="btn btn-black-outline submit" onclick="window.location.href='{% url 'userupload_delete_page' redirect_name=redirect_name obj_pk=obj.pk file_pk=file.pk %}';return false;">Delete</button>
+				{% endif %}
 				<!-- Show tooltip after hover -->
 				<script type="text/javascript">
 					if (!window.mobileAndTabletCheck()) {
