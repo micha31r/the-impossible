@@ -13,18 +13,23 @@ form {
 	vertical-align: top;
 	background-color: #000;
 	border-radius: 20px;
-	box-shadow: 0px 10px 15px rgb(215,165,10);
+	box-shadow: 0px 10px 15px #bbb;
 	margin: 20px;
 }
 
 form h1 {
-	color: rgb(215,200,160);
-	border-color: rgb(215,200,160);
+	color: #ddd;
+	border-color: #ddd;
 	border-left-width: 3px;
 	border-style: solid;
 	word-break: break-all;
 	padding: 10px;
 	margin-bottom: 10px;
+}
+
+form button {
+	background-color: #999 !important;
+	border: 0 !important;
 }
 
 /* Hide the default error list */
