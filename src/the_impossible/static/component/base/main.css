@@ -1,3 +1,12 @@
+.before-header {
+	max-width: 100vw;
+	overflow: hidden;
+	font-family: 'Lato', sans-serif;
+	font-size: 9rem;
+	color: #000;
+	text-align: right;
+}
+
 body {
 	min-width: 300px;
 	width: 90vw;

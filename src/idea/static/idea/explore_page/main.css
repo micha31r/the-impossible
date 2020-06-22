@@ -9,11 +9,28 @@ a:hover {
 	text-decoration: none;
 }
 
-.before-header {
-	font-family: 'Lato', sans-serif;
-	font-size: 9rem;
-	color: #000;
-	text-align: right;
+@media only screen and (max-width: 900px) {
+	.before-header {
+		font-size: 7rem;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	.before-header {
+		font-size: 5rem;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.before-header {
+		font-size: 4rem;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.before-header {
+		font-size: 3rem;
+	}
 }
 
 /* Explore */

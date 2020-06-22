@@ -23,6 +23,12 @@ nav {
 	}
 } 
 
+@media only screen and (max-width: 400px) {
+	.navbar-brand b {
+		display: none !important;
+	}
+}
+
 .navbar-logo {
 	margin-right: 15px;
 }
