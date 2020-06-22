@@ -15,7 +15,7 @@
 }
 
 .change-page-unavailable .left-arrow, .change-page-unavailable .right-arrow  {
-	fill: rgb(225,175,30);
+	fill: #ddd;
 }
 
 .word-omission {

@@ -1,22 +1,21 @@
 nav {
 	padding: 20px !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
 	font-family: "Arciform", sans-serif;
-	border-bottom-style: solid;
-	border-color: rgb(225,175,30);
-	/*background-color: rgb(255,205,60);*/
 
-	/* Bottom border */
-	border-bottom-width: 2px;
+	border-width: 2px;
 	border-style: solid;
 	border-color: rgba(0,0,0,0.1);
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
 	.navbar-collapse {
-		border-radius: 20px;
+		/* Make sure this is the same as navbar padding */
+		margin-top: 10px;
 		border-width: 2px;
 		border-style: dashed;
-		border-color: rgb(224,174,46);
+		border-color: #ddd;
 		padding: 15px;
 	}
 	.nav-link {
@@ -41,7 +40,7 @@ nav {
 }
 
 .collapse-icon {
-	stroke: rgb(155,105,0);
+	stroke: #bbb;
 }
 
 .dropdown-menu {

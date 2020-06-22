@@ -1,11 +1,9 @@
 body {
 	min-width: 300px;
-	width: 100vw;
-	max-width: 1500px;
+	width: 90vw;
+	max-width: 1200px;
 	height: 100vh;
-	/*font-family: 'Arciform', sans-serif;*/
 	overflow: scroll;
-	/*background-color: rgb(255,205,60);*/
 }
 
 .alert {
