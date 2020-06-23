@@ -1,20 +1,21 @@
-:root {
-	/* css variables */
-	--footer-padding: 20px;
-	--footer-padding-side: 20px;
-}
-
 footer {
 	height: max-content;
 	background-color: transparent;
-	padding: var(--footer-padding);
-	padding-left: var(--footer-padding-side);
-	padding-right: var(--footer-padding-side);
+	padding: 30px;
+	padding-left: 0;
+	padding-right: 0;
 	border: 0;
 	border-style: solid;
 	border-top-width: 2px;
 	border-color: rgba(0,0,0,0.1);
 	font-family: 'Varela Round', sans-serif;
+}
+
+@media only screen and (max-width: 500px) {
+	footer {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 }
 
 footer table {
@@ -23,6 +24,16 @@ footer table {
 
 footer table * {
 	border: 0px !important;
+}
+
+footer td {
+	padding: 0px !important;
+}
+
+@media only screen and (max-width: 320px) {
+	footer td {
+		text-align: center !important;
+	}
 }
 
 footer p {
@@ -43,13 +54,6 @@ footer button {
 	background-color: rgba(0,0,0,0);
 	padding: 0px;
 	margin: 0px;
-}
-
-@media only screen and (max-width: 470px) {
-	footer td {
-		text-align: left !important;
-		padding: 0 !important;
-	}
 } 
 
 footer .icon {

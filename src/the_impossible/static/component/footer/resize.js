@@ -1,6 +1,6 @@
 function footer_resize() {
 	$("#contact-td").appendTo("#footer-append-origin1");
-	if ($(window).width() < 470) {
+	if ($(window).width() < 320) {
 		$("#contact-td").appendTo("#footer-append-target1");
 	}
 }
