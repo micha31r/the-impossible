@@ -3,10 +3,6 @@ nav {
 	padding-top: 10px !important;
 	padding-bottom: 10px !important;
 	font-family: "Arciform", sans-serif;
-
-	border-width: 2px;
-	border-style: solid;
-	border-color: rgba(0,0,0,0.1);
 }
 
 @media only screen and (max-width: 768px) {
