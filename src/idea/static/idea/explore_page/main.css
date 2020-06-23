@@ -106,7 +106,7 @@ a:hover {
 }
 
 .discover-customise a {
-	color: rgb(138,118,140);
+	color: rgb(255,240,200);
 	font-size: 1.2rem;
 }
 
@@ -139,7 +139,7 @@ a:hover {
 .img-border {
 	border-bottom-width: 4px !important;
 	border-style: solid;
-	border-color: rgb(249,227,234) !important;
+	border-color: rgb(255,240,200) !important;
 	margin-bottom: 20px;
 }
 
