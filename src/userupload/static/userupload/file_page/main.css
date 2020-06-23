@@ -1,7 +1,6 @@
 :root {
 	/* css variables */
 	--form-width: 600px;
-	--margin-between-element: 20px;
 
 	/* file display dimension */
 	/* for images and videos only */
@@ -15,13 +14,13 @@ input {
 	padding: 10px;
 	border: 0;
 	border-radius: 10px;
-	background-color: #FFF;
-	margin-bottom: var(--margin-between-element);
+	background-color: #eee;
+	margin-bottom: 20px;
 	font-size: 2rem;
 }
 
 input::placeholder {
-	color: rgb(235,220,180);
+	color: #ccc;
 }
 
 input:focus::placeholder{
@@ -69,11 +68,11 @@ input:focus {
 	width: 100%;
 	max-height: 1000px;
 	border-radius: 10px;
-	background-color: rgb(206,165,57);
+	background-color: #888;
 	background-size: cover;
     background-position: center;
     text-align: center;
-    margin-bottom: var(--margin-between-element);
+    margin-bottom: 20px;
 }
 
 #file-wrapper table {
@@ -101,7 +100,7 @@ input:focus {
 
 .timestamp {
 	font-family: 'Varela Round', sans-serif;
-	margin-top: var(--margin-between-element);
+	margin-top: 20px;
 	width: 100%;
 	text-align: right;
 	color: rgb(186,145,37);
