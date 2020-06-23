@@ -7,7 +7,7 @@
 	margin-top: var(--margin-between-element);
 	width: 100%;
 	text-align: right;
-	color: rgb(186,145,37);
+	color: #ddd;
 }
 
 .timestamp p {
@@ -15,5 +15,5 @@
 }
 
 .timestamp .time {
-	color: #000;
+	color: #888;
 }
