@@ -103,7 +103,7 @@ input:focus {
 	margin-top: 20px;
 	width: 100%;
 	text-align: right;
-	color: rgb(186,145,37);
+	color: #ddd;
 }
 
 .timestamp p {
@@ -111,5 +111,5 @@ input:focus {
 }
 
 .timestamp .time {
-	color: #000;
+	color: #888;
 }
