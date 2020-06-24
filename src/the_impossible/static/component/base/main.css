@@ -56,6 +56,17 @@ body {
 	background-color: transparent;
 }
 
+.btn-yellow:hover {
+	color: rgb(225,182,0);
+	border-color: rgb(245,235,181);
+	background-color: rgb(245,235,181);
+}
+
+.btn-yellow-outline:hover {
+	border-color: rgb(235,192,0) !important;
+	background-color: rgb(255,245,191) !important;
+}
+
 .wrapper {
 	padding: 40px;
 }

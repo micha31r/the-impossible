@@ -81,6 +81,7 @@ a:hover {
 	}
 	.user-info-container {
 		box-shadow: none;
+		padding: 0px;
 	}
 }
 

@@ -10,7 +10,7 @@ nav {
 		/* Make sure this is the same as navbar padding */
 		margin-top: 10px;
 		border-width: 2px;
-		border-style: dashed;
+		/*border-style: dashed;*/
 		border-color: #ddd;
 		padding: 15px;
 	}
@@ -18,6 +18,15 @@ nav {
 		padding: 0px !important;
 	}
 } 
+
+/* Show border on small screens */
+@media only screen and (max-width: 500px) {
+	nav {
+		border-width: 2px !important;
+		border-style: solid;
+		border-color: rgba(0,0,0,0.1);
+	}
+}
 
 .navbar-logo {
 	margin-right: 15px;
@@ -27,8 +36,9 @@ nav {
 	font-size: 1.6rem;
 }
 
-.nav-item {
-	font-size: 1.3rem;
+.nav-item, nav button {
+	font-size: 1.3rem !important;
+	text-align: center;
 }
 
 .navbar-toggler {
@@ -41,9 +51,9 @@ nav {
 
 .dropdown-menu {
 	border: 0;
-	border-radius: 10px;
 	background-color: #000;
 	overflow: hidden;
+	width: max-content;
 }
 
 .dropdown-menu * {

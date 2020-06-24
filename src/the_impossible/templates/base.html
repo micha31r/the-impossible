@@ -137,11 +137,9 @@
 			      		</li>
 		    		{% else %}
 			      		<li class="nav-item">
-			        		<a class="nav-link" href="{% url 'signup_page' %}">Sign up</a>
-			      		</li>
-			      		<li class="nav-item">
 			        		<a class="nav-link" href="{% url 'login_page' %}">Login</a>
 			      		</li>
+			      		<button class="btn btn-yellow" onclick="window.location.href='{% url 'signup_page' %}'">Sign Up</button>
 			      	{% endif %}
 			    </ul>
 			</div>

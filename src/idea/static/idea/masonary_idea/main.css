@@ -38,13 +38,13 @@
 	font-family: 'Arciform', sans-serif;
 	font-size: 5rem;
 	line-height: 5rem;
-	color: rgb(234,184,56);
+	color: #eee;
 	word-break: break-all;
 	margin: 0;
 }
 
 .no-content-text span {
-	color: rgb(224,174,46);
+	color: #ddd;
 }
 
 .no-content-text a {
@@ -54,7 +54,7 @@
 }
 
 .no-content-text a:hover {
-	color: rgb(204,154,26);
+	color: #bbb;
 	background-color: transparent !important;
 }
 
