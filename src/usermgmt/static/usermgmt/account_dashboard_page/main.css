@@ -17,6 +17,7 @@ a:hover {
 .user-info-container {
 	display: inline-block;
 	max-width: 600px;
+	min-width: 300px;
 	box-shadow: inset 0px 10px 15px 0px #eee;
 	padding: 20px;
 	border-radius: 20px;
