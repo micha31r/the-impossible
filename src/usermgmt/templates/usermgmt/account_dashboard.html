@@ -27,6 +27,9 @@
 {% endblock %}
 
 {% block content %}
+	<!-- Lato Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
 	<link rel="stylesheet" type="text/css" href="{% static 'idea/pagination/main.css' %}">
 
 	<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/account_dashboard_page/main.css' %}">
@@ -59,10 +62,10 @@
 	</div>
 	<div class="wrapper">
 		<div class="header-wrapper">
-			<h3 class="header {% if content_filter == 'my' %}header-current{% endif %}"><a href="{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}">{% if target_profile.user == user %}My{% endif %} Ideas</a></h3>
-			<h3 class="header {% if content_filter == 'liked' %}header-current{% endif %}"><a href="{% url 'account_dashboard_page' username=username content_filter='liked' page_num=1 %}">Liked Ideas</a></h3>
+			<button class="btn btn-yellow {% if content_filter == 'my' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}'">{% if target_profile.user == user %}My{% endif %} Ideas</button>
+			<button class="btn btn-yellow {% if content_filter == 'liked' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='liked' page_num=1 %}'">Liked Ideas</button>
 			{% if target_profile.user == user %}
-				<h3 class="header {% if content_filter == 'starred' %}header-current{% endif %}"><a href="{% url 'account_dashboard_page' username=username content_filter='starred' page_num=1 %}">Starred Ideas</a></h3>
+				<button class="btn btn-yellow {% if content_filter == 'starred' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='starred' page_num=1 %}'">Starred Ideas</button>
 			{% endif %}
 		</div>
 		{% include 'idea/masonary.html' %}

@@ -37,10 +37,23 @@ body {
 }
 
 .alert-black-outline, .btn-black-outline, .btn-black {
-	border-width: 3px;
+	border-width: 2px;
 	border-color: #000;
 	border-style: solid;
 	color: #000;
+}
+
+.btn-yellow, .btn-yellow-outline {
+	color: rgb(235,192,0);
+	background-color: rgb(255,245,191);
+	border-width: 2px;
+	border-color: rgb(255,245,191);
+	border-style: solid;
+}
+
+.btn-yellow-outline {
+	border-color: rgb(235,192,0);
+	background-color: transparent;
 }
 
 .wrapper {
