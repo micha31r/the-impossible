@@ -5,6 +5,7 @@ nav {
 	font-family: "Arciform", sans-serif;
 }
 
+/* 768 is the collapse point of the medium sized navbar */
 @media only screen and (max-width: 768px) {
 	.navbar-collapse {
 		/* Make sure this is the same as navbar padding */
@@ -14,8 +15,26 @@ nav {
 		border-color: #ddd;
 		padding: 15px;
 	}
+	.nav-item, nav button {
+		padding-top: 6px;
+		padding-bottom: 6px;
+		background-color: #eee;
+		border-radius: 5px;
+		margin-bottom: 5px;
+		/* Remove button border */
+		border: 0 !important;
+	}
+	.nav-item:hover {
+		background-color: #ddd;
+	}
 	.nav-link {
 		padding: 0px !important;
+	}
+	.dropdown-menu {
+		width: calc(100% - 40px) !important;
+		margin: auto;
+		margin-top: 10px;
+		margin-bottom: 14px;
 	}
 } 
 
@@ -38,7 +57,7 @@ nav {
 
 .nav-item, nav button {
 	font-size: 1.3rem !important;
-	text-align: center;
+	text-align: center; 
 }
 
 .navbar-toggler {
@@ -51,6 +70,7 @@ nav {
 
 .dropdown-menu {
 	border: 0;
+	border-radius: 5px;
 	background-color: #000;
 	overflow: hidden;
 	width: max-content;

@@ -10,20 +10,18 @@
 	<li class="nav-item">
 		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}">Explore</a>
 	</li>
-	<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Account
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        	<a class="dropdown-item" href="{% url 'account_notification_page' page_num='1' %}">Notification</a>
-			<a class="dropdown-item" href="#">People</a>
-			<a class="dropdown-item" href="{% if user.is_authenticated %}{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}{% else %}{% url 'login_page' %}{% endif %}">My Ideas</a>
-			<a class="dropdown-item" href="{% if user.is_authenticated %}{% url 'account_dashboard_page' username=user.username content_filter='liked' page_num=1 %}{% else %}{% url 'login_page' %}{% endif %}">Liked Ideas</a>
-			<a class="dropdown-item" href="{% if user.is_authenticated %}{% url 'account_dashboard_page' username=user.username content_filter='starred' page_num=1 %}{% else %}{% url 'login_page' %}{% endif %}">Starred Ideas</a>
-			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="{% url 'account_setting_page' %}">Settings</a>
-        </div>
-      </li>
+	{% if user.is_authenticated %}
+		<li class="nav-item dropdown">
+	        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	        	<a class="dropdown-item" href="{% url 'account_notification_page' page_num='1' %}">Notification</a>
+				<a class="dropdown-item" href="#">People</a>
+				<a class="dropdown-item" href="#">Direct Message</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="{% url 'account_setting_page' %}">Settings</a>
+	        </div>
+		</li>
+	{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -62,10 +60,10 @@
 	</div>
 	<div class="wrapper">
 		<div class="header-wrapper">
-			<button class="btn btn-yellow {% if content_filter == 'my' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}'">{% if target_profile.user == user %}My{% endif %} Ideas</button>
-			<button class="btn btn-yellow {% if content_filter == 'liked' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='liked' page_num=1 %}'">Liked Ideas</button>
+			<button class="header btn btn-yellow {% if content_filter == 'my' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}'">{% if target_profile.user == user %}My{% endif %} Ideas</button>
+			<button class="header btn btn-yellow {% if content_filter == 'liked' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='liked' page_num=1 %}'">Liked Ideas</button>
 			{% if target_profile.user == user %}
-				<button class="btn btn-yellow {% if content_filter == 'starred' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='starred' page_num=1 %}'">Starred Ideas</button>
+				<button class="header btn btn-yellow {% if content_filter == 'starred' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='starred' page_num=1 %}'">Starred Ideas</button>
 			{% endif %}
 		</div>
 		{% include 'idea/masonary.html' %}
