@@ -105,4 +105,26 @@
 			</a>
 		</div>
 	</div>
+	<div class="wrapper">
+		<h1>Followers</h1>
+		{% for follower in followers %}
+			<div class="follower-wrapper">
+				<h4><a>{{ follower.username }}</a></h4>
+				<p>{{ follower.first_name }}</p>
+				<p>{{ follower.last_name }}</p>
+			</div>
+			<style type="text/css">
+				.follower-wrapper {
+					padding: 20px;
+					padding-left: 50px;
+					padding-right: 50px;
+					width: max-content;
+					border-width: 2px;
+					border-color: rgba(0,0,0,0.1);
+					border-radius: 5px;
+					border-style: solid;
+				}
+			</style>
+		{% endfor %}
+	</div>
 {% endblock %}
