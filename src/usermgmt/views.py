@@ -60,9 +60,16 @@ def signup_page(request):
 					user.last_name = last_name.capitalize()
 					user.save()
 					if user:
+						# Profile image must have pk of 1 and created by superuser
+						profile_img = File.objects.filter(id=1).first()
+						if profile_img:
+							if not profile_img.user.is_superuser:
+								profile_img = None
+
 						# Create a profile
 						profile = Profile.objects.create(
-							user=user
+							user=user,
+							profile_img=profile_img or None
 						)
 						# Log user in
 						login(request, user)
@@ -117,7 +124,10 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	# Get 20 most recent notifications
 	ctx["target_notifications"] = target_profile.notification.all().order_by('-timestamp')[:20]
 	# Followers
-	ctx["followers"] = User.objects.filter(profile__following__id=target_profile.id)
+	ctx["followers"] = followers = User.objects.filter(profile__following__id=target_profile.id)
+	ctx["followers_profile"] = []
+	for user in followers:
+		ctx["followers_profile"].append(Profile.objects.filter(user=user).first())
 
 	idea = {}
 	if content_filter == "my":

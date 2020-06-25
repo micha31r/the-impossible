@@ -9,15 +9,24 @@ function notification_resize() {
 	var padding_top = parseInt($(".notification-container").css("padding-top").replace("px",""));
 	var new_height = $(".user-info").height() - padding_top;
 	$(".notification-container").height(new_height);
+}
 
+function follower_profile_resize() {
+	// 150 is the profile image width, 40 is the text wrapper padding (L & R)
+	var width = $(".follower-wrapper").width() - 150 - 40; 
+	$(".profile-info-wrapper").css("width",`${width}px`);
 }
 
 auto_run.queue( 
 	function() {
 		notification_resize();
+		follower_profile_resize();
 		window.addEventListener(
 			"resize", 
-			notification_resize
+			function() {
+				notification_resize();
+				follower_profile_resize();
+			}
 		);
 	}
 );

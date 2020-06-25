@@ -106,23 +106,48 @@
 		</div>
 	</div>
 	<div class="wrapper">
-		<h1>Followers</h1>
-		{% for follower in followers %}
+		{% for follower in followers_profile %}
 			<div class="follower-wrapper">
-				<h4><a>{{ follower.username }}</a></h4>
-				<p>{{ follower.first_name }}</p>
-				<p>{{ follower.last_name }}</p>
+				{% if follower.profile_img.file %}
+					<div class="profile-img-wrapper">
+						<img class="profile-img" src="{{ follower.profile_img.file.url }}">
+					</div>
+				{% endif %}
+				<div class="profile-info-wrapper">
+					<h4><a>@{{ follower.user.username }}</a></h4>
+					<p><b>{{ follower.user.get_full_name }}</b></p>
+					<p>{{ follower.bio|truncatechars:100 }}</p>
+				</div>
 			</div>
 			<style type="text/css">
 				.follower-wrapper {
+					width: 100%;
+					max-width: 800px;
+					height: 150px;
+					overflow: hidden;
+					margin: auto;
+					margin-top: 20px;
+					margin-bottom: 20px;
+					box-shadow: 0px 5px 15px #eee;
+				}
+				.profile-img-wrapper {
+					display: inline-block;
+					width: 150px;
+					height: 150px;
+					overflow: hidden;
+					vertical-align: top;
+				}
+				.profile-img {
+					height: 100%;
+				}
+				.profile-info-wrapper {
+					display: inline-block;
+					overflow: scroll;
+					height: 150px;
 					padding: 20px;
-					padding-left: 50px;
-					padding-right: 50px;
-					width: max-content;
-					border-width: 2px;
-					border-color: rgba(0,0,0,0.1);
-					border-radius: 5px;
-					border-style: solid;
+				}
+				.profile-info-wrapper p {
+					margin: 0;
 				}
 			</style>
 		{% endfor %}
