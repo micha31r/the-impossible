@@ -11,22 +11,12 @@ function notification_resize() {
 	$(".notification-container").height(new_height);
 }
 
-function follower_profile_resize() {
-	// 150 is the profile image width, 40 is the text wrapper padding (L & R)
-	var width = $(".follower-profile-wrapper").width() - 150 - 40; 
-	$(".profile-info-wrapper").css("width",`${width}px`);
-}
-
 auto_run.queue( 
 	function() {
 		notification_resize();
-		follower_profile_resize();
 		window.addEventListener(
 			"resize", 
-			function() {
-				notification_resize();
-				follower_profile_resize();
-			}
+			notification_resize
 		);
 	}
 );
