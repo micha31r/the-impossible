@@ -6,15 +6,16 @@
 
 form {
 	display: inline-block;
-	width: max-content;
 	min-width: 300px;
-	margin: auto;
+	width: 400px;
+	max-width: 100%;
 	padding: 20px;
 	vertical-align: top;
 	background-color: #000;
 	border-radius: 20px;
 	box-shadow: 0px 10px 15px #bbb;
-	margin: 20px;
+	box-sizing: border-box;
+	margin: auto;
 }
 
 form h1 {
@@ -49,6 +50,7 @@ input, textarea {
 	padding: 10px;
 	background-color: #222;
 	color: #fff;
+	margin-bottom: 15px;
 }
 
 textarea {

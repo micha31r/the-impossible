@@ -90,7 +90,8 @@ class ProfileForm(forms.Form):
             attrs={
                 "placeholder":"Email"
             }
-        )
+        ),
+        required=False
     )
     bio = forms.CharField(
         max_length=160,
@@ -119,9 +120,6 @@ class ProfileForm(forms.Form):
         ),
         required=False
     )
-
-class SettingForm(forms.Form):
-    pass
 
 class PasswordForm(forms.Form):
     current_password = forms.CharField(

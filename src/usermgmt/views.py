@@ -9,7 +9,6 @@ from .forms import (
 	LoginForm,
 	SignUpForm,
 	ProfileForm,
-	SettingForm,
 	PasswordForm,
 )
 
@@ -186,16 +185,8 @@ def account_setting_page(request):
 	ctx["date"] = Date()
 	profile = get_object_or_404(Profile,user=request.user)
 
-	ctx["profile_form"] = profile_form = ProfileForm(request.POST or None)
-	profile_form.fields["first_name"].initial = profile.user.first_name
-	profile_form.fields["last_name"].initial = profile.user.last_name
-	profile_form.fields["email"].initial = profile.user.email
-	profile_form.fields["bio"].initial = profile.bio
-	profile_form.fields["website"].initial = profile.website
-	profile_form.fields["location"].initial = profile.location
-
-	ctx["password_form"] = password_form = PasswordForm(request.POST or None)
-
+	# User Profile Form
+	profile_form = ProfileForm(request.POST or None)
 	if profile_form.is_valid() and 'profile_form_submit' in request.POST:
 		profile.user.first_name = profile_form.cleaned_data.get("first_name").capitalize()
 		profile.user.last_name = profile_form.cleaned_data.get("last_name").capitalize()
@@ -205,7 +196,20 @@ def account_setting_page(request):
 		profile.location = profile_form.cleaned_data.get("location")
 		profile.user.save()
 		profile.save()
+	else:
+		initial = {
+			"first_name":profile.user.first_name,
+			"last_name":profile.user.last_name,
+			"email":profile.user.email,
+			"bio":profile.bio,
+			"website":profile.website,
+			"location":profile.location,
+		}
+		profile_form = ProfileForm(initial=initial)
+	ctx["profile_form"] = profile_form
 
+	# Reset Password Form
+	ctx["password_form"] = password_form = PasswordForm(request.POST or None)
 	if password_form.is_valid() and 'password_form_submit' in request.POST:
 		current_passsword = password_form.cleaned_data.get("current_password")
 		new_password = password_form.cleaned_data.get("new_password")

@@ -23,7 +23,14 @@
 					</div>
 				{% endif %}
 
-				{{ profile_form.as_p }}
+				{% include 'form_error.html' with form=profile_form %}
+
+				{{ profile_form.first_name }}
+				{{ profile_form.last_name }}
+				{{ profile_form.email }}
+				{{ profile_form.bio }}
+				{{ profile_form.website }}
+				{{ profile_form.location }}
 
 				<button class="btn btn-warning bold" type="submit" name="profile_form_submit">Update Profile</button>
 			</form>
@@ -40,7 +47,11 @@
 					</div>
 				{% endif %}
 
-				{{ password_form.as_p }}
+				{% include 'form_error.html' with form=password_form %}
+
+				{{ password_form.current_password }}
+				{{ password_form.new_password }}
+				{{ password_form.password_confirmation }}
 				
 				<button class="btn btn-warning bold" type="submit" name="password_form_submit">Change Password</button>
 			</form>
