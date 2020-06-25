@@ -116,7 +116,7 @@
 					{% for follower in followers_profile %}
 						{% if follower.profile_img.file %}
 							<div class="profile-img-wrapper">
-								<img class="profile-img" src="{{ follower.profile_img.file.url }}">
+								<a href="{% url 'account_dashboard_page' username=follower.user.username content_filter='my' page_num=1 %}"><img class="profile-img" src="{{ follower.profile_img.file.url }}"></a>
 							</div>
 						{% endif %}
 					{% endfor %}
