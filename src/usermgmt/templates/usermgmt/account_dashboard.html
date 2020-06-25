@@ -105,51 +105,70 @@
 			</a>
 		</div>
 	</div>
-	<div class="wrapper">
-		{% for follower in followers_profile %}
-			<div class="follower-wrapper">
-				{% if follower.profile_img.file %}
-					<div class="profile-img-wrapper">
-						<img class="profile-img" src="{{ follower.profile_img.file.url }}">
-					</div>
-				{% endif %}
-				<div class="profile-info-wrapper">
-					<h4><a>@{{ follower.user.username }}</a></h4>
-					<p><b>{{ follower.user.get_full_name }}</b></p>
-					<p>{{ follower.bio|truncatechars:100 }}</p>
+	<div class="wrapper follower-wrapper">
+		<div class="follower-header">
+			<h1>Followers</h1>
+			<a href="#">View All <img src="{% static 'component/feather_svg/arrow-right-circle.svg' %}"></a>
+		</div>
+		<div class="horizontal-overflow-wrapper">
+			{% if followers_profile %}
+				<div class="horizontal-container">
+					{% for follower in followers_profile %}
+						{% if follower.profile_img.file %}
+							<div class="profile-img-wrapper">
+								<img class="profile-img" src="{{ follower.profile_img.file.url }}">
+							</div>
+						{% endif %}
+					{% endfor %}
 				</div>
-			</div>
-			<style type="text/css">
-				.follower-wrapper {
-					width: 100%;
-					max-width: 800px;
-					height: 150px;
-					overflow: hidden;
-					margin: auto;
-					margin-top: 20px;
-					margin-bottom: 20px;
-					box-shadow: 0px 5px 15px #eee;
-				}
-				.profile-img-wrapper {
-					display: inline-block;
-					width: 150px;
-					height: 150px;
-					overflow: hidden;
-					vertical-align: top;
-				}
-				.profile-img {
-					height: 100%;
-				}
-				.profile-info-wrapper {
-					display: inline-block;
-					overflow: scroll;
-					height: 150px;
-					padding: 20px;
-				}
-				.profile-info-wrapper p {
-					margin: 0;
-				}
-			</style>
-		{% endfor %}
+			{% else %}
+				<p class="no-follower-text">(No user follows @{{ target_profile.user.username }})</p>
+			{% endif %}
+		</div>
+		<style type="text/css">
+			.follower-header {
+				padding: 5px;
+				padding-left: 20px; 
+				border: 0;
+				border-left-width: 5px;
+				border-color: black;
+				border-style: solid;
+			}
+			.follower-header a {
+				color: #000;
+			}
+			.follower-header img {
+				vertical-align: bottom;
+			}
+			.no-follower-text {
+				text-align: center;
+				color: #aaa;
+			}
+			.horizontal-overflow-wrapper {
+				height: max-content;
+				overflow-x: scroll;
+				overflow-y: hidden;
+			}
+			.horizontal-container {
+				width: max-content;
+				padding-top: 20px;
+				padding-bottom: 20px;
+			}
+			.profile-img-wrapper {
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				overflow: hidden;
+				vertical-align: top;
+				border-radius: 200px;
+				margin-right: -30px; 
+				border-style: solid;
+				border-width: 4px;
+				border-color: #fff;
+			}
+			.profile-img {
+				height: 100%;
+			}
+		</style>
 	</div>
 {% endblock %}

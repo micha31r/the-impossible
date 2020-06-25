@@ -5,7 +5,7 @@ import os
 
 class FileAdmin(admin.ModelAdmin):
 	# Display custom fields in Django admin
-	list_display = ("file_name","file_extension","file_size","user","timestamp","last_edit")
+	list_display = ("file_name","file_extension","file_size","user","timestamp","last_edit","id")
 
 	def file_name(self,obj):
 		name = obj.file.name.split("/")[-1].split(".")[0]

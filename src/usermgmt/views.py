@@ -13,9 +13,9 @@ from .forms import (
 	PasswordForm,
 )
 
-from .models import (
-	Profile,
-)
+from .models import Profile
+
+from userupload.models import File
 
 from idea.ajax_encrypt import encrypt
 
@@ -123,10 +123,11 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
 	# Get 20 most recent notifications
 	ctx["target_notifications"] = target_profile.notification.all().order_by('-timestamp')[:20]
+	
 	# Followers
-	ctx["followers"] = followers = User.objects.filter(profile__following__id=target_profile.id)
+	ctx["followers"] = followers = User.objects.filter(profile__following=target_profile.user)
 	ctx["followers_profile"] = []
-	for user in followers:
+	for user in followers[:30]:
 		ctx["followers_profile"].append(Profile.objects.filter(user=user).first())
 
 	idea = {}

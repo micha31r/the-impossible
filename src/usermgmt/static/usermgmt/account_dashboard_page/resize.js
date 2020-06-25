@@ -13,7 +13,7 @@ function notification_resize() {
 
 function follower_profile_resize() {
 	// 150 is the profile image width, 40 is the text wrapper padding (L & R)
-	var width = $(".follower-wrapper").width() - 150 - 40; 
+	var width = $(".follower-profile-wrapper").width() - 150 - 40; 
 	$(".profile-info-wrapper").css("width",`${width}px`);
 }
 
