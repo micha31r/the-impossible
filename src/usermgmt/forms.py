@@ -72,8 +72,7 @@ class ProfileForm(forms.Form):
             attrs={
                 "placeholder":"First Name"
             }
-        ),
-        required=False
+        )
     )
     last_name = forms.CharField(
         max_length=50,
@@ -81,8 +80,7 @@ class ProfileForm(forms.Form):
             attrs={
                 "placeholder":"Last Name"
             }
-        ),
-        required=False
+        )
     )
     email = forms.EmailField(
         max_length=200,
@@ -90,8 +88,7 @@ class ProfileForm(forms.Form):
             attrs={
                 "placeholder":"Email"
             }
-        ),
-        required=False
+        )
     )
     bio = forms.CharField(
         max_length=160,
