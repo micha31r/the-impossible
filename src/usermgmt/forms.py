@@ -1,6 +1,8 @@
 from django.forms import ModelForm, TextInput, PasswordInput
 from django import forms
 
+from .models import Profile
+
 class LoginForm(forms.Form):
     username = forms.CharField(
         widget=forms.TextInput(
@@ -117,6 +119,32 @@ class ProfileForm(forms.Form):
         ),
         required=False
     )
+
+class SettingForm(forms.ModelForm):
+    tags_remain = forms.CharField(label="Exsisting Tags",required=False)
+    blocked_user = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder":"Type @username to block"
+            }
+        ),
+        required=False
+    )
+
+    class Meta:
+        model = Profile
+        fields = [
+            "tags",
+            "like_setting",
+            "comment_setting",
+            "discover_setting",
+        ]
+        labels={
+            "tags":"Tags",
+            "like_setting":"Likes",
+            "comment_setting":"Comments",
+            "discover_setting":"Discover",
+        }
 
 class PasswordForm(forms.Form):
     current_password = forms.CharField(

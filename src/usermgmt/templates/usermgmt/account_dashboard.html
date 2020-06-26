@@ -49,7 +49,7 @@
 			<p class="following">{{ target_profile.following.count }} Following</p>
 			{% if target_profile.user == user %}
 				<!-- Edit button -->
-				<button class="btn btn-dark btn-black bold edit-profile" onclick="window.location.href='{% url 'account_setting_page' %}'">Edit Profile</button>
+				<button class="btn btn-dark btn-black bold edit-profile" onclick="window.location.href='{% url 'account_profile_page' %}'">Edit Profile</button>
 			{% else %}
 				<!-- Follow button -->
 				<button class="btn btn-dark btn-black bold edit-profile" onclick="window.location.href='{% if user.is_authenticated %}{% url 'account_follow_view' username=username %}{% else %}{% url 'login_page' %}{% endif %}'">{% if target_profile.user in profile.following.all %}Unfollow{% else %}Follow{% endif%} @{{ username }}</button>

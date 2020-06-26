@@ -12,8 +12,8 @@ User = settings.AUTH_USER_MODEL
 
 PUBLISH_OPTION = (
 	(1,"Draft"),
-    (2,"Public"),
-    (3,"Followers only"),
+    (2,"Followers only"),
+    (3,"Public"),
 )
 
 class Tag(models.Model):

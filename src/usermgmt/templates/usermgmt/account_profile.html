@@ -3,12 +3,12 @@
 {% load tags %}
 
 {% block title %}
-	<title>Settings - The Impossible</title>
+	<title>Profile - The Impossible</title>
 {% endblock %}
 
 {% block content %} 
 	<div class="wrapper">
-		<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/account_setting_page/main.css' %}"> 
+		<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/account_profile_page/main.css' %}"> 
 
 		<div class="close-window-wrapper">
 			<button class="btn close-window" onclick="window.location.href='{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}'"><img src="{% static 'component/feather_svg/x.svg' %}"></button>
@@ -16,6 +16,7 @@
 
 		<div class="form-wrapper">
 			<form class="profile-form" method="post">
+				<h1>Profile</h1>
 		    	{% csrf_token %}
 
 		    	<!-- Show error -->
@@ -28,20 +29,14 @@
 
 				{% include 'form_error.html' %}
 
-				<h5><b>{{ form.tags_remain.label }}({{ tags.count }}):</b></h5>
-				{{ form.tags_remain }}
-				<h5><b>{{ form.tags.label }}({{ profile.tags.count }}):</b></h5>
-				{{ form.tags }}
-				<h5><b>{{ form.blocked_user.label }}:</b></h5>
-				{{ form.blocked_user }}
-				<h5><b>{{ form.like_setting.label }}:</b></h5>
-				{{ form.like_setting }}
-				<h5><b>{{ form.comment_setting.label }}:</b></h5>
-				{{ form.comment_setting }}
-				<h5><b>{{ form.discover_setting.label }}:</b></h5>
-				{{ form.discover_setting }}
-				<br>
-				<button class="btn btn-yellow-outline bold" type="submit">Update Settings</button>
+				{{ form.first_name }}
+				{{ form.last_name }}
+				{{ form.email }}
+				{{ form.bio }}
+				{{ form.website }}
+				{{ form.location }}
+
+				<button class="btn btn-yellow-outline bold" type="submit">Update Profile</button>
 			</form>
 		</div>
 	</div>

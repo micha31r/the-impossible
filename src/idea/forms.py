@@ -11,7 +11,7 @@ DELETE_CHOICE = (
 
 class IdeaForm(forms.ModelForm):
     delete = forms.IntegerField(label="",required=False,initial=1,widget=forms.Select(choices=DELETE_CHOICE))
-    tags_remain = forms.CharField(label="",required=False)
+    tags_remain = forms.CharField(label="Exsisting Tags",required=False)
 
     class Meta:
         model = Idea

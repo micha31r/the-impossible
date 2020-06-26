@@ -63,8 +63,9 @@ body {
 }
 
 .btn-yellow-outline:hover {
+	color: rgb(225,182,0);
 	border-color: rgb(235,192,0) !important;
-	background-color: rgb(255,245,191) !important;
+	background-color: rgba(235,192,0,0.1) !important;
 }
 
 .wrapper {

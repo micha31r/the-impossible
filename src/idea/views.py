@@ -50,7 +50,7 @@ def explore_page(request,week_num,page_num):
 	ideas = Idea.objects.filter(
 		timestamp__gte = timestamp_from,
 		timestamp__lt = timestamp_to,
-		publish_status = 2
+		publish_status = 3
 	).distinct().order_by("id").reverse()
 	# Split data into pages
 	ideas = Paginator(ideas,ITEM_PER_PAGE)
@@ -64,7 +64,7 @@ def explore_page(request,week_num,page_num):
 	ideas = Idea.objects.filter(
 		timestamp__gte = date.now() - datetime.timedelta(days=182),
 		timestamp__lte = date.now() + datetime.timedelta(days=1),
-		publish_status = 2
+		publish_status = 3
 	).exclude(header_img=None)
 	random.seed(datetime.datetime.now())
 	ctx["random_ideas"] = random.sample(list(ideas), min(ideas.count(), 10))
@@ -154,7 +154,7 @@ def edit_page(request,pk):
 					profile.notification.add(msg)
 				else: 
 					# Tell the current user that their mentioned user does not exsist
-					profile = Profile.objects.filter(user=request.user).first()
+					profile = get_object_or_404(user=request.user)
 					message = f"@{username} user does not exsist"
 					msg = Notification.objects.create(message=message,message_status=1)
 					msg.save()
