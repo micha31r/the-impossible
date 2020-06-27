@@ -26,8 +26,8 @@ a:hover {
 	border-color: #666;
 }
 
-.target-profile-img-wrapper button {
-	background-color: transparent;
+.target-profile-img-wrapper a {
+	display: block;
 	width: 80px;
 	height: 80px;
 }
