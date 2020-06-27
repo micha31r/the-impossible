@@ -8,7 +8,8 @@ nav, footer {
 }
 
 .close-window-wrapper {
-	width: 100%;
+	width: 90%;
+	margin: auto;
 	margin-bottom: 40px;
 	text-align: right;
 }
