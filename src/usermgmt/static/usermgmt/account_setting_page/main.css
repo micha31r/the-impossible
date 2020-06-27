@@ -85,10 +85,13 @@ nav, footer {
 	width: max-content;
 	/* max-width is set through JS */
 	overflow: scroll;
-	padding: 40px;
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 
 form {
+	padding-left: 40px;
+	padding-right: 40px;
 	min-width: 300px;
 	width: max-content;
 	vertical-align: top;
