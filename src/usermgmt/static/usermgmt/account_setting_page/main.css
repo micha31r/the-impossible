@@ -189,8 +189,8 @@ input, textarea {
 	border-radius: 10px;
 	font-size: 1rem;
 	padding: 10px;
-	background-color: #222;
-	color: #fff;
+	background-color: #eee;
+	color: #000;
 	margin-bottom: 15px;
 }
 
@@ -200,21 +200,17 @@ textarea {
 	max-height: 200px;
 }
 
-input:focus, textarea:focus {
-	color: #000;
-}
-
 input::placeholder, textarea::placeholder {
-	color: #444;
+	color: #ccc;
 }
 
 input:focus::placeholder, textarea:focus::placeholder{
-	color: rgb(215,200,160);
+	color: #aaa;
 }
 
 input:focus, textarea:focus {
 	outline: none;
-	background-color: rgb(255,240,200);
+	background-color: #ddd;
 }
 
 select {
