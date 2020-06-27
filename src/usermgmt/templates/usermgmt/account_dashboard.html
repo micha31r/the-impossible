@@ -36,8 +36,13 @@
 
 	<div class="wrapper user-info">
 		<div class="user-info-container">
-			<h1 class="username">@{{ username }}</h1>
-			<h5 class="fullname">{{ target_profile.user.get_full_name }}</h5>
+			<div class="target-profile-img-wrapper">
+				<button class="btn" {% if target_profile.user == user %} onclick="window.location.href='{% if target_profile.profile_img %}{% url 'userupload_profile_img_page' profile_pk=target_profile.pk file_pk=target_profile.profile_img.pk %}{% else %}{% url 'userupload_profile_img_page' profile_pk=target_profile.pk file_pk=None %}{% endif %}'" {% endif %}>{% if target_profile.profile_img %}<img class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}</button>
+			</div>
+			<div style="display: inline-block;">
+				<h1 class="username">@{{ username }}</h1>
+				<h5 class="fullname">{{ target_profile.user.get_full_name }}</h5>
+			</div>
 			<p class="bio">{{ target_profile.bio }}</p>
 			{% if target_profile.website %}
 				<a class="website" href="{{ target_profile.website }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(227,176,75)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> {{ target_profile.website }}</a>
