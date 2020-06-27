@@ -10,39 +10,31 @@
 	<div class="wrapper">
 		<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/account_setting_page/main.css' %}"> 
 
+		<script type="text/javascript" src="{% static 'usermgmt/account_setting_page/resize.js' %}"></script>
+
 		<div class="close-window-wrapper">
 			<button class="btn close-window" onclick="window.location.href='{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}'"><img src="{% static 'component/feather_svg/x.svg' %}"></button>
 		</div>
 
-		<div class="form-wrapper">
-			<form class="profile-form" method="post">
-		    	{% csrf_token %}
+		<div class="table-wrapper">
+			<table>
+				<tr>
+					<td id="menu">
+						<h5><a href="{% url 'account_setting_profile_page' %}">Edit Profile</a></h5>
+						<h5><a href="{% url 'account_setting_password_page' %}">Change Password</a></h5>
+						<h5><a href="{% url 'account_setting_explore_content_page' %}">Explore Contents</a></h5>
+						<h5><a href="{% url 'account_setting_notification_page' %}">Notifications</a></h5>
+						<h5><a href="{% url 'account_setting_privacy_page' %}">Privacy</a></h5>
+						<h5><a href="{% url 'account_setting_danger_page' %}">Danger</a></h5>
+					</td>
+					<td class="form-wrapper">
+						{% include form_template_page %}
+					</td>
+				</tr>
+			</table>
+		</div>
 
-		    	<!-- Show error -->
-				{% if error %}
-					<div class="alert alert-black" role="alert">
-				  		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-				  		{{ error|escape }}
-					</div>
-				{% endif %}
-
-				{% include 'form_error.html' %}
-
-				<h5><b>{{ form.tags_remain.label }}({{ tags.count }}):</b></h5>
-				{{ form.tags_remain }}
-				<h5><b>{{ form.tags.label }}({{ profile.tags.count }}):</b></h5>
-				{{ form.tags }}
-				<h5><b>{{ form.blocked_user.label }}:</b></h5>
-				{{ form.blocked_user }}
-				<h5><b>{{ form.like_setting.label }}:</b></h5>
-				{{ form.like_setting }}
-				<h5><b>{{ form.comment_setting.label }}:</b></h5>
-				{{ form.comment_setting }}
-				<h5><b>{{ form.discover_setting.label }}:</b></h5>
-				{{ form.discover_setting }}
-				<br>
-				<button class="btn btn-yellow-outline bold" type="submit">Update Settings</button>
-			</form>
+		<div id="minify-menu">
 		</div>
 	</div>
 {% endblock %}

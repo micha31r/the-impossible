@@ -1,4 +1,4 @@
-function resize() {
+function table_resize() {
 	// Idea setting
 	if ($(window).width() < 830) {
 		$("#idea-setting").appendTo("#append-target1");
@@ -23,10 +23,10 @@ function resize() {
 
 auto_run.queue( 
 	function() {
-		resize();
+		table_resize();
 		window.addEventListener(
 			"resize", 
-			resize
+			table_resize
 		);
 	}
 );

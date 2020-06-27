@@ -1,7 +1,7 @@
 {% load static %}
 {% load tags %}
+
 <form method="post">
-	<h1>Profile</h1>
 	{% csrf_token %}
 
 	<!-- Show error -->
@@ -14,12 +14,27 @@
 
 	{% include 'form_error.html' %}
 
-	{{ form.first_name }}
-	{{ form.last_name }}
-	{{ form.email }}
-	{{ form.bio }}
-	{{ form.website }}
-	{{ form.location }}
+	<h5>{{ form.blocked_user.label }}:</h5>
+	{{ form.blocked_user }}
 
-	<button class="btn btn-yellow-outline bold" type="submit">Update Profile</button>
+	<hr class="section-seperator">
+
+	<h5>{{ form.discover_setting.label }}:</h5>
+	{% for radio in form.discover_setting %}
+		<div class="radio">
+		    {{ radio }}
+		</div>
+	{% endfor %}
+
+	<!-- Add span element to each radio button -->
+	<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio -->
+	<script type="text/javascript">
+		$( ".radio label" ).each(
+			function() {
+				$(this).append("<span class='checkmark'></span>");
+			}
+		);
+	</script>
+	
+	<button class="btn btn-yellow bold" type="submit">Update Settings</button>
 </form>

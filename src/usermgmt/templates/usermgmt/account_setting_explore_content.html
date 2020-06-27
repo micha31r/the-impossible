@@ -1,7 +1,7 @@
 {% load static %}
 {% load tags %}
+
 <form method="post">
-	<h1>Profile</h1>
 	{% csrf_token %}
 
 	<!-- Show error -->
@@ -14,12 +14,13 @@
 
 	{% include 'form_error.html' %}
 
-	{{ form.first_name }}
-	{{ form.last_name }}
-	{{ form.email }}
-	{{ form.bio }}
-	{{ form.website }}
-	{{ form.location }}
+	<h5>{{ form.tags_remain.label }}:</h5>
+	{{ form.tags_remain }}
 
-	<button class="btn btn-yellow-outline bold" type="submit">Update Profile</button>
+	<hr class="section-seperator">
+
+	<h5>Tags Remain:</h5>
+	{{ form.tags }}
+	
+	<button class="btn btn-yellow bold" type="submit">Update Settings</button>
 </form>

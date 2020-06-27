@@ -7,8 +7,15 @@ from .views import (
 	account_dashboard_page,
 	account_notification_page,
 	account_follow_view,
-	account_profile_page,
-	account_setting_page,
+)
+
+from .setting_views import (
+	account_setting_profile_page,
+	account_setting_password_page,
+	account_setting_explore_content_page,
+	account_setting_notification_page,
+	account_setting_privacy_page,
+	account_setting_danger_page,
 )
 
 urlpatterns = [
@@ -18,6 +25,13 @@ urlpatterns = [
 	path('account/dashboard/<slug:username>/<str:content_filter>/<int:page_num>/', account_dashboard_page, name="account_dashboard_page"),
 	path('account/notification/<int:page_num>/', account_notification_page, name="account_notification_page"),
 	path('account/follow/<slug:username>/', account_follow_view, name="account_follow_view"),
-	path('account/settings/profile', account_profile_page, name="account_profile_page"),
-	path('account/settings/', account_setting_page, name="account_setting_page"),
+	
+	# Account settings
+
+	path('account/settings/profile', account_setting_profile_page, name="account_setting_profile_page"),
+	path('account/settings/password', account_setting_password_page, name="account_setting_password_page"),
+	path('account/settings/explore-content', account_setting_explore_content_page, name="account_setting_explore_content_page"),
+	path('account/settings/notification', account_setting_notification_page, name="account_setting_notification_page"),
+	path('account/settings/privacy', account_setting_privacy_page, name="account_setting_privacy_page"),
+	path('account/settings/danger', account_setting_danger_page, name="account_setting_danger_page"),
 ]

@@ -9,9 +9,6 @@ from django import forms
 from .forms import (
 	LoginForm,
 	SignUpForm,
-	ProfileForm,
-	PasswordForm,
-	SettingForm,
 )
 
 from .models import (
@@ -23,12 +20,7 @@ from userupload.models import File
 
 from idea.ajax_encrypt import encrypt
 
-from idea.models import (
-	Idea,
-	Tag,
-)
-
-from idea.utils import at_filter
+from idea.models import Idea
 
 from the_impossible.utils import *
 
@@ -187,117 +179,5 @@ def account_follow_view(request,username):
 	profile.save()
 	return redirect("account_dashboard_page",username=username,content_filter="my",page_num=1)
 
-@login_required
-def account_profile_page(request):
-	ctx = {}
-	ctx["date"] = Date()
-	profile = get_object_or_404(Profile,user=request.user)
 
-	# User Profile Form
-	form = ProfileForm(request.POST or None)
-	if form.is_valid():
-		profile.user.first_name = form.cleaned_data.get("first_name").capitalize()
-		profile.user.last_name = form.cleaned_data.get("last_name").capitalize()
-		profile.user.email = form.cleaned_data.get("email")
-		profile.bio = form.cleaned_data.get("bio")
-		profile.website = form.cleaned_data.get("website")
-		profile.location = form.cleaned_data.get("location")
-		profile.user.save()
-		profile.save()
-	else:
-		initial = {
-			"first_name":profile.user.first_name,
-			"last_name":profile.user.last_name,
-			"email":profile.user.email,
-			"bio":profile.bio,
-			"website":profile.website,
-			"location":profile.location,
-		}
-		form = ProfileForm(initial=initial)
-	ctx["form"] = form
-
-	template_file = "usermgmt/account_profile.html"
-	return render(request,template_file,ctx)
-
-@login_required
-def account_setting_page(request):
-	ctx = {}
-	ctx["date"] = Date()
-	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
-
-	ctx["form"] = form = SettingForm(request.POST or None)
-	form.fields["tags"].queryset = profile.tags
-	form.fields["like_setting"].initial = profile.like_setting
-	form.fields["comment_setting"].initial = profile.comment_setting
-	form.fields["discover_setting"].initial = profile.discover_setting
-
-	usernames_before_edit = ""
-	for user in profile.blocked_user.all():
-		usernames_before_edit += f"@{user.username} "
-	form.fields["blocked_user"].initial = usernames_before_edit
-
-	# Show avaliable tags
-	qs = Tag.objects.all().distinct()
-	for tag in profile.tags.all():
-		qs = qs.exclude(name=tag.name)
-	ctx["tags"] = qs
-	form.fields["tags_remain"].widget = forms.SelectMultiple(choices=[(choice.id, choice) for choice in qs])
-
-	if form.is_valid():
-		data = form.cleaned_data
-
-		profile.like_setting = data.get("like_setting")
-		profile.comment_setting = data.get("comment_setting")
-		profile.discover_setting = data.get("discover_setting")
-		# Add tags
-		for tag in eval(data.get('tags_remain') or "[]"): # convert
-			profile.tags.add(tag)
-		# Remove tags
-		for tag in data.get('tags'):
-			profile.tags.remove(tag)
-
-		# Search description for @ users
-		usernames = set(at_filter(data.get("blocked_user"))) - set(usernames_before_edit)
-		for username in usernames:
-			user = User.objects.filter(username=username).first()
-			if user:
-				# Add user to blocked user
-				profile.blocked_user.add(user)
-			else: 
-				# Tell the current user that their mentioned user does not exsist
-				profile = get_object_or_404(Profile,user=request.user)
-				message = f"@{username} user does not exsist"
-				msg = Notification.objects.create(message=message,message_status=1)
-				msg.save()
-				profile.notification.add(msg)
-				# Show error
-				...
-
-		profile.save()
-
-	template_file = "usermgmt/account_setting.html"
-	return render(request,template_file,ctx)
-
-@login_required
-def account_password_page(request):
-	ctx = {}
-	ctx["date"] = Date()
-	profile = get_object_or_404(Profile,user=request.user)
-
-	# Reset Password Form
-	ctx["password_form"] = password_form = PasswordForm(request.POST or None)
-	if password_form.is_valid() and 'password_form_submit' in request.POST:
-		current_passsword = password_form.cleaned_data.get("current_password")
-		new_password = password_form.cleaned_data.get("new_password")
-		user = authenticate(request, username=request.user.username, password=current_passsword)
-		if user:
-			if new_password == password_form.cleaned_data.get("password_confirmation"):
-				user.set_password(new_password)
-				user.save()
-		else:
-			pass
-			# Show error
-
-	template_file = "usermgmt/account_setting.html"
-	return render(request,template_file,ctx)
 

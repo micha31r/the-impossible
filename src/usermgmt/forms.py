@@ -67,6 +67,8 @@ class SignUpForm(forms.Form):
         )
     )
 
+# Below are all account setting related
+
 class ProfileForm(forms.Form):
     first_name = forms.CharField(
         max_length=50,
@@ -120,32 +122,6 @@ class ProfileForm(forms.Form):
         required=False
     )
 
-class SettingForm(forms.ModelForm):
-    tags_remain = forms.CharField(label="Exsisting Tags",required=False)
-    blocked_user = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "placeholder":"Type @username to block"
-            }
-        ),
-        required=False
-    )
-
-    class Meta:
-        model = Profile
-        fields = [
-            "tags",
-            "like_setting",
-            "comment_setting",
-            "discover_setting",
-        ]
-        labels={
-            "tags":"Tags",
-            "like_setting":"Likes",
-            "comment_setting":"Comments",
-            "discover_setting":"Discover",
-        }
-
 class PasswordForm(forms.Form):
     current_password = forms.CharField(
         widget=forms.PasswordInput(
@@ -171,3 +147,53 @@ class PasswordForm(forms.Form):
         ),
         required=False
     )
+
+class ExploreContentForm(forms.ModelForm):
+    tags_remain = forms.CharField(label="Favourite Tags",required=False)
+
+    class Meta:
+        model = Profile
+        fields = [
+            "tags",
+        ]
+        labels={
+            "tags":"Tags",
+        }
+
+class NotificationForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            "like_setting",
+            "comment_setting",
+        ]
+        labels={
+            "like_setting":"Likes",
+            "comment_setting":"Comments",
+        }
+        widgets = {
+            "like_setting":forms.RadioSelect(),
+            "comment_setting":forms.RadioSelect(),
+        }  
+
+class PrivacyForm(forms.ModelForm):
+    blocked_user = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "placeholder":"Type @username to block"
+            }
+        ),
+        required=False
+    )
+
+    class Meta:
+        model = Profile
+        fields = [
+            "discover_setting",
+        ]
+        labels={
+            "discover_setting":"Discover",
+        }
+        widgets = {
+            "discover_setting":forms.RadioSelect(),
+        }  
