@@ -129,7 +129,7 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	for user in followers[:30]:
 		ctx["followers_profile"].append(Profile.objects.filter(user=user).first())
 
-	idea = {}
+	ideas = {}
 	if content_filter == "my":
 		# Ideas created by this user
 		ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()[:20]

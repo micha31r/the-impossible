@@ -13,7 +13,7 @@
 <!-- https://tobiasahlin.com/blog/masonry-with-css/ -->
 <div class="flex-container">
 	{% for idea in masonary_ideas %}
-		{% if idea.author.user == user or idea.publish_status == 2 %}
+		{% if idea.author.user == user or idea.publish_status == 3 %}
 			<div class="flex-wrapper">
 				<div class="card" id="card-{{ idea.pk }}">
 
