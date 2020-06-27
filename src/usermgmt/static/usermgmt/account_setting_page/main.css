@@ -277,4 +277,8 @@ button[type="submit"] {
 		color: #333;
 		background-color: #ddd;
 	}
+	#minify-menu .active-link {
+		background-color: #111 !important;
+		color: #fff !important;
+	}
 }
