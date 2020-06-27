@@ -126,8 +126,8 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	# Followers
 	ctx["followers"] = followers = User.objects.filter(profile__following=target_profile.user)
 	ctx["followers_profile"] = []
-	for user in followers[:30]:
-		ctx["followers_profile"].append(Profile.objects.filter(user=user).first())
+	for follower in followers[:30]:
+		ctx["followers_profile"].append(Profile.objects.filter(user=follower).first())
 
 	ideas = {}
 	if content_filter == "my":
