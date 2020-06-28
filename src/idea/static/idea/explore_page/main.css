@@ -39,6 +39,17 @@ a:hover {
 	}
 }
 
+/* Unread notification alert dot */
+.new-notification-dot {
+	display: block;
+	position: absolute;
+	margin-left: -5px;
+	width: 10px;
+	height: 10px;
+	background-color: #FF6161;
+	border-radius: 100%;
+}
+
 /* Explore */
 
 .explore-header {
