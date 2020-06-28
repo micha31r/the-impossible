@@ -70,8 +70,8 @@ def signup_page(request):
 						# Log user in
 						login(request, user)
 						return redirect(next_page or "home_page") # Redirect to the next page
-			else: ctx["error"] = SERVER_ERROR["SIGNUP_EMAIL_TAKEN"]
-		else: ctx["error"] = SERVER_ERROR["SIGNUP_USERNAME_TAKEN"]
+			else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_EMAIL_TAKEN"]
+		else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_USERNAME_TAKEN"]
 	signup_form = SignUpForm()
 	template_file = "usermgmt/signup.html"
 	return render(request,template_file,ctx)
@@ -93,7 +93,7 @@ def login_page(request):
 			return redirect(next_page or "home_page") # Redirect to the next page
 		else: 
 			# Display error if user is not found
-			ctx["error"] = SERVER_ERROR["LOGIN"]
+			ctx["error"] = SERVER_ERROR["AUTH_LOGIN"]
 	login_form = LoginForm()
 	template_file = "usermgmt/login.html"
 	return render(request,template_file,ctx)
