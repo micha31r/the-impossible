@@ -117,11 +117,19 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	ctx["encrypted_string"] = encrypt(request.user.username)
 	# The profile for the viewed user
 	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
+	
+	# Check for new notifications
+	if request.user.is_authenticated and request.user == user:
+		profile = Profile.objects.filter(user=request.user).first()
+		# If there are unread notifications
+		if profile.notification.all().order_by("-timestamp")[0].message_status != 3:
+			ctx["new_notification"] = True
 	# Get 20 most recent notifications and dismiss them
 	ctx["target_notifications"] = target_notifications = target_profile.notification.all().order_by('-timestamp')[:20]
-	for notification in target_notifications:
-		notification.message_status = 3
-		notification.save()
+	if request.user == user:
+		for notification in target_notifications:
+			notification.message_status = 3
+			notification.save()
 
 	# Followers
 	ctx["followers"] = followers = User.objects.filter(profile__following=target_profile.user)

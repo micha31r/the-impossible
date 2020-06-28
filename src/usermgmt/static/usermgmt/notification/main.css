@@ -18,6 +18,15 @@
 	color: #555;
 }
 
+/* Unread notification alert dot */
+.new-notification-dot {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: #FF6161;
+	border-radius: 100%;
+}
+
 .notification-container h2 svg {
 	vertical-align: text-bottom;
 	height: 2rem;

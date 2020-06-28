@@ -40,7 +40,6 @@ def explore_page(request,week_num,page_num):
 		# If there are unread notifications
 		if profile.notification.all().order_by("-timestamp")[0].message_status != 3:
 			ctx["new_notification"] = True
-			print(True)
 
 	# Explore Section
 	# Note: current date is not normal date format, its year/week/1
