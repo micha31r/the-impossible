@@ -11,10 +11,7 @@ from .forms import (
 	SignUpForm,
 )
 
-from .models import (
-	Notification,
-	Profile,
-)
+from .models import Profile
 
 from userupload.models import File
 

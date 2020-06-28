@@ -16,7 +16,7 @@ from .forms import (
 	PrivacyForm,
 )
 
-from .models import Profile
+from .models import Profile, Notification
 
 from userupload.models import File
 
@@ -45,7 +45,7 @@ def account_setting_profile_page(request):
 	}
 	form = ProfileForm(request.POST or None, initial=initial)
 	ctx["form"] = form
-	
+
 	if form.is_valid():
 		profile.user.first_name = form.cleaned_data.get("first_name").capitalize()
 		profile.user.last_name = form.cleaned_data.get("last_name").capitalize()
@@ -77,8 +77,7 @@ def account_setting_password_page(request):
 				user.set_password(new_password)
 				user.save()
 		else:
-			pass
-			# Show error
+			ctx["error"] = SERVER_ERROR["AUTH_PASSWORD"]
 
 	ctx["form_template_page"]="usermgmt/account_setting_password.html"
 	template_file = "usermgmt/account_setting.html"
@@ -173,8 +172,7 @@ def account_setting_privacy_page(request):
 				msg = Notification.objects.create(message=message,message_status=1)
 				msg.save()
 				profile.notification.add(msg)
-				# Show error
-				...
+				ctx["error"] = f"@{username} {SERVER_ERROR['AUTH_NO_USER']}"
 		profile.save()
 
 	ctx["form_template_page"]="usermgmt/account_setting_privacy.html"
