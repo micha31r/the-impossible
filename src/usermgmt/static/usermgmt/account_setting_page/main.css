@@ -93,7 +93,7 @@ nav, footer {
 form {
 	padding-left: 40px;
 	padding-right: 40px;
-	min-width: 300px;
+	min-width: 500px;
 	width: max-content;
 	vertical-align: top;
 }
@@ -245,6 +245,9 @@ button[type="submit"] {
 	.table-wrapper * {
 		width: 100%;
 		max-width: 100%;
+	}
+	form {
+		min-width: 300px;
 	}
 	#menu {
 		display: none;
