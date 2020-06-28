@@ -154,7 +154,7 @@ def edit_page(request,pk):
 					profile.notification.add(msg)
 				else: 
 					# Tell the current user that their mentioned user does not exsist
-					profile = get_object_or_404(user=request.user)
+					profile = get_object_or_404(Profile,user=request.user)
 					message = f"@{username} user does not exsist"
 					msg = Notification.objects.create(message=message,message_status=1)
 					msg.save()

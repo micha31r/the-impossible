@@ -15,4 +15,11 @@
 			{% endif %}
 		</div>
 	{% endfor %}
+	<!-- Show no notification message -->
+	{% if notifications|length == 0 %}
+		<div class="message-wrapper">
+			<h6>No recent notifications.</h6>
+			<p>Public Message</p>
+		</div>
+	{% endif %}
 </div>
