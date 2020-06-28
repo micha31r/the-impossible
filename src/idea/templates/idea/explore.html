@@ -4,6 +4,10 @@
 
 {% block title %}
 	<title>Explore - The Impossible</title>
+	<!-- Change favicon if there are notifications -->
+	{% if user.is_authenticated and new_notification %}
+		<link rel="icon" href="{% static 'component/base/favicon_notification.png' %}">
+    {% endif %}
 {% endblock %}
 
 {% block before %}

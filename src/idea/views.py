@@ -34,6 +34,14 @@ def explore_page(request,week_num,page_num):
 	ctx["page_num"] = page_num
 	today = date.now()
 
+	# Check for new notifications
+	if request.user.is_authenticated:
+		profile = Profile.objects.filter(user=request.user).first()
+		# If there are unread notifications
+		if profile.notification.all().order_by("-timestamp")[0].message_status != 3:
+			ctx["new_notification"] = True
+			print(True)
+
 	# Explore Section
 	# Note: current date is not normal date format, its year/week/1
 	current_date = int_date(f"{today.strftime('%Y')}-{week_num}-1")
