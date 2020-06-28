@@ -35,7 +35,17 @@ def account_setting_profile_page(request):
 	profile = get_object_or_404(Profile,user=request.user)
 
 	# User Profile Form
-	form = ProfileForm(request.POST or None)
+	initial = {
+		"first_name":profile.user.first_name,
+		"last_name":profile.user.last_name,
+		"email":profile.user.email,
+		"bio":profile.bio,
+		"website":profile.website,
+		"location":profile.location,
+	}
+	form = ProfileForm(request.POST or None, initial=initial)
+	ctx["form"] = form
+	
 	if form.is_valid():
 		profile.user.first_name = form.cleaned_data.get("first_name").capitalize()
 		profile.user.last_name = form.cleaned_data.get("last_name").capitalize()
@@ -45,17 +55,6 @@ def account_setting_profile_page(request):
 		profile.location = form.cleaned_data.get("location")
 		profile.user.save()
 		profile.save()
-	else:
-		initial = {
-			"first_name":profile.user.first_name,
-			"last_name":profile.user.last_name,
-			"email":profile.user.email,
-			"bio":profile.bio,
-			"website":profile.website,
-			"location":profile.location,
-		}
-		form = ProfileForm(initial=initial)
-	ctx["form"] = form
 
 	ctx["form_template_page"]="usermgmt/account_setting_profile.html"
 	template_file = "usermgmt/account_setting.html"
