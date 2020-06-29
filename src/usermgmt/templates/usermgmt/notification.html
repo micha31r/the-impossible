@@ -9,7 +9,7 @@
 	<div class="message-container">
 		{% for notification in notifications %}
 			<div class="message-wrapper">
-				{% if notification.message_status == 1 and target_profile.user == user %}
+				{% if notification.message_status == 1 and target_profile.user == user or undismissed_notifications %}
 					<h6>
 						{% if notification in undismissed_notifications %}
 							<span>Unread:</span>
