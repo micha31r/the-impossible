@@ -122,7 +122,8 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	if request.user.is_authenticated and request.user == user:
 		profile = Profile.objects.filter(user=request.user).first()
 		# If there are unread notifications
-		if profile.notification.all().order_by("-timestamp")[0].message_status != 3:
+		qs = profile.notification.all().order_by("-timestamp")
+		if qs and qs[0].message_status != 3:
 			ctx["new_notification"] = True
 	# Get 20 most recent notifications and dismiss them
 	ctx["target_notifications"] = target_notifications = target_profile.notification.all().order_by('-timestamp')[:20]
