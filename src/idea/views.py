@@ -37,7 +37,7 @@ def explore_page(request,week_num,page_num):
 	# Check for unread notifications
 	if request.user.is_authenticated:
 		profile = Profile.objects.filter(user=request.user).first()
-		qs = profile.notification.all().order_by('-timestamp')[:50]
+		qs = profile.notification.all().order_by('-pk')[:50]
 		for msg in qs:
 			if not msg.dismissed:
 				ctx["new_notification"] = True
