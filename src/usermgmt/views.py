@@ -11,7 +11,7 @@ from .forms import (
 	SignUpForm,
 )
 
-from .models import Profile
+from .models import Profile, Notification
 
 from userupload.models import File
 
@@ -67,6 +67,12 @@ def signup_page(request):
 							user=user,
 							profile_img=profile_img or None
 						)
+
+						message = f"@{username}, welcome to The Impossible. If you have any questions, please contact us."
+						msg = Notification.objects.create(message=message,message_status=1)
+						msg.save()
+						profile.notification.add(msg)
+
 						# Log user in
 						login(request, user)
 						return redirect(next_page or "home_page") # Redirect to the next page
@@ -123,13 +129,13 @@ def account_dashboard_page(request,username,content_filter,page_num):
 		profile = Profile.objects.filter(user=request.user).first()
 		# If there are unread notifications
 		qs = profile.notification.all().order_by("-timestamp")
-		if qs and qs[0].message_status != 3:
+		if qs and qs[0].dismissed == False:
 			ctx["new_notification"] = True
 	# Get 20 most recent notifications and dismiss them
 	ctx["target_notifications"] = target_notifications = target_profile.notification.all().order_by('-timestamp')[:20]
 	if request.user == user:
 		for notification in target_notifications:
-			notification.message_status = 3
+			notification.dismissed = True
 			notification.save()
 
 	# Followers

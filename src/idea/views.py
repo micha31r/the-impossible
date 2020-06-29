@@ -38,7 +38,8 @@ def explore_page(request,week_num,page_num):
 	if request.user.is_authenticated:
 		profile = Profile.objects.filter(user=request.user).first()
 		# If there are unread notifications
-		if profile.notification.all().order_by("-timestamp")[0].message_status != 3:
+		qs = profile.notification.all().order_by("-timestamp")
+		if qs and qs[0].dismissed == False:
 			ctx["new_notification"] = True
 
 	# Explore Section
