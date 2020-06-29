@@ -124,19 +124,21 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	# The profile for the viewed user
 	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
 	
-	# Check for new notifications
+	# Get 50 most recent notifications and dismiss them
+	ctx["target_notifications"] = target_notifications = target_profile.notification.all().order_by('-pk')[:NOTIFICATION_PER_PAGE]
+	# Check for unread notifications
 	if request.user.is_authenticated and request.user == user:
-		profile = Profile.objects.filter(user=request.user).first()
-		# If there are unread notifications
-		qs = profile.notification.all().order_by("-timestamp")
-		if qs and qs[0].dismissed == False:
-			ctx["new_notification"] = True
-	# Get 20 most recent notifications and dismiss them
-	ctx["target_notifications"] = target_notifications = target_profile.notification.all().order_by('-timestamp')[:20]
+		for msg in target_notifications:
+			print(msg)
+			if not msg.dismissed:
+				ctx["new_notification"] = True
+	ctx["undismissed_notifications"] = []
 	if request.user == user:
 		for notification in target_notifications:
-			notification.dismissed = True
-			notification.save()
+			if not notification.dismissed:
+				ctx["undismissed_notifications"].append(notification)
+				notification.dismissed = True
+				notification.save()
 
 	# Followers
 	ctx["followers"] = followers = User.objects.filter(profile__following=target_profile.user)
@@ -147,14 +149,14 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	ideas = {}
 	if content_filter == "my":
 		# Ideas created by this user
-		ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()[:20]
+		ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()[:ITEM_PER_PAGE]
 	elif content_filter == "liked":
 		# Liked ideas 
-		ideas = Idea.objects.filter(liked_user=target_profile)
+		ideas = Idea.objects.filter(liked_user=target_profile)[:ITEM_PER_PAGE]
 	elif content_filter == "starred":
 		if user == request.user: # Starred ideas are private
 			# Starred ideas 
-			ideas = Idea.objects.filter(starred_user=target_profile)[:5]
+			ideas = Idea.objects.filter(starred_user=target_profile)[:ITEM_PER_PAGE]
 		else: raise Http404()
 	else: raise Http404()
 
@@ -180,6 +182,24 @@ def account_notification_page(request,page_num):
 	try: current_page = notifications.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
 	ctx["notifications"] = current_page 
+
+	# Check for new notifications
+	profile = Profile.objects.filter(user=request.user).first()
+	# If there are unread notifications
+	qs = profile.notification.all().order_by("-timestamp")
+	if qs and qs[0].dismissed == False:
+		ctx["new_notification"] = True
+
+	# Get 20 most recent notifications and dismiss them
+	ctx["target_notifications"] = target_notifications = target_profile.notification.all().order_by('-timestamp')[:NOTIFICATION_PER_PAGE]
+	ctx["undismissed_notifications"] = []
+	if request.user == user:
+		for notification in target_notifications:
+			if not notification.dismissed:
+				ctx["undismissed_notifications"].append(notification)
+				notification.dismissed = True
+				notification.save()
+
 	template_file = "usermgmt/account_notification.html"
 	return render(request,template_file,ctx)
 

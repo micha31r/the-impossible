@@ -1,24 +1,93 @@
+nav, footer {
+	display: none !important;
+}
+
 .wrapper {
-	height: 100vh;
-	min-height: 500px;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.close-window-wrapper {
+	width: 90%;
+	margin: auto;
+	margin-bottom: 40px;
+	text-align: right;
+}
+
+.close-window-wrapper button {
+	padding: 0;
+}
+
+.close-window img {
+	width: 50px;
+	padding: 10px;
+}
+
+.close-window img:hover {
+	padding: 8px;
+	border-style: solid;
+	border-radius: 100%;
+	border-width: 2px;
+	border-color: #ddd;
 }
 
 .center {
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
+	width: max-content;
+	margin: auto;
 }
 
 .notification-container {
-	width: 50vw !important;
-	max-width: 800px;
+	width: auto;
+	max-width: 100% !important;
 	min-height: 400px;
-	/*height: 60vh;*/
-	max-height: 800px;
+	max-height: 80vh;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #bbb;
+	border-radius: 10px;
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.notification-container {
+	display: inline-block;
+	background-color: #000;
+	padding: 20px;
+	padding-bottom: 0;
+	width: 400px;
+	/* Height is set through JS */
+	vertical-align: top;
+	border-radius: 10px;
+	overflow: hidden; /* Just in case ... */
+	box-shadow: 0px 10px 15px #aaa;
+}
+
+.notification-container h2 a {
+	color: #000 !important;
+}
+
+.notification-container h2 a:hover {
+	color: #444 !important;
+}
+
+.notification-container h2 svg {
+	stroke: #000;
+}
+
+.message-wrapper {
+	border-color: #eee !important;
+}
+
+.message-wrapper h6 {
+	color: #000 !important;
+}
+
+.message-wrapper p {
+	color: #999 !important;
 }
 
 @media only screen and (max-width: 800px) {
 	.notification-container {
-		width: 100% !important;
+		/*width: 100% !important;*/
 	}
 }

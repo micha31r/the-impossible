@@ -33,14 +33,14 @@ def explore_page(request,week_num,page_num):
 	ctx["week_num"] = week_num
 	ctx["page_num"] = page_num
 	today = date.now()
-
-	# Check for new notifications
+		
+	# Check for unread notifications
 	if request.user.is_authenticated:
 		profile = Profile.objects.filter(user=request.user).first()
-		# If there are unread notifications
-		qs = profile.notification.all().order_by("-timestamp")
-		if qs and qs[0].dismissed == False:
-			ctx["new_notification"] = True
+		qs = profile.notification.all().order_by('-timestamp')[:50]
+		for msg in qs:
+			if not msg.dismissed:
+				ctx["new_notification"] = True
 
 	# Explore Section
 	# Note: current date is not normal date format, its year/week/1

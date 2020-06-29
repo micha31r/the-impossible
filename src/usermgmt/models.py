@@ -34,6 +34,9 @@ class Notification(models.Model):
 	link = models.URLField(max_length=200,blank=True,null=True)
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
 
+	def __str__(self):
+		return self.message[:50] + '...' 
+
 class Profile(models.Model):
 	user = models.ForeignKey(
         User,
