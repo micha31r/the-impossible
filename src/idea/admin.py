@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import (
 	Tag,
-	Idea
+	Idea,
+    Comment
 )
 
 # https://stackoverflow.com/questions/48372252/django-admin-accessing-reverse-many-to-many
@@ -15,7 +16,7 @@ class TagAdmin(admin.ModelAdmin):
 
 class IdeaAdmin(admin.ModelAdmin):
     # Display custom fields in Django admin
-    list_display = ('name','id','timestamp',"view_count","like_count")
+    list_display = ('name','author','view_count','like_count','id','last_edit','timestamp')
     
     def view_count(self,obj):
         return obj.viewed_user.all().count()
@@ -25,5 +26,12 @@ class IdeaAdmin(admin.ModelAdmin):
 
     readonly_fields = ["timestamp"]
 
+class CommentAdmin(admin.ModelAdmin):
+    # Display custom fields in Django admin
+    list_display = ('__str__','idea','author','id','last_edit','timestamp')
+
+    readonly_fields = ["timestamp"]
+
 admin.site.register(Tag,TagAdmin)
 admin.site.register(Idea,IdeaAdmin)
+admin.site.register(Comment,CommentAdmin)
