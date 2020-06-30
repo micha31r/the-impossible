@@ -41,7 +41,6 @@ nav, footer {
 	width: 100% !important;
 	max-width: 100% !important;
 	min-height: 90vh;
-	max-height: 80vh;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #bbb;
@@ -90,5 +89,8 @@ nav, footer {
 @media only screen and (max-width: 800px) {
 	.center {
 		width: 90%;
+	}
+	.notification-container {
+		min-height: 70vh;
 	}
 }
