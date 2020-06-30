@@ -1,10 +1,43 @@
-:root {
-	--margin-between-element: 20px;
+.edit {
+	margin-bottom: 20px;
+}
+
+textarea {
+	padding: 10px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 0px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	background-color: #eee;
+}
+
+textarea::placeholder {
+	color: #ccc;
+}
+
+textarea:focus::placeholder {
+	color: rgb(215,200,160);
+}
+
+textarea:focus {
+	outline: none;
+	background-color: rgb(255,240,200);
+}
+
+textarea {
+	display: block;
+	width: 40%;
+	min-width: 300px;
+	min-height: 100px;
+	height: 100px;
+	max-height: 300px;
+	font-size: 1rem;
 }
 
 .timestamp {
 	font-family: 'Varela Round', sans-serif;
-	margin-top: var(--margin-between-element);
+	margin-top: 20px;
 	width: 100%;
 	text-align: right;
 	color: #ddd;
@@ -16,4 +49,19 @@
 
 .timestamp .time {
 	color: #888;
+}
+
+.comment-container {
+	width: 40%;
+	min-width: 300px;
+	margin-top: 20px;
+}
+
+.comment-wrapper {
+	padding: 20px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	border-width: 1px;
+	border-color: #aaa;
+	border-style: solid;
 }

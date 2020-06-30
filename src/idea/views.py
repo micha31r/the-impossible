@@ -21,11 +21,14 @@ from usermgmt.models import (
 )
 from .models import (
 	Tag, 
-	Idea
+	Idea,
+	Comment
 )
 
 MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2020, 4, 9))
 ITEM_PER_PAGE = 12
+
+# Idea related
 
 def explore_page(request,week_num,page_num):
 	ctx = {} # Context variables
@@ -88,6 +91,19 @@ def detail_page(request,pk):
 	ctx["profile"] = profile = get_object_or_404(Profile, user=request.user)
 	idea.viewed_user.add(profile)
 	ctx["encrypted_string"] = encrypt(request.user.username)
+
+	# Comment section stuff
+	ctx["form"] = form = CommentForm(request.POST or None)
+
+	if form.is_valid():
+		comment = Comment.objects.create(
+			author = profile,
+			full_description = form.cleaned_data.get("full_description")
+		)
+		comment.save()
+		idea.comments.add(comment)
+		idea.save()
+
 	template_file = "idea/detail.html"
 	return render(request,template_file,ctx)
 
@@ -183,6 +199,8 @@ def edit_page(request,pk):
 		return redirect("access_error_page")
 	return render(request,template_file,ctx)
 
+# Star and Like related
+
 def like_view(request):
 	data = {}
 	try:
@@ -232,3 +250,11 @@ def star_view(request):
 	except:
 		data['failed'] = True
 	return JsonResponse(data)
+
+# Comment related 
+
+@login_required
+def comment_delete_view(request,comment_pk):
+	comment = get_object_or_404(Comment, author=comment_pk)
+	if comment.author.user == request.user:
+		comment.delete()

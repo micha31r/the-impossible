@@ -1,7 +1,8 @@
 from django import forms
 from .models import (
     Tag,
-    Idea
+    Idea,
+    Comment
 )
 
 DELETE_CHOICE = (
@@ -34,4 +35,18 @@ class IdeaForm(forms.ModelForm):
             "full_description":"",
             "tags":"Tags",
             "publish_status":"Publish Status",
+        }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        # Don't use "__all__", in this case the form won't validate
+        fields = [
+            "full_description",
+        ]
+        widgets = {
+            'full_description': forms.Textarea(attrs={'placeholder': 'Content (Max 500), use @username to mention other users'}),
+        }
+        labels={
+            "full_description":"",
         }
