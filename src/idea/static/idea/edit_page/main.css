@@ -201,7 +201,7 @@ img {
 	width: max-content;
 	height: var(--header-img-height);
 	border-radius: 10px;
-	background-color: rgb(255,240,200);
+	background-color: #eee; /* rgb(255,240,200) */
 	margin-left: 5px;
 	margin-right: 5px;
 	overflow: hidden;
@@ -218,7 +218,7 @@ img {
 .file-button-add {
 	font-size: 5rem;
 	font-family: "Arciform", sans-serif;
-	color: rgb(225,210,170);
+	color: #ddd;
 }
 
 #tooltip {
@@ -233,7 +233,7 @@ img {
 	font-size: 2rem;
 	line-height: 2rem;
 	font-family: "Arciform", sans-serif;
-	color: rgb(225,210,170);
+	color: #ddd;
 }
 
 /* Header image has a fixed size */
