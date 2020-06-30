@@ -1,5 +1,5 @@
 # The Impossible
-**A platform to share ideas and turn them into reality**
+**Too many good ideas are left in the dust. Sometimes, a world changing idea never sees daylight because we are too reluctant to share it with others, afraid that people will reject it, laugh at us, or claim as their own. All ideas deservers a chance to be developed. If you have a great idea but are not taking any actions, then share it and let it discovered by entrepenures makers and innovators. The Impossible is a social media that allows you to share your ideas and thoughts with the world. A place for inspiration, discussion and feedbacks.**
 
 # Site Preview
 
