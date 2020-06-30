@@ -1,7 +1,7 @@
 # The Impossible
 **A platform to share ideas and turn them into reality**
 
-## Site Preview
+# Site Preview
 
 ## Dashboard
 ![Dashboard](preview_imgs/dashboard.png)
@@ -23,8 +23,9 @@ __Current library versions:__
   * [Django](https://www.djangoproject.com/) 2.2.7
   * Pytz 2019.3
   * Sqlparse 0.3.1
+  * Bootstrap 4
 
-## Start a local server for testing:
+# Start a local server for testing:
 ```bash
 # Clone this repository
 git clone https://github.com/micha31r/The-Impossible.git
