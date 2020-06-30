@@ -1,12 +1,17 @@
 # The Impossible
 **A platform to share ideas and turn them into reality**
 
-## Preview
+## Site Preview
 
+## Dashboard
 ![Dashboard](preview_imgs/dashboard.png)
+## Explore
 ![Explore Section](preview_imgs/explore.png)
+## Discover
 ![Discover Section](preview_imgs/discover.png)
+## Idea Editor
 ![Idea Editor](preview_imgs/edit.png)
+## Profile Editor
 ![Edit Profile](preview_imgs/edit_profile.png)
 
 ##
