@@ -33,13 +33,14 @@ nav, footer {
 
 .center {
 	width: max-content;
+	min-width: 50%;
 	margin: auto;
 }
 
 .notification-container {
-	width: auto;
+	width: 100% !important;
 	max-width: 100% !important;
-	min-height: 400px;
+	min-height: 90vh;
 	max-height: 80vh;
 	border-width: 1px;
 	border-style: solid;
@@ -87,7 +88,7 @@ nav, footer {
 }
 
 @media only screen and (max-width: 800px) {
-	.notification-container {
-		/*width: 100% !important;*/
+	.center {
+		width: 90%;
 	}
 }
