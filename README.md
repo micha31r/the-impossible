@@ -23,7 +23,7 @@ __Current library versions:__
   * [Django](https://www.djangoproject.com/) 2.2.7
   * Pytz 2019.3
   * Sqlparse 0.3.1
-  * Bootstrap 4
+  * [Bootstrap](https://getbootstrap.com/) 4
 
 # Start a local server for testing:
 ```bash
