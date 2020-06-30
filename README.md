@@ -3,15 +3,15 @@
 
 # Site Preview
 
-## Dashboard
+### Dashboard
 ![Dashboard](preview_imgs/dashboard.png)
-## Explore
+### Explore
 ![Explore Section](preview_imgs/explore.png)
-## Discover
+### Discover
 ![Discover Section](preview_imgs/discover.png)
-## Idea Editor
+### Idea Editor
 ![Idea Editor](preview_imgs/edit.png)
-## Profile Editor
+### Profile Editor
 ![Edit Profile](preview_imgs/edit_profile.png)
 
 ##
