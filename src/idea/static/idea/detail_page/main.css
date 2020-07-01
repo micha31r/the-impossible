@@ -176,11 +176,10 @@ form {
 	width: 100%;
 	height: max-content;
 	background-color: #eee;
-	min-height: 200px;
 	margin-bottom: 20px;
 	overflow: hidden;
 	border-radius: 10px;
-	box-shadow: 0px 10px 15px #ccc;
+	box-shadow: 0px 10px 15px #ddd;
 }
 
 .file-wrapper img {
@@ -189,6 +188,8 @@ form {
 
 .no-header-image {
 	margin: 0;
+	min-height: 200px;
+	box-shadow: none;
 }
 
 .no-content-text {
@@ -198,9 +199,13 @@ form {
 	color: #ddd;
 	text-align: center;
 	margin: 0;
+	height: 200px;
+}
+
+.no-content-text span {
 	position: relative;
-	top: -50%;
-	transform: translateY(50%);
+	top: calc(50% - 1rem);
+	transform: translateY(-50%);
 }
 
 @media only screen and (max-width: 750px) {
