@@ -136,7 +136,7 @@ form {
 
 .comment-wrapper {
 	padding: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	border-radius: 10px;
 	border-width: 1px;
 	border-color: #aaa;
@@ -177,9 +177,10 @@ form {
 	height: max-content;
 	background-color: #eee;
 	min-height: 200px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	overflow: hidden;
 	border-radius: 10px;
+	box-shadow: 0px 10px 15px #ccc;
 }
 
 .file-wrapper img {
