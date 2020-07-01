@@ -243,3 +243,21 @@ img {
 	/*filter: grayscale(100%);*/
 }
 
+/* Timestamp */
+
+.timestamp {
+	font-family: 'Arciform', sans-serif;
+	margin-top: 20px;
+	width: 100%;
+	text-align: right;
+	color: #ddd;
+}
+
+.timestamp p {
+	margin: 0;
+}
+
+.timestamp .time {
+	color: #888;
+}
+
