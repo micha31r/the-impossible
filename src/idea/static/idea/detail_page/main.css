@@ -154,6 +154,10 @@ form {
 	width: 100%;
 }
 
+.no-comment-text {
+	text-align: center;
+}
+
 /* Image section */
 
 .left-container {
