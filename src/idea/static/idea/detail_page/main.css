@@ -216,6 +216,16 @@ form {
 	.no-header-image {
 		display: none;
 	}
+	.left-container {
+		padding: 0;
+	}
+	.comment-container, form {
+		width: 100%;
+		min-width: 0px;
+	}
+	textarea {
+		min-width: 0px;
+	}
 }
 
 /* Timestamp */
