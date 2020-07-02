@@ -19,11 +19,12 @@ function comment_ajax(pk) {
                             for (var i=0; i<data.comments.length; i++) {
                                 comment = data.comments[i];
                                 author = data.authors[i];
+                                last_edit = data.timestamps[i];
                                 $("#append-target2").append(
                                     `<div class="comment-wrapper">
                                     <h6>${comment.fields.full_description}</h6>
                                     <p class="small">${author}</p>
-                                    <p class="small">Last Edited <span class="time">${comment.fields.last_edit}</span></p>
+                                    <p class="small">Last Edited <span class="time">${last_edit}</span></p>
                                     </div>`
                                 );
                             }

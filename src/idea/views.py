@@ -271,10 +271,13 @@ def comment_get_view(request):
 			idea = get_object_or_404(Idea,pk=pk)
 			comments = idea.comments.all().order_by("-timestamp")[comment_num:comment_num+COMMENT_PER_PAGE]
 			authors = []
+			timestamps = []
 			for comment in comments:
 				authors.append(comment.author.user.get_full_name())
+				timestamps.append(comment.last_edit.strftime("%B %d, %Y, %I:%M %p"))
 			data["comments"] = serializers.serialize('json', comments)
 			data["authors"] = authors
+			data["timestamps"] = timestamps
 			data["new_comment_num"] = comment_num+COMMENT_PER_PAGE
 		else:
 			raise CustomError("AjaxInvalid")
