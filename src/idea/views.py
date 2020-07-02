@@ -37,13 +37,16 @@ def explore_page(request,week_num,page_num):
 	ctx["page_num"] = page_num
 	today = date.now()
 		
-	# Check for unread notifications
+	fav_tags = Tag.objects.all() # For discover section idea filter
 	if request.user.is_authenticated:
-		profile = Profile.objects.filter(user=request.user).first()
+		# Check for unread notifications
+		profile = get_object_or_404(Profile, user=request.user)
 		qs = profile.notification.all().order_by('-pk')[:50]
 		for msg in qs:
 			if not msg.dismissed:
 				ctx["new_notification"] = True
+		# Set favourite tags
+		fav_tags = profile.tags.all()
 
 	# Explore Section
 	# Note: current date is not normal date format, its year/week/1
@@ -75,7 +78,8 @@ def explore_page(request,week_num,page_num):
 	ideas = Idea.objects.filter(
 		timestamp__gte = date.now() - datetime.timedelta(days=182),
 		timestamp__lte = date.now() + datetime.timedelta(days=1),
-		publish_status = 3
+		publish_status = 3,
+		tags__in=fav_tags
 	).exclude(header_img=None)
 	random.seed(datetime.datetime.now())
 	ctx["random_ideas"] = random.sample(list(ideas), min(ideas.count(), 10))

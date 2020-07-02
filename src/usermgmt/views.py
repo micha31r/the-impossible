@@ -66,7 +66,7 @@ def signup_page(request):
 							profile_img=profile_img or None
 						)
 
-						message = f"@{username}, welcome to The Impossible. If you have any questions, please contact us."
+						message = f"@{username}, welcome to The Impossible. If you have any questions, please contact us"
 						msg = Notification.objects.create(message=message,message_status=1)
 						msg.save()
 						profile.notification.add(msg)
@@ -197,12 +197,21 @@ def account_notification_page(request,page_num):
 
 @login_required
 def account_follow_view(request,username):
-	target_user = get_object_or_404(User,username=username)
+	target_profile = get_object_or_404(
+		Profile,
+		user=get_object_or_404(User,username=username)
+	)
 	profile = get_object_or_404(Profile,user=request.user)
-	if profile.following.filter(username=target_user.username).exists():
-		profile.following.remove(target_user)
+	if request.user in target_profile.blocked_user.all():
+		message = f"@{username} blocked you, you cannot follow this user"
+		msg = Notification.objects.create(message=message,message_status=1)
+		msg.save()
+		profile.notification.add(msg)
 	else:
-		profile.following.add(target_user)
+		if profile.following.filter(username=request.user.username).exists():
+			profile.following.remove(request.user)
+		else:
+			profile.following.add(request.user)
 	profile.save()
 	return redirect("account_dashboard_page",username=username,content_filter="my",page_num=1)
 
