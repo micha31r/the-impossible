@@ -62,7 +62,7 @@ class Idea(models.Model):
 
 	name = models.CharField(max_length=70,blank=False,unique=False)
 	short_description = models.TextField(max_length=150,blank=False,unique=False)
-	full_description = models.TextField(max_length=2000,blank=False,unique=False)
+	full_description = models.TextField(max_length=1000,blank=False,unique=False)
 	
 	# Likes and views
 	viewed_user = models.ManyToManyField(Profile,related_name="viewed",blank=True)

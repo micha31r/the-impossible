@@ -45,7 +45,7 @@
 									<a href="{% url 'account_dashboard_page' username=idea.author.user.username content_filter='my' page_num=1 %}">{{ idea.author }}</a><!-- Follow button -->
 									<a class="follow-btn" href="{% if user.is_authenticated %}{% url 'account_follow_view' username=idea.author.user.username %}{% else %}{% url 'login_page' %}{% endif %}">{% if idea.author.user in profile.following.all %}Unfollow{% else %}Follow{% endif%}</a>
 								</h5>
-								<h6>{{ idea.author.bio|truncatechars:60 }}</h6>
+								<h6>{% if idea.author.bio %}{{ idea.author.bio|truncatechars:60 }}{% else %}(No Bio..){% endif %}</h6>
 							</div>
 						</td>
 					</tr>
