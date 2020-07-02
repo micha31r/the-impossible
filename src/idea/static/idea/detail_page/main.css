@@ -148,6 +148,15 @@ form {
 	width: 100%;
 }
 
+.delete-link:hover span {
+	display: none;
+}
+
+.delete-link:hover:before {
+	content: "Delete !!";
+	color: #e84a5f;
+}
+
 .no-comment-text {
 	text-align: center;
 }

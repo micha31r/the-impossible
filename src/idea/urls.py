@@ -26,6 +26,6 @@ urlpatterns = [
 	path('star/', star_view, name="idea_star_view"),
 
 	# Comment
-	path('comment/delete/<int:comment_pk>', comment_delete_view, name="idea_comment_delete_view"),
+	path('comment/delete/<int:comment_pk>/<int:idea_pk>', comment_delete_view, name="idea_comment_delete_view"),
 	path('comment/get/', comment_get_view, name="idea_comment_get_view"),
 ] 

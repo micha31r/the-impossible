@@ -254,10 +254,11 @@ def star_view(request):
 # Comment related 
 
 @login_required
-def comment_delete_view(request,comment_pk):
-	comment = get_object_or_404(Comment, author=comment_pk)
+def comment_delete_view(request,comment_pk,idea_pk):
+	comment = get_object_or_404(Comment, pk=comment_pk)
 	if comment.author.user == request.user:
 		comment.delete()
+	return redirect("idea_detail_page", pk=idea_pk)
 
 @login_required
 def comment_get_view(request):
