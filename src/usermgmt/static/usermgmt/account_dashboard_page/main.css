@@ -196,6 +196,8 @@ a:hover {
 	width: 100px;
 	height: 100px;
 	margin-right: -30px; 
+	border-width: 4px;
+	border-style: solid;
 	border-color: #fff;
 }
 
