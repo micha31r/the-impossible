@@ -15,15 +15,13 @@ from .models import Profile, Notification
 
 from userupload.models import File
 
-from idea.ajax_encrypt import encrypt
-
 from idea.models import Idea
 
 from the_impossible.utils import *
 
 from the_impossible.ERROR import *
 
-ITEM_PER_PAGE = 20
+IDEA_PER_PAGE = 20
 NOTIFICATION_PER_PAGE = 50
 
 def signup_page(request):
@@ -120,7 +118,6 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	# The profile for the logged in user
 	if request.user.is_authenticated:
 		ctx["profile"] = Profile.objects.filter(user=request.user).first()
-	ctx["encrypted_string"] = encrypt(request.user.username)
 	# The profile for the viewed user
 	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
 	
@@ -149,19 +146,19 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	ideas = {}
 	if content_filter == "my":
 		# Ideas created by this user
-		ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()[:ITEM_PER_PAGE]
+		ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()[:IDEA_PER_PAGE]
 	elif content_filter == "liked":
 		# Liked ideas 
-		ideas = Idea.objects.filter(liked_user=target_profile)[:ITEM_PER_PAGE]
+		ideas = Idea.objects.filter(liked_user=target_profile)[:IDEA_PER_PAGE]
 	elif content_filter == "starred":
 		if user == request.user: # Starred ideas are private
 			# Starred ideas 
-			ideas = Idea.objects.filter(starred_user=target_profile)[:ITEM_PER_PAGE]
+			ideas = Idea.objects.filter(starred_user=target_profile)[:IDEA_PER_PAGE]
 		else: raise Http404()
 	else: raise Http404()
 
 	# Split data into pages
-	ideas = Paginator(ideas,ITEM_PER_PAGE)
+	ideas = Paginator(ideas,IDEA_PER_PAGE)
 	ctx["max_page"] = ideas.num_pages
 	try: current_page = ideas.page(page_num) # Get the ideas on the current page
 	except: raise Http404()

@@ -1,5 +1,5 @@
 // Like button ajax
-function like_idea_ajax(pk,username,encrypted_string) {
+function like_idea_ajax(pk) {
     $(document).ready(
         function() {
             $.ajax(
@@ -7,8 +7,6 @@ function like_idea_ajax(pk,username,encrypted_string) {
                     url: `/idea/like/`,
                     data: {
                         'pk':pk,
-                        'username':username,
-                        'encrypted_string':encrypted_string
                     },
                     dataType: 'json',
                     success: function(data) {
@@ -25,7 +23,7 @@ function like_idea_ajax(pk,username,encrypted_string) {
 }
 
 // Star button ajax
-function star_idea_ajax(pk,username,encrypted_string) {
+function star_idea_ajax(pk) {
     $(document).ready(
         function() {
             $.ajax(
@@ -33,8 +31,6 @@ function star_idea_ajax(pk,username,encrypted_string) {
                     url: `/idea/star/`,
                     data: {
                         'pk':pk,
-                        'username':username,
-                        'encrypted_string':encrypted_string
                     },
                     dataType: 'json',
                     success: function(data) {

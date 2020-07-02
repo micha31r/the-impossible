@@ -13,6 +13,9 @@
 	<!-- Resize JS -->
 	<script type="text/javascript" src="{% static 'idea/detail_page/resize.js' %}"></script>
 
+	<!-- Ajax JS -->
+	<script type="text/javascript" src="{% static 'idea/detail_page/ajax.js' %}"></script>
+
 	<div class="wrapper">
 		<div class="left-container">
 			<!-- Content -->
@@ -70,15 +73,20 @@
 			</form>
 
 			<div class="comment-container">
-				{% for comment in idea.comments.all reversed %}
+				{% for comment in comments %}
 					<div class="comment-wrapper">
 						<h6>{{ comment.full_description }}</h6>
 						<p class="small">{{ comment.author }}</p>
 						<p class="small">Last Edited <span class="time">{{ comment.last_edit }}</span></p>
 					</div>
 				{% endfor %}
-				{% if idea.comments.all|length == 0 %}
+				{% if not idea.comments.all %}
 					<p class="no-comment-text">No comments</p>
+				{% else %}
+					<script type="text/javascript">
+						var comment_num = "{{ comments|length }}";
+					</script>
+					<button class="btn btn-dark btn-black bold" onclick="comment_ajax('{{ idea.pk }}');return false;">...</button>
 				{% endif %}
 			</div>
 		</div>

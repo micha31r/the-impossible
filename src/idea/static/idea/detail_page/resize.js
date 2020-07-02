@@ -17,9 +17,6 @@ function image_resize() {
 		$(".right-container").css("display","");
 
 		var new_width = $(".wrapper").width() - $(".left-container").outerWidth() - 30;
-		console.log($(".wrapper").width());
-		console.log($(".left-container").outerWidth());
-		console.log(new_width);
 		$(".right-container").width(new_width);
 	}
 }

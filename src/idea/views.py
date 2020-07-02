@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, JsonResponse
+from django.core import serializers
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -13,8 +14,6 @@ from .utils import *
 
 from the_impossible.ERROR import *
 
-from .ajax_encrypt import encrypt
-
 from usermgmt.models import (
 	Notification,
 	Profile,
@@ -26,7 +25,8 @@ from .models import (
 )
 
 MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2020, 4, 9))
-ITEM_PER_PAGE = 12
+IDEA_PER_PAGE = 12
+COMMENT_PER_PAGE = 3
 
 # Idea related
 
@@ -55,7 +55,7 @@ def explore_page(request,week_num,page_num):
 	if week_num < current_week(): ctx["next_week_num"] = week_num + 1
 	if request.user.is_authenticated: 
 		ctx["profile"] = Profile.objects.filter(user=request.user).first()
-		ctx["encrypted_string"] = encrypt(request.user.username)
+
 	# Filter by date
 	# https://stackoverflow.com/questions/4923612/filter-by-timestamp-in-query
 	ideas = Idea.objects.filter(
@@ -64,7 +64,7 @@ def explore_page(request,week_num,page_num):
 		publish_status = 3
 	).distinct().order_by("id").reverse()
 	# Split data into pages
-	ideas = Paginator(ideas,ITEM_PER_PAGE)
+	ideas = Paginator(ideas,IDEA_PER_PAGE)
 	ctx["max_page"] = ideas.num_pages
 	try: current_page = ideas.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
@@ -90,9 +90,10 @@ def detail_page(request,pk):
 	# Add view count
 	ctx["profile"] = profile = get_object_or_404(Profile, user=request.user)
 	idea.viewed_user.add(profile)
-	ctx["encrypted_string"] = encrypt(request.user.username)
 
 	# Comment section stuff
+	ctx["comments"] = idea.comments.all().order_by("-timestamp")[:COMMENT_PER_PAGE]
+
 	ctx["form"] = form = CommentForm(request.POST or None)
 
 	if form.is_valid():
@@ -201,18 +202,17 @@ def edit_page(request,pk):
 
 # Star and Like related
 
+@login_required
 def like_view(request):
 	data = {}
 	try:
-		# Check if request is send by the correct user
-		if request.GET.get('encrypted_string') == encrypt(request.GET.get('username')) and request.is_ajax():
+		if request.is_ajax():
 			# Get object pk
-			pk = request.GET.get('pk', None)
-			username = request.GET.get('username', None)
+			pk = request.GET.get('pk')
 			# Retrieve objects
-			idea = Idea.objects.filter(pk=pk).first()
-			user = User.objects.filter(username=username).first()
-			profile = Profile.objects.filter(user=user).first()
+			idea = get_object_or_404(Idea,pk=pk)
+			user = get_object_or_404(User,username=request.user.username)
+			profile = get_object_or_404(Profile,user=user)
 			# Add like
 			if profile in idea.liked_user.all(): 	
 				data["action"] = "unliked"			
@@ -226,18 +226,17 @@ def like_view(request):
 		data['failed'] = True
 	return JsonResponse(data)
 
+@login_required
 def star_view(request):
 	data = {}
 	try:
-		# Check if request is send by the correct user
-		if request.GET.get('encrypted_string') == encrypt(request.GET.get('username')) and request.is_ajax():
+		if request.is_ajax():
 			# Get object pk
-			pk = request.GET.get('pk', None)
-			username = request.GET.get('username', None)
+			pk = request.GET.get('pk')
 			# Retrieve objects
-			idea = Idea.objects.filter(pk=pk).first()
-			user = User.objects.filter(username=username).first()
-			profile = Profile.objects.filter(user=user).first()
+			idea = get_object_or_404(Idea,pk=pk)
+			user = get_object_or_404(User,username=request.user.username)
+			profile = get_object_or_404(Profile,user=user)
 			# Add like
 			if profile in idea.starred_user.all(): 	
 				data["action"] = "unstarred"		
@@ -258,3 +257,20 @@ def comment_delete_view(request,comment_pk):
 	comment = get_object_or_404(Comment, author=comment_pk)
 	if comment.author.user == request.user:
 		comment.delete()
+
+@login_required
+def comment_get_view(request):
+	data = {}
+	try:
+		if request.is_ajax():
+			# Get object pk
+			pk = request.GET.get('pk')
+			comment_num = int(request.GET.get("comment_num"))
+			# Retrieve objects
+			idea = get_object_or_404(Idea,pk=pk)
+			data["comments"] = idea.comments.all().order_by("-timestamp")[comment_num:comment_num+COMMENT_PER_PAGE]
+		else:
+			raise CustomError("AjaxInvalid")
+	except:
+		data['failed'] = True
+	return JsonResponse(serializers.serialize('json', data["comments"]), safe=False)

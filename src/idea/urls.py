@@ -11,6 +11,7 @@ from .views import (
 	star_view,
 	# Comment
 	comment_delete_view,
+	comment_get_view
 )
 
 urlpatterns = [
@@ -26,4 +27,5 @@ urlpatterns = [
 
 	# Comment
 	path('comment/delete/<int:comment_pk>', comment_delete_view, name="idea_comment_delete_view"),
+	path('comment/get/', comment_get_view, name="idea_comment_get_view"),
 ] 
