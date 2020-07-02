@@ -17,15 +17,21 @@ function comment_ajax(pk) {
                             comment_num = data.new_comment_num;
                             data.comments = JSON.parse(data.comments);
                             for (var i=0; i<data.comments.length; i++) {
-                                comment = data.comments[i];
-                                author = data.authors[i];
-                                last_edit = data.timestamps[i];
+                                var comment = data.comments[i];
+                                var author = data.authors[i];
+                                var last_edit = data.timestamps[i];
+                                var delete_link = "";
+                                var delete_link_class = "";
+                                if (author == username) {
+                                    delete_link = `/idea/comment/delete/${comment.pk}/${idea_pk}`
+                                    delete_link_class = "delete-link";
+                                }
                                 $("#append-target2").append(
                                     `<div class="comment-wrapper">
                                     <h6>${comment.fields.full_description}</h6>
                                     <p class="small">${author}</p>
-                                    <p class="small">Last Edited <span class="time">${last_edit}</span></p>
-                                    </div>`
+                                    <a class="small ${delete_link_class}" href="${delete_link}">
+                                    <span>Last Edited <span class="time">${last_edit}</span></span></a>`
                                 );
                             }
                             hide_button();

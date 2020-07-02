@@ -87,8 +87,10 @@
 				{% endif %}
 			</div>
 			<script type="text/javascript">
+				var username = "{{ user.get_full_name }}";
 				var comment_num = "{{ comments|length }}";
 				var total_comments_num = "{{ total_comments_num }}";
+				var idea_pk = "{{ idea.pk }}";
 			</script>
 			<button class="btn bold more-comment-btn" onclick="comment_ajax('{{ idea.pk }}');return false;">...</button>
 		</div>
