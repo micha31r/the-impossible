@@ -161,23 +161,28 @@ def edit_page(request,pk):
 			if data.get("delete") == 2:
 				idea.delete()
 				return redirect("idea_explore_page",date.week(),1)
-			# Changed idea content
-			idea.name = data.get("name")
-			idea.short_description = data.get("short_description")
-			idea.full_description = data.get("full_description")
+
+			ignored_users = []
 
 			# Search description for @ users
 			usernames = set(at_filter(data.get("full_description"))) - set(usernames_before_edit)
 			for username in usernames:
 				user = User.objects.filter(username=username).first()
 				if user:
-					profile = Profile.objects.filter(user=user).first()
-					# Send the mentioned user a notification
-					message = f"@{request.user.username} mentioned you in \"{idea.name}\""
-					msg = Notification.objects.create(message=message,message_status=2)
-					msg.save()
-					# Notify mentioned user
-					profile.notification.add(msg)
+					proceed = False
+					followers =  User.objects.filter(profile__following=idea.author.user)
+					if (data.get("publish_status") == 2 and user in followers) or data.get("publish_status") == 3:
+						proceed = True
+					if proceed:
+						profile = Profile.objects.filter(user=user).first()
+						# Send the mentioned user a notification
+						message = f"@{request.user.username} mentioned you in \"{idea.name}\""
+						msg = Notification.objects.create(message=message,message_status=2)
+						msg.save()
+						# Notify mentioned user
+						profile.notification.add(msg)
+					else:
+						ignored_users.append(username)
 				else: 
 					# Tell the current user that their mentioned user does not exsist
 					profile = get_object_or_404(Profile,user=request.user)
@@ -185,6 +190,21 @@ def edit_page(request,pk):
 					msg = Notification.objects.create(message=message,message_status=1)
 					msg.save()
 					profile.notification.add(msg)
+
+			profile = get_object_or_404(Profile,user=request.user)
+			for username in ignored_users:
+				# Tell the current user that their mentioned user does not exsist
+				message = f"@{username} is not mentioned due to {idea.name}'s publish setting"
+				msg = Notification.objects.create(message=message,message_status=1)
+				msg.save()
+				profile.notification.add(msg)
+				# Remove username from description
+				data["full_description"] = data["full_description"].replace(f"@{username}","")
+
+			# Changed idea content
+			idea.name = data.get("name")
+			idea.short_description = data.get("short_description")
+			idea.full_description = data.get("full_description")
 
 			# Change publish setting
 			idea.publish_status = data.get("publish_status")

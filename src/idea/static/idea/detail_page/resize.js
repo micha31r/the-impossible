@@ -21,8 +21,13 @@ function image_resize() {
 	}
 }
 
+function comment_container_height() {
+	$(".comment-container").height($(".comment-container").height());
+}
+
 auto_run.queue( 
 	function() {
+		comment_container_height();
 		image_resize();
 		window.addEventListener(
 			"resize", 

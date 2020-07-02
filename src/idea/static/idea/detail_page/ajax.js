@@ -35,6 +35,9 @@ function comment_ajax(pk) {
                                 );
                             }
                             hide_button();
+                            // Auto scrolling with Jquery
+                            // https://stackoverflow.com/questions/10503606/scroll-to-bottom-of-div-on-page-load-jquery
+                            $(".comment-container").animate({ scrollTop: $('.comment-container').prop("scrollHeight")}, 1000);
                         }
                     }
                 }

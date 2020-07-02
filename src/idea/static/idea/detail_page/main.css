@@ -123,6 +123,9 @@ form {
 }
 
 .comment-container {
+	/* Height is set through JS */
+	height: max-content;
+	overflow-y: scroll;
 	width: 60%;
 	min-width: 300px;
 	margin-top: 20px;
