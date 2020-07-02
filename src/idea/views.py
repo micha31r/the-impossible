@@ -93,6 +93,7 @@ def detail_page(request,pk):
 
 	# Comment section stuff
 	ctx["comments"] = idea.comments.all().order_by("-timestamp")[:COMMENT_PER_PAGE]
+	ctx["total_comments_num"] = idea.comments.all().count()
 
 	ctx["form"] = form = CommentForm(request.POST or None)
 
@@ -268,9 +269,15 @@ def comment_get_view(request):
 			comment_num = int(request.GET.get("comment_num"))
 			# Retrieve objects
 			idea = get_object_or_404(Idea,pk=pk)
-			data["comments"] = idea.comments.all().order_by("-timestamp")[comment_num:comment_num+COMMENT_PER_PAGE]
+			comments = idea.comments.all().order_by("-timestamp")[comment_num:comment_num+COMMENT_PER_PAGE]
+			authors = []
+			for comment in comments:
+				authors.append(comment.author.user.get_full_name())
+			data["comments"] = serializers.serialize('json', comments)
+			data["authors"] = authors
+			data["new_comment_num"] = comment_num+COMMENT_PER_PAGE
 		else:
 			raise CustomError("AjaxInvalid")
 	except:
 		data['failed'] = True
-	return JsonResponse(serializers.serialize('json', data["comments"]), safe=False)
+	return JsonResponse(data, safe=False)

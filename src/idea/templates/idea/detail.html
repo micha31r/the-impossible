@@ -73,22 +73,24 @@
 			</form>
 
 			<div class="comment-container">
-				{% for comment in comments %}
-					<div class="comment-wrapper">
-						<h6>{{ comment.full_description }}</h6>
-						<p class="small">{{ comment.author }}</p>
-						<p class="small">Last Edited <span class="time">{{ comment.last_edit }}</span></p>
-					</div>
-				{% endfor %}
+				<span id="append-target2">
+					{% for comment in comments %}
+						<div class="comment-wrapper">
+							<h6>{{ comment.full_description }}</h6>
+							<p class="small">{{ comment.author }}</p>
+							<p class="small">Last Edited <span class="time">{{ comment.last_edit }}</span></p>
+						</div>
+					{% endfor %}
+				<span>
 				{% if not idea.comments.all %}
 					<p class="no-comment-text">No comments</p>
-				{% else %}
-					<script type="text/javascript">
-						var comment_num = "{{ comments|length }}";
-					</script>
-					<button class="btn btn-dark btn-black bold" onclick="comment_ajax('{{ idea.pk }}');return false;">...</button>
 				{% endif %}
 			</div>
+			<script type="text/javascript">
+				var comment_num = "{{ comments|length }}";
+				var total_comments_num = "{{ total_comments_num }}";
+			</script>
+			<button class="btn bold more-comment-btn" onclick="comment_ajax('{{ idea.pk }}');return false;">...</button>
 		</div>
 		<div class="right-container">
 			<div class="file-wrapper {% if not idea.header_img %}no-header-image{% endif %}">
