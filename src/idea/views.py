@@ -162,7 +162,8 @@ def edit_page(request,pk):
 				idea.delete()
 				return redirect("idea_explore_page",date.week(),1)
 
-			ignored_users = []
+			idea.name = data.get("name")
+			idea.short_description = data.get("short_description")
 
 			# Search description for @ users
 			usernames = set(at_filter(data.get("full_description"))) - set(usernames_before_edit)
@@ -182,28 +183,22 @@ def edit_page(request,pk):
 						# Notify mentioned user
 						profile.notification.add(msg)
 					else:
-						ignored_users.append(username)
+						# Tell the current user that certain uses can't be mentioned
+						message = f"@{username} is not mentioned due to {idea.name}'s publish setting"
+						msg = Notification.objects.create(message=message,message_status=1)
+						msg.save()
+						idea.author.notification.add(msg)
+						idea.author.save()
+						# Remove username from description
+						data["full_description"] = data["full_description"].replace(f"@{username}","")
 				else: 
 					# Tell the current user that their mentioned user does not exsist
-					profile = get_object_or_404(Profile,user=request.user)
 					message = f"@{username} user does not exsist"
 					msg = Notification.objects.create(message=message,message_status=1)
 					msg.save()
-					profile.notification.add(msg)
+					idea.author.notification.add(msg)
+					idea.author.save()
 
-			profile = get_object_or_404(Profile,user=request.user)
-			for username in ignored_users:
-				# Tell the current user that their mentioned user does not exsist
-				message = f"@{username} is not mentioned due to {idea.name}'s publish setting"
-				msg = Notification.objects.create(message=message,message_status=1)
-				msg.save()
-				profile.notification.add(msg)
-				# Remove username from description
-				data["full_description"] = data["full_description"].replace(f"@{username}","")
-
-			# Changed idea content
-			idea.name = data.get("name")
-			idea.short_description = data.get("short_description")
 			idea.full_description = data.get("full_description")
 
 			# Change publish setting
