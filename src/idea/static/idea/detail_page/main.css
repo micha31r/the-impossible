@@ -152,6 +152,16 @@ form {
 	text-align: center;
 }
 
+@media only screen and (max-width: 500px) {
+	.comment-container, form {
+		width: 100%;
+		min-width: 0px;
+	}
+	textarea {
+		min-width: 0px;
+	}
+}
+
 /* Image section */
 
 .left-container {
@@ -212,13 +222,6 @@ form {
 	}
 	.left-container {
 		padding: 0;
-	}
-	.comment-container, form {
-		width: 100%;
-		min-width: 0px;
-	}
-	textarea {
-		min-width: 0px;
 	}
 }
 
