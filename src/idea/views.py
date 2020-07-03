@@ -95,10 +95,9 @@ def detail_page(request,pk):
 	ctx["profile"] = profile = get_object_or_404(Profile, user=request.user)
 	idea.viewed_user.add(profile)
 
-	# Comment section stuff
+	# Comment relate stuff
 	ctx["comments"] = idea.comments.all().order_by("-timestamp")[:COMMENT_PER_PAGE]
 	ctx["total_comments_num"] = idea.comments.all().count()
-
 	ctx["form"] = form = CommentForm(request.POST or None)
 
 	if form.is_valid():
@@ -109,6 +108,21 @@ def detail_page(request,pk):
 		comment.save()
 		idea.comments.add(comment)
 		idea.save()
+		# Notify the author	
+		if idea.author.comment_setting != 1:
+			proceed = False
+			if idea.author.comment_setting == 2:
+				followers = User.objects.filter(profile__following=idea.author.user) # The author's followers
+				if profile.user in followers:
+					proceed = True
+			elif idea.author.comment_setting == 3:
+				proceed = True
+			if proceed:
+				message = f"@{profile.user.username} has commented on your post '{idea.name}'"
+				msg = Notification.objects.create(message=message,message_status=1)
+				msg.save()
+				idea.author.notification.add(msg)
+				idea.author.save()
 
 	template_file = "idea/detail.html"
 	return render(request,template_file,ctx)
@@ -196,8 +210,8 @@ def edit_page(request,pk):
 						# Remove username from description
 						data["full_description"] = data["full_description"].replace(f"@{username}","")
 				else: 
-					# Tell the current user that their mentioned user does not exsist
-					message = f"@{username} user does not exsist"
+					# Tell the current user that their mentioned user does not exist
+					message = f"@{username} user does not exist"
 					msg = Notification.objects.create(message=message,message_status=1)
 					msg.save()
 					idea.author.notification.add(msg)
@@ -234,11 +248,26 @@ def like_view(request):
 			user = get_object_or_404(User,username=request.user.username)
 			profile = get_object_or_404(Profile,user=user)
 			# Add like
-			if profile in idea.liked_user.all(): 	
+			if idea.liked_user.filter(user=profile.user).exists(): 	
 				data["action"] = "unliked"			
 				idea.liked_user.remove(profile) 	
 			else: 											
-				idea.liked_user.add(profile)		
+				idea.liked_user.add(profile)
+				# Notify the author	
+				if idea.author.like_setting != 1:
+					proceed = False
+					if idea.author.like_setting == 2:
+						followers = User.objects.filter(profile__following=idea.author.user) # The author's followers
+						if profile.user in followers:
+							proceed = True
+					elif idea.author.like_setting == 3:
+						proceed = True
+					if proceed:
+						message = f"@{user.username} has liked your post '{idea.name}'"
+						msg = Notification.objects.create(message=message,message_status=1)
+						msg.save()
+						idea.author.notification.add(msg)
+						idea.author.save()
 				data["action"] = "liked"			
 		else:
 			raise CustomError("AjaxInvalid")
@@ -258,7 +287,7 @@ def star_view(request):
 			user = get_object_or_404(User,username=request.user.username)
 			profile = get_object_or_404(Profile,user=user)
 			# Add like
-			if profile in idea.starred_user.all(): 	
+			if idea.starred_user.filter(user=profile.user).exists(): 	
 				data["action"] = "unstarred"		
 				idea.starred_user.remove(profile)
 			else: 											
