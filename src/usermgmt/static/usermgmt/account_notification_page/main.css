@@ -49,19 +49,6 @@ nav, footer {
 	box-shadow: none !important;
 }
 
-.notification-container {
-	display: inline-block;
-	background-color: #000;
-	padding: 20px;
-	padding-bottom: 0;
-	width: 400px;
-	/* Height is set through JS */
-	vertical-align: top;
-	border-radius: 10px;
-	overflow: hidden; /* Just in case ... */
-	box-shadow: 0px 10px 15px #aaa;
-}
-
 .notification-container h2 a {
 	color: #000 !important;
 }

@@ -39,7 +39,7 @@ a:hover {
 	display: inline-block;
 	width: 600px;
 	max-width: 100%;
-	box-shadow: inset 0px 10px 15px 0px #eee;
+	/*box-shadow: inset 0px 10px 15px 0px #eee;*/
 	padding: 20px;
 	border-radius: 10px;
 }
