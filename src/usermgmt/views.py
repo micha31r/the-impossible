@@ -202,16 +202,18 @@ def account_follow_view(request,username):
 		user=get_object_or_404(User,username=username)
 	)
 	profile = get_object_or_404(Profile,user=request.user)
-	if request.user in target_profile.blocked_user.all():
+	# Check if the current user is blocked by the target user
+	if target_profile.blocked_user.filter(username=request.user.username).exists():
 		message = f"@{username} blocked you, you cannot follow this user"
 		msg = Notification.objects.create(message=message,message_status=1)
 		msg.save()
 		profile.notification.add(msg)
 	else:
-		if profile.following.filter(username=request.user.username).exists():
-			profile.following.remove(request.user)
+		# Check whether the current user is already following the target user
+		if profile.following.filter(username=username).exists():
+			profile.following.remove(target_profile.user)
 		else:
-			profile.following.add(request.user)
+			profile.following.add(target_profile.user)
 	profile.save()
 	return redirect("account_dashboard_page",username=username,content_filter="my",page_num=1)
 

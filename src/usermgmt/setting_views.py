@@ -173,7 +173,21 @@ def account_setting_privacy_page(request):
 				msg.save()
 				profile.notification.add(msg)
 				ctx["error"] = f"@{username} {SERVER_ERROR['AUTH_NO_USER']}"
+		
 		profile.save()
+
+		# Remove current followers thats blocked
+		followers = User.objects.filter(profile__following=profile.user)
+		for follower in followers:
+			if profile.blocked_user.filter(username=follower.username).exists():
+				target_profile = get_object_or_404(Profile,user=follower)
+				target_profile.following.remove(profile.user)
+				# Send blocked message to the blocked user
+				message = f"@{profile.user} has blocked you. You can no longer see the user's follower-only posts"
+				msg = Notification.objects.create(message=message,message_status=1)
+				msg.save()
+				target_profile.notification.add(msg)
+				target_profile.save()
 
 	ctx["form_template_page"]="usermgmt/account_setting_privacy.html"
 	template_file = "usermgmt/account_setting.html"
