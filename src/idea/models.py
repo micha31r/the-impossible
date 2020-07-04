@@ -72,6 +72,9 @@ class Idea(models.Model):
 	# Comments
 	comments = models.ManyToManyField(Comment,related_name="comment",blank=True)
 
+	# Notification to followers
+	notified = models.BooleanField(default=False)
+
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
 	last_edit = models.DateTimeField(auto_now=True)

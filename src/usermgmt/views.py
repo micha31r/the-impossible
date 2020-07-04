@@ -114,10 +114,10 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	# Created ideas, liked ideas or starred ideas 
 	ctx["content_filter"] = content_filter
 	ctx["username"] = username
-	user = get_object_or_404(User, username=username)
+	user = get_object_or_404(User, username=username) # Target user
 	# The profile for the logged in user
 	if request.user.is_authenticated:
-		ctx["profile"] = Profile.objects.filter(user=request.user).first()
+		ctx["profile"] = get_object_or_404(Profile,user=request.user)
 	# The profile for the viewed user
 	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
 	
@@ -137,24 +137,33 @@ def account_dashboard_page(request,username,content_filter,page_num):
 				notification.dismissed = True
 				notification.save()
 
-	# Followers
+	# Get followers' profiles
 	ctx["followers"] = followers = User.objects.filter(profile__following=target_profile.user)
 	ctx["followers_profile"] = []
 	for follower in followers[:30]:
 		ctx["followers_profile"].append(Profile.objects.filter(user=follower).first())
 
 	ideas = {}
-	if content_filter == "my":
-		# Ideas created by this user
-		ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()[:IDEA_PER_PAGE]
+	if content_filter == "my": # Ideas created by this user
+		# Show all ideas is the current user is the same as the target user
+		if request.user.is_authenticated and request.user == user:
+			ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()[:IDEA_PER_PAGE]
+		# If the current user follows the target user
+		elif request.user.is_authenticated and ctx["profile"].following.filter(username=target_profile.user.username).exists():
+			ideas = Idea.objects.filter(author=target_profile).exclude(publish_status=1).order_by("timestamp").reverse()[:IDEA_PER_PAGE]
+		else:
+			ideas = Idea.objects.filter(author=target_profile, publish_status=3).order_by("timestamp").reverse()[:IDEA_PER_PAGE]
 	elif content_filter == "liked":
+		# Blocked users can't see this page
+		if target_profile.blocked_user.filter(username=request.user.username).exists():
+			return redirect("access_error_page")
 		# Liked ideas 
 		ideas = Idea.objects.filter(liked_user=target_profile)[:IDEA_PER_PAGE]
 	elif content_filter == "starred":
 		if user == request.user: # Starred ideas are private
 			# Starred ideas 
 			ideas = Idea.objects.filter(starred_user=target_profile)[:IDEA_PER_PAGE]
-		else: raise Http404()
+		else: return redirect("access_error_page")
 	else: raise Http404()
 
 	# Split data into pages
@@ -162,6 +171,12 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	ctx["max_page"] = ideas.num_pages
 	try: current_page = ideas.page(page_num) # Get the ideas on the current page
 	except: raise Http404()
+	# On the liked page, remove idea if the current user did not follow the idea's author
+	# The filter is done here to optimise performance
+	if content_filter == "liked" and user != request.user and request.user.is_authenticated:
+		for idea in current_page:
+			if not ctx["profile"].following.filter(username=idea.author.user.username).exists():
+				current_page.object_list.remove(idea)
 	ctx["masonary_ideas"] = current_page 
 	template_file = "usermgmt/account_dashboard.html"
 	return render(request,template_file,ctx)

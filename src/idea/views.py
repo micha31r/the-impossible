@@ -221,12 +221,26 @@ def edit_page(request,pk):
 
 			# Change publish setting
 			idea.publish_status = data.get("publish_status")
+
+			# Notify followers if publish setting is set to followers-only or public
+			if not idea.notified and (idea.publish_status == 2 or idea.publish_status == 3):
+				idea.notified = True
+				message = f"@{request.user.username} has created a new post '{idea.name}'"
+				msg = Notification.objects.create(message=message,message_status=1)
+				msg.save()
+				followers = User.objects.filter(profile__following=idea.author.user)
+				for follower in followers.all():
+					follower_profile = get_object_or_404(Profile, user=follower)
+					follower_profile.notification.add(msg)
+					follower_profile.save()
+
 			# Add tags
 			for tag in eval(data.get('tags_remain') or "[]"): # convert
 				idea.tags.add(tag)
 			# Remove tags
 			for tag in data.get('tags'):
 				idea.tags.remove(tag)
+
 			idea.save()
 			# Refresh page
 			return redirect("idea_edit_page", pk=idea.id)
