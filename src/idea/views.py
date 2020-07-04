@@ -84,6 +84,12 @@ def explore_page(request,week_num,page_num):
 	random.seed(datetime.datetime.now())
 	ctx["random_ideas"] = random.sample(list(ideas), min(ideas.count(), 10))
 	template_file = "idea/explore.html"
+
+	# Recent published ideas by followed users
+	# ideas = Idea.objects.filter(
+		
+	# ).exclude(publish_status=1)
+
 	return render(request,template_file,ctx)
 
 @login_required

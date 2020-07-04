@@ -65,9 +65,12 @@
 }
 
 .card {
-	background-color: #fff;
+	/*background-color: rgb(248,248,248);*/
 	width: 100%;
 	border: 0;
+	/*border-color: #ddd;
+	border-style: solid;
+	border-width: 1px;*/
 	border-radius: 0px;
 	box-shadow: 0px 10px 15px #ddd;
 	overflow: hidden;
@@ -172,9 +175,9 @@
 
 /* Force new columns */
 .break {
-  flex-basis: 100%;
-  width: 0;
-  border: none;
-  margin: 0;
-  padding: 0;
+	flex-basis: 100%;
+	width: 0;
+	border: none;
+	margin: 0;
+	padding: 0;
 }
