@@ -3,13 +3,27 @@ nav, footer {
 }
 
 .wrapper {
-	padding-left: 0;
-	padding-right: 0;
+	padding: 0;
+	height: 100vh;
+	vertical-align: top;
+}
+
+.row {
+	overflow: scroll;
+}
+
+.center {
+	width: max-content;
+	max-width: 100%;
+	margin: auto;
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 
 .close-window-wrapper {
-	width: 90%;
-	margin: auto;
+	width: 100%;
+	margin-top: 0;
+	margin-bottom: 0;
 	margin-bottom: 40px;
 	text-align: right;
 }
@@ -34,8 +48,10 @@ nav, footer {
 .table-wrapper {
 	width: max-content;
 	max-width: 100%;
-	min-height: 90vh;
+	/*min-height: 90vh;*/
 	margin: auto;
+	margin-top: 0;
+	margin-bottom: 0;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #bbb;
@@ -44,11 +60,11 @@ nav, footer {
 }
 
 .table-wrapper > table {
-	min-height: 90vh;
+	/*min-height: 90vh;*/
 }
 
 #menu {
-	min-height: 90vh;
+	/*min-height: 90vh;*/
 	padding-left: 0;
 	padding-right: 0;
 	border-right-width: 1px;
@@ -239,11 +255,17 @@ button[type="submit"] {
 }
 
 @media only screen and (max-width: 700px) {
-	.table-wrapper, .table-wrapper > table {
-		min-height: 70vh;
+	.row {
+		max-width: 100% !important;
+		margin: auto !important;
+		height: max-content !important;
+	}
+	.center {
+		width: 90%;
+		padding-bottom: 0;
 	}
 	.table-wrapper {
-		width: 90%;
+		width: 100%;
 	}
 	.table-wrapper * {
 		width: 100%;
@@ -258,7 +280,7 @@ button[type="submit"] {
 	#minify-menu {
 		display: block;
 		width: 100%;
-		margin-top: 40px
+		margin-top: 40px;
 	}
 	#menu {
 		width: 100vw;
@@ -268,7 +290,7 @@ button[type="submit"] {
 	}
 	#minify-menu a {
 	 	display: block;
-		width: 90%;
+		width: 100%;
 		padding-top: 10px;
 		padding-bottom: 10px;
 		color: rgba(0,0,0,.5);

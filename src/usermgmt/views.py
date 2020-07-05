@@ -29,7 +29,7 @@ def signup_page(request):
 	ctx["date"] = Date()
 	next_page = request.GET.get("next") # Get url of the next page
 	if request.user.is_authenticated:
-		return redirect(next_page or "home_page")
+		return redirect(next_page or "account_dashboard_page", username=request.user.username, content_filter="my", page_num=1) # Redirect to the next page
 	signup_form = SignUpForm(request.POST or None)
 	ctx["signup_form"] = signup_form
 	if signup_form.is_valid():
@@ -73,7 +73,7 @@ def signup_page(request):
 
 						# Log user in
 						login(request, user)
-						return redirect(next_page or "home_page") # Redirect to the next page
+						return redirect(next_page or "account_dashboard_page", username=user.username, content_filter="my", page_num=1) # Redirect to the next page
 			else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_EMAIL_TAKEN"]
 		else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_USERNAME_TAKEN"]
 	signup_form = SignUpForm()
@@ -85,7 +85,7 @@ def login_page(request):
 	ctx["date"] = Date()
 	next_page = request.GET.get("next") # Get url of the next page
 	if request.user.is_authenticated:
-		return redirect(next_page or "home_page")
+		return redirect(next_page or "account_dashboard_page", username=request.user.username, content_filter="my", page_num=1) # Redirect to the next page
 	login_form = LoginForm(request.POST or None)
 	ctx["login_form"] = login_form
 	if login_form.is_valid():
@@ -94,7 +94,7 @@ def login_page(request):
 		user = authenticate(request, username=username, password=password)
 		if user:
 			login(request, user)
-			return redirect(next_page or "home_page") # Redirect to the next page
+			return redirect(next_page or "account_dashboard_page", username=user.username, content_filter="my", page_num=1) # Redirect to the next page
 		else: 
 			# Display error if user is not found
 			ctx["error"] = SERVER_ERROR["AUTH_LOGIN"]

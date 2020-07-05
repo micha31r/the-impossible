@@ -17,7 +17,7 @@ LIKE_OPTION = (
 )
 
 COMMENT_OPTION = (
-	(1,"No Comments"),
+	(1,"Off"),
     (2,"From Followers"),
     (3,"From Everyone"),
 )
