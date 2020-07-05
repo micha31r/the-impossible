@@ -7,17 +7,22 @@
 {% endblock %}
 
 {% block nav_custom %}
+	<!-- Lato Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
 	<li class="nav-item">
-		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}">Explore</a>
+		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}"><img src="{% static 'component/feather_svg/compass.svg' %}"></a>
 	</li>
 	{% if user.is_authenticated %}
 		<li class="nav-item dropdown">
-	        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+	        <button class="btn nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'component/feather_svg/chevrons-down.svg' %}"></button>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	        	<a class="dropdown-item" href="#">Give feedback</a>
 	        	<a class="dropdown-item" href="{% url 'account_notification_page' page_num='1' %}">Notifications</a>
-				<a class="dropdown-item" href="#">People</a>
+				<a class="dropdown-item" href="#">Meet new people</a>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="{% url 'account_setting_profile_page' %}">Settings</a>
+				<a class="dropdown-item" href="{% url 'account_setting_profile_page' %}">Settings and Privacy</a>
+				<a class="dropdown-item" href="#">Help and support</a>
 	        </div>
 		</li>
 	{% endif %}

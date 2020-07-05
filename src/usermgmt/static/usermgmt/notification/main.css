@@ -35,6 +35,10 @@
 	border-radius: 100%;
 }
 
+.notification-container {
+	max-height: 500px;
+}
+
 .notification-container h2 svg {
 	vertical-align: text-bottom;
 	height: 2rem;

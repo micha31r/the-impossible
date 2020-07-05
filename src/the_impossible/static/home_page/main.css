@@ -1,5 +1,13 @@
+body {
+	background-color: #fff
+}
+
 nav, footer {
 	display: none !important;
+}
+
+.main-container {
+	margin: 0;
 }
 
 .wrapper {

@@ -2,14 +2,31 @@ nav, footer {
 	display: none !important;
 }
 
+.main-container {
+	margin: 0;
+}
+
 .wrapper {
-	padding-left: 0;
-	padding-right: 0;
+	padding: 0;
+	height: 100vh;
+}
+
+.row {
+	overflow: scroll;
+}
+
+.center {
+	width: max-content;
+	max-width: 100%;
+	margin: auto;
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 
 .close-window-wrapper {
-	width: 90%;
-	margin: auto;
+	width: 100%;
+	margin-top: 0;
+	margin-bottom: 0;
 	margin-bottom: 40px;
 	text-align: right;
 }
@@ -31,16 +48,9 @@ nav, footer {
 	border-color: #ddd;
 }
 
-.center {
-	width: max-content;
-	min-width: 50%;
-	margin: auto;
-}
-
 .notification-container {
 	width: 100% !important;
 	max-width: 100% !important;
-	min-height: 90vh;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #bbb;
@@ -73,11 +83,13 @@ nav, footer {
 	color: #999 !important;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 700px) {
+	.row {
+		max-width: 100% !important;
+		margin: auto !important;
+		height: max-content !important;
+	}
 	.center {
 		width: 90%;
-	}
-	.notification-container {
-		min-height: 70vh;
 	}
 }

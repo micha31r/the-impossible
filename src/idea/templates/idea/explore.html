@@ -10,20 +10,14 @@
     {% endif %}
 {% endblock %}
 
-{% block before %}
-	<!-- Lato Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-	<h1 class="before-header"><b>FRESHIDEAS</b></h1>
-{% endblock %}
-
 {% block nav_custom %}
 	<li class="nav-item">
-		<a class="nav-link" href="{% url 'idea_create_view' %}">Add Idea</a>
+		<a class="nav-link" href="{% url 'idea_create_view' %}"><img src="{% static 'component/feather_svg/plus.svg' %}"></a>
 	</li>
 	{% if user.is_authenticated %}
   		<li class="nav-item">
     		<a class="nav-link" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}"><!-- Add red dot if there are any unread notifications -->
-    			{% if user.is_authenticated and new_notification %}<span class="new-notification-dot"></span>{% endif %}Dashboard</a>
+    			{% if user.is_authenticated and new_notification %}<span class="new-notification-dot"></span>{% endif %}<img src="{% static 'component/feather_svg/user.svg' %}"></a>
   		</li>
   	{% endif %}
 {% endblock %}

@@ -1,10 +1,10 @@
 // Center body 
 function center_body() {
-	var diff = $(window).width() - $("body").width();
+	var diff = $(window).width() - $(".main-container").width();
 	if (diff > 0) {
-		$("body").css("margin-left",`${diff/2}px`);
+		$(".main-container").css("margin-left",`${diff/2}px`);
 	} else {
-		$("body").css("margin-left","0");
+		$(".main-container").css("margin-left","0");
 	}
 }
 

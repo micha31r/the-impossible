@@ -71,7 +71,7 @@
 		    } 
 		}; 
 		</script>
-		<!-- ------------ -->
+		<!---------------->
 
 		{% block title %}
 		{% endblock %}
@@ -123,7 +123,7 @@
 		    	<ul class="navbar-nav navbar-right">
 		    		{% block nav_custom %}
 		    			<li class="nav-item">
-			        		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}">Explore</a>
+			        		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}"><img src="{% static 'component/feather_svg/compass.svg' %}"></a>
 			      		</li>
 			      		{% if user.is_authenticated %}
 				      		<li class="nav-item">
@@ -133,7 +133,7 @@
 		    		{% endblock %}
 		    		{% if user.is_authenticated %}
 		    			<li class="nav-item">
-			        		<a class="nav-link" href="{% url 'logout_view' %}">Logout</a>
+			        		<a class="nav-link" href="{% url 'logout_view' %}"><img src="{% static 'component/feather_svg/power.svg' %}"></a>
 			      		</li>
 		    		{% else %}
 			      		<li class="nav-item">
@@ -145,8 +145,10 @@
 			</div>
 		</nav>
 
+		<div class="main-container">
 		{% block content %}
 		{% endblock %}
+	</div>
 
 		{% include 'footer.html' %}
 
