@@ -27,8 +27,8 @@ function comment_container_height() {
 
 auto_run.queue( 
 	function() {
-		comment_container_height();
 		image_resize();
+		comment_container_height();
 		window.addEventListener(
 			"resize", 
 			image_resize

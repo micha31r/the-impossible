@@ -151,13 +151,17 @@ form {
 	width: 100%;
 }
 
+.comment-wrapper a:hover {
+	text-decoration: none;
+}
+
 .delete-link:hover span {
 	display: none;
 }
 
 .delete-link:hover:before {
 	content: "Delete !!";
-	color: #e84a5f;
+	color: rgb(252,52,104);
 }
 
 .no-comment-text {
