@@ -9,8 +9,10 @@ function center_body() {
 }
 
 function body_margin() {
-	var height = $("nav").outerHeight() + 20;
-	$(".main-container").css("margin-top",`${height}px`);
+	if ($("nav").css("display") == "block") {
+		var height = $("nav").outerHeight() + 20;
+		$(".main-container").css("margin-top",`${height}px`);
+	}
 }
 
 auto_run.queue( 
