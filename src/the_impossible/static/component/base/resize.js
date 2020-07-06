@@ -8,12 +8,21 @@ function center_body() {
 	}
 }
 
+function body_margin() {
+	var height = $("nav").outerHeight() + 20;
+	$(".main-container").css("margin-top",`${height}px`);
+}
+
 auto_run.queue( 
 	function() {
 		center_body();
+		body_margin();
 		window.addEventListener(
 			"resize", 
-			center_body
+			function() {
+				center_body();
+				body_margin();
+			}
 		);
 	}
 );	

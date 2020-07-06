@@ -8,7 +8,7 @@
 	--width-height: 400;
 }
 
-input {
+.main-container input {
 	width: 100%;
 	min-width: 200px;
 	padding: 10px;
@@ -19,15 +19,15 @@ input {
 	font-size: 2rem;
 }
 
-input::placeholder {
+.main-container input::placeholder {
 	color: #ccc;
 }
 
-input:focus::placeholder{
+.main-container input:focus::placeholder{
 	color: rgb(215,200,160);
 }
 
-input:focus {
+.main-container input:focus {
 	outline: none;
 	background-color: rgb(255,240,200);
 }

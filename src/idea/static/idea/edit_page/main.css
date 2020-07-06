@@ -9,7 +9,7 @@
 	--header-img-height: 168px;
 }
 
-form p {
+.main-container form p {
 	margin-bottom: 0px;
 }
 
@@ -22,7 +22,7 @@ td {
 	vertical-align: top;
 }
 
-input, textarea {
+.main-container input, textarea {
 	width: 100%;
 	padding: 10px;
 	border-style: solid;
@@ -33,31 +33,29 @@ input, textarea {
 	background-color: #eee;
 }
 
-input::placeholder, textarea::placeholder {
+.main-container input::placeholder, textarea::placeholder {
 	color: #ccc;
 }
 
-input:focus::placeholder, textarea:focus::placeholder {
+.main-container input:focus::placeholder, textarea:focus::placeholder {
 	color: rgb(215,200,160);
 }
 
-input:focus, textarea:focus {
+.main-container input:focus, textarea:focus {
 	outline: none;
 	background-color: rgb(255,240,200);
 }
 
-input {
+.main-container input {
 	font-size: 3rem;
 }
-
-textarea {
+ textarea {
 	height: calc(5rem + 10px);
 	min-height: calc(5rem + 10px);
 	max-height: 30rem;
 	font-size: 1.5rem;
 }
-
-textarea[name="full_description"] {
+ textarea[name="full_description"] {
 	min-height: 20rem;
 	font-size: 1rem;
 	margin-bottom: 0px;
@@ -102,7 +100,7 @@ select[name="publish_status"], select[name="delete"] {
 	border-radius: 5px;
 }
 
-img {
+.main-container img {
 	height: 100%;
 }
 
