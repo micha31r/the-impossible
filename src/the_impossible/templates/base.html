@@ -104,10 +104,10 @@
 		<!-- Center body js -->
 		<script type="text/javascript" src="{% static 'component/base/resize.js' %}"></script>
 
-		<!-- Before header -->
-		{% block before %}
-			<!-- Put things here if u want to display it before all other elements -->
-		{% endblock %}
+		<!-- Color theme css and switcher js -->
+		<link rel="stylesheet" type="text/css" href="{% static 'component/base/color_theme.css' %}">
+
+		<script type="text/javascript" src="{% static 'component/base/color_theme.js' %}"></script>
 
 		<!-- Navbar -->
 		<link rel="stylesheet" type="text/css" href="{% static 'component/navbar/main.css' %}">
@@ -121,6 +121,9 @@
 		    	</form>
 			</ul>
 	    	<ul class="navbar-nav navbar-right">
+	    		<li class="nav-item">
+	    			<button class="btn" id="switch" onclick="toggle_theme();">Switch</button>
+	    		</li>
 	    		{% block nav_custom %}
 	    			<li class="nav-item">
 		        		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}"><img src="{% static 'component/feather_svg/compass.svg' %}"></a>

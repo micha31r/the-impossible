@@ -1,0 +1,29 @@
+.theme-light {
+    --color-primary: #fff;
+    --color-secondary: #fff;
+    --color-third: #eee;
+    --color-fourth: #ddd;
+    --color-fifth: #aaa;
+    --color-sixth: #888;
+    --color-seventh: #111;
+    --color-eighth: #333;
+    --color-ninth: #000;
+    --color-tenth: #000;
+    --color-eleventh: #666;
+    --color-twelveth: rgba(255,255,255,0.2);
+}
+
+.theme-dark {
+    --color-primary: #111;
+    --color-secondary: #222;
+    --color-third: #333;
+    --color-fourth: #444;
+    --color-fifth: #555;
+    --color-sixth: #666;
+    --color-seventh: #eee;
+    --color-eighth: #ccc;
+    --color-ninth: #fff;
+    --color-tenth: #222;
+    --color-eleventh: #888;
+    --color-twelveth: rgba(0,0,0,0.3);
+}

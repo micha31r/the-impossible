@@ -10,7 +10,7 @@ function center_body() {
 
 function body_margin() {
 	if ($("nav").css("display") != "none") {
-		var height = $("nav").outerHeight() + 20;
+		var height = $("nav").outerHeight();
 		$(".main-container").css("margin-top",`${height}px`);
 	}
 }

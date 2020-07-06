@@ -31,7 +31,7 @@ a:hover {
 }
 
 .user-info {
-	background-color: #fff;
+	background-color: var(--color-primary);
 	min-height: 300px;
 }
 
@@ -45,15 +45,17 @@ a:hover {
 }
 
 .username {
+	color: var(--color-seventh);
 	margin-bottom: 0;
 }
 
 .fullname {
-	color: rgba(0,0,0,0.4);
+	color: var(--color-seventh);
 	margin-bottom: 15px;
 }
 
 .bio {
+	color: var(--color-eighth);
 	margin-bottom: 0;
 }
 
@@ -73,6 +75,8 @@ a:hover {
 	margin-bottom: 0;
 	margin-right: 30px;
 	font-family: "Arciform", sans-serif;
+	color: var(--color-seventh);
+	stroke: var(--color-seventh);
 }
 
 .daily-limit {

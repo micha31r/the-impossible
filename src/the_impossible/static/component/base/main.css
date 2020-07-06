@@ -3,7 +3,7 @@ body {
 	width: 100vw;
 	height: 100vh;
 	overflow: scroll;
-	background-color: #fff;
+	background-color: var(--color-primary);
 }
 
 /* Hide scroll bar in all browsers */
@@ -14,7 +14,7 @@ body *::-webkit-scrollbar {
 }
 
 .main-container {
-	width: 90vw;
+	width: 90vw;var(--color-primary)
 	max-width: 1200px;
 }
 
@@ -40,8 +40,13 @@ body *::-webkit-scrollbar {
 }
 
 .alert-black, .btn-black {
-	color: #FFF !important;
-	background-color: #000;
+	color: var(--color-primary) !important;
+	background-color: var(--color-ninth);
+}
+
+.btn-black:hover {
+	background-color: var(--color-eighth) !important;
+	border-color: var(--color-eighth) !important;
 }
 
 .alert-black svg, .alert-black img {
@@ -51,9 +56,9 @@ body *::-webkit-scrollbar {
 
 .alert-black-outline, .btn-black-outline, .btn-black {
 	border-width: 2px;
-	border-color: #000;
+	border-color: var(--color-ninth);
 	border-style: solid;
-	color: #000;
+	color: var(--color-ninth);
 }
 
 .btn-yellow, .btn-yellow-outline {

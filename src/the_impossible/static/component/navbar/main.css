@@ -6,9 +6,12 @@ nav {
 	padding-top: 5px !important;
 	padding-bottom: 5px !important;
 	font-family: "Arciform", sans-serif;
-	background-color: #fff;
+	background-color: var(--color-secondary);
 	z-index: 100; /* Make sure the navbar always stay on top */
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	border-bottom-width: 1px;
+	border-style: solid;
+	border-color: var(--color-fourth); 
 }
 
 /* 768 is the collapse point of the medium sized navbar */
@@ -33,21 +36,21 @@ nav {
 	font-family: sans-serif;
 	height: max-content;
 	border-radius: 200px;
-	background-color: #eee;
+	background-color: var(--color-third);
 	border: 0;
 	padding: 10px;
 }
 
 .navbar-nav form input:focus {
-	background-color: rgb(242,239,228);
+	background-color: var(--color-fourth);
 }
 
 .navbar-nav form input::placeholder {
-	color: #aaa;
+	color: var(--color-fifth);
 }
 
 .navbar-nav form input:focus::placeholder {
-	color: #888;
+	color: var(--color-sixth);
 }
 
 .navbar-nav form button {
@@ -55,13 +58,13 @@ nav {
 }
 
 .navbar-nav form button img {
-	background-color: #eee;
+	background-color: var(--color-third);
 	border-radius: 200px;
 	padding: 10px;
 }
 
 .navbar-nav form button img:hover {
-	background-color: #ffde66;
+	background-color: var(--color-fourth);
 }
 
 /* ----------- */
@@ -75,10 +78,6 @@ nav {
 	border: 0;
 }
 
-.collapse-icon {
-	stroke: #bbb;
-}
-
 .nav-link {
 	padding: 0;
 	padding-left: 3px !important;
@@ -89,11 +88,11 @@ nav {
 	height: 100%;
 	padding: 10px;
 	border-radius: 100%;
-	background-color: #eee;
+	background-color: var(--color-third);
 }
 
 .nav-link img:hover {
-	background-color: #ddd;
+	background-color: var(--color-fourth);
 }
 
 .dropdown-menu {
