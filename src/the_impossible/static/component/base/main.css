@@ -57,10 +57,10 @@ body *::-webkit-scrollbar {
 }
 
 .btn-yellow, .btn-yellow-outline {
-	color: rgb(235,192,0);
-	background-color: rgb(255,245,191);
+	color: rgb(207,169,0);
+	background-color: rgb(255,234,122);
 	border-width: 2px;
-	border-color: rgb(255,245,191);
+	border-color: rgb(255,234,122);
 	border-style: solid;
 }
 
@@ -70,15 +70,15 @@ body *::-webkit-scrollbar {
 }
 
 .btn-yellow:hover {
-	color: rgb(225,182,0);
-	border-color: rgb(245,235,181);
-	background-color: rgb(245,235,181);
+	color: rgb(171,140,0);
+	border-color: rgb(255, 227, 79);
+	background-color: rgb(255, 227, 79);
 }
 
 .btn-yellow-outline:hover {
 	color: rgb(225,182,0);
 	border-color: rgb(235,192,0) !important;
-	background-color: rgba(235,192,0,0.1) !important;
+	background-color: rgba(235,192,0,0.2) !important;
 }
 
 .wrapper {
