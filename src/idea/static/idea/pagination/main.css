@@ -28,7 +28,7 @@
 	border: 0;
 	padding: 0;
 	margin: 5px;
-	color: var(--color-seventeenth);
+	color: var(--color-sixth);
 	background-color: transparent;
 }
 
@@ -40,6 +40,6 @@
 .current-page-link {
 	color: var(--color-ninth);
 	border-style: solid;
-	border-color: black;
+	border-color: var(--color-ninth);
 	border-bottom-width: 2px;
 }
