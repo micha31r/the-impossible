@@ -104,7 +104,7 @@
 		<!-- Center body js -->
 		<script type="text/javascript" src="{% static 'component/base/resize.js' %}"></script>
 
-		<!-- Color theme css and switcher js -->
+		<!-- Color theme css and color-theme-toggleer js -->
 		<link rel="stylesheet" type="text/css" href="{% static 'component/base/color_theme.css' %}">
 
 		<script type="text/javascript" src="{% static 'component/base/color_theme.js' %}"></script>
@@ -131,9 +131,18 @@
 		    	</form>
 			</ul>
 	    	<ul class="navbar-nav navbar-right">
+	    		<!-- Color theme toggle -->
 	    		<li class="nav-item">
-	    			<button class="btn" id="switch" onclick="toggle_theme();">Switch</button>
+	    			<button class="btn nav-link" onclick="toggle_theme();"><img src="{% static 'component/feather_svg/moon.svg' %}"></button>
 	    		</li>
+	    		<!-- <li class="nav-item">
+	    			<button class="btn color-theme-toggle-btn">
+					    <label class="color-theme-toggle">
+							<input type="checkbox">
+							<span class="slider round"></span>
+						</label>
+					</button>
+				</li> -->
 	    		{% block nav_custom %}
 	    			<li class="nav-item">
 		        		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}"><img src="{% static 'component/feather_svg/compass.svg' %}"></a>

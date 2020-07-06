@@ -23,5 +23,6 @@ auto_run.queue(
         } else {
             set_theme('theme-light');
         }
+        $(".color-theme-toggle input").click(toggle_theme);
     }
 );
