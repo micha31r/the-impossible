@@ -38,6 +38,18 @@ nav {
 	padding: 10px;
 }
 
+.navbar-nav form input:focus {
+	background-color: rgb(242,239,228);
+}
+
+.navbar-nav form input::placeholder {
+	color: #aaa;
+}
+
+.navbar-nav form input:focus::placeholder {
+	color: #888;
+}
+
 .navbar-nav form button {
 	padding-left: 6px;
 }
@@ -47,6 +59,12 @@ nav {
 	border-radius: 200px;
 	padding: 10px;
 }
+
+.navbar-nav form button img:hover {
+	background-color: #ffde66;
+}
+
+/* ----------- */
 
 .nav-item, nav button {
 	font-size: 1.3rem !important;
@@ -72,6 +90,10 @@ nav {
 	padding: 10px;
 	border-radius: 100%;
 	background-color: #eee;
+}
+
+.nav-link img:hover {
+	background-color: #ddd;
 }
 
 .dropdown-menu {
