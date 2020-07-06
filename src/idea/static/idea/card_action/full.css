@@ -17,7 +17,7 @@
 	/* Remove space from bottom */
 	margin-bottom: calc(var(--card-button-size) / -2) !important;
 	border-radius: 100%;
-	background-color: #FFF;
+	background-color: var(--color-secondary);
 	opacity: 0;
 	animation-duration: 0.3s;
 	animation-fill-mode: forwards;

@@ -147,22 +147,22 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	if content_filter == "my": # Ideas created by this user
 		# Show all ideas is the current user is the same as the target user
 		if request.user.is_authenticated and request.user == user:
-			ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()[:IDEA_PER_PAGE]
+			ideas = Idea.objects.filter(author=target_profile).order_by("timestamp").reverse()
 		# If the current user follows the target user
 		elif request.user.is_authenticated and ctx["profile"].following.filter(username=target_profile.user.username).exists():
-			ideas = Idea.objects.filter(author=target_profile).exclude(publish_status=1).order_by("timestamp").reverse()[:IDEA_PER_PAGE]
+			ideas = Idea.objects.filter(author=target_profile).exclude(publish_status=1).order_by("timestamp").reverse()
 		else:
-			ideas = Idea.objects.filter(author=target_profile, publish_status=3).order_by("timestamp").reverse()[:IDEA_PER_PAGE]
+			ideas = Idea.objects.filter(author=target_profile, publish_status=3).order_by("timestamp").reverse()
 	elif content_filter == "liked":
 		# Blocked users can't see this page
 		if target_profile.blocked_user.filter(username=request.user.username).exists():
 			return redirect("access_error_page")
 		# Liked ideas 
-		ideas = Idea.objects.filter(liked_user=target_profile)[:IDEA_PER_PAGE]
+		ideas = Idea.objects.filter(liked_user=target_profile)
 	elif content_filter == "starred":
 		if user == request.user: # Starred ideas are private
 			# Starred ideas 
-			ideas = Idea.objects.filter(starred_user=target_profile)[:IDEA_PER_PAGE]
+			ideas = Idea.objects.filter(starred_user=target_profile)
 		else: return redirect("access_error_page")
 	else: raise Http404()
 

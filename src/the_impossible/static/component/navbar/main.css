@@ -7,7 +7,7 @@ nav {
 	padding-bottom: 5px !important;
 	font-family: "Arciform", sans-serif;
 	background-color: var(--color-secondary);
-	z-index: 100; /* Make sure the navbar always stay on top */
+	z-index: 50; /* Make sure the navbar always stay on top */
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	border-bottom-width: 1px;
 	border-style: solid;
@@ -23,6 +23,11 @@ nav {
 
 .navbar-logo {
 	margin-right: 15px;
+}
+
+.navbar-logo * {
+	stroke: var(--color-ninth);
+	fill: var(--color-ninth);
 }
 
 /* Search form */
@@ -58,13 +63,15 @@ nav {
 }
 
 .navbar-nav form button img {
-	background-color: var(--color-third);
 	border-radius: 200px;
 	padding: 10px;
+	/* Invert color instead of setting another color */
+	background-color: #eee;
+	filter: var(--nav-icon-filter);
 }
 
 .navbar-nav form button img:hover {
-	background-color: var(--color-fourth);
+	filter: var(--nav-icon-filter-reverse);
 }
 
 /* ----------- */
@@ -88,11 +95,13 @@ nav {
 	height: 100%;
 	padding: 10px;
 	border-radius: 100%;
-	background-color: var(--color-third);
+	/* Invert color instead of setting another color */
+	background-color: #eee;
+	filter: var(--nav-icon-filter);
 }
 
 .nav-link img:hover {
-	background-color: var(--color-fourth);
+	filter: var(--nav-icon-filter-reverse);
 }
 
 .dropdown-menu {

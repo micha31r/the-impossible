@@ -58,7 +58,7 @@
 }
 
 .message-wrapper h6 {
-	color: #fff;
+	color: var(--color-fourteenth);
 	margin-bottom: 0;
 }
 

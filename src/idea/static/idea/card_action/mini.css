@@ -15,7 +15,7 @@
 
 .like-button, .bookmark-button {
 	border: none !important;
-	background-color: #FFF !important;
+	background-color: var(--color-secondary) !important;
 	padding: 0px !important;
 	margin: 0px !important;
 }
@@ -25,7 +25,7 @@
 	margin-top: -20px;
 	padding: 15px;
 	border-bottom-left-radius: 10px;
-	background-color: #fff;
+	background-color: var(--color-secondary);
 	position: absolute;
 	right: 0;
 	display: none;

@@ -11,6 +11,14 @@
     --color-tenth: #000;
     --color-eleventh: #666;
     --color-twelveth: rgba(255,255,255,0.2);
+    --color-thirteenth: #000;
+    --color-fourteenth: #fff;
+    --color-fifteenth: rgb(255,230,97);
+    --color-sixteenth: rgb(255,225,64);
+    --color-seventeenth: #fff;
+
+    --nav-icon-filter: invert(0%);
+    --nav-icon-filter-reverse: invert(100%);
 }
 
 .theme-dark {
@@ -26,4 +34,14 @@
     --color-tenth: #222;
     --color-eleventh: #888;
     --color-twelveth: rgba(0,0,0,0.3);
+    --color-thirteenth: #ccc;
+    --color-fourteenth: #bbb;
+    --color-fifteenth: #444;
+    --color-sixteenth: #333;
+    --color-seventeenth: rgb(36,37,38);
+
+    --nav-icon-filter: invert(100%);
+    --nav-icon-filter-reverse: invert(0%);
 }
+
+
