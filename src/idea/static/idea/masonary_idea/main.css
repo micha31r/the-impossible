@@ -65,7 +65,7 @@
 }
 
 .card {
-	background-color: var(--color-seventeenth);
+	background-color: var(--color-secondary);
 	width: 100%;
 	border: 0;
 	/*border-color: #ddd;

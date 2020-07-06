@@ -156,20 +156,22 @@ a:hover {
 /* Followers' Profile */
 
 .follower-header {
+	color: var(--color-seventh);
 	padding: 5px;
 	padding-left: 20px; 
 	border: 0;
 	border-left-width: 5px;
-	border-color: black;
+	border-color: var(--color-thirteenth);
 	border-style: solid;
 }
 
 .follower-header a {
-	color: #000;
+	color: var(--color-seventh);
 }
 
 .follower-header img {
 	vertical-align: bottom;
+	filter: var(--invert-filter);
 }
 
 .no-follower-text {
@@ -195,11 +197,11 @@ a:hover {
 	margin-right: -30px; 
 	border-width: 4px;
 	border-style: solid;
-	border-color: #fff;
+	border-color: var(--color-primary);
 }
 
 .profile-img-wrapper:hover {
-	border-color: #ddd;
+	border-color: var(--color-fourth);
 }
 
 .profile-img {

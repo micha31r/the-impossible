@@ -7,7 +7,7 @@ footer {
 	border: 0;
 	border-style: solid;
 	border-top-width: 2px;
-	border-color: rgba(0,0,0,0.1);
+	border-color: var(--color-ninteenth);
 	font-family: 'Varela Round', sans-serif;
 }
 
@@ -40,18 +40,19 @@ footer button {
 	font-size: 1.3rem;
 	outline: none !important;
 	border: none;
-	color: rgb(41,43,44);
+	color: var(--color-seventh);
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 5px;
-	border-color: rgba(0,0,0,0); 
-	background-color: rgba(0,0,0,0);
+	border-color: transparent; 
+	background-color: transparent;
 	padding: 0px;
 	margin: 0px;
 } 
 
-footer .icon {
-	height: 1.8rem !important;
+footer .contact * {
+	stroke: var(--color-primary);
+	fill: var(--color-twentieth);
 }
 
 footer .brand-name span {

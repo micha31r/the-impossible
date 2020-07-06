@@ -15,10 +15,13 @@
     --color-fourteenth: #fff;
     --color-fifteenth: rgb(255,230,97);
     --color-sixteenth: rgb(255,225,64);
-    --color-seventeenth: #fff;
+    --color-seventeenth: rgba(0,0,0,0.4);
+    --color-eighteenth: rgba(0,0,0,0.6);
+    --color-ninteenth: rgba(0,0,0,0.1);
+    --color-twentieth: #111;
 
-    --nav-icon-filter: invert(0%);
-    --nav-icon-filter-reverse: invert(100%);
+    --invert-filter: invert(0%);
+    --invert-filter-reverse: invert(100%);
 }
 
 .theme-dark {
@@ -38,10 +41,13 @@
     --color-fourteenth: #bbb;
     --color-fifteenth: #444;
     --color-sixteenth: #333;
-    --color-seventeenth: rgb(36,37,38);
+    --color-seventeenth: #444;
+    --color-eighteenth: #666;
+    --color-ninteenth: rgba(255,255,255,0.1);
+    --color-twentieth: #fff;
 
-    --nav-icon-filter: invert(100%);
-    --nav-icon-filter-reverse: invert(0%);
+    --invert-filter: invert(100%);
+    --invert-filter-reverse: invert(0%);
 }
 
 

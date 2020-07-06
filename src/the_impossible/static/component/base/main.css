@@ -93,6 +93,7 @@ body *::-webkit-scrollbar {
 .section-seperator {
 	margin: 0;
 	border-top-width: 2px;
+	border-color: var(--color-ninteenth);
 }
 
 .bold {

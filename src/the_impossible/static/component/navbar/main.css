@@ -67,11 +67,11 @@ nav {
 	padding: 10px;
 	/* Invert color instead of setting another color */
 	background-color: #eee;
-	filter: var(--nav-icon-filter);
+	filter: var(--invert-filter);
 }
 
 .navbar-nav form button img:hover {
-	filter: var(--nav-icon-filter-reverse);
+	filter: var(--invert-filter-reverse);
 }
 
 /* ----------- */
@@ -97,11 +97,11 @@ nav {
 	border-radius: 100%;
 	/* Invert color instead of setting another color */
 	background-color: #eee;
-	filter: var(--nav-icon-filter);
+	filter: var(--invert-filter);
 }
 
 .nav-link img:hover {
-	filter: var(--nav-icon-filter-reverse);
+	filter: var(--invert-filter-reverse);
 }
 
 .dropdown-menu {

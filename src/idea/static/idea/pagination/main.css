@@ -11,11 +11,11 @@
 }
 
 .change-page .left-arrow, .change-page .right-arrow {
-	fill: #000;
+	fill: var(--color-ninth);
 }
 
 .change-page-unavailable .left-arrow, .change-page-unavailable .right-arrow  {
-	fill: #ddd;
+	fill: var(--color-fourth);
 }
 
 .word-omission {
@@ -28,17 +28,17 @@
 	border: 0;
 	padding: 0;
 	margin: 5px;
-	color: rgba(0,0,0,0.4);
+	color: var(--color-seventeenth);
 	background-color: transparent;
 }
 
 .page-link:hover {
 	background-color: transparent;
-	color: rgba(0,0,0,0.6);
+	color: var(--color-eighteenth);
 }
 
 .current-page-link {
-	color: black;
+	color: var(--color-ninth);
 	border-style: solid;
 	border-color: black;
 	border-bottom-width: 2px;
