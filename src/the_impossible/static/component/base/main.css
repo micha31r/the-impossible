@@ -1,3 +1,9 @@
+/* Hide scroll bar in all browsers */
+*::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 body {
 	min-width: 300px;
 	width: 100vw;

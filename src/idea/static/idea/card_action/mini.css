@@ -22,10 +22,10 @@
 
 .card-button-wrapper {
 	margin: 0px;
-	padding-right: 20px;
-	padding-bottom: 20px;
+	margin-top: -20px;
+	padding: 15px;
 	border-bottom-left-radius: 10px;
-	background-color: #FFF;
+	background-color: #fff;
 	position: absolute;
 	right: 0;
 	display: none;

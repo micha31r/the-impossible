@@ -6,7 +6,7 @@
 	width: 400px;
 	/* Height is set through JS */
 	vertical-align: top;
-	border-radius: 10px;
+	border-radius: 20px;
 	overflow: hidden; /* Just in case ... */
 	box-shadow: 0px 10px 15px #aaa;
 }
