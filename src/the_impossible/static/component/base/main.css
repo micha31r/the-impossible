@@ -11,7 +11,7 @@ body {
 }
 
 .main-container {
-	width: 90vw;var(--color-primary)
+	width: 90vw;
 	max-width: 1200px;
 }
 
