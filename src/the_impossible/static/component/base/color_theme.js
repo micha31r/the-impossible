@@ -20,9 +20,18 @@ auto_run.queue(
     function () {
         if (localStorage.getItem('theme') === 'theme-dark') {
             set_theme('theme-dark');
+            $(".color-theme-toggle input").prop("checked", true);
         } else {
             set_theme('theme-light');
+            $(".color-theme-toggle input").prop("checked", false);
         }
+        // Change color theme on click and still show the menu
         $(".color-theme-toggle input").click(toggle_theme);
+        // https://stackoverflow.com/questions/25089297/avoid-dropdown-menu-close-on-click-inside
+        $('.dropdown-menu').on('click', function(event) {
+            // The event won't be propagated up to the document NODE and 
+            // therefore delegated events won't be fired
+            event.stopPropagation();
+        });
     }
 );

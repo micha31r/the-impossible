@@ -53,11 +53,13 @@
 /* Navbar color change toggle */
 /*https://www.w3schools.com/howto/howto_css_switch.asp*/
 
-.color-theme-toggle-btn {
+.color-theme-toggle-wrapper {
     border: 0;
-    height: 100%;
-    padding-bottom: 0;
-    padding-top: calc((100% - 48px) / 2);
+    /* The height of the toggle is 24px, plus 20px of padding (T & B) */
+    height: 44px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .color-theme-toggle {
@@ -85,6 +87,15 @@
     transition: .4s;
 }
 
+/* Hover color depends on the current toggle state */
+.color-theme-toggle input:not(:checked) + .slider:hover {
+    background-color: #aaa !important;
+}
+
+.color-theme-toggle input:checked + .slider:hover {
+    background-color: #d6af00 !important;
+}
+
 .slider:before {
     position: absolute;
     content: "";
@@ -97,15 +108,15 @@
     transition: .4s;
 }
 
-input:checked + .slider {
+.color-theme-toggle input:checked + .slider {
     background-color: #ffd000; 
 }
 
-input:focus + .slider {
+.color-theme-toggle input:focus + .slider {
     box-shadow: 0 0 1px #ffd000;
 }
 
-input:checked + .slider:before {
+.color-theme-toggle input:checked + .slider:before {
     -webkit-transform: translateX(16px);
     -ms-transform: translateX(16px);
     transform: translateX(16px);

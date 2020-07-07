@@ -11,18 +11,38 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
 	<li class="nav-item">
-		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}"><img src="{% static 'component/feather_svg/compass.svg' %}"></a>
+		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}">
+			<div class="svg-wrapper">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-compass"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+			</div>
+		</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}"><img src="{% static 'component/feather_svg/users.svg' %}"></a>
+		<a class="nav-link" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}">
+			<div class="svg-wrapper">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+			</div>
+		</a>
 	</li>
 	{% if user.is_authenticated %}
 		<li class="nav-item dropdown">
-	        <button class="btn nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'component/feather_svg/chevrons-down.svg' %}"></button>
-	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	        <button class="btn nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	        	<div class="svg-wrapper">
+	        		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-down"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+	        	</div>
+	       	</button>
+	        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 	        	<a class="dropdown-item" href="#">Give feedback</a>
 	        	<a class="dropdown-item" href="{% url 'account_notification_page' page_num='1' %}">Notifications</a>
 				<a class="dropdown-item" href="#">Meet new people</a>
+				<div class="color-theme-toggle-wrapper">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    				<span style="padding-left:10px;padding-right:20px;">Dark Mode</span>
+				    <label class="color-theme-toggle">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</div>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="{% url 'account_setting_profile_page' %}">Settings and Privacy</a>
 				<a class="dropdown-item" href="#">Help and support</a>

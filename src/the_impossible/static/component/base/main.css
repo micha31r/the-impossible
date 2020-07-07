@@ -1,15 +1,13 @@
+/* Hide scroll bar in all browsers */
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
 	min-width: 300px;
 	width: 100vw;
 	height: 100vh;
 	background-color: var(--color-primary);
-}
-
-/* Hide scroll bar in all browsers */
-/* Don't hide scroll bar for <html> !! */
-body *::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
 }
 
 .main-container {
