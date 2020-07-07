@@ -6,23 +6,7 @@
     --color-fifth: #aaa;
     --color-sixth: #888;
     --color-seventh: #111;
-    --color-eighth: #333;
-    --color-ninth: #000;
-    --color-tenth: #000;
-    --color-eleventh: #666;
-    --color-twelveth: rgba(255,255,255,0.2);
-    --color-thirteenth: #000;
-    --color-fourteenth: #fff;
-    --color-fifteenth: rgb(255,236,133);
-    --color-sixteenth: rgb(255,225,64);
-    --color-seventeenth: rgba(0,0,0,0.4);
-    --color-eighteenth: rgba(0,0,0,0.6);
-    --color-ninteenth: rgba(0,0,0,0.1);
-    --color-twentieth: #111;
-    --color-twentyone: #000;
-    --color-twentytwo: #999;
-    --color-twentythree: #000;
-
+    
     --invert-filter: invert(0%);
     --invert-filter-reverse: invert(100%);
 }
@@ -35,22 +19,6 @@
     --color-fifth: #555;
     --color-sixth: #666;
     --color-seventh: #eee;
-    --color-eighth: #ccc;
-    --color-ninth: #fff;
-    --color-tenth: #222;
-    --color-eleventh: #888;
-    --color-twelveth: rgba(0,0,0,0.3);
-    --color-thirteenth: #ccc;
-    --color-fourteenth: #bbb;
-    --color-fifteenth: #444;
-    --color-sixteenth: #333;
-    --color-seventeenth: #444;
-    --color-eighteenth: #666;
-    --color-ninteenth: rgba(255,255,255,0.1);
-    --color-twentieth: #fff;
-    --color-twentyone: #bbb;
-    --color-twentytwo: rgb(255,240,200);
-    --color-twentythree: #666;
 
     --invert-filter: invert(100%);
     --invert-filter-reverse: invert(0%);
