@@ -53,34 +53,30 @@ nav, footer {
 	max-width: 100% !important;
 	border-width: 1px;
 	border-style: solid;
-	border-color: #bbb;
+	border-color:  var(--color-fourth);
 	border-radius: 10px;
-	background-color: transparent !important;
+	background-color: var(--color-secondary) !important;
 	box-shadow: none !important;
 }
 
 .notification-container h2 a {
-	color: #000 !important;
-}
-
-.notification-container h2 a:hover {
-	color: #444 !important;
+	color: var(--color-twentythree) !important;
 }
 
 .notification-container h2 svg {
-	stroke: #000;
+	stroke: var(--color-twentythree) !important;
 }
 
 .message-wrapper {
-	border-color: #eee !important;
+	border-color: var(--color-ninteenth) !important;
 }
 
 .message-wrapper h6 {
-	color: #000 !important;
+	color: var(--color-twentyone) !important;
 }
 
 .message-wrapper p {
-	color: #999 !important;
+	color: var(--color-twentytwo) !important;
 }
 
 @media only screen and (max-width: 700px) {

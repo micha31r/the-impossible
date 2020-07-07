@@ -137,11 +137,19 @@
 	    	<ul class="navbar-nav navbar-right">
 	    		{% block nav_custom %}
 	    			<li class="nav-item">
-		        		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}"><img src="{% static 'component/feather_svg/compass.svg' %}"></a>
+		        		<a class="nav-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}">
+		        			<div class="svg-wrapper">
+		        				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-compass"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+		        			</div>
+		        		</a>
 		      		</li>
 		      		{% if user.is_authenticated %}
 			      		<li class="nav-item">
-			        		<a class="nav-link" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}"><img src="{% static 'component/feather_svg/user.svg' %}"></a>
+			        		<a class="nav-link" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}">
+			        			<div class="svg-wrapper">
+			        				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+			        			</div>
+			        		</a>
 			      		</li>
 			      	{% endif %}
 	    		{% endblock %}

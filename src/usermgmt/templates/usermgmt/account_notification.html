@@ -15,7 +15,9 @@
 		<div class='row align-items-center h-100'>
 			<div class="center">
 				<div class="close-window-wrapper">
-					<button class="btn close-window" onclick="window.location.href='{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}'"><img src="{% static 'component/feather_svg/x.svg' %}"></button>
+					<button class="btn close-window" onclick="window.location.href='{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}'">
+						<img src="{% static 'component/feather_svg/x.svg' %}">
+					</button>
 				</div>
 				<!-- <div class="center"> -->
 				{% include 'usermgmt/notification.html' %}

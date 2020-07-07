@@ -42,6 +42,7 @@
 .notification-container h2 svg {
 	vertical-align: text-bottom;
 	height: 2rem;
+	stroke: var(--color-sixth);
 }
 
 .message-container {

@@ -19,6 +19,9 @@
     --color-eighteenth: rgba(0,0,0,0.6);
     --color-ninteenth: rgba(0,0,0,0.1);
     --color-twentieth: #111;
+    --color-twentyone: #000;
+    --color-twentytwo: #999;
+    --color-twentythree: #000;
 
     --invert-filter: invert(0%);
     --invert-filter-reverse: invert(100%);
@@ -45,6 +48,9 @@
     --color-eighteenth: #666;
     --color-ninteenth: rgba(255,255,255,0.1);
     --color-twentieth: #fff;
+    --color-twentyone: #bbb;
+    --color-twentytwo: rgb(255,240,200);
+    --color-twentythree: #666;
 
     --invert-filter: invert(100%);
     --invert-filter-reverse: invert(0%);
