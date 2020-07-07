@@ -75,8 +75,7 @@ a:hover {
 	margin-bottom: 0;
 	margin-right: 30px;
 	font-family: "Arciform", sans-serif;
-	color: var(--color-seventh);
-	stroke: var(--color-seventh);
+	filter: var(--invert-filter);
 }
 
 .daily-limit {
@@ -169,7 +168,7 @@ a:hover {
 	color: var(--color-seventh);
 }
 
-.follower-header img {
+.follower-header svg {
 	vertical-align: bottom;
 	filter: var(--invert-filter);
 }
