@@ -103,6 +103,7 @@ nav .svg-wrapper svg {
 	max-height: calc(100vh - 60px);
 	border-width: 1px;
 	border-style: solid;
+	border-color: var(--color-fourth);
 	border-radius: 10px;
 	box-shadow: 0px 10px 15px rgba(0,0,0,0.2);
 	overflow: scroll;
@@ -120,6 +121,8 @@ nav .svg-wrapper svg {
 }
 
 .dropdown-menu svg {
+	margin-right: 10px;
+	vertical-align: top;
 	filter: var(--invert-filter);
 }
 
@@ -133,7 +136,7 @@ nav .svg-wrapper svg {
 
 .dropdown-divider {
 	padding: 0;
-	border-color: rgba(0,0,0,0.2);
+	border-color: var(--color-ninteenth);
 	border-width: 2px;
 	border-radius: 0;
 }
