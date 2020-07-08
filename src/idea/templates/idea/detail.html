@@ -25,7 +25,7 @@
 				<p>{{ idea.full_description }}</p>
 				<div id="append-target1"></div>
 				{% if user == idea.author.user %}
-					<button class="btn btn-black-outline bold edit-btn" onclick="window.location.href='{% url 'idea_edit_page' pk=idea.id %}'">Edit Idea</button>
+					<button class="btn btn-yellow-outline bold edit-btn" onclick="window.location.href='{% url 'idea_edit_page' pk=idea.id %}'">Edit Idea</button>
 				{% endif %}
 			</div>
 

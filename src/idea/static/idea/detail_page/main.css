@@ -4,31 +4,20 @@
 	margin-bottom: 80px;
 }
 
+.idea-content h2, p {
+	color: var(--color-six);
+}	
+
+.idea-content h5 {
+	color: var(--color-four);
+}
+
 .edit-btn {
 	margin-top: 10px;
-}
-
-textarea {
+	border-radius: 100px;
 	padding: 10px;
-	border-style: solid;
-	border-color: grey;
-	border-width: 0px;
-	border-radius: 10px;
-	margin-bottom: 20px;
-	background-color: #eee;
-}
-
-textarea::placeholder {
-	color: #ccc;
-}
-
-textarea:focus::placeholder {
-	color: rgb(215,200,160);
-}
-
-textarea:focus {
-	outline: none;
-	background-color: rgb(255,240,200);
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 textarea {
@@ -39,6 +28,23 @@ textarea {
 	height: 100px;
 	max-height: 300px;
 	font-size: 1rem;
+	padding: 10px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 0px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	background-color: var(--color-second);
+	color: var(--color-six);
+}
+
+textarea::placeholder {
+	color: var(--color-four);
+}
+
+textarea:focus {
+	outline: none;
+	background-color: var(--color-third);
 }
 
 /* Author profile image */
@@ -49,7 +55,7 @@ textarea {
 	padding: 20px;
 	border-style: solid;
 	border-width: 1px;
-	border-color: #444;
+	border-color: var(--color-ten);
 	margin-bottom: 80px;
 }
 
@@ -65,7 +71,7 @@ td {
 	width: 80px;
 	height: 80px;
 	overflow: hidden;
-	background-color: #000;
+	background-color: var(--color-six);
 }
 
 .author-profile-img-wrapper a {
@@ -84,20 +90,20 @@ td {
 
 .author-profile-wrapper p {
 	margin: 0;
-	color: #aaa;
+	color: var(--color-four);
 }
 
 .author-profile-wrapper a {
-	color: #000;
+	color: var(--color-six);
 }
 
 .author-profile-wrapper a:hover {
-	color: #444;
+	color: var(--color-five);
 	text-decoration: none;
 }
 
 .author-profile-wrapper h6 {
-	color: #555;
+	color: var(--color-five);
 }
 
 .follow-btn {
@@ -120,6 +126,7 @@ td {
 
 .comment-header {
 	width: max-content;
+	color: var(--color-six);
 }
 
 .comment-container {
@@ -136,17 +143,17 @@ td {
 	margin-bottom: 10px;
 	border-radius: 10px;
 	border-width: 1px;
-	border-color: #aaa;
+	border-color: var(--color-ten);
 	border-style: solid;
 }
 
-.comment-wrapper p {
-	margin-bottom: 0px;
+.comment-wrapper h6 {
+	color: var(--color-six);
 }
 
 .comment-wrapper .small {
 	font-size: 0.8rem;
-	color: grey;
+	color: var(--color-four);
 	margin: 0;
 	width: 100%;
 }
@@ -162,6 +169,10 @@ td {
 .delete-link:hover:before {
 	content: "Delete !!";
 	color: rgb(252,52,104);
+}
+
+.more-comment-btn {
+	color: var(--color-six);
 }
 
 .no-comment-text {
@@ -199,11 +210,11 @@ td {
 .file-wrapper {
 	width: 100%;
 	height: max-content;
-	background-color: #eee;
+	background-color: var(--color-twelve);
 	margin-bottom: 20px;
 	overflow: hidden;
 	border-radius: 10px;
-	box-shadow: 0px 10px 15px #ddd;
+	box-shadow: 0px 10px 15px var(--color-seven);
 }
 
 .file-wrapper img {
@@ -220,7 +231,7 @@ td {
 	font-size: 2rem;
 	line-height: 2rem;
 	font-family: "Arciform", sans-serif;
-	color: #ddd;
+	color: var(--color-third);
 	text-align: center;
 	margin: 0;
 	height: 200px;
@@ -228,6 +239,7 @@ td {
 
 .no-content-text span {
 	position: relative;
+	/* 1rem is half of text height */
 	top: calc(50% - 1rem);
 	transform: translateY(-50%);
 }
@@ -248,15 +260,15 @@ td {
 	margin-top: 20px;
 	width: 100%;
 	text-align: right;
-	color: #ddd;
 }
 
 .timestamp p {
 	margin: 0;
+	color: var(--color-third);
 }
 
 .timestamp .time {
-	color: #888;
+	color: var(--color-four);
 }
 
 

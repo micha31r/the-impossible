@@ -38,6 +38,7 @@ nav {
 	height: max-content;
 	border-radius: 200px;
 	background-color: var(--color-second);
+	color: var(--color-six);
 	border: 0;
 	padding: 10px;
 }
