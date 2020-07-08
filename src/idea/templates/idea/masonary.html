@@ -37,7 +37,7 @@
 					<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
 
 					<!-- Short description -->
-					<h6 class="card-subtitle mb-2 text-muted">{{ idea.short_description|truncatechars:50 }}</h6>
+					<h6 class="card-subtitle mb-2">{{ idea.short_description|truncatechars:50 }}</h6>
 
 					<!-- Content -->
 					<p class="card-text">{{ idea.full_description|truncatechars:100 }}</p>

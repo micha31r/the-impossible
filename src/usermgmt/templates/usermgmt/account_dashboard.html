@@ -87,7 +87,7 @@
 			</div>
 			<p class="bio">{{ target_profile.bio }}</p>
 			{% if target_profile.website %}
-				<a class="website" href="{{ target_profile.website }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(227,176,75)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> {{ target_profile.website }}</a>
+				<a class="website" href="{{ target_profile.website }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> {{ target_profile.website }}</a>
 			{% endif %}
 			<p class="joined-timestamp">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Joined {{ target_profile.timestamp.date }}
@@ -111,10 +111,10 @@
 	</div>
 	<div class="wrapper">
 		<div class="header-wrapper">
-			<button class="header btn btn-yellow {% if content_filter == 'my' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}'">{% if target_profile.user == user %}My{% endif %} Ideas</button>
-			<button class="header btn btn-yellow {% if content_filter == 'liked' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='liked' page_num=1 %}'">Liked Ideas</button>
+			<button class="header btn btn-yellow bold {% if content_filter == 'my' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}'">{% if target_profile.user == user %}My{% endif %} Ideas</button>
+			<button class="header btn btn-yellow bold {% if content_filter == 'liked' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='liked' page_num=1 %}'">Liked Ideas</button>
 			{% if target_profile.user == user %}
-				<button class="header btn btn-yellow {% if content_filter == 'starred' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='starred' page_num=1 %}'">Starred Ideas</button>
+				<button class="header btn btn-yellow bold {% if content_filter == 'starred' %}btn-yellow-outline{% endif %}" onclick="window.location.href='{% url 'account_dashboard_page' username=username content_filter='starred' page_num=1 %}'">Starred Ideas</button>
 			{% endif %}
 		</div>
 		{% include 'idea/masonary.html' %}

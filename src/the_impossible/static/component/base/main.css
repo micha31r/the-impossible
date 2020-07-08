@@ -7,7 +7,7 @@ body {
 	min-width: 300px;
 	width: 100vw;
 	height: 100vh;
-	background-color: var(--color-primary);
+	background-color: var(--color-first);
 }
 
 .main-container {
@@ -21,15 +21,6 @@ body {
 		margin-right: 0px !important;
 		width: 100% !important;
 	}
-} 
-
-.before-header {
-	max-width: 100vw;
-	overflow: hidden;
-	font-family: 'Lato', sans-serif;
-	font-size: 7rem;
-	color: #000;
-	text-align: right;
 }
 
 .alert {
@@ -37,13 +28,13 @@ body {
 }
 
 .alert-black, .btn-black {
-	color: var(--color-primary) !important;
-	background-color: var(--color-ninth);
+	color: var(--color-first) !important;
+	background-color: var(--color-six);
 }
 
 .btn-black:hover {
-	background-color: var(--color-eighth) !important;
-	border-color: var(--color-eighth) !important;
+	background-color: var(--color-eleven) !important;
+	border-color: var(--color-eleven) !important;
 }
 
 .alert-black svg, .alert-black img {
@@ -53,35 +44,35 @@ body {
 
 .alert-black-outline, .btn-black-outline, .btn-black {
 	border-width: 2px;
-	border-color: var(--color-ninth);
+	border-color: var(--color-six);
 	border-style: solid;
-	color: var(--color-ninth);
+	color: var(--color-six);
 }
 
 .btn-yellow, .btn-yellow-outline {
-	color: rgb(207,169,0);
-	background-color: var(--color-fifteenth);
+	color: #fff;
+	background-color: var(--color-brand);
 	border-width: 2px;
-	border-color: var(--color-fifteenth);
+	border-color: var(--color-brand);
 	border-style: solid;
-	border-radius: 10px;
 }
 
 .btn-yellow-outline {
-	border-color: rgb(235,192,0);
+	color: var(--color-brand);
+	border-color: var(--color-brand);
 	background-color: transparent;
 }
 
 .btn-yellow:hover {
-	color: rgb(171,140,0);
-	border-color: var(--color-sixteenth);
-	background-color: var(--color-sixteenth);
+	color: #fff;
+	border-color: var(--color-brand-dark);
+	background-color: var(--color-brand-dark);
 }
 
 .btn-yellow-outline:hover {
-	color: rgb(225,182,0);
-	border-color: rgb(235,192,0) !important;
-	background-color: rgba(255,231,105,0.2) !important;
+	color: var(--color-brand-dark);
+	border-color: var(--color-brand-dark);
+	background-color: transparent;
 }
 
 .wrapper {

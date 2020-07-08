@@ -6,12 +6,12 @@ nav {
 	padding-top: 5px !important;
 	padding-bottom: 5px !important;
 	font-family: "Arciform", sans-serif;
-	background-color: var(--color-secondary);
+	background-color: var(--color-first);
 	z-index: 50; /* Make sure the navbar always stay on top */
-	box-shadow: 0 0 10px rgba(0,0,0,0.1);
-	border-bottom-width: 1px;
+	/*box-shadow: 0 0 10px rgba(0,0,0,0.1);*/
+	border-bottom-width: 2px;
 	border-style: solid;
-	border-color: var(--color-fourth); 
+	border-color: var(--color-ten); 
 }
 
 /* 768 is the collapse point of the medium sized navbar */
@@ -37,21 +37,17 @@ nav {
 	font-family: sans-serif;
 	height: max-content;
 	border-radius: 200px;
-	background-color: var(--color-fourth);
+	background-color: var(--color-second);
 	border: 0;
 	padding: 10px;
 }
 
 .navbar-nav form input:focus {
-	background-color: var(--color-fourth);
+	background-color: var(--color-third);
 }
 
 .navbar-nav form input::placeholder {
-	color: var(--color-sixth);
-}
-
-.navbar-nav form input:focus::placeholder {
-	color: var(--color-fifth);
+	color: var(--color-four);
 }
 
 .navbar-nav form button {
@@ -87,11 +83,11 @@ nav .svg-wrapper {
 	height: max-content;
 	vertical-align: middle;
 	border-radius: 100%;
-	background-color: var(--color-fourth);
+	background-color: var(--color-second);
 }
 
 nav .svg-wrapper:hover {
-	background-color: var(--color-fifth);
+	background-color: var(--color-third);
 }
 
 nav .svg-wrapper svg {
@@ -108,13 +104,13 @@ nav .svg-wrapper svg {
 	max-height: calc(100vh - 60px);
 	border-width: 1px;
 	border-style: solid;
-	border-color: var(--color-fourth);
+	border-color: var(--color-ten);
 	border-radius: 10px;
-	box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 10px var(--color-seven);
 	overflow: scroll;
 	font-family: "Lato", sans-serif;
 	padding: 0;
-	background-color: var(--color-secondary);
+	background-color: var(--color-first);
 }
 
 .dropdown-item {
@@ -122,7 +118,7 @@ nav .svg-wrapper svg {
 	margin: 10px;
 	padding: 10px;
 	border-radius: 10px;
-	color: var(--color-ninth) !important;
+	color: var(--color-six) !important;
 }
 
 .dropdown-menu svg {
@@ -132,16 +128,16 @@ nav .svg-wrapper svg {
 }
 
 .dropdown-menu span {
-	color: var(--color-ninth) !important;
+	color: var(--color-six);
 }
 
 .dropdown-menu *:hover {
-	background-color: var(--color-third);
+	background-color: var(--color-second);
 }
 
 .dropdown-divider {
 	padding: 0;
-	border-color: var(--color-ninteenth);
-	border-width: 2px;
+	border-color: var(--color-ten);
+	border-width: 1px;
 	border-radius: 0;
 }

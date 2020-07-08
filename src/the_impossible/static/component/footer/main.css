@@ -1,13 +1,13 @@
 footer {
 	height: max-content;
-	background-color: transparent;
+	background-color: var(--color-first);
 	padding: 30px;
 	padding-left: 20px;
 	padding-right: 20px;
 	border: 0;
 	border-style: solid;
 	border-top-width: 2px;
-	border-color: var(--color-ninteenth);
+	border-color: var(--color-ten);
 	font-family: 'Varela Round', sans-serif;
 }
 
@@ -40,7 +40,7 @@ footer button {
 	font-size: 1.3rem;
 	outline: none !important;
 	border: none;
-	color: var(--color-seventh);
+	color: var(--color-six);
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 5px;
@@ -51,8 +51,8 @@ footer button {
 } 
 
 footer .contact * {
-	stroke: var(--color-primary);
-	fill: var(--color-twentieth);
+	stroke: var(--color-first);
+	fill: var(--color-six);
 }
 
 footer .brand-name span {

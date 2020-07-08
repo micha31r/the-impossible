@@ -1,25 +1,47 @@
 .theme-light {
-    --color-primary: #fff;
-    --color-secondary: #fff;
-    --color-third: #eee;
-    --color-fourth: #ddd;
-    --color-fifth: #aaa;
-    --color-sixth: #888;
-    --color-seventh: #111;
-    
+    --color-brand: rgb(237,178,2);
+    --color-brand-light: rgb(255,226,138);
+    --color-brand-dark: rgb(199,149,2);
+
+    --color-first: #fff;                    /* White */
+    --color-second: #eee;                   /* Light light grey */
+    --color-third: #ddd;                    /* Light grey */
+    --color-four: #aaa;                     /* Medium grey */
+    --color-five: #555;                     /* Dark grey */
+    --color-six: rgb(20,23,25);             /* Black */
+    --color-seven: rgb(0,0,0,0.1);          /* Transparent light black constant */
+    --color-eight: rgb(255,255,255,0.2);    /* Transparent light white constant */
+    --color-nine: rgb(255,255,255,0.2);     /* Transparent light white */
+    --color-ten: rgb(0,0,0,0.1);            /* Transparent light black */
+    --color-eleven: #333;                   /* Dark dark grey */
+
+    /* Reversed colors */
+
+    /* Filters and other */
     --invert-filter: invert(0%);
     --invert-filter-reverse: invert(100%);
 }
 
 .theme-dark {
-    --color-primary: #111;
-    --color-secondary: #222;
-    --color-third: #333;
-    --color-fourth: #444;
-    --color-fifth: #555;
-    --color-sixth: #666;
-    --color-seventh: #eee;
+    --color-brand: rgb(237,178,2);
+    --color-brand-light: rgb(255,226,138);
+    --color-brand-dark: rgb(199,149,2);
 
+    --color-first: rgb(20,23,25);           /* Black */
+    --color-second: #333;                   /* Light Black */
+    --color-third: #444;                    /* Dark grey */
+    --color-four: #aaa;                     /* Medium grey */
+    --color-five: #aaa;                     /* Light grey */
+    --color-six: #d9d9d9;                   /* Lighter grey */
+    --color-seven: rgb(0,0,0,0.1);          /* Transparent light black constant */
+    --color-eight: rgb(255,255,255,0.2);    /* Transparent light white constant */
+    --color-nine: rgb(0,0,0,0.2);           /* Transparent light black */
+    --color-ten: rgb(255,255,255,0.2);      /* Transparent light white */
+    --color-eleven: #ccc;                   /* light grey */
+
+    /* Reversed colors */
+
+    /* Filters and other */
     --invert-filter: invert(100%);
     --invert-filter-reverse: invert(0%);
 }
