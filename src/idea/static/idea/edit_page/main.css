@@ -32,7 +32,7 @@ td {
 	border-style: solid;
 	border-color: grey;
 	border-width: 0px;
-	border-radius: 20px;
+	border-radius: 10px;
 	margin-bottom: 20px;
 	background-color: var(--color-second);
 	color: var(--color-six)

@@ -23,13 +23,16 @@ body {
 	}
 }
 
-.alert {
-	font-size: 1.2rem;
-}
-
-.alert-black, .btn-black {
+.btn-black {
 	color: var(--color-first) !important;
 	background-color: var(--color-six);
+}
+
+.alert-black {
+	font-size: 1.2rem;
+	background-color: var(--color-brand);
+	border-radius: 10px;
+	color: #000;
 }
 
 .btn-black:hover {

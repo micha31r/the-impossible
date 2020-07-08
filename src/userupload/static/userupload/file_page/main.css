@@ -14,22 +14,19 @@
 	padding: 10px;
 	border: 0;
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: var(--color-second);
+	color: var(--color-six);
 	margin-bottom: 20px;
 	font-size: 2rem;
 }
 
 .main-container input::placeholder {
-	color: #ccc;
-}
-
-.main-container input:focus::placeholder{
-	color: rgb(215,200,160);
+	color: var(--color-four);
 }
 
 .main-container input:focus {
 	outline: none;
-	background-color: rgb(255,240,200);
+	background-color: var(--color-third);
 }
 
 @media only screen and (max-width: 720px) {
@@ -65,7 +62,7 @@
 	width: 100%;
 	max-height: 1000px;
 	border-radius: 10px;
-	background-color: #888;
+	background-color: var(--color-twelve);
 	background-size: cover;
     background-position: center;
     text-align: center;
@@ -90,23 +87,33 @@
 	z-index: 1; 
 }
 
-#file-button {
+#file-button, .main-container button[type="submit"] {
 	transition: opacity 0.3s;
 	opacity: 0;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 100px;
 }
+
+.main-container button[type="submit"] {
+	opacity: 1;
+}
+
+/* Timestamp */
 
 .timestamp {
 	font-family: 'Arciform', sans-serif;
 	margin-top: 20px;
 	width: 100%;
 	text-align: right;
-	color: #ddd;
 }
 
 .timestamp p {
 	margin: 0;
+	color: var(--color-third);
 }
 
 .timestamp .time {
-	color: #888;
+	color: var(--color-four);
 }
