@@ -26,7 +26,7 @@ nav, footer {
 	border-color: var(--color-brand);
 }
 
-.main-container button[type="submit"] {
+.main-container button {
 	width: 100%;
 	margin-top: 20px;
 	border-radius: 100px;
@@ -60,6 +60,10 @@ nav, footer {
 .center h4 {
 	margin-bottom: 20px;
 	color: #fff;
+}
+
+.center p {
+	color: #555;
 }
 
 .alt-auth-method {

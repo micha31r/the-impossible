@@ -103,6 +103,13 @@ def login_page(request):
 	return render(request,template_file,ctx)
 
 @login_required
+def logout_page(request):
+	ctx = {} # Context variables
+	ctx["date"] = Date()
+	template_file = "usermgmt/logout.html"
+	return render(request,template_file,ctx)
+
+@login_required
 def logout_view(request):
     logout(request)
     return redirect("login_page")
