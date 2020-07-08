@@ -1,6 +1,6 @@
 .notification-container {
 	display: inline-block;
-	background-color: var(--color-tenth);
+	background-color: var(--color-twelve);
 	padding: 20px;
 	padding-bottom: 0;
 	width: 400px;
@@ -8,7 +8,7 @@
 	vertical-align: top;
 	border-radius: 20px;
 	overflow: hidden; /* Just in case ... */
-	box-shadow: 0px 10px 15px rgba(0,0,0,0.2);
+	/*box-shadow: 0px 10px 15px rgba(0,0,0,0.2);*/
 }
 
 .notification-container h2 {
@@ -18,11 +18,11 @@
 }
 
 .notification-container h2 a {
-	color: var(--color-sixth);
+	color: var(--color-six);
 }
 
 .notification-container h2 a:hover {
-	color: var(--color-eleventh);
+	color: var(--color-five);
 	text-decoration: none;
 }
 
@@ -42,7 +42,7 @@
 .notification-container h2 svg {
 	vertical-align: text-bottom;
 	height: 2rem;
-	stroke: var(--color-sixth);
+	stroke: var(--color-six);
 }
 
 .message-container {
@@ -53,13 +53,13 @@
 
 .message-wrapper {
 	margin-bottom: 10px;
-	border-bottom-width: 2px;
+	border-bottom-width: 1px;
 	border-style: solid;
-	border-color: var(--color-twelveth);
+	border-color: var(--color-ten);
 }
 
 .message-wrapper h6 {
-	color: var(--color-fourteenth);
+	color: var(--color-six);
 	margin-bottom: 0;
 }
 
@@ -69,5 +69,5 @@
 
 .message-wrapper p {
 	margin-bottom: 10px;
-	color: rgb(255,240,200);
+	color: var(--color-five);
 }
