@@ -16,8 +16,8 @@ function toggle_theme() {
 }
 
 // Immediately invoked function to set the theme on initial load
-auto_run.queue( 
-    function () {
+function init_theme() {
+    try {
         if (localStorage.getItem('theme') === 'theme-dark') {
             set_theme('theme-dark');
             $(".color-theme-toggle input").prop("checked", true);
@@ -25,6 +25,17 @@ auto_run.queue(
             set_theme('theme-light');
             $(".color-theme-toggle input").prop("checked", false);
         }
+    } catch (error) {}
+}
+
+// Run this as soon as possible to set the color theme for loading screen
+init_theme();
+
+auto_run.queue( 
+    function() {
+        // Initiate theme again to set the toggle button state based on the current theme
+        init_theme();
+
         // Change color theme on click and still show the menu
         $(".color-theme-toggle input").click(toggle_theme);
         // https://stackoverflow.com/questions/25089297/avoid-dropdown-menu-close-on-click-inside
@@ -35,3 +46,4 @@ auto_run.queue(
         });
     }
 );
+

@@ -23,7 +23,7 @@
 			}
 		</style>
 
-		<!-- Loading screen -->
+		<!-- For loading screen: -->
 		<style>
 			@keyframes rotate-center {
 				from {
@@ -39,7 +39,8 @@
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background-color: #fff;
+				background-color: var(--color-first);
+				/* Make sure this stays above all elements */
 				z-index: 100;
 			}
 			#loader {
@@ -74,6 +75,24 @@
 		{% endblock %}
 	</head>
 	<body>
+		<!-- Base js -->
+		<script type="text/javascript" src="{% static 'component/base/main.js' %}"></script>
+
+		<!-- Create auto task queue -->
+		<script type="text/javascript">
+			auto_run = new AutoRun();
+			window.onload = function() {
+				auto_run.execute();
+				active_link();
+			}
+		</script>
+
+		<!-- Color theme css and color-theme-toggleer js -->
+		<!-- MUST import these two files before loading screen elements  -->
+		<link rel="stylesheet" type="text/css" href="{% static 'component/base/color_theme.css' %}">
+
+		<script type="text/javascript" src="{% static 'component/base/color_theme.js' %}"></script>
+
 		<!-- Loading screen image and background -->
 		<div id="loader-bg"></div>
 		<img src="{% static 'component/base/logo.svg' %}" id="loader">
@@ -84,27 +103,11 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-		<!-- Base js -->
-		<script type="text/javascript" src="{% static 'component/base/main.js' %}"></script>
-
-		<!-- Create auto task queue -->
-		<script type="text/javascript">
-			auto_run = new AutoRun();
-			window.onload = function() {
-				auto_run.execute();
-			}
-		</script>
-
 		<!-- Cross page css-->
 		<link rel="stylesheet" type="text/css" href="{% static 'component/base/main.css' %}">
 
 		<!-- Center body js -->
 		<script type="text/javascript" src="{% static 'component/base/resize.js' %}"></script>
-
-		<!-- Color theme css and color-theme-toggleer js -->
-		<link rel="stylesheet" type="text/css" href="{% static 'component/base/color_theme.css' %}">
-
-		<script type="text/javascript" src="{% static 'component/base/color_theme.js' %}"></script>
 
 		<!-- Navbar -->
 		<link rel="stylesheet" type="text/css" href="{% static 'component/navbar/main.css' %}">
