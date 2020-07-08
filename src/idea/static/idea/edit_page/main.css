@@ -173,8 +173,14 @@ select[name="publish_status"], select[name="delete"] {
 	padding-top: 20px;
 }
 
-.save-changes {
-	padding-top: 20px;
+/* Delete confirm button */
+#confirm-button {
+	color: rgb(252,52,104);
+}
+
+select[name="delete"] {
+	background-color: rgb(252,52,104);
+	color: #fff;
 }
 
 .main-container button[type="submit"] {
