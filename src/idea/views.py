@@ -107,14 +107,16 @@ def detail_page(request,pk):
 	ctx["form"] = form = CommentForm(request.POST or None)
 
 	if form.is_valid():
+		data = form.cleaned_data
 		comment = Comment.objects.create(
 			author = profile,
-			full_description = form.cleaned_data.get("full_description")
+			full_description = data.get("full_description")
 		)
 		comment.save()
 		idea.comments.add(comment)
 		idea.save()
-		# Notify the author	
+
+		# Notify the author	about the comment
 		if idea.author.comment_setting != 1:
 			proceed = False
 			if idea.author.comment_setting == 2:
@@ -125,6 +127,26 @@ def detail_page(request,pk):
 				proceed = True
 			if proceed:
 				message = f"@{profile.user.username} has commented on your post '{idea.name}'"
+				msg = Notification.objects.create(message=message,message_status=1)
+				msg.save()
+				idea.author.notification.add(msg)
+				idea.author.save()
+
+		# Search description for @ users
+		usernames = at_filter(comment.full_description)
+		for username in usernames:
+			user = User.objects.filter(username=username).first()
+			if user:
+				profile = Profile.objects.filter(user=user).first()
+				# Send the mentioned user a notification
+				message = f"@{request.user.username} mentioned you in a comment in \"{idea.name}\""
+				msg = Notification.objects.create(message=message,message_status=2)
+				msg.save()
+				# Notify mentioned user
+				profile.notification.add(msg)
+			else: 
+				# Tell the current user that their mentioned user does not exist
+				message = f"@{username} user does not exist"
 				msg = Notification.objects.create(message=message,message_status=1)
 				msg.save()
 				idea.author.notification.add(msg)
@@ -195,6 +217,7 @@ def edit_page(request,pk):
 				user = User.objects.filter(username=username).first()
 				if user:
 					proceed = False
+					# You can only mention users if they follow you or the post is public
 					followers =  User.objects.filter(profile__following=idea.author.user)
 					if (data.get("publish_status") == 2 and user in followers) or data.get("publish_status") == 3:
 						proceed = True
@@ -208,7 +231,7 @@ def edit_page(request,pk):
 						profile.notification.add(msg)
 					else:
 						# Tell the current user that certain uses can't be mentioned
-						message = f"@{username} is not mentioned due to {idea.name}'s publish setting"
+						message = f"@{username} is not mentioned due to \"{idea.name}>\"s publish setting"
 						msg = Notification.objects.create(message=message,message_status=1)
 						msg.save()
 						idea.author.notification.add(msg)
