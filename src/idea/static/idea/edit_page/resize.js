@@ -1,6 +1,6 @@
 function table_resize() {
 	// Idea setting
-	if ($(window).width() < 830) {
+	if ($(window).width() < 831) {
 		$("#idea-setting").appendTo("#append-target1");
 	} else {
 		$("#idea-setting").appendTo("#append-origin1");
