@@ -177,7 +177,7 @@ select[name="publish_status"], select[name="delete"] {
 	padding-top: 20px;
 }
 
-button[type="submit"] {
+.main-container button[type="submit"] {
 	border-radius: 100px;
 	margin-top: 20px;
 	padding: 10px;
