@@ -71,7 +71,6 @@ td {
 	width: 80px;
 	height: 80px;
 	overflow: hidden;
-	background-color: var(--color-six);
 }
 
 .author-profile-img-wrapper a {
@@ -145,6 +144,13 @@ td {
 	border-width: 1px;
 	border-color: var(--color-ten);
 	border-style: solid;
+}
+
+button[type="submit"] {
+	border-radius: 100px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .comment-wrapper h6 {
