@@ -39,7 +39,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	z-index: 3;
+	z-index: 52;
 	animation-fill-mode: forwards;
 	animation-duration: 1s;
 }
@@ -54,12 +54,12 @@
 }
 
 .subscribe-wrapper h4 {
-	opacity: 0.9;
+	opacity: 0.6;
 }
 
 .vertical-split-card {
 	width: max-content;
-	background-color: rgb(234,184,56);
+	background-color: var(--color-brand);
 	border-radius: 20px;
 	overflow: hidden;
 }
@@ -85,7 +85,7 @@
 	vertical-align: top;
 	padding: 20px;
 	border: 0;
-	border-radius: 500px;
+	border-radius: 100px;
 	margin-left: 5px;
 }
 
@@ -95,13 +95,38 @@
 }
 
 #hide-subscribe-form {
+	padding: 0;
 	position: fixed;
-	z-index: 4;
+	z-index: 53;
 	top: 20px;
 	right: 20px;
+	border: 0;
 	border-radius: 500px;
 	animation-duration: 1s;
 	animation-fill-mode: forwards;
+}
+
+.close-window-wrapper {
+	width: 100%;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-bottom: 40px;
+	text-align: right;
+}
+
+.close-window svg {
+	width: 50px;
+	height: 50px;
+	padding: 10px;
+	filter: var(--invert-filter);
+}
+
+.close-window svg:hover {
+	padding: 8px;
+	border-style: solid;
+	border-radius: 100%;
+	border-width: 2px;
+	border-color: var(--color-third);
 }
 
 @media only screen and (max-width: 770px) {
@@ -145,6 +170,4 @@
 		margin-top: 10px;
 	}
 }
-
-@media only screen and (max-width: 390px) {
 
