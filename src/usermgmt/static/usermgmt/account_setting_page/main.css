@@ -2,6 +2,12 @@ nav, footer {
 	display: none !important;
 }
 
+.section-seperator {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	border-top-width: 1px;
+}
+
 .wrapper {
 	padding: 0;
 	height: 100vh;
@@ -31,41 +37,41 @@ nav, footer {
 	padding: 0;
 }
 
-.close-window img {
+.close-window svg {
 	width: 50px;
+	height: 50px;
 	padding: 10px;
+	filter: var(--invert-filter);
 }
 
-.close-window img:hover {
+.close-window svg:hover {
 	padding: 8px;
 	border-style: solid;
 	border-radius: 100%;
 	border-width: 2px;
-	border-color: #ddd;
+	border-color: var(--color-third);
 }
 
 .table-wrapper {
 	width: max-content;
 	max-width: 100%;
-	/*min-height: 90vh;*/
 	margin: auto;
 	margin-top: 0;
 	margin-bottom: 0;
 	border-width: 1px;
 	border-style: solid;
-	border-color: #bbb;
+	border-color: var(--color-ten);
 	border-radius: 20px;
 	overflow: hidden;
 }
 
 #menu {
-	/*min-height: 90vh;*/
+	padding: 40px;
 	padding-left: 0;
 	padding-right: 0;
 	border-right-width: 1px;
 	border-style: solid;
-	border-color: #bbb;
-	padding-top: 40px;
+	border-color: var(--color-ten);
 }
 
 #menu a {
@@ -77,20 +83,20 @@ nav, footer {
 	border-left-width: 3px;
 	border-style: solid;
 	border-color: transparent;
-	color: #000;
+	color: var(--color-six);
 	white-space: nowrap;
 }
 
 #menu a:hover {
-	background-color: #eee;
-	border-color: #bbb;
+	background-color: var(--color-second);
+	border-color: var(--color-ten);
 	text-decoration: none;
 }
 
 #menu .active-link {
 	border-left-width: 3px;
 	border-style: solid;
-	border-color: #000 !important;
+	border-color: var(--color-six) !important;
 }
 
 .form-wrapper {
@@ -109,23 +115,20 @@ form {
 	vertical-align: top;
 }
 
-.section-seperator {
-	margin-top: 40px;
-	margin-bottom: 40px;
-}
-
 form h5 {
 	font-size: 2rem;
 	margin-bottom: 20px;
+	color: var(--color-six);
 }
 
 /* Hide the default error list */
 .errorlist {
-	background-color: #fff;
+	background-color: var(--color-first);
 }
 
-label {
+label, p {
 	font-size: 1.1rem;
+	color: var(--color-six);
 }
 
 /* Custom Radio Button */
@@ -159,19 +162,19 @@ label {
 	width: 24px !important;
 	border-width: 4px;
 	border-style: solid;
-	border-color: #eee;
+	border-color: var(--color-second);
 	border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
 .radio label:hover input ~ .checkmark {
-	border-color: #ccc;
+	border-color: var(--color-third);
 }
 
 /* When the radio button is checked, add a yellow background */
 .radio label input:checked ~ .checkmark {
 	border: 0;
-  	background-color: #ffd000;
+  	background-color: var(--color-brand);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -193,7 +196,7 @@ label {
 	width: 12px !important;
 	height: 12px !important;
 	border-radius: 50%;
-	background: white;
+	background: #fff;
 }
 	
 /* ---------- */
@@ -204,8 +207,8 @@ input, textarea {
 	border-radius: 10px;
 	font-size: 1rem;
 	padding: 10px;
-	background-color: #eee;
-	color: #000;
+	background-color: var(--color-second);
+	color: var(--color-six);
 	margin-bottom: 15px;
 }
 
@@ -216,29 +219,34 @@ textarea {
 }
 
 input::placeholder, textarea::placeholder {
-	color: #ccc;
-}
-
-input:focus::placeholder, textarea:focus::placeholder{
-	color: #aaa;
+	color: var(--color-four);
 }
 
 input:focus, textarea:focus {
 	outline: none;
-	background-color: #ddd;
+	background-color: var(--color-third);
 }
 
 select {
 	display: block;
 	border-radius: 10px;
 	padding: 10px;
-	border-width: 2px;
-	border-color: #000;
+	border-width: 1px;
+	border-color: var(--color-ten);
 	min-width: 200px;
+	background-color: var(--color-first);
+}
+
+option {
+	color: var(--color-six);
 }
 
 button[type="submit"] {
 	margin-top: 40px;
+	border-radius: 100px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 #minify-menu {
@@ -276,6 +284,12 @@ button[type="submit"] {
 		display: block;
 		width: 100%;
 		margin-top: 40px;
+		margin-bottom: 40px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-ten);
+		padding: 40px;
+		border-radius: 20px;
 	}
 	#menu {
 		width: 100vw;
@@ -288,21 +302,23 @@ button[type="submit"] {
 		width: 100%;
 		padding-top: 10px;
 		padding-bottom: 10px;
-		color: rgba(0,0,0,.5);
-		background-color: #eee;
-		border-radius: 5px;
+		color: var(--color-six);
+		border-radius: 100px;
 		margin: auto;
 		margin-top: 0;
 		margin-bottom: 5px;
 		text-align: center;
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-ten);
 	}
 	#minify-menu a:hover {
 		text-decoration: none;
-		color: #333;
-		background-color: #ddd;
+		color: var(--color-eleven);
+		background-color: var(--color-third);
 	}
 	#minify-menu .active-link {
-		background-color: #111 !important;
-		color: #fff !important;
+		background-color: var(--color-eleven) !important;
+		color: var(--color-first) !important;
 	}
 }

@@ -11,11 +11,11 @@
 }
 
 .change-page .left-arrow, .change-page .right-arrow {
-	fill: var(--color-ninth);
+	fill: var(--color-brand);
 }
 
 .change-page-unavailable .left-arrow, .change-page-unavailable .right-arrow  {
-	fill: var(--color-fourth);
+	fill: var(--color-third);
 }
 
 .word-omission {
@@ -28,18 +28,18 @@
 	border: 0;
 	padding: 0;
 	margin: 5px;
-	color: var(--color-sixth);
+	color: var(--color-brand);
 	background-color: transparent;
 }
 
 .page-link:hover {
 	background-color: transparent;
-	color: var(--color-eighteenth);
+	color: var(--color-brand-dark);
 }
 
 .current-page-link {
-	color: var(--color-ninth);
+	color: var(--color-six);
 	border-style: solid;
-	border-color: var(--color-ninth);
+	border-color: var(--color-six);
 	border-bottom-width: 2px;
 }

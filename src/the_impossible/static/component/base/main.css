@@ -82,7 +82,7 @@ body {
 .section-seperator {
 	margin: 0;
 	border-top-width: 2px;
-	border-color: var(--color-ninteenth);
+	border-color: var(--color-ten);
 }
 
 .bold {

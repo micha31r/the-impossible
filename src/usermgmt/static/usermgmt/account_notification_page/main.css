@@ -35,48 +35,25 @@ nav, footer {
 	padding: 0;
 }
 
-.close-window img {
+.close-window svg {
 	width: 50px;
+	height: 50px;
 	padding: 10px;
+	filter: var(--invert-filter);
 }
 
-.close-window img:hover {
+.close-window svg:hover {
 	padding: 8px;
 	border-style: solid;
 	border-radius: 100%;
 	border-width: 2px;
-	border-color: #ddd;
+	border-color: var(--color-third);
 }
 
 .notification-container {
 	width: 100% !important;
 	max-width: 100% !important;
-	border-width: 1px;
-	border-style: solid;
-	border-color:  var(--color-fourth);
 	border-radius: 10px;
-	background-color: var(--color-secondary) !important;
-	box-shadow: none !important;
-}
-
-.notification-container h2 a {
-	color: var(--color-twentythree) !important;
-}
-
-.notification-container h2 svg {
-	stroke: var(--color-twentythree) !important;
-}
-
-.message-wrapper {
-	border-color: var(--color-ninteenth) !important;
-}
-
-.message-wrapper h6 {
-	color: var(--color-twentyone) !important;
-}
-
-.message-wrapper p {
-	color: var(--color-twentytwo) !important;
 }
 
 @media only screen and (max-width: 700px) {
