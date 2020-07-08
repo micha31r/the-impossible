@@ -51,8 +51,9 @@ a:hover {
 	padding-left: 20px; 
 	border: 0;
 	border-left-width: 5px;
-	border-color: black;
+	border-color: var(--color-six);
 	border-style: solid;
+	color: var(--color-six);
 }
 
 .explore-date {
@@ -81,7 +82,8 @@ a:hover {
 	padding-left: 50px;
 	border-left-width: 5px;
 	border-style: solid;
-	border-color: black;
+	border-color: var(--color-six);
+	color: var(--color-six);
 }
 
 .announcement-wrapper h3, .announcement-wrapper p {
@@ -101,6 +103,15 @@ a:hover {
 	display: block;
 	margin-top: 15px;
 	padding: 0;
+	color: var(--color-six);
+}
+
+.announcement-wrapper button:hover {
+	color: var(--color-five);
+}
+
+.announcement-wrapper button svg {
+	filter: var(--invert-filter);
 }
 
 /* ------------ */
@@ -108,20 +119,23 @@ a:hover {
 /* Discover */
 
 .discover-wrapper {
-	background-color: #000;
+	background-color: var(--color-twelve);
+	border-radius: 20px;
+	margin-bottom: 40px;
 }
 
 .discover-header {
-	color: #fff;
+	color: var(--color-six);
 }
 
 .discover-customise a {
-	color: rgb(255,240,200);
+	color: var(--color-brand);
 	font-size: 1.2rem;
 }
 
 .discover-customise svg {
 	margin-left: 5px;
+	stroke: var(--color-brand);
 }
 
 .discover-customise svg:hover {
@@ -149,7 +163,7 @@ a:hover {
 .img-border {
 	border-bottom-width: 4px !important;
 	border-style: solid;
-	border-color: rgb(255,240,200) !important;
+	border-color: var(--color-brand) !important;
 	margin-bottom: 20px;
 }
 
@@ -169,21 +183,19 @@ a:hover {
 }
 
 .discover-card .card-title a {
-	color: #fff;
+	color: var(--color-six);
 }
 
 .discover-card .card-subtitle {
-	color: #fff;
-	opacity: 0.7;
+	color: var(--color-four);
 }
 
 .discover-card .card-text {
-	color: #fff;
-	opacity: 0.4;
+	color: var(--color-six);
 }
 
 .discover-card .author {
-	opacity: 0.5;
+	color: var(--color-four);
 }
 
 /* ------------ */

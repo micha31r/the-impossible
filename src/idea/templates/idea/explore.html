@@ -12,12 +12,23 @@
 
 {% block nav_custom %}
 	<li class="nav-item">
-		<a class="nav-link" href="{% url 'idea_create_view' %}"><img src="{% static 'component/feather_svg/plus.svg' %}"></a>
+		<a class="nav-link" href="{% url 'idea_create_view' %}">
+			<div class="svg-wrapper">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+			</div>
+		</a>
 	</li>
 	{% if user.is_authenticated %}
   		<li class="nav-item">
-    		<a class="nav-link" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}"><!-- Add red dot if there are any unread notifications -->
-    			{% if user.is_authenticated and new_notification %}<span class="new-notification-dot"></span>{% endif %}<img src="{% static 'component/feather_svg/user.svg' %}"></a>
+    		<a class="nav-link" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}">
+    			<!-- Add red dot if there are any unread notifications -->
+    			{% if user.is_authenticated and new_notification %}
+    				<span class="new-notification-dot"></span>
+    			{% endif %}
+    			<div class="svg-wrapper">
+    				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+    			</div>
+    		</a>
   		</li>
   	{% endif %}
 {% endblock %}
@@ -42,10 +53,10 @@
 
 			<!-- Change Week -->
 			{% if previous_week_num %}
-				<button class="btn btn-week btn-black" onclick="window.location.href='{% url 'idea_explore_page' week_num=previous_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></button>
+				<button class="btn btn-week btn-yellow-outline" onclick="window.location.href='{% url 'idea_explore_page' week_num=previous_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></button>
 			{% endif %}
 			{% if next_week_num >= 0 %}
-				<button class="btn btn-week btn-black" onclick="window.location.href='{% url 'idea_explore_page' week_num=next_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
+				<button class="btn btn-week btn-yellow" onclick="window.location.href='{% url 'idea_explore_page' week_num=next_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-first)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
 			{% endif %}
 		</div>
 
@@ -63,16 +74,17 @@
 			<h3>The Impossible's<br>Message</h3>
 			<!-- Change message content below -->
 			<p>Browse, create and share ideas. We are here to boost your creativity during COVID-19. Stay safe and be inspired!<br>If you have any questions, feel free to contact us.</p>
-			<button class="btn">Learn more <img src="{% static 'component/feather_svg/arrow-right.svg' %}"></button>
+			<button class="btn">
+				Learn more <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+			</button>
 		</div>
 	</div>
-	<hr class="section-seperator">
 
 	<!-- Discover -->
 	<div class="wrapper discover-wrapper">
 		<div class="discover-header">
 			<h1>Discover</h1>
-			<h6 class="discover-customise"><a href="{% if user.is_authenticated %}{% url 'account_setting_explore_content_page' %}{% else %}{% url 'login_page' %}{% endif %}">Settings <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(255,240,200)" stroke-width=2 stroke-linecap="round" stroke-linejoin="round" class="feather feather-toggle-right"><rect x="1" y="5" width="22" height="14" rx="7" ry="7"></rect><circle cx="16" cy="12" r="3"></circle></svg></a></h6>
+			<h6 class="discover-customise"><a href="{% if user.is_authenticated %}{% url 'account_setting_explore_content_page' %}{% else %}{% url 'login_page' %}{% endif %}">Customise <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width=2 stroke-linecap="round" stroke-linejoin="round" class="feather feather-toggle-right"><rect x="1" y="5" width="22" height="14" rx="7" ry="7"></rect><circle cx="16" cy="12" r="3"></circle></svg></a></h6>
 		</div>
 		<br>
 		<div class="horizontal-overflow-wrapper">
