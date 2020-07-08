@@ -87,7 +87,7 @@
 	z-index: 1; 
 }
 
-#file-button, .main-container button[type="submit"] {
+#file-button, .main-container button[type="submit"], .delete-btn {
 	transition: opacity 0.3s;
 	opacity: 0;
 	padding: 10px;
@@ -96,7 +96,7 @@
 	border-radius: 100px;
 }
 
-.main-container button[type="submit"] {
+.main-container button[type="submit"], .delete-btn {
 	opacity: 1;
 }
 

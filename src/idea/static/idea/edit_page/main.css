@@ -176,6 +176,7 @@ select[name="publish_status"], select[name="delete"] {
 /* Delete confirm button */
 #confirm-button {
 	color: rgb(252,52,104);
+	border-radius: 10px;
 }
 
 select[name="delete"] {
