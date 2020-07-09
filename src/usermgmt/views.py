@@ -25,6 +25,7 @@ from the_impossible.ERROR import *
 
 IDEA_PER_PAGE = 20
 NOTIFICATION_PER_PAGE = 50
+USER_PER_PAGE = 20
 
 def signup_page(request):
 	ctx = {} # Context variables
@@ -243,27 +244,44 @@ def account_follow_view(request,username):
 	return redirect("account_dashboard_page",username=username,content_filter="my",page_num=1)
 
 @login_required
-def account_people_page(request,username):
+def account_people_page(request,username,follower_page_num,following_page_num):
 	ctx = {}
 	ctx["date"] = Date()
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 
+	# Blocked users can't see this page
 	if request.user == profile.user or not profile.blocked_user.filter(username=request.user.username).exists():
-		ctx["followers"] = followers = User.objects.filter(profile__following=request.user)
+		# Get followers
+		followers = User.objects.filter(profile__following=request.user) # User obj
+		followers = Profile.objects.filter(user__in=followers) # Profile obj	
+		# Split data into pages
+		followers = Paginator(followers,USER_PER_PAGE)
+		ctx["follower_max_page"] = followers.num_pages
+		try: current_page = followers.page(follower_page_num) # Get the ideas on the current page
+		except: raise Http404()
+		ctx["followers"] = current_page
+
+		# Get following user
+		# Split data into pages
+		followings = Profile.objects.filter(user__in=profile.following.all())
+		followings = Paginator(followings,USER_PER_PAGE)
+		ctx["following_max_page"] = followings.num_pages
+		try: current_page = followings.page(following_page_num) # Get the ideas on the current page
+		except: raise Http404()
+		ctx["followings"] = current_page  
+	else:
+		return redirect("access_error_page")
 
 	template_file = "usermgmt/account_people.html"
 	return render(request,template_file,ctx)
 
 @login_required
-def account_people_page(request,username):
+def account_meet_page(request,username):
 	ctx = {}
 	ctx["date"] = Date()
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 
-	if request.user == profile.user or not profile.blocked_user.filter(username=request.user.username).exists():
-		ctx["followers"] = followers = User.objects.filter(profile__following=request.user)
-
-	template_file = "usermgmt/account_people.html"
+	template_file = "usermgmt/account_meet.html"
 	return render(request,template_file,ctx)
 
 

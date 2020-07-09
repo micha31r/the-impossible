@@ -8,9 +8,9 @@
 
 {% block content %} 
 	<div class="wrapper">
-		<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/account_setting_page/main.css' %}"> 
+		<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/account_people_page/main.css' %}"> 
 
-		<script type="text/javascript" src="{% static 'usermgmt/account_setting_page/resize.js' %}"></script>
+		<script type="text/javascript" src="{% static 'usermgmt/account_people_page/main.js' %}"></script>
 
 		<div class='row align-items-center h-100'>
 			<div class="center">
@@ -19,25 +19,30 @@
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 					</button>
 				</div>
-
-				<div class="table-wrapper">
-					<table>
-						<tr>
-							<td id="menu">
-								<h5><a href="{% url 'account_setting_profile_page' %}">Edit Profile</a></h5>
-								<h5><a href="{% url 'account_setting_password_page' %}">Change Password</a></h5>
-								<h5><a href="{% url 'account_setting_explore_content_page' %}">Explore Contents</a></h5>
-								<h5><a href="{% url 'account_setting_notification_page' %}">Notifications</a></h5>
-								<h5><a href="{% url 'account_setting_privacy_page' %}">Privacy</a></h5>
-								<h5><a href="{% url 'account_setting_danger_page' %}">Danger</a></h5>
-							</td>
-							<td class="form-wrapper">
-								{% include form_template_page %}
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div id="minify-menu">
+				<div class="content-wrapper">
+					<div class="tab-switcher">
+						<h3 class="follower-tab" name="current"><b>Followers</b></h3><h3 class="following-tab"><b>Following</b></h3>
+					</div>
+					<div class="follower-container">
+						{% for follower in followers %}
+							<div class="profile-wrapper">
+								<h5>{{ follower.user.get_full_name }}</h5>
+								<h6><a href="{% url 'account_dashboard_page' username=follower.user.username content_filter='my' page_num=1 %}">@{{ follower.user.username }}</a></h6>
+								<p>{{ follower.bio }}</p>
+								<a href="{{ follower.website }}">{{ follower.website }}</a>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="following-container">
+						{% for following in followings %}
+							<div class="profile-wrapper">
+								<h5>{{ following.user.get_full_name }}</h5>
+								<h6><a href="{% url 'account_dashboard_page' username=following.user.username content_filter='my' page_num=1 %}">@{{ following.user.username }}</a></h6>
+								<p>{{ following.bio }}</p>
+								<a href="{{ following.website }}">{{ following.website }}</a>
+							</div>
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 		</div>
