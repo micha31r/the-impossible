@@ -71,6 +71,7 @@ td {
 	width: 80px;
 	height: 80px;
 	overflow: hidden;
+	background-color: var(--color-six);
 }
 
 .author-profile-img-wrapper a {
