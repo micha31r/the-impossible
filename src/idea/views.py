@@ -42,10 +42,6 @@ def explore_page(request,week_num,page_num):
 	if request.user.is_authenticated:
 		# Check for unread notifications
 		profile = get_object_or_404(Profile, user=request.user)
-		qs = profile.notification.all().order_by('-pk')[:50]
-		for msg in qs:
-			if not msg.dismissed:
-				ctx["new_notification"] = True
 		# Set favourite tags
 		fav_tags = profile.tags.all()
 
