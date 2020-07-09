@@ -31,7 +31,6 @@ class Notification(models.Model):
 	message = models.CharField(max_length=200)
 	message_status = models.IntegerField(default=1,choices=PUBLISH_OPTION)
 	dismissed = models.BooleanField(default=False)
-	link = models.URLField(max_length=200,blank=True,null=True)
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
 
 	def __str__(self):
