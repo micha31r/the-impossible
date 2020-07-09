@@ -42,7 +42,8 @@ body {
 
 .alert-black svg, .alert-black img {
 	vertical-align: text-bottom;
-	margin-right: 5px;
+	margin: 0 !important;
+	margin-right: 5px !important;
 }
 
 .alert-black-outline, .btn-black-outline, .btn-black {

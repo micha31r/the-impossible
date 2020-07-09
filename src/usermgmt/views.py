@@ -17,6 +17,8 @@ from userupload.models import File
 
 from idea.models import Idea
 
+from idea.utils import escape_html
+
 from the_impossible.utils import *
 
 from the_impossible.ERROR import *
@@ -36,7 +38,7 @@ def signup_page(request):
 		# Get form inputs
 		first_name = signup_form.cleaned_data.get("first_name")
 		last_name = signup_form.cleaned_data.get("last_name")
-		username = signup_form.cleaned_data.get("username")
+		username = escape_html(signup_form.cleaned_data.get("username")).replace(" ","_")
 		email = signup_form.cleaned_data.get("email")
 		password = signup_form.cleaned_data.get("password")
 		password_confirmation = signup_form.cleaned_data.get("password_confirmation")
@@ -74,6 +76,7 @@ def signup_page(request):
 						# Log user in
 						login(request, user)
 						return redirect(next_page or "account_dashboard_page", username=user.username, content_filter="my", page_num=1) # Redirect to the next page
+				else: ctx["error"] = SERVER_ERROR["AUTH_PASSWORD_MATCH"]
 			else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_EMAIL_TAKEN"]
 		else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_USERNAME_TAKEN"]
 	signup_form = SignUpForm()

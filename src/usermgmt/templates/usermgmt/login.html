@@ -34,7 +34,7 @@
 						</div>
 					{% endif %}
 
-					{% include 'form_error.html' %}
+					{% include 'form_error.html' with form=login_form %}
 
 					{{ login_form.username }}
 					{{ login_form.password }}

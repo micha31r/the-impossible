@@ -5,6 +5,7 @@ SERVER_ERROR = {
 	"AUTH_LOGIN"						:"Login failed",
 	"AUTH_NO_USER"						:"User not found",
 	"AUTH_PASSWORD"						:"Wrong password",
+	"AUTH_PASSWORD_MATCH"				:"Password does not match",
 
 	# Signup
 	"AUTH_SIGNUP"						:"Sign up failed",
