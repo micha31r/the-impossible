@@ -114,6 +114,17 @@ nav .svg-wrapper svg {
 	background-color: var(--color-first);
 }
 
+@media only screen and (max-width: 380px) {
+	/* Align dropdown in the middle of the screen on mobile aspect ratio */
+	.dropdown-menu {
+		/* 40px is the navbar padding (L & R) */
+		width: calc(100vw - 40px);
+		/* 44px is the width of 1 nav button */
+		/* 6px is the space between nav buttons */
+		right: calc(-44px - 6px);
+	}
+}
+
 .dropdown-item {
 	width: calc(100% - 20px);
 	margin: 10px;

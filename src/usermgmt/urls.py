@@ -8,6 +8,7 @@ from .views import (
 	account_dashboard_page,
 	account_notification_page,
 	account_follow_view,
+	account_people_page,
 )
 
 from .setting_views import (
@@ -27,6 +28,7 @@ urlpatterns = [
 	path('account/dashboard/<slug:username>/<str:content_filter>/<int:page_num>/', account_dashboard_page, name="account_dashboard_page"),
 	path('account/notification/<int:page_num>/', account_notification_page, name="account_notification_page"),
 	path('account/follow/<slug:username>/', account_follow_view, name="account_follow_view"),
+	path('account/people/<slug:username>', account_people_page, name="account_people_page"),
 	
 	# Account settings
 

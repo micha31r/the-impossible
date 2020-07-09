@@ -242,5 +242,31 @@ def account_follow_view(request,username):
 	profile.save()
 	return redirect("account_dashboard_page",username=username,content_filter="my",page_num=1)
 
+@login_required
+def account_people_page(request,username):
+	ctx = {}
+	ctx["date"] = Date()
+	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
+
+	if request.user == profile.user or not profile.blocked_user.filter(username=request.user.username).exists():
+		ctx["followers"] = followers = User.objects.filter(profile__following=request.user)
+
+	template_file = "usermgmt/account_people.html"
+	return render(request,template_file,ctx)
+
+@login_required
+def account_meet_page(request,username):
+	ctx = {}
+	ctx["date"] = Date()
+	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
+
+	if request.user == profile.user or not profile.blocked_user.filter(username=request.user.username).exists():
+		ctx["followers"] = followers = User.objects.filter(profile__following=request.user)
+
+	template_file = "usermgmt/account_people.html"
+	return render(request,template_file,ctx)
+
+
+
 
 
