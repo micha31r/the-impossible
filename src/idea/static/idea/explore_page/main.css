@@ -31,6 +31,10 @@ a:hover {
 	.before-header {
 		display: none !important;
 	}
+	.discover-wrapper {
+		border-radius: 0px !important;
+		margin-bottom: 0px !important;
+	}	
 }
 
 /* Unread notification alert dot */
