@@ -61,6 +61,7 @@
 .message-wrapper h6 {
 	color: var(--color-six);
 	margin-bottom: 0;
+	word-break: break-all;
 }
 
 .message-wrapper a {

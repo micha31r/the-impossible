@@ -24,7 +24,7 @@
 					</h6>
 					<p>{{ notification.get_message_status_display }} Message</p>
 				{% else %}
-					<h6>{{ notification.message }}</h6>
+					<h6>{{ notification.message|safe }}</h6>
 					<p>{{ notification.get_message_status_display }} Message</p>
 				{% endif %}
 			</div>
