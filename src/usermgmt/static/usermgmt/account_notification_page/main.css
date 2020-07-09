@@ -17,7 +17,7 @@ nav, footer {
 
 .center {
 	width: max-content;
-	max-width: 100%;
+	max-width: 500px;
 	margin: auto;
 	padding-top: 40px;
 	padding-bottom: 40px;

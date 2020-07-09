@@ -63,6 +63,15 @@
 	margin-bottom: 0;
 }
 
+.message-wrapper a {
+	color: var(--color-brand-dark);
+	margin-bottom: 0;
+}
+
+.message-wrapper a:hover {
+	text-decoration: underline;
+}
+
 .message-wrapper h6 span {
 	color: #FF6161;
 }

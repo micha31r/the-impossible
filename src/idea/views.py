@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, JsonResponse
+from django.urls import reverse
 from django.core import serializers
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
@@ -126,7 +127,8 @@ def detail_page(request,pk):
 			elif idea.author.comment_setting == 3:
 				proceed = True
 			if proceed:
-				message = f"@{profile.user.username} has commented on your post '{idea.name}'"
+				absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(profile.user.username,'my',1)))
+				message = f"<a href='{absolute_url}'>@{profile.user.username}</a> has commented on your post <a href='{request.path}'>\"{idea.name}\"</a>"
 				msg = Notification.objects.create(message=message,message_status=1)
 				msg.save()
 				idea.author.notification.add(msg)
@@ -139,7 +141,8 @@ def detail_page(request,pk):
 			if user:
 				profile = Profile.objects.filter(user=user).first()
 				# Send the mentioned user a notification
-				message = f"@{request.user.username} mentioned you in a comment in \"{idea.name}\""
+				absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(request.user.username,'my',1)))
+				message = f"<a href='{absolute_url}'>@{request.user.username}</a> mentioned you in a comment in <a href='{request.path}'>\"{idea.name}\"</a>"
 				msg = Notification.objects.create(message=message,message_status=2)
 				msg.save()
 				# Notify mentioned user
@@ -208,8 +211,10 @@ def edit_page(request,pk):
 				idea.delete()
 				return redirect("idea_explore_page",date.week(),1)
 
-			idea.name = data.get("name")
+			idea.name = escape_html(data.get("name"))
 			idea.short_description = data.get("short_description")
+
+			idea_absolute_url = request.build_absolute_uri(reverse('idea_detail_page', args=(pk,)))
 
 			# Search description for @ users
 			usernames = set(at_filter(data.get("full_description"))) - set(usernames_before_edit)
@@ -224,14 +229,16 @@ def edit_page(request,pk):
 					if proceed:
 						profile = Profile.objects.filter(user=user).first()
 						# Send the mentioned user a notification
-						message = f"@{request.user.username} mentioned you in \"{idea.name}\""
+						user_absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(request.user.username,'my',1)))
+						message = f"<a href='{user_absolute_url}'>@{request.user.username}</a> mentioned you in <a href='{idea_absolute_url}'>\"{idea.name}\"</a>"
 						msg = Notification.objects.create(message=message,message_status=2)
 						msg.save()
 						# Notify mentioned user
 						profile.notification.add(msg)
 					else:
 						# Tell the current user that certain uses can't be mentioned
-						message = f"@{username} is not mentioned due to \"{idea.name}>\"s publish setting"
+						user_absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(username,'my',1)))
+						message = f"<a href='{user_absolute_url}'>@{username}</a> is not mentioned due to <a href='{idea_absolute_url}'>\"{idea.name}\"</a>s publish setting"
 						msg = Notification.objects.create(message=message,message_status=1)
 						msg.save()
 						idea.author.notification.add(msg)
@@ -254,7 +261,8 @@ def edit_page(request,pk):
 			# Notify followers if publish setting is set to followers-only or public
 			if not idea.notified and (idea.publish_status == 2 or idea.publish_status == 3):
 				idea.notified = True
-				message = f"@{request.user.username} has created a new post '{idea.name}'"
+				user_absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(request.user.username,'my',1)))
+				message = f"<a href='{user_absolute_url}'>@{request.user.username}</a> has created a new post <a href='{idea_absolute_url}'>\"{idea.name}\"</a>"
 				msg = Notification.objects.create(message=message,message_status=1)
 				msg.save()
 				followers = User.objects.filter(profile__following=idea.author.user)
@@ -306,7 +314,9 @@ def like_view(request):
 					elif idea.author.like_setting == 3:
 						proceed = True
 					if proceed:
-						message = f"@{user.username} has liked your post '{idea.name}'"
+						user_absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(user.username,'my',1)))
+						idea_absolute_url = request.build_absolute_uri(reverse('idea_detail_page', args=(pk,)))
+						message = f"<a href='{user_absolute_url}'>@{user.username}</a> has liked your post <a href='{idea_absolute_url}'>\"{idea.name}\"</a>"
 						msg = Notification.objects.create(message=message,message_status=1)
 						msg.save()
 						idea.author.notification.add(msg)

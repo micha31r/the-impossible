@@ -20,7 +20,7 @@
 						{% if notification in undismissed_notifications %}
 							<span>Unread:</span>
 						{% endif %}
-						{{ notification.message }}
+						{{ notification.message|safe }}
 					</h6>
 					<p>{{ notification.get_message_status_display }} Message</p>
 				{% else %}
