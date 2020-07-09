@@ -54,10 +54,10 @@ class Profile(models.Model):
 	blocked_user = models.ManyToManyField(User,blank=True,related_name="blocked")
 	
 	# Social settings
-	like_setting = models.IntegerField(default=1,choices=LIKE_OPTION)
-	comment_setting = models.IntegerField(default=1,choices=COMMENT_OPTION)
+	like_setting = models.IntegerField(default=3,choices=LIKE_OPTION)
+	comment_setting = models.IntegerField(default=3,choices=COMMENT_OPTION)
 	# Allow others to see this user in Discover People Page
-	discover_setting = models.IntegerField(default=1,choices=DISCOVER_OPTION)
+	discover_setting = models.IntegerField(default=2,choices=DISCOVER_OPTION)
 
     # Only allow each user to post 5 ideas per day
 	daily_limit = models.IntegerField(default=5)
