@@ -255,7 +255,7 @@ def account_people_page(request,username):
 	return render(request,template_file,ctx)
 
 @login_required
-def account_meet_page(request,username):
+def account_people_page(request,username):
 	ctx = {}
 	ctx["date"] = Date()
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
