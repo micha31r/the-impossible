@@ -25,7 +25,7 @@ from the_impossible.ERROR import *
 
 IDEA_PER_PAGE = 20
 NOTIFICATION_PER_PAGE = 50
-USER_PER_PAGE = 2
+USER_PER_PAGE = 20
 
 def signup_page(request):
 	ctx = {} # Context variables
