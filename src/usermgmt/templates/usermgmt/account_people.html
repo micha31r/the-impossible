@@ -35,7 +35,11 @@
 								<div class="profile-content-wrapper">
 									<h6><b>{{ follower.user.get_full_name }}</b></h6>
 									<p><a class="username" href="{% url 'account_dashboard_page' username=follower.user.username content_filter='my' page_num=1 %}">@{{ follower.user.username }}</a></p>
-									<p>{{ follower.bio }}</p>
+									{% if follower.bio %}
+										<p>{{ follower.bio }}</p>
+									{% else %}
+										<p>(No bio)</p>
+									{% endif %}
 									<a href="{{ follower.website }}">{{ follower.website }}</a>
 								</div>
 							</div>
@@ -50,7 +54,11 @@
 								<div class="profile-content-wrapper">
 									<h6><b>{{ following.user.get_full_name }}</b></h6>
 									<p><a class="username" href="{% url 'account_dashboard_page' username=following.user.username content_filter='my' page_num=1 %}">@{{ following.user.username }}</a></p>
-									<p>{{ following.bio }}</p>
+									{% if following.bio %}
+										<p>{{ following.bio }}</p>
+									{% else %}
+										<p>(No bio)</p>
+									{% endif %}
 									<a href="{{ following.website }}">{{ following.website }}</a>
 								</div>
 							</div>
