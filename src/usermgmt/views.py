@@ -25,7 +25,7 @@ from the_impossible.ERROR import *
 
 IDEA_PER_PAGE = 20
 NOTIFICATION_PER_PAGE = 50
-USER_PER_PAGE = 20
+USER_PER_PAGE = 2
 
 def signup_page(request):
 	ctx = {} # Context variables
@@ -251,9 +251,12 @@ def account_people_page(request,username,follower_page_num,following_page_num):
 
 	# Blocked users can't see this page
 	if request.user == profile.user or not profile.blocked_user.filter(username=request.user.username).exists():
+		ctx["follower_page_num"] = follower_page_num
+		ctx["following_page_num"] = following_page_num
+
 		# Get followers
 		followers = User.objects.filter(profile__following=request.user) # User obj
-		followers = Profile.objects.filter(user__in=followers) # Profile obj	
+		followers = Profile.objects.filter(user__in=followers).order_by("-timestamp") # Profile obj	
 		# Split data into pages
 		followers = Paginator(followers,USER_PER_PAGE)
 		ctx["follower_max_page"] = followers.num_pages
@@ -263,7 +266,7 @@ def account_people_page(request,username,follower_page_num,following_page_num):
 
 		# Get following user
 		# Split data into pages
-		followings = Profile.objects.filter(user__in=profile.following.all())
+		followings = Profile.objects.filter(user__in=profile.following.all()).order_by("-timestamp")
 		followings = Paginator(followings,USER_PER_PAGE)
 		ctx["following_max_page"] = followings.num_pages
 		try: current_page = followings.page(following_page_num) # Get the ideas on the current page

@@ -97,6 +97,7 @@ nav, footer {
 	border-style: solid;
 	border-bottom-width: 3px;
 	margin: 0;
+	color: var(--color-six);
 }
 
 h3[name="current"] {
@@ -105,16 +106,59 @@ h3[name="current"] {
 }
 
 .follower-container, .following-container {
-	padding: 20px;
 	height: 100%;
 	overflow: scroll;
 }
 
 .profile-wrapper {
-	padding: 20px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	border-radius: 20px;
-	background-color: var(--color-second);
+	border-color: var(--color-ten);
+	border-style: solid;
+	border-bottom-width: 1px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
+
+.target-profile-img-wrapper {
+	display: inline-block; 
+	margin-right: 10px;
+	vertical-align: top; 
+	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	background-color: var(--color-six);
+}
+
+.target-profile-img {
+	height: 100%;
+}
+
+.profile-content-wrapper {
+	display: inline-block;
+	width: calc(100% - 70px);
+}
+
+.profile-content-wrapper h6, p {
+	color: var(--color-six);
+	margin: 0;
+}
+
+.profile-content-wrapper a {
+	color: var(--color-brand-dark);
+}
+
+.profile-content-wrapper a:hover {
+	color: var(--color-brand);
+}
+
+.profile-content-wrapper .username {
+	color: var(--color-four);
+}
+
+.profile-content-wrapper .username:hover {
+	color: var(--color-five);
+	text-decoration: none;
+}
+
 
