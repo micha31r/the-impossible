@@ -15,6 +15,7 @@
 ##
 
 __Current *site* version:__ *v0.1*
+__Current progress status:__ 7/10 complete
 
 __Current library versions:__
   * [Python](https://www.python.org/) 3.6.4
