@@ -43,3 +43,8 @@
 	border-color: var(--color-six);
 	border-bottom-width: 2px;
 }
+
+.current-page-link:hover {
+	color: var(--color-six);
+	text-decoration: none;
+}
