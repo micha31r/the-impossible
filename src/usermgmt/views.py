@@ -247,15 +247,17 @@ def account_follow_view(request,username):
 def account_people_page(request,username,follower_page_num,following_page_num):
 	ctx = {}
 	ctx["date"] = Date()
-	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
+	user = get_object_or_404(User,username=username)
+	ctx["profile"] = profile = get_object_or_404(Profile,user=user)
 
 	# Blocked users can't see this page
 	if request.user == profile.user or not profile.blocked_user.filter(username=request.user.username).exists():
+		ctx["username"] = username
 		ctx["follower_page_num"] = follower_page_num
 		ctx["following_page_num"] = following_page_num
 
 		# Get followers
-		followers = User.objects.filter(profile__following=request.user) # User obj
+		followers = User.objects.filter(profile__following=user) # User obj
 		followers = Profile.objects.filter(user__in=followers).order_by("-timestamp") # Profile obj	
 		# Split data into pages
 		followers = Paginator(followers,USER_PER_PAGE)
