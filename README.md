@@ -2,16 +2,14 @@
 **Too many good ideas are left in the dust. Sometimes, a world changing idea never sees daylight because we are too reluctant to share it with others, afraid that people will reject it, laugh at us, or claim as their own. All ideas deservers a chance to be developed. If you have a great idea but are not taking any actions, then share it and let it discovered by entrepenures makers and innovators. The Impossible is a social media that allows you to share your ideas and thoughts with the world. A place for inspiration, discussion and feedbacks.**
 
 # Site Preview
+## (Added darkmode to the entire site)
 
-### Dashboard
-![Dashboard](preview_imgs/dashboard.png)
-### Explore
-![Explore Section](preview_imgs/explore.png)
-### Discover
-![Discover Section](preview_imgs/discover.png)
-### Idea Editor
-![Idea Editor](preview_imgs/edit.png)
-### Profile Editor
+![Dashboard Light](preview_imgs/dashboard_light.png)
+![Dashboard Dark](preview_imgs/dashboard_dark.png)
+![Explore Section Light](preview_imgs/explore_light.png)
+![Explore Section Dark](preview_imgs/explore_dark.png)
+![Detail Section](preview_imgs/detail.png)
+![Idea Editor](preview_imgs/edit_idea.png)
 ![Edit Profile](preview_imgs/edit_profile.png)
 
 ##
