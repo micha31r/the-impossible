@@ -97,8 +97,10 @@
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Daily Limit {{ target_profile.daily_limit }}
 			</p>
 			<br>
-			<p class="followers">{{ followers.count }} Followers</p>
-			<p class="following">{{ target_profile.following.count }} Following</p>
+			<a href="{% url 'account_people_page' username=target_profile.user.username follower_page_num=1 following_page_num=1 %}">
+				<p class="followers">{{ followers.count }} Followers</p>
+				<p class="following">{{ target_profile.following.count }} Following</p>
+			</a>
 			{% if target_profile.user == user %}
 				<!-- Edit button -->
 				<button class="btn btn-dark btn-black bold edit-profile" onclick="window.location.href='{% url 'account_setting_profile_page' %}'">Edit Profile</button>

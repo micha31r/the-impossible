@@ -76,6 +76,11 @@ a:hover {
 	margin-right: 30px;
 	font-family: "Arciform", sans-serif;
 	filter: var(--invert-filter);
+	color: var(--color-six);
+}
+
+.followers:hover, .following:hover {
+	text-decoration: underline;
 }
 
 .daily-limit {
