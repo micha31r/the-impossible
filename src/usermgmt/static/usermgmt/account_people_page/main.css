@@ -17,7 +17,6 @@ nav, footer {
 	margin: auto;
 	padding-top: 40px;
 	padding-bottom: 40px;
-	margin-bottom: 40px;
 }
 
 .close-window-wrapper {
@@ -64,7 +63,7 @@ nav, footer {
 	max-width: 100%;
 	min-height: 400px;
 	height: 90vh;
-	max-height: 800px;
+	max-height: 700px;
 	border-color: var(--color-ten);
 	border-radius: 20px;
 	border-style: solid;
