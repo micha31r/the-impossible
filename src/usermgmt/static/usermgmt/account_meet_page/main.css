@@ -5,10 +5,10 @@
 
 .right {
 	padding-top: 20px;
-	margin-left: 40px;
+	margin-left: 20px;
 	display: inline-block;
 	/* Minus extra 10px just in case */
-	width: calc(100% - 280px - 40px);
+	width: calc(100% - 280px - 20px);
 	vertical-align: top;
 }
 
@@ -97,6 +97,12 @@
 	color: var(--color-six);
 }
 
+@media only screen and (max-width: 768px) {
+	.right-header {
+		font-size: 2.7rem;
+	}
+}
+
 form {
 	margin-bottom: 20px;
 }
@@ -107,7 +113,7 @@ form * {
 
 input {
 	width: calc(100% - 85px);
-	min-width: 200px;
+	min-width: 150px;
 	border-color: var(--color-six);
 	border-width: 1px;
 	border-style: solid;
@@ -131,13 +137,23 @@ button[type="submit"] {
 }
 
 .search-user-no-content {
+	font-size: 1rem;
+	line-height: 1rem;
 	text-align: center;
-	line-height: 400px;
+	margin: 0;
+	height: 200px;
 	border-radius: 20px;
+	border-style: solid;
 	border-width: 1px;
 	border-color: var(--color-ten);
-	border-style: solid;
-	padding: 20px;
+}
+
+.search-user-no-content * {
+	position: relative;
+	/* 1rem is half of text height */
+	top: calc(50% - 0.5rem);
+	transform: translateY(-50%);
+	color: var(--color-third);
 }
 
 .no-search-user {
@@ -147,21 +163,31 @@ button[type="submit"] {
 
 .recent-idea-container {
 	display: inline-block;
-	width: 40%;
 	min-width: 220px;
+	width: 40%;
+	max-width: 300px;
 }
 
-.recent-idea-container a {
+@media only screen and (max-width: 400px) {
+	.recent-idea-container {
+		width: 100%;
+		max-width: none;
+	}
+}
+
+.more-content {
 	color: var(--color-six);
+	margin-left: 20px;
 }
 
 .search-profile-container {
 	display: inline-block;
+	max-width: 100%;
 	vertical-align: top;
 	margin-left: 20px;
 }
 
-.search-profile-container p {
+.search-profile-container .profile-content-wrapper {
 	width: 100%;
 }
 
@@ -198,3 +224,19 @@ button[type="submit"] {
 }
 
 /* ------------ */
+
+@media only screen and (max-width: 720px) {
+	.right {
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		margin-bottom: 20px;
+	}
+	.left {
+		width: 100%;
+	}
+	.search-profile-container {
+		/*padding: 0;*/
+		/*border: 0;*/
+	}
+}

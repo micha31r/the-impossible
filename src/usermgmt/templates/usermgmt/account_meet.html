@@ -165,7 +165,7 @@
 								</div>
 							</div>
 						{% endfor %}
-						<a href="{% url 'account_dashboard_page' username=search_profile.user.username content_filter='my' page_num=1 %}">View More</a>
+						<a class="more-content" href="{% url 'account_dashboard_page' username=search_profile.user.username content_filter='my' page_num=1 %}">...</a>
 					</div>
 					<div class="search-profile-container">
 						<div class="target-profile-img-wrapper">
