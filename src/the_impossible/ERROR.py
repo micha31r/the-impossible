@@ -15,6 +15,9 @@ SERVER_ERROR = {
 	# Access
 	"ACCESS"							:"You don't have access",
 
+	# Idea
+	"IDEA"								:"Idea not found",
+
 	# File
 	"FILE"								:"Invalid file type",
 	"FILE_INVALID_DELETE"				:"Invalid file type, file is deleted",

@@ -327,7 +327,7 @@ def account_meet_page(request):
 		username = form.cleaned_data.get("username")
 		user = User.objects.filter(username=username).first()
 		if not user:
-			ctx["error"] = "User not found!"
+			ctx["error"] = SERVER_ERROR["AUTH_NO_USER"]
 		else:
 			ctx["search_profile"] = search_profile = get_object_or_404(Profile, user=user)
 			ctx["recent_ideas"] = recent_ideas = Idea.objects.filter(author=search_profile).order_by("-timestamp")[:4]

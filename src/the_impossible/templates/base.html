@@ -125,8 +125,8 @@
 				</svg>
 			</a>
 			<ul class="navbar-nav mr-auto">
-				<form class="form-inline my-2 my-lg-0">
-		      		<input placeholder="Search Idea">
+				<form class="form-inline my-2 my-lg-0" action="{% url 'idea_search_page' page_num=1 name=None %}">
+		      		<input placeholder="Search Idea" name="name" required="required">
 		      		<button class="btn" type="submit">
 		      			<div class="svg-wrapper">
 		      				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>

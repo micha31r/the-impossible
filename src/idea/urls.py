@@ -6,7 +6,7 @@ from .views import (
 	detail_page,
 	create_view,
 	edit_page,
-	search_view,
+	search_page,
 	# Like and star
 	like_view,
 	star_view,
@@ -21,7 +21,7 @@ urlpatterns = [
 	path('detail/<int:pk>/', detail_page, name="idea_detail_page"),
 	path('create/', create_view, name="idea_create_view"),
 	path('edit/<int:pk>/', edit_page, name="idea_edit_page"),
-	path('search/', search_view, name="idea_search_view"),
+	path('search/<int:page_num>/<slug:name>', search_page, name="idea_search_page"),
 
 	# Like and star
 	path('like/', like_view, name="idea_like_view"),

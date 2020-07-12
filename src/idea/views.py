@@ -280,9 +280,25 @@ def edit_page(request,pk):
 	template_file = "idea/edit.html"
 	return render(request,template_file,ctx)
 
-def search_view(request):
-	date = Date()
-	template_file = "idea/edit.html"
+def search_page(request,page_num,name):
+	ctx = {}
+	ctx["date"] = date = Date()
+	if name == "None":
+		name = request.GET.get('name',None)
+	if name:
+		ctx["name"] = name
+		ctx["page_num"] = page_num
+		ideas = Idea.objects.filter(name__icontains=name).order_by("-timestamp")
+		if ideas.count() > 0:
+			# Split data into pages
+			ideas = Paginator(ideas,IDEA_PER_PAGE)
+			ctx["max_page"] = ideas.num_pages
+			try: current_page = ideas.page(page_num) # Get the ideas on the current page
+			except: raise Http404()
+			ctx["masonary_ideas"] = current_page 
+		else:
+			ctx["error"] = SERVER_ERROR["IDEA"]
+	template_file = "idea/search.html"
 	return render(request,template_file,ctx)
 
 # Star and Like related
