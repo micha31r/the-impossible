@@ -306,8 +306,20 @@ def account_meet_page(request):
 	).distinct().exclude(user=profile.user)
 	ctx["like_minded_profiles"] = random.sample(list(like_minded_profiles), min(like_minded_profiles.count(), 20))
 
-	# People followed by this user's follower
-
+	# People followed by people that you follow
+	followings = random.sample(list(profile.following.all()), min(profile.following.count(), 10))
+	followings = Profile.objects.filter(user__in=followings)
+	close_profiles = []
+	for following_profile in followings:
+		# Find 3 random users followed by people that you follow
+		users = random.sample(list(following_profile.following.all()), min(following_profile.following.count(), 3))
+		users = Profile.objects.filter(user__in=users)
+		close_profiles = close_profiles + list(set(users) - set(close_profiles))
+	
+	# Remove yourself from list
+	if profile in close_profiles:
+		close_profiles.remove(profile)
+	ctx["close_profiles"] = close_profiles
 
 	# Search form
 	ctx["form"] = form = SearchForm(request.POST or None)
@@ -324,8 +336,4 @@ def account_meet_page(request):
 
 	template_file = "usermgmt/account_meet.html"
 	return render(request,template_file,ctx)
-
-
-
-
 

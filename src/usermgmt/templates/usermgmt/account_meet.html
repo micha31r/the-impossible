@@ -82,7 +82,7 @@
 						</div>
 						<div class="profile-content-wrapper">
 							<p>{{ target_profile.user.get_full_name }}</p>
-							<a href="{% url 'account_dashboard_page' username=profile.user.username content_filter='my' page_num=1 %}">@{{ target_profile.user.username }}</a>
+							<a href="{% url 'account_dashboard_page' username=target_profile.user.username content_filter='my' page_num=1 %}">@{{ target_profile.user.username }}</a>
 						</div>
 					</div>
 				{% endfor %}
@@ -90,6 +90,20 @@
 			<div class="suggestion-container">
 				<h5><b>Similar interests:</b></h5>
 				{% for target_profile in like_minded_profiles %}
+					<div class="profile-wrapper">
+						<div class="target-profile-img-wrapper">
+							{% if target_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
+						</div>
+						<div class="profile-content-wrapper">
+							<p>{{ target_profile.user.get_full_name }}</p>
+							<a href="{% url 'account_dashboard_page' username=target_profile.user.username content_filter='my' page_num=1 %}">@{{ target_profile.user.username }}</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="suggestion-container">
+				<h5><b>Followings' followings</b></h5>
+				{% for target_profile in close_profiles %}
 					<div class="profile-wrapper">
 						<div class="target-profile-img-wrapper">
 							{% if target_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
