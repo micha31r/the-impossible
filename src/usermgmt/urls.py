@@ -9,6 +9,7 @@ from .views import (
 	account_notification_page,
 	account_follow_view,
 	account_people_page,
+	account_meet_page,
 )
 
 from .setting_views import (
@@ -29,6 +30,7 @@ urlpatterns = [
 	path('account/notification/<int:page_num>/', account_notification_page, name="account_notification_page"),
 	path('account/follow/<slug:username>/', account_follow_view, name="account_follow_view"),
 	path('account/people/<slug:username>/<int:follower_page_num>/<int:following_page_num>', account_people_page, name="account_people_page"),
+	path('account/meet', account_meet_page, name="account_meet_page"),
 	
 	# Account settings
 

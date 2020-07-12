@@ -15,14 +15,6 @@ body {
 	max-width: 1200px;
 }
 
-@media only screen and (max-width: 500px) {
-	.main-container {
-		margin-left: 0px !important;
-		margin-right: 0px !important;
-		width: 100% !important;
-	}
-}
-
 .btn-black {
 	color: var(--color-first) !important;
 	background-color: var(--color-six);
@@ -91,4 +83,13 @@ body {
 
 .bold {
 	font-weight: bold;
+}
+
+
+@media only screen and (max-width: 500px) {
+	.main-container {
+		margin-left: 0px !important;
+		margin-right: 0px !important;
+		width: 100% !important;
+	}
 }

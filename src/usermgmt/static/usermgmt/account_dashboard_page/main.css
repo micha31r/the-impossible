@@ -76,7 +76,11 @@ a:hover {
 	margin-right: 30px;
 	font-family: "Arciform", sans-serif;
 	filter: var(--invert-filter);
+}
+
+.followers, .following {
 	color: var(--color-six);
+	filter: none;
 }
 
 .followers:hover, .following:hover {

@@ -1,0 +1,200 @@
+.left {
+	display: inline-block;
+	width: 270px;
+}
+
+.right {
+	padding-top: 20px;
+	margin-left: 40px;
+	display: inline-block;
+	/* Minus extra 10px just in case */
+	width: calc(100% - 280px - 40px);
+	vertical-align: top;
+}
+
+/* Suggestion section */
+
+.suggestion-container {
+	width: 350px;
+	max-width: 100%;
+	min-height: 200px;
+	max-height: 600px;
+	background-color: var(--color-twelve);
+	border-radius: 20px;
+	padding-bottom: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	overflow: scroll;
+}
+
+@media only screen and (max-width: 500px) {
+	.suggestion-container {
+		width: 100%;
+	}
+}
+
+.suggestion-container h5, p {
+	margin: 0;
+	color: var(--color-six);
+}
+
+.suggestion-container h5 {
+	padding: 20px;
+}
+
+.profile-wrapper {
+	padding: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top-width: 1px;
+	border-color: var(--color-ten);
+	border-style: solid;
+}
+
+.target-profile-img-wrapper {
+	display: inline-block; 
+	margin-right: 10px;
+	vertical-align: top; 
+	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	background-color: var(--color-six);
+}
+
+.target-profile-img {
+	height: 100%;
+}
+
+.profile-content-wrapper {
+	display: inline-block;
+	width: calc(100% - 70px);
+}
+
+.profile-wrapper h6, p {
+	color: var(--color-six);
+	margin: 0;
+}
+
+.profile-wrapper a {
+	color: var(--color-brand-dark);
+}
+
+.profile-wrapper button {
+	display: block;
+	margin: 0;
+	border-radius: 100px;
+	font-size: 1rem;
+}
+
+/* ------------ */
+
+/* Search section */
+
+.right-header {
+	font-size: 3.2rem;
+	margin-bottom: 20px;
+	color: var(--color-six);
+}
+
+form {
+	margin-bottom: 20px;
+}
+
+form * {
+	vertical-align: top;
+}
+
+input {
+	width: calc(100% - 85px);
+	min-width: 200px;
+	border-color: var(--color-six);
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 100px;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: var(--color-first);
+	color: var(--color-six);
+}
+
+button[type="submit"] {
+	width: 80px;
+	border-width: 1px;
+	border-radius: 100px;
+	padding: 10px;
+}
+
+.search-user-content {
+	min-height: 400px;
+}
+
+.search-user-no-content {
+	text-align: center;
+	line-height: 400px;
+	border-radius: 20px;
+	border-width: 1px;
+	border-color: var(--color-ten);
+	border-style: solid;
+	padding: 20px;
+}
+
+.no-search-user {
+	display: inline-block;
+	color: var(--color-four);
+}
+
+.recent-idea-container {
+	display: inline-block;
+	width: 40%;
+	min-width: 220px;
+}
+
+.recent-idea-container a {
+	color: var(--color-six);
+}
+
+.search-profile-container {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 20px;
+}
+
+.search-profile-container p {
+	width: 100%;
+}
+
+@media only screen and (max-width: 1020px) {
+	.search-profile-container {
+		margin: 0;
+		margin-bottom: 20px;
+		border-radius: 20px;
+		border-width: 1px;
+		border-color: var(--color-ten);
+		border-style: solid;
+		padding: 20px;
+	}
+}
+
+.search-profile-container .target-profile-img-wrapper {
+	width: 100px;
+	height: 100px;
+}
+
+.search-profile-container h3 {
+	color: var(--color-six);
+	margin: 0;
+}
+
+.search-profile-container a {
+	color: var(--color-brand);
+}
+
+/* Idea card */
+	
+.card {
+	margin-bottom: 20px;
+}
+
+/* ------------ */

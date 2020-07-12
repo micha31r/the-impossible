@@ -149,7 +149,7 @@ class PasswordForm(forms.Form):
     )
 
 class ExploreContentForm(forms.ModelForm):
-    tags_remain = forms.CharField(label="Favourite Tags",required=False)
+    tags_remain = forms.CharField(label="Tags Remain",required=False)
 
     class Meta:
         model = Profile
@@ -196,4 +196,13 @@ class PrivacyForm(forms.ModelForm):
         }
         widgets = {
             "discover_setting":forms.RadioSelect(),
-        }  
+        } 
+
+class SearchForm(forms.Form):
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder":"@"
+            }
+        )
+    )

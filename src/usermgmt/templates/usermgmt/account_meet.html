@@ -3,7 +3,7 @@
 {% load tags %}
 
 {% block title %}
-	<title>@{{ target_profile.user.username }} - The Impossible</title>
+	<title>Connect - The Impossible</title>
 {% endblock %}
 
 {% block nav_custom %}
@@ -40,7 +40,7 @@
 	        		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
 	        		Notifications
 	        	</a>
-				<a class="dropdown-item" href="{% url 'account_people_page' username=user.username %}">
+				<a class="dropdown-item" href="{% url 'account_people_page' username=user.username follower_page_num=1 following_page_num=1 %}">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 					Followers and following
 				</a>
@@ -67,11 +67,131 @@
 {% endblock %}
 
 {% block content %}
-	<!-- Lato Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/account_meet_page/main.css' %}">
+
+	<script type="text/javascript" src="{% static 'usermgmt/account_meet_page/resize.js' %}"></script>
 
 	<div class="wrapper">
+		<div class="left">
+			<div class="suggestion-container">
+				<h5><b>You might like:</b></h5>
+				{% for target_profile in random_profiles %}
+					<div class="profile-wrapper">
+						<div class="target-profile-img-wrapper">
+							{% if target_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
+						</div>
+						<div class="profile-content-wrapper">
+							<p>{{ target_profile.user.get_full_name }}</p>
+							<a href="{% url 'account_dashboard_page' username=profile.user.username content_filter='my' page_num=1 %}">@{{ target_profile.user.username }}</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="suggestion-container">
+				<h5><b>Similar interests:</b></h5>
+				{% for target_profile in like_minded_profiles %}
+					<div class="profile-wrapper">
+						<div class="target-profile-img-wrapper">
+							{% if target_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
+						</div>
+						<div class="profile-content-wrapper">
+							<p>{{ target_profile.user.get_full_name }}</p>
+							<a href="{% url 'account_dashboard_page' username=target_profile.user.username content_filter='my' page_num=1 %}">@{{ target_profile.user.username }}</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="right">
+			<h1 class="right-header"><b>Search User</b></h1>
+			<form method="post">
+				{% csrf_token %}
 
+				<!-- Show error -->
+				{% if error %}
+					<div class="alert alert-black" role="alert">
+				  		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+				  		{{ error|escape }}
+					</div>
+				{% endif %}
+
+				{{ form.username }}
+				
+				<button class="btn btn-black bold" type="submit">Find</button>
+			</form>
+			<div class="search-user-content {% if not search_profile %} search-user-no-content {% endif %}">
+				{% if search_profile %}
+					<div class="recent-idea-container">
+						<!-- Masonary CSS -->
+						<!-- Not using actual masonary layout because there is no space -->
+						<link rel="stylesheet" type="text/css" href="{% static 'idea/masonary_idea/main.css' %}">
+
+						<script type="text/javascript" src="{% static 'idea/masonary_idea/show_button.js' %}"></script>
+
+						{% for idea in recent_ideas %}
+							<div class="card" id="card-{{ idea.pk }}">
+
+								<!-- Header image -->
+								{% if idea.header_img.file %}
+									<div class="card-img-wrapper">
+										<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
+									</div>
+
+									<!-- Circle like button -->
+									{% include 'idea/card_action.html' %}
+								{% endif %}
+
+								<div class="card-body">
+									<!-- Show like button here if there is no header image -->
+									{% if idea.header_img.file == None %}
+										<!-- Like button and view count -->
+										{% include 'idea/mini_card_action.html' %}
+									{% endif %}	
+
+									<!-- Title -->
+									<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
+
+									<!-- Short description -->
+									<h6 class="card-subtitle mb-2">{{ idea.short_description|truncatechars:50 }}</h6>
+
+									<!-- Content -->
+									<p class="card-text">{{ idea.full_description|truncatechars:100 }}</p>
+
+									<!-- Author -->
+									<p class="author">By {{ idea.author }}</p>
+
+									<!-- Views -->
+									<p class="views">Views {{ idea.viewed_user.count|ntt }}</p>
+								</div>
+							</div>
+						{% endfor %}
+						<a href="{% url 'account_dashboard_page' username=search_profile.user.username content_filter='my' page_num=1 %}">View More</a>
+					</div>
+					<div class="search-profile-container">
+						<div class="target-profile-img-wrapper">
+							{% if search_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ search_profile.profile_img.file.url }}">{% endif %}
+						</div>
+						<div class="profile-content-wrapper">
+							<h3><b>{{ search_profile.user.get_full_name }}</b></h3>
+							<h6><a href="{% url 'account_dashboard_page' username=search_profile.user.username content_filter='my' page_num=1 %}">@{{ search_profile.user.username }}</a></h6>
+							<p>{{ search_profile.bio }}</p>
+							<p>
+								<a href="{{ search_profile.website }}">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+									<b>{{ search_profile.website }}</b>
+								</a>
+							</p>
+							<br>
+							<p>Ideas created: <b>{{ idea_count }}</b></p>
+							<p>Location: <b>{{ search_profile.location }}</b></p>
+							<p>Joined: <b>{{ search_profile.timestamp }}</b></p>
+						</div>
+					</div>
+				{% else %}
+					<p class="no-search-user"><b>(Search user to see their profile)</b></p>
+				{% endif %}
+			</div>
+		</div>
 	</div>
 {% endblock %}
 

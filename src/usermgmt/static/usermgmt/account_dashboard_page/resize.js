@@ -1,6 +1,6 @@
 function notification_resize() {
 	// Width 
-	var container_width = $(".user-info").innerWidth() - 80;
+	var container_width = $(".user-info").innerWidth() - 80; // 80 is wrapper padding (L & R)
 	var user_info_container = $(".user-info-container").outerWidth();
 	var padding = 40;
 	var new_width = container_width - user_info_container - padding - 20; // 20px spacing

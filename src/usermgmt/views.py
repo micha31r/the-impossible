@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator
@@ -9,6 +10,7 @@ from django import forms
 from .forms import (
 	LoginForm,
 	SignUpForm,
+	SearchForm,
 )
 
 from .models import Profile, Notification
@@ -281,10 +283,44 @@ def account_people_page(request,username,follower_page_num,following_page_num):
 	return render(request,template_file,ctx)
 
 @login_required
-def account_meet_page(request,username):
+def account_meet_page(request):
 	ctx = {}
-	ctx["date"] = Date()
+	ctx["date"] = date = Date()
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
+
+	today = date.now()
+	current_date = int_date(f"{today.strftime('%Y')}-{date.week()}-1")
+	timestamp_from = current_week_dates(*current_date)
+	timestamp_to = timestamp_from + datetime.timedelta(days=7)
+
+	# Find random users created within the past 6 months
+	random_profiles = Profile.objects.filter(
+		timestamp__gte = date.now() - datetime.timedelta(days=182),
+		timestamp__lte = date.now() + datetime.timedelta(days=1),
+	).distinct().exclude(user=profile.user)
+	ctx["random_profiles"] = random.sample(list(random_profiles), min(random_profiles.count(), 20))
+
+	# Find users with the same interest (same favourite tags)
+	like_minded_profiles = Profile.objects.filter(
+		tags__in=profile.tags.all(),
+	).distinct().exclude(user=profile.user)
+	ctx["like_minded_profiles"] = random.sample(list(like_minded_profiles), min(like_minded_profiles.count(), 20))
+
+	# People followed by this user's follower
+
+
+	# Search form
+	ctx["form"] = form = SearchForm(request.POST or None)
+	if form.is_valid():
+		username = form.cleaned_data.get("username")
+		user = User.objects.filter(username=username).first()
+		if not user:
+			ctx["error"] = "User not found!"
+		else:
+			ctx["search_profile"] = search_profile = get_object_or_404(Profile, user=user)
+			ctx["recent_ideas"] = recent_ideas = Idea.objects.filter(author=search_profile).order_by("-timestamp")[:4]
+			# The total number of public ideas(posts) created by this user
+			ctx["idea_count"] = Idea.objects.filter(author=search_profile,publish_status=3).order_by("-timestamp").count()
 
 	template_file = "usermgmt/account_meet.html"
 	return render(request,template_file,ctx)

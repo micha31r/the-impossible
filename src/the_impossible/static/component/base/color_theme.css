@@ -1,5 +1,5 @@
 .theme-light {
-    --color-brand: rgb(237,178,2);
+    --color-brand: rgb(230,171,23); /* 237,178,2 */
     --color-brand-light: rgb(255,226,138);
     --color-brand-dark: rgb(199,149,2);
 
@@ -14,7 +14,7 @@
     --color-nine: rgb(255,255,255,0.2);     /* Transparent light white */
     --color-ten: rgb(0,0,0,0.1);            /* Transparent light black */
     --color-eleven: #333;                   /* Dark dark grey */
-    --color-twelve: rgba(238,238,238,0.6);  /* Light light light grey */
+    --color-twelve: rgba(238,238,238,0.5);  /* Light light light grey */
     
     /* Reversed colors */
 
