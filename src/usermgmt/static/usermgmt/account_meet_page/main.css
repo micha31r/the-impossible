@@ -144,6 +144,12 @@ button[type="submit"] {
 	border-color: var(--color-ten);
 }
 
+@media only screen and (max-width: 500px) {
+	.search-user-no-content {
+		display: none;
+	}
+}
+
 .search-user-no-content * {
 	position: relative;
 	/* 1rem is half of text height */
@@ -235,9 +241,5 @@ button[type="submit"] {
 	}
 	.left {
 		width: 100%;
-	}
-	.search-profile-container {
-		/*padding: 0;*/
-		/*border: 0;*/
 	}
 }
