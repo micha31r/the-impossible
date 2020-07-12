@@ -209,6 +209,8 @@
 								<p>Location: <b>{{ search_profile.location }}</b></p>
 							{% endif %}
 							<p>Joined: <b>{{ search_profile.timestamp }}</b></p>
+							<!-- Follow button -->
+							<button class="btn btn-yellow bold follow-btn" onclick="window.location.href='{% if user.is_authenticated %}{% url 'account_follow_view' username=search_profile.user.username %}{% else %}{% url 'login_page' %}{% endif %}'">{% if search_profile.user in profile.following.all %}Unfollow{% else %}Follow{% endif%}</button>
 						</div>
 					</div>
 				{% else %}

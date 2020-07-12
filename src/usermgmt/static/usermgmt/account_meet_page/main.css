@@ -213,6 +213,11 @@ button[type="submit"] {
 	color: var(--color-brand);
 }
 
+.follow-btn {
+	margin-top: 20px;
+	border-radius: 100px;
+}
+
 /* Idea card */
 	
 .card {

@@ -179,7 +179,6 @@ def create_view(request):
 @login_required
 def edit_page(request,pk):
 	ctx = {} # Context variables
-	template_file = "idea/edit.html"
 	ctx["date"] = date = Date()
 	ctx["idea"] = idea = get_object_or_404(Idea, pk=pk)
 	if idea.author.user == request.user:
@@ -278,6 +277,12 @@ def edit_page(request,pk):
 			return redirect("idea_edit_page", pk=idea.id)
 	else:
 		return redirect("access_error_page")
+	template_file = "idea/edit.html"
+	return render(request,template_file,ctx)
+
+def search_view(request):
+	date = Date()
+	template_file = "idea/edit.html"
 	return render(request,template_file,ctx)
 
 # Star and Like related
