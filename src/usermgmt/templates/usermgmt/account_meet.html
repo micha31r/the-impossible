@@ -135,52 +135,56 @@
 			</form>
 			<div class="search-user-content {% if not search_profile %} search-user-no-content {% endif %}">
 				{% if search_profile %}
-					<div class="recent-idea-container">
-						<!-- Masonary CSS -->
-						<!-- Not using actual masonary layout because there is no space -->
-						<link rel="stylesheet" type="text/css" href="{% static 'idea/masonary_idea/main.css' %}">
+					{% if recent_ideas %}
+						<div class="recent-idea-container">
+							<!-- Masonary CSS -->
+							<!-- Not using actual masonary layout because there is no space -->
+							<link rel="stylesheet" type="text/css" href="{% static 'idea/masonary_idea/main.css' %}">
 
-						<script type="text/javascript" src="{% static 'idea/masonary_idea/show_button.js' %}"></script>
+							<script type="text/javascript" src="{% static 'idea/masonary_idea/show_button.js' %}"></script>
 
-						{% for idea in recent_ideas %}
-							<div class="card" id="card-{{ idea.pk }}">
+							{% for idea in recent_ideas %}
+								<div class="card" id="card-{{ idea.pk }}">
 
-								<!-- Header image -->
-								{% if idea.header_img.file %}
-									<div class="card-img-wrapper">
-										<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
+									<!-- Header image -->
+									{% if idea.header_img.file %}
+										<div class="card-img-wrapper">
+											<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
+										</div>
+
+										<!-- Circle like button -->
+										{% include 'idea/card_action.html' %}
+									{% endif %}
+
+									<div class="card-body">
+										<!-- Show like button here if there is no header image -->
+										{% if idea.header_img.file == None %}
+											<!-- Like button and view count -->
+											{% include 'idea/mini_card_action.html' %}
+										{% endif %}	
+
+										<!-- Title -->
+										<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
+
+										<!-- Short description -->
+										<h6 class="card-subtitle mb-2">{{ idea.short_description|truncatechars:50 }}</h6>
+
+										<!-- Content -->
+										<p class="card-text">{{ idea.full_description|truncatechars:100 }}</p>
+
+										<!-- Author -->
+										<p class="author">By {{ idea.author }}</p>
+
+										<!-- Views -->
+										<p class="views">Views {{ idea.viewed_user.count|ntt }}</p>
 									</div>
-
-									<!-- Circle like button -->
-									{% include 'idea/card_action.html' %}
-								{% endif %}
-
-								<div class="card-body">
-									<!-- Show like button here if there is no header image -->
-									{% if idea.header_img.file == None %}
-										<!-- Like button and view count -->
-										{% include 'idea/mini_card_action.html' %}
-									{% endif %}	
-
-									<!-- Title -->
-									<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
-
-									<!-- Short description -->
-									<h6 class="card-subtitle mb-2">{{ idea.short_description|truncatechars:50 }}</h6>
-
-									<!-- Content -->
-									<p class="card-text">{{ idea.full_description|truncatechars:100 }}</p>
-
-									<!-- Author -->
-									<p class="author">By {{ idea.author }}</p>
-
-									<!-- Views -->
-									<p class="views">Views {{ idea.viewed_user.count|ntt }}</p>
 								</div>
-							</div>
-						{% endfor %}
-						<a class="more-content" href="{% url 'account_dashboard_page' username=search_profile.user.username content_filter='my' page_num=1 %}">...</a>
-					</div>
+							{% endfor %}
+							{% if more_ideas %}
+								<a class="more-content" href="{% url 'account_dashboard_page' username=search_profile.user.username content_filter='my' page_num=1 %}">...</a>
+							{% endif %}
+						</div>
+					{% endif %}
 					<div class="search-profile-container">
 						<div class="target-profile-img-wrapper">
 							{% if search_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ search_profile.profile_img.file.url }}">{% endif %}
@@ -188,16 +192,22 @@
 						<div class="profile-content-wrapper">
 							<h3><b>{{ search_profile.user.get_full_name }}</b></h3>
 							<h6><a href="{% url 'account_dashboard_page' username=search_profile.user.username content_filter='my' page_num=1 %}">@{{ search_profile.user.username }}</a></h6>
-							<p>{{ search_profile.bio }}</p>
-							<p>
-								<a href="{{ search_profile.website }}">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-									<b>{{ search_profile.website }}</b>
-								</a>
-							</p>
+							{% if search_profile.bio %}
+								<p>{{ search_profile.bio }}</p>
+							{% endif %}
+							{% if search_profile.website %}
+								<p>
+									<a href="{{ search_profile.website }}">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+										<b>{{ search_profile.website }}</b>
+									</a>
+								</p>
+							{% endif %}
 							<br>
 							<p>Ideas created: <b>{{ idea_count }}</b></p>
-							<p>Location: <b>{{ search_profile.location }}</b></p>
+							{% if search_profile.location %}
+								<p>Location: <b>{{ search_profile.location }}</b></p>
+							{% endif %}
 							<p>Joined: <b>{{ search_profile.timestamp }}</b></p>
 						</div>
 					</div>

@@ -331,6 +331,8 @@ def account_meet_page(request):
 		else:
 			ctx["search_profile"] = search_profile = get_object_or_404(Profile, user=user)
 			ctx["recent_ideas"] = recent_ideas = Idea.objects.filter(author=search_profile).order_by("-timestamp")[:4]
+			if Idea.objects.filter(author=search_profile).count() > 4:
+				ctx["more_ideas"] = True
 			# The total number of public ideas(posts) created by this user
 			ctx["idea_count"] = Idea.objects.filter(author=search_profile,publish_status=3).order_by("-timestamp").count()
 
