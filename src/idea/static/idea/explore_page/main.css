@@ -209,3 +209,43 @@ a:hover {
 		padding-left: 20px;
 	}
 }
+
+/* Search wrapper */
+
+.search-wrapper form {
+	width: max-content;
+	max-width: 100%;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.search-wrapper input {
+	width: 600px;
+	/* Minus an extra 5px just in case */
+	max-width: calc(100% - (24px + 4px + 20px) - 5px);
+	border-radius: 100px;
+	border-style: solid;
+	border-color: var(--color-ten);
+	border-width: 1px;
+	padding: 10px;
+	color: var(--color-six);
+}
+
+.search-wrapper form button {
+	vertical-align: top;
+	width: max-content;
+	/* 4px is border (T & B) */
+	/* 24px is svg height */
+	/* 20px is padding (T & B) */
+	height: calc(24px + 4px + 20px);
+	padding: 10px;
+	border-radius: 100%;
+}
+
+@media only screen and (max-width: 400px) {
+	.search-wrapper h3 {
+		font-size: 1.4rem;
+	}
+}
+
+/* ------------ */
