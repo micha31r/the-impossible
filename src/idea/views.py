@@ -19,6 +19,9 @@ from usermgmt.models import (
 	Notification,
 	Profile,
 )
+
+from support.models import CoreFeed
+
 from .models import (
 	Tag, 
 	Idea,
@@ -87,13 +90,37 @@ def explore_page(request,week_num,page_num):
 			publish_status = 3,
 		).exclude(header_img=None).distinct()
 	ctx["random_ideas"] = random.sample(list(ideas), min(ideas.count(), 10))
+
 	template_file = "idea/explore.html"
+	return render(request,template_file,ctx)
 
+@login_required
+def feed_page(request):
+	ctx = {}
+	ctx["date"] = date = Date()
+	ctx["profile"] = profile = get_object_or_404(Profile, user=request.user)
+	
 	# Recent published ideas by followed users
-	# ideas = Idea.objects.filter(
-		
-	# ).exclude(publish_status=1)
+	ctx["recent_ideas"] = Idea.objects.filter(
+		timestamp__gte = date.now() - datetime.timedelta(days=60),
+		timestamp__lte = date.now() + datetime.timedelta(days=1),
+		author__user__in=profile.following.all()
+	).exclude(publish_status=1).distinct().order_by("-timestamp")[:20]
+	# Recent public messages by the admin of this site 
+	core_feed_public = CoreFeed.objects.filter(
+		timestamp__gte = date.now() - datetime.timedelta(days=30),
+		timestamp__lte = date.now() + datetime.timedelta(days=1),
+		publish_status = 2
+	).distinct().order_by("-timestamp")[:10]
+	# Recent private messages by this site 
+	core_feed_private = CoreFeed.objects.filter(
+		timestamp__gte = date.now() - datetime.timedelta(days=30),
+		timestamp__lte = date.now() + datetime.timedelta(days=1),
+		publish_status = 1
+	).distinct().order_by("-timestamp")[:10]
+	ctx["core_feed"] = core_feed_public | core_feed_private # Merge qs
 
+	template_file = "idea/feed.html"
 	return render(request,template_file,ctx)
 
 @login_required
