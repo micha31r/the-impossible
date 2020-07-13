@@ -4,7 +4,7 @@ function like_idea_ajax(pk) {
         function() {
             $.ajax(
                 {
-                    url: `/idea/like/`,
+                    url: `/idea/like`,
                     data: {
                         'pk':pk,
                     },
@@ -28,7 +28,7 @@ function star_idea_ajax(pk) {
         function() {
             $.ajax(
                 {
-                    url: `/idea/star/`,
+                    url: `/idea/star`,
                     data: {
                         'pk':pk,
                     },
