@@ -109,7 +109,7 @@
 
 	<div class="wrapper search-wrapper">
 		<h3>Looking for something?</h3>
-		<h5><b>Search here:</b></h5>
+		<h5><b>Search it here:</b></h5>
 		<form action="{% url 'idea_search_page' page_num=1 name=None %}">
 	  		<input placeholder="Idea Name" name="name" required="required">
 	  		<button class="btn btn-yellow-outline" type="submit">
@@ -117,4 +117,11 @@
 	  		</button>
 		</form>
 	</div>
+
+	<!-- Feed button -->
+	{% if user.is_authenticated %}
+		<button class="btn btn-yellow feed-button" onclick="window.location.href='{% url 'idea_feed_page' %}'">
+			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+		</button>
+	{% endif %}
 {% endblock %}

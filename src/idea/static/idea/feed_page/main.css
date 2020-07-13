@@ -133,6 +133,7 @@ nav, footer {
 
 .feed-card img {
 	width: 100%;
+	filter: grayscale(100%);
 }
 
 .author, .timestamp {
