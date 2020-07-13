@@ -212,6 +212,10 @@ a:hover {
 
 /* Search wrapper */
 
+.search-wrapper h3, .search-wrapper h5 {
+	color: var(--color-six);
+}
+
 .search-wrapper form {
 	width: max-content;
 	max-width: 100%;
@@ -229,6 +233,7 @@ a:hover {
 	border-width: 1px;
 	padding: 10px;
 	color: var(--color-six);
+	background-color: var(--color-twelve);
 }
 
 .search-wrapper form button {

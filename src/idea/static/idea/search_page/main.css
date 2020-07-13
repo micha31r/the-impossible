@@ -75,6 +75,7 @@ nav, footer {
 	border-width: 1px;
 	padding: 10px;
 	color: var(--color-six);
+	background-color: var(--color-twelve);
 }
 
 .center form button {
