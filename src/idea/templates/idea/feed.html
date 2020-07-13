@@ -22,7 +22,7 @@
 					<div class="feed-container">
 						{% for idea in recent_ideas %}
 							<div class="feed-card">
-								<p class="content-type">Recent activity from people your followed</p>
+								<p class="content-type">Recently created by people you follow</p>
 								<div class="text-wrapper">
 									<h4><a href="{% url 'idea_detail_page' pk=idea.pk %}"><b>{{ idea.name }}</b></a></h4>
 									<h6>{{ idea.short_description }}</h6>
