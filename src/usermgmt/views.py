@@ -15,6 +15,8 @@ from .forms import (
 
 from .models import Profile, Notification
 
+from .utils import welcome_email
+
 from userupload.models import File
 
 from idea.models import Idea
@@ -75,6 +77,9 @@ def signup_page(request):
 						msg = Notification.objects.create(message=message,message_status=1)
 						msg.save()
 						profile.notification.add(msg)
+
+						# Send user an welcome email
+						welcome_email(user.username,user.email)
 
 						# Log user in
 						login(request, user)
