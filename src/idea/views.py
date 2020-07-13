@@ -38,12 +38,13 @@ def explore_page(request,week_num,page_num):
 	ctx["page_num"] = page_num
 	today = date.now()
 		
-	fav_tags = Tag.objects.all() # For discover section idea filter
+	fav_tags = None # For discover section idea filter
 	if request.user.is_authenticated:
 		# Check for unread notifications
 		profile = get_object_or_404(Profile, user=request.user)
 		# Set favourite tags
-		fav_tags = profile.tags.all()
+		if profile.tags.all():
+			fav_tags = profile.tags.all()
 
 	# Explore Section
 	# Note: current date is not normal date format, its year/week/1
@@ -72,12 +73,19 @@ def explore_page(request,week_num,page_num):
 
 	# Discover Section
 	# Retrieve all ideas from the past 6 months
-	ideas = Idea.objects.filter(
-		timestamp__gte = date.now() - datetime.timedelta(days=182),
-		timestamp__lte = date.now() + datetime.timedelta(days=1),
-		publish_status = 3,
-		tags__in=fav_tags
-	).exclude(header_img=None).distinct()
+	if fav_tags:
+		ideas = Idea.objects.filter(
+			timestamp__gte = date.now() - datetime.timedelta(days=182),
+			timestamp__lte = date.now() + datetime.timedelta(days=1),
+			publish_status = 3,
+			tags__in=fav_tags
+		).exclude(header_img=None).distinct()
+	else:
+		ideas = Idea.objects.filter(
+			timestamp__gte = date.now() - datetime.timedelta(days=182),
+			timestamp__lte = date.now() + datetime.timedelta(days=1),
+			publish_status = 3,
+		).exclude(header_img=None).distinct()
 	ctx["random_ideas"] = random.sample(list(ideas), min(ideas.count(), 10))
 	template_file = "idea/explore.html"
 
