@@ -46,7 +46,13 @@
 		    	</form>
 		    	{% if masonary_ideas %}
 			    	<div class="search-result">
-			    		<p><b>Results for "{{ name }}"</b></p>
+			    		<p>
+			    			<b>
+			    				Results for "{{ name }}"
+			    				<br>
+			    				{{ entry_count }} entries
+			    			</b>
+			    		</p>
 			    		{% include 'idea/masonary.html' %}
 			    	</div>
 			    	<link rel="stylesheet" type="text/css" href="{% static 'idea/pagination/main.css' %}">

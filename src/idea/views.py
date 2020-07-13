@@ -290,6 +290,7 @@ def search_page(request,page_num,name):
 		ctx["page_num"] = page_num
 		ideas = Idea.objects.filter(name__icontains=name).order_by("-timestamp")
 		if ideas.count() > 0:
+			ctx["entry_count"] = ideas.count()
 			# Split data into pages
 			ideas = Paginator(ideas,IDEA_PER_PAGE)
 			ctx["max_page"] = ideas.num_pages
