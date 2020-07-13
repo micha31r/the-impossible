@@ -15,7 +15,7 @@
 			<div class="center">
 				{% if masonary_ideas %}
 					<div class="close-window-wrapper">
-						<button class="btn close-window" onclick="window.location.href='{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}'">
+						<button class="btn close-window" onclick="window.location.href='{% url 'idea_explore_page' week_num=date.week page_num=1 %}'">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 						</button>
 					</div>
@@ -25,7 +25,7 @@
 					<a href="{% url 'idea_search_page' page_num=1 name=None %}">
 						<b>Search Idea</b>
 						{% if not masonary_ideas %}
-			      			<a class="back-link" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}">
+			      			<a class="back-link" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}">
 								Cancel
 							</a>
 			      		{% endif %}
