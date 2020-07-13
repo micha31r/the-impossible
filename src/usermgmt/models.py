@@ -52,9 +52,12 @@ class Profile(models.Model):
 	tags = models.ManyToManyField("idea.Tag",blank=True,related_name="fav_tags")
 	blocked_user = models.ManyToManyField(User,blank=True,related_name="blocked")
 	
+	core_feed = models.ManyToManyField("support.CoreFeed",blank=True,related_name="core_feed")
+
 	# Social settings
 	like_setting = models.IntegerField(default=3,choices=LIKE_OPTION)
 	comment_setting = models.IntegerField(default=3,choices=COMMENT_OPTION)
+
 	# Allow others to see this user in Discover People Page
 	discover_setting = models.IntegerField(default=2,choices=DISCOVER_OPTION)
 

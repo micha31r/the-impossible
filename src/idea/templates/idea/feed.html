@@ -18,36 +18,51 @@
 					</button>
 				</div>
 				<h1 class="header"><b>Recent Activities</b></h1>
-				<div class="feed-container">
-					{% for idea in recent_ideas %}
-						<div class="feed-card">
-							<p class="content-type">Recent activity from people your followed</p>
-							<div class="text-wrapper">
-								<h4><a href="{% url 'idea_detail_page' pk=idea.pk %}"><b>{{ idea.name }}</b></a></h4>
-								<h6><b>{{ idea.short_description }}</b></h6>
-								<p>{{ idea.full_description }}</p>
+				{% if recent_ideas or core_feed %}
+					<div class="feed-container">
+						{% for idea in recent_ideas %}
+							<div class="feed-card">
+								<p class="content-type">Recent activity from people your followed</p>
+								<div class="text-wrapper">
+									<h4><a href="{% url 'idea_detail_page' pk=idea.pk %}"><b>{{ idea.name }}</b></a></h4>
+									<h6>{{ idea.short_description }}</h6>
+								</div>
+								{% if idea.header_img %}
+									<img src="{{ idea.header_img.file.url }}">
+								{% endif %}
+								<div class="text-wrapper">
+									<p>{{ idea.full_description|truncatechars:400 }}</p>
+									<br>
+									<p class="author">By {{ idea.author }}</p>
+									<p class="timestamp">Views {{ idea.viewed_user.all|length }}</p>
+								</div>
 							</div>
-							{% if idea.header_img %}
-								<img src="{{ idea.header_img.file.url }}">
-							{% endif %}
-							<div class="text-wrapper">
-								<p class="author">By {{ idea.author }}</p>
-								<p class="timestamp">Views {{ idea.viewed_user.all|length }}</p>
-							</div>
-						</div>
-					{% endfor %}
+						{% endfor %}
 
-					<!-- The Impossible messages -->
-					{% for feed in core_feed %}
-						<div class="feed-card">
-							<p class="content-type">The Impossible's message</p>
-							<div class="text-wrapper">
-								<h4><b>{{ feed.name }}</b></h4>
-								<p>{{ feed.description }}</p>
+						<!-- The Impossible messages -->
+						{% for feed in core_feed %}
+							<div class="feed-card">
+								<p class="content-type">The Impossible's message</p>
+								<div class="text-wrapper">
+									<h4><b>{{ feed.name }}</b></h4>
+									<p>{{ feed.description }}</p>
+								</div>
 							</div>
-						</div>
-					{% endfor %}
-				</div>
+						{% endfor %}
+					</div>
+				{% else %}
+					<p class="no-feed"><b>No feed avaliable</b></p>
+					<style type="text/css">
+						@media only screen and (max-width: 700px) {
+							.row {
+								height: 100vh !important;
+							}
+							.center {
+								width: max-content;
+							}
+						}
+					</style>
+				{% endif %}
 			</div>
 		</div>
 	</div>

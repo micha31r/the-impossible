@@ -113,10 +113,9 @@ def feed_page(request):
 		publish_status = 2
 	).distinct().order_by("-timestamp")[:10]
 	# Recent private messages by this site 
-	core_feed_private = CoreFeed.objects.filter(
+	core_feed_private = profile.core_feed.filter(
 		timestamp__gte = date.now() - datetime.timedelta(days=30),
 		timestamp__lte = date.now() + datetime.timedelta(days=1),
-		publish_status = 1
 	).distinct().order_by("-timestamp")[:10]
 	ctx["core_feed"] = core_feed_public | core_feed_private # Merge qs
 

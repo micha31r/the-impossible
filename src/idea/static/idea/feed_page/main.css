@@ -87,7 +87,7 @@ nav, footer {
 }
 
 .feed-card {
-	width: 550px;
+	width: 500px;
 	max-width: 100%;
 	border-style: solid;
 	border-radius: 15px;
@@ -114,6 +114,14 @@ nav, footer {
 	word-break: break-all;
 }
 
+.feed-card h6 {
+	color: var(--color-six);
+}
+
+.feed-card h4 {
+	color: var(--color-six);
+}
+
 .feed-card p {
 	margin: 0;
 	color: var(--color-six);
@@ -130,5 +138,9 @@ nav, footer {
 .author, .timestamp {
 	font-size: 0.8rem;
 	color: var(--color-four) !important;
+}
+
+.no-feed {
+	color: var(--color-six);
 }
 
