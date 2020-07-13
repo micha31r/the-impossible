@@ -112,7 +112,7 @@ form * {
 }
 
 input {
-	width: calc(100% - 85px);
+	width: calc(100% - 90px);
 	min-width: 150px;
 	border-color: var(--color-six);
 	border-width: 1px;
@@ -127,6 +127,7 @@ input {
 
 button[type="submit"] {
 	width: 80px;
+	float: right;
 	border-width: 1px;
 	border-radius: 100px;
 	padding: 10px;
