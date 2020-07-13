@@ -117,7 +117,7 @@ def feed_page(request):
 		timestamp__gte = date.now() - datetime.timedelta(days=30),
 		timestamp__lte = date.now() + datetime.timedelta(days=1),
 	).distinct().order_by("-timestamp")[:10]
-	ctx["core_feed"] = core_feed_public | core_feed_private # Merge qs
+	ctx["core_feed"] = (core_feed_public | core_feed_private).order_by("-timestamp") # Merge qs
 
 	template_file = "idea/feed.html"
 	return render(request,template_file,ctx)
