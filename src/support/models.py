@@ -33,8 +33,8 @@ class Question(models.Model):
 		return self.short_description[:100]
 
 class CoreFeed(models.Model):
-	name = models.CharField(max_length=100, blank=False)
-	description = models.TextField(max_length=1000, blank=True)
+	name = models.CharField(max_length=500, blank=False)
+	description = models.TextField(max_length=2000, blank=True)
 	publish_status = models.IntegerField(default=1,choices=PUBLISH_OPTION)
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True) 

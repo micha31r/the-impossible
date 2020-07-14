@@ -9,7 +9,7 @@ def create_corefeed(option,**kwargs):
 		"WELCOME":{
 			"name":"Welcome to The Impossible",
 			"description":f"""
-				@{kwargs["username"]} Thanks for joining us. Create, share and explore fresh ideas. 
+				<a href="{kwargs["absolute_url"]}">@{kwargs["username"]}</a> Thanks for joining us. Create, share and explore fresh ideas. 
 				As a social media platform, we want our service to be as transparent 
 				as possible, therefore, here is the information we store about you:
 				<ul>
