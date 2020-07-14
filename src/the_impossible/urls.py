@@ -34,6 +34,7 @@ urlpatterns = [
     path('idea/', include("idea.urls")),
     path('userupload/', include("userupload.urls")),
     path('newsletter/', include("newsletter.urls")),
+    path('support/', include("support.urls")),
 ]
 
 if settings.DEBUG:

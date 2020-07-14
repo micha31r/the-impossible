@@ -1,5 +1,7 @@
-from .models import CoreFeed
+from django.core.mail import send_mail
+from django.conf import settings
 
+from .models import CoreFeed
 
 # This creates private system feed
 def create_corefeed(option,**kwargs):
@@ -33,4 +35,22 @@ def create_corefeed(option,**kwargs):
 	obj.save()
 	return obj
 
+def email_question(username,link,question_id,email):
+    subject = 'Question to The Impossible'
+    message = f"""
+    	Hi @{username}, we have recieved your question.
+    	It can take a while for our team to read and answer your question, 
+    	therefore, please do not resend your question.
+    	If we still haven't contact you after 5 business days, you can write
+    	to us on the feedback page {link} and quote your question ID.
+    	Question ID: {question_id}
+
+    	Regards
+    	The Impossible @ 2020
+    """
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [email,]
+    try:
+    	send_mail(subject, message, email_from, recipient_list)
+    except: pass
 

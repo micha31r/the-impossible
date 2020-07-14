@@ -7,12 +7,12 @@ from .models import (
 
 class FeedbackAdmin(admin.ModelAdmin):
     # Display custom fields in Django admin
-    list_display = ('author','short_description','id','timestamp')
+    list_display = ('author','__str__','viewed','id','timestamp')
     readonly_fields = ["timestamp"]
 
 class QuestionAdmin(admin.ModelAdmin):
     # Display custom fields in Django admin
-    list_display = ('author','short_description','id','timestamp')
+    list_display = ('author','short_description','solved','id','timestamp')
     readonly_fields = ["timestamp"]
 
 class CoreFeedAdmin(admin.ModelAdmin):
