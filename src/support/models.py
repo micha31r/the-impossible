@@ -34,7 +34,7 @@ class Question(models.Model):
 
 class CoreFeed(models.Model):
 	name = models.CharField(max_length=100, blank=False)
-	description = models.TextField(max_length=500, blank=True)
+	description = models.TextField(max_length=1000, blank=True)
 	publish_status = models.IntegerField(default=1,choices=PUBLISH_OPTION)
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True) 

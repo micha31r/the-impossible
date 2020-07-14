@@ -15,7 +15,7 @@ from .forms import (
 
 from .models import Profile, Notification
 
-from .utils import welcome_email
+from .utils import email_welcome
 
 from userupload.models import File
 
@@ -26,6 +26,8 @@ from idea.utils import escape_html
 from the_impossible.utils import *
 
 from the_impossible.ERROR import *
+
+from support.utils import create_corefeed
 
 IDEA_PER_PAGE = 20
 NOTIFICATION_PER_PAGE = 50
@@ -73,13 +75,17 @@ def signup_page(request):
 							profile_img=profile_img or None
 						)
 
+						# Create Notification
 						message = f"@{username}, welcome to The Impossible. If you have any questions, please contact us"
 						msg = Notification.objects.create(message=message,message_status=1)
 						msg.save()
 						profile.notification.add(msg)
 
+						# Create feed
+						profile.core_feed.add(create_corefeed("WELCOME",username=username))
+
 						# Send user an welcome email
-						welcome_email(user.username,user.email)
+						email_welcome(user.username,user.email)
 
 						# Log user in
 						login(request, user)

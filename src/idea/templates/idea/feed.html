@@ -44,8 +44,8 @@
 							<div class="feed-card">
 								<p class="content-type">The Impossible's message</p>
 								<div class="text-wrapper">
-									<h4><b>{{ feed.name }}</b></h4>
-									<p>{{ feed.description }}</p>
+									<h4><b>{{ feed.name|safe }}</b></h4>
+									<p>{{ feed.description|safe }}</p>
 								</div>
 							</div>
 						{% endfor %}

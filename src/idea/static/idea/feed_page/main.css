@@ -127,6 +127,18 @@ nav, footer {
 	color: var(--color-six);
 }
 
+.feed-card ul {
+	color: var(--color-five);
+	/* Default ul style */
+	display: block; 
+	list-style-type: disc; 
+	margin-top: 1em; 
+	margin-bottom: 1em; 
+	margin-left: 0; 
+	margin-right: 0; 
+	padding-left: 40px;
+}
+
 .feed-card a {
 	color: var(--color-brand);
 }

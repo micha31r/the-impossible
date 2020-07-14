@@ -1,7 +1,7 @@
 from django.core.mail import send_mail
 from django.conf import settings
 
-def welcome_email(username,email):
+def email_welcome(username,email):
     subject = 'Joined The Impossible'
     message = f"""
     	Hi @{username}, thanks for joining The Impossible. \n
