@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
 
 from .models import Feedback, Question
 
@@ -10,13 +9,11 @@ from .forms import (
 	QuestionForm,
 )
 
-from .utils import email_question
+from .utils import support_email
 
 from the_impossible.utils import *
 
 from usermgmt.models import Profile
-
-from templated_email import send_templated_mail
 
 @login_required
 def feedback_page(request):
@@ -49,17 +46,12 @@ def question_page(request):
 			description=form.cleaned_data.get("description")
 		)
 		obj.save()
-
 		ctx["question_id"] = obj.id
 
-		send_templated_mail(
-	        template_name='question',
-	        from_email=settings.EMAIL_HOST_USER,
-	        recipient_list=[request.user.email],
-	        context={
-	            'username':request.user.username,
-	            'question_id':obj.id,
-	        },
+		support_email(
+			email=request.user.email,
+			username=request.user.username,
+			question_id=obj.id
 		)
 
 	template_file = "support/question.html"

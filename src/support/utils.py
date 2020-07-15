@@ -1,5 +1,9 @@
 from django.core.mail import send_mail
 from django.conf import settings
+from background_task import background
+from django.contrib.auth.models import User
+
+from templated_email import send_templated_mail
 
 from .models import CoreFeed
 
@@ -11,19 +15,21 @@ def create_corefeed(option,**kwargs):
 		"WELCOME":{
 			"name":"Welcome to The Impossible",
 			"description":f"""
-				<a href="{kwargs["absolute_url"]}">@{kwargs["username"]}</a> Thanks for joining us. Create, share and explore fresh ideas. 
+				<a href="{kwargs["absolute_url"]}">@{kwargs["username"]}</a> 
+				Thanks for joining us. Create, share and explore fresh ideas. 
 				As a social media platform, we want our service to be as transparent 
 				as possible, therefore, here is the information we store about you:
 				<ul>
 					<li>Full Name</li>
-					<li>Email</li>
+					<li>Email Address</li>
 					<li>Website</li>
-					<li>Profilee Image</li>
+					<li>Profile Image</li>
 					<li>Location</li>
 					<li>Followers and Following</li>
 				</ul>
 				Lastly, if you wish to terminate your account, 
-				please email \"hello@theimpossible.world\". (All data will be deleted)
+				please email <a href="mailto: hello@theimpossible.world">\"hello@theimpossible.world\"</a>. 
+				(All data will be deleted)
 
 			"""
 		}
@@ -35,22 +41,14 @@ def create_corefeed(option,**kwargs):
 	obj.save()
 	return obj
 
-def email_question(username,link,question_id,email):
-    subject = 'Question to The Impossible'
-    message = f"""
-    	Hi @{username}, we have recieved your question.
-    	It can take a while for our team to read and answer your question, 
-    	therefore, please do not resend your question.
-    	If we still haven't contact you after 5 business days, you can write
-    	to us on the feedback page {link} and quote your question ID.
-    	Question ID: {question_id}
-
-    	Regards
-    	The Impossible @ 2020
-    """
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [email,]
-    try:
-    	send_mail(subject, message, email_from, recipient_list)
-    except: pass
-
+@background(schedule=20)
+def support_email(email,username,question_id):
+    send_templated_mail(
+        template_name='question',
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[email],
+        context={
+            'username':username,
+            'question_id':question_id,
+        },
+	)

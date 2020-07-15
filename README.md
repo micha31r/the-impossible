@@ -39,13 +39,19 @@ source bin/activate && cd src
 # (On Windows)
 Scripts\activate
 cd src
-# Create a file under the_impossible folder called secret_key.txt
-# Then add ur own secret key, (Generate one from https://djecrety.ir/)
-...
+""" 
+Create a file under the_impossible folder called secret_key.txt
+Then add ur own secret key, (Generate one from https://djecrety.ir/)
+
+Now, because thsi site sends email to users, you need to configure your own email address in settings.py and create a file under the_impossible folder called email_password.txt which contains your email password
+
+"""
 # Create database and create superuser
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
 # Runserver
 python manage.py runserver
+# Start another terminal session to run periodic tasks
+python manage.py process_tasks
 ```
