@@ -11,6 +11,7 @@ __pycache__/
 secret_key.txt
 email_password.txt
 media/ 
+staticfiles/
 
 # Virtual environment
 bin/

@@ -14,6 +14,7 @@ footer {
 
 footer table {
 	margin: 0 !important;
+	width: 100% !important;
 }
 
 footer table * {

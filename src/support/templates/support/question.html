@@ -29,7 +29,9 @@
 					{{ form.short_description }}
 					{{ form.description }}
 					
-					<button class="btn btn-yellow bold" type="submit">Ask question</button>
+					{% if not question_id %}
+						<button class="btn btn-yellow bold" type="submit">Ask question</button>
+					{% endif %}
 				</form>
 			</div>
 		</div>
