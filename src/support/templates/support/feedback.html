@@ -28,7 +28,9 @@
 
 					{{ form.description }}
 					
-					<button class="btn btn-yellow bold" type="submit">Give Feedback</button>
+					{% if not success %}
+						<button class="btn btn-yellow bold" type="submit">Give Feedback</button>
+					{% endif %}
 				</form>
 			</div>
 		</div>
