@@ -17,7 +17,9 @@ class TagAdmin(admin.ModelAdmin):
 class IdeaAdmin(admin.ModelAdmin):
     # Display custom fields in Django admin
     list_display = ('name','author','view_count','like_count','comment_count','id','last_edit','timestamp')
-    
+        
+    search_fields = ('name','author__user__username')
+
     def view_count(self,obj):
         return obj.viewed_user.all().count()
 
@@ -32,7 +34,7 @@ class IdeaAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     # Display custom fields in Django admin
     list_display = ('__str__','author','id','last_edit','timestamp')
-
+    search_fields = ('author__user__username',)
     readonly_fields = ["timestamp"]
 
 admin.site.register(Tag,TagAdmin)

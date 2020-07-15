@@ -46,3 +46,9 @@ class File(models.Model):
 	timestamp = models.DateTimeField(auto_now_add=True) 
 	last_edit = models.DateTimeField(auto_now=True)
 
+	def __str__(self):
+		name = self.file.name.split("/")[-1].split(".")[0]
+		if len(name) > 20:
+			name = name[:20] + "..."
+		return name
+

@@ -7,11 +7,13 @@ from .models import (
 class NotificationAdmin(admin.ModelAdmin):
     # Display custom fields in Django admin
     list_display = ('__str__','message_status','dismissed','id','timestamp')
+    search_fields = ('message_status','dismissed')
     readonly_fields = ["timestamp"]
 
 class ProfileAdmin(admin.ModelAdmin):
     # Display custom fields in Django admin
     list_display = ('user','timestamp','daily_limit','daily_limit_timestamp')
+    search_fields = ('user__username',)
     readonly_fields = ["timestamp"]
 
 admin.site.register(Notification,NotificationAdmin)

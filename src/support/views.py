@@ -9,7 +9,7 @@ from .forms import (
 	QuestionForm,
 )
 
-from .utils import support_email
+from .tasks import support_email
 
 from the_impossible.utils import *
 
