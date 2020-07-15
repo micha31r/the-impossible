@@ -46,7 +46,7 @@ class Idea(models.Model):
 
 	# Order data by name
 	class Meta:
-		ordering = ['name']
+		ordering = ['-id']
 
 	# Settings
 	author = models.ForeignKey(

@@ -1,16 +1,9 @@
 from django.shortcuts import render
-from django.core.validators import validate_email
-from django.core.exceptions import ValidationError
 from django.http import JsonResponse
 
 from .models import Subscriber
 
-def email_is_valid(email):
-    try:
-        validate_email(email)
-        return True
-    except ValidationError:
-        return False
+from .utils import email_is_valid
 
 def join_view(request):
 	data = {}
