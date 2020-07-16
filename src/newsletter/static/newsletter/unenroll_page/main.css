@@ -1,0 +1,27 @@
+body {
+	background-color: #fff;
+}
+
+.wrapper {
+	padding: 40px;
+	height: 100vh;
+	min-height: 400px;
+}
+
+.row {
+	overflow: scroll;
+}
+
+.center {
+	width: 400px;
+	max-width: 100%;
+	margin: auto;
+} 
+
+.center * {
+	word-break: break-all;
+} 
+
+a {
+	color: rgb(230,171,23);
+}

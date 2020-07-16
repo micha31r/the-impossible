@@ -22,6 +22,15 @@ def join_view(request):
 		data['failed'] = True
 	return JsonResponse(data)
 
+def unenroll_page(request,slug):
+	ctx={}
+	obj = Subscriber.objects.filter(slug=slug).first()
+	if obj:
+		ctx["email"] = obj.email
+		obj.delete()
+	template_name = "newsletter/unenroll.html"
+	return render(request,template_name,ctx)
+
 
 # THIS IS FOR TESTING ONLY !!
 import datetime, random
