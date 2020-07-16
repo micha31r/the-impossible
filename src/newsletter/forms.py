@@ -3,12 +3,18 @@ from django import forms
 
 from .models import Subscriber
 
-class SettingForm(forms.ModelForm):
+class NewsletterForm(forms.ModelForm):
     class Meta:
         model = Subscriber
         fields = [
+        	"email",
             "frequency",
         ]
-        labels={
-            "frequency":"Email Frequency",
+        labels = {
+            "email":"Email",
+            "frequency":"Newsletter Frequency",
+        }
+       	widgets = {
+            "email": forms.TextInput(attrs={'placeholder': 'Email address'}),
+            "frequency":forms.RadioSelect(),
         }

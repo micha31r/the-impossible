@@ -10,7 +10,7 @@ FREQUENCY_OPTION = (
 class Subscriber(models.Model):
 
 	email = models.EmailField(max_length=250)
-	frequency = models.IntegerField(default=1,choices=FREQUENCY_OPTION)
+	frequency = models.IntegerField(default=2,choices=FREQUENCY_OPTION)
 
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True)

@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from django.http import Http404, JsonResponse
 from django import forms
 
+from .models import Profile, Notification
+
 from .forms import (
 	ProfileForm,
 	PasswordForm,
@@ -16,7 +18,9 @@ from .forms import (
 	PrivacyForm,
 )
 
-from .models import Profile, Notification
+from newsletter.models import Subscriber
+
+from newsletter.forms import NewsletterForm
 
 from userupload.models import File
 
@@ -194,11 +198,27 @@ def account_setting_privacy_page(request):
 	return render(request,template_file,ctx)
 
 @login_required
-def account_setting_danger_page(request):
+def account_setting_newsletter_page(request):
 	ctx = {}
 	ctx["date"] = Date()
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 
+	if not profile.subscriber:
+		obj = Subscriber.objects.create(email=request.user.email)
+		obj.save()
+		profile.subscriber = obj
+		profile.save()
+
+	ctx["form"] = form = NewsletterForm(request.POST or None)
+	form.fields["email"].initial = profile.subscriber.email
+	form.fields["frequency"].initial = profile.subscriber.frequency
+
+	if form.is_valid():
+		profile.subscriber.email = form.cleaned_data.get("email")
+		profile.subscriber.frequency = form.cleaned_data.get("frequency")
+		profile.subscriber.save()
+
+	ctx["form_template_page"]="usermgmt/account_setting_newsletter.html"
 	template_file = "usermgmt/account_setting.html"
 	return render(request,template_file,ctx)
 

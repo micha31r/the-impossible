@@ -18,7 +18,7 @@ from .setting_views import (
 	account_setting_explore_content_page,
 	account_setting_notification_page,
 	account_setting_privacy_page,
-	account_setting_danger_page,
+	account_setting_newsletter_page,
 )
 
 urlpatterns = [
@@ -39,5 +39,5 @@ urlpatterns = [
 	path('account/settings/explore-content', account_setting_explore_content_page, name="account_setting_explore_content_page"),
 	path('account/settings/notification', account_setting_notification_page, name="account_setting_notification_page"),
 	path('account/settings/privacy', account_setting_privacy_page, name="account_setting_privacy_page"),
-	path('account/settings/danger', account_setting_danger_page, name="account_setting_danger_page"),
+	path('account/settings/newsletter', account_setting_newsletter_page, name="account_setting_newsletter_page"),
 ]
