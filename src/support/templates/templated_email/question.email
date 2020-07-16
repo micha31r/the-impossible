@@ -1,7 +1,7 @@
 {% load static %}
 {% block html %}
 	{% load inlinecss %}
-	{% inlinecss "support/templated_email/question.css" %}
+	{% inlinecss "support/templated_email/main.css" %}
 		<head>
 			<!-- Required meta tags -->
 			<meta charset="utf-8">

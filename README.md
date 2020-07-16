@@ -46,6 +46,8 @@ Then add ur own secret key, (Generate one from https://djecrety.ir/)
 Now, because thsi site sends email to users, you need to configure your own email address in settings.py and create a file under the_impossible folder called email_password.txt which contains your email password
 
 """
+# Create a folder under src staticfiles, then run
+python manage.py collectstatic
 # Create database and create superuser
 python manage.py makemigrations
 python manage.py migrate

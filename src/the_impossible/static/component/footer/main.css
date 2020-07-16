@@ -56,8 +56,7 @@ footer .contact * {
 	fill: var(--color-six);
 }
 
-footer .brand-name span {
-	margin-left: 0.5rem;
+footer .brand-name {
 	font-family: Arciform, sans-serif;
 	font-size: 1.2rem !important;
 }

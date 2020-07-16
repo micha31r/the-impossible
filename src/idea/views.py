@@ -44,7 +44,7 @@ def explore_page(request,week_num,page_num):
 	fav_tags = None # For discover section idea filter
 	if request.user.is_authenticated:
 		# Check for unread notifications
-		profile = get_object_or_404(Profile, user=request.user)
+		ctx["profile"] = profile = get_object_or_404(Profile, user=request.user)
 		# Set favourite tags
 		if profile.tags.all():
 			fav_tags = profile.tags.all()
@@ -57,8 +57,6 @@ def explore_page(request,week_num,page_num):
 	# Check if previous and next week numbers are valid
 	if timestamp_from > MINIMUM_DATE: ctx["previous_week_num"] = week_num - 1
 	if week_num < current_week(): ctx["next_week_num"] = week_num + 1
-	if request.user.is_authenticated: 
-		ctx["profile"] = Profile.objects.filter(user=request.user).first()
 
 	# Filter by date
 	# https://stackoverflow.com/questions/4923612/filter-by-timestamp-in-query
