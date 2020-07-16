@@ -48,15 +48,27 @@ body {
 
 .wrapper {
 	padding: 40px;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+@media only screen and (max-width: 500px) {
+	.wrapper {
+		padding: 0 !important;
+	}
 }
 
 .wrapper * {
 	font-family: "Arial", sans-serif;
 }
 
-.content-container {
+.header-wrapper {
+	margin-bottom: 80px;
+}
+
+.content-container, .idea-container {
 	width: 600px;
-	max-width: calc(100% - 80px);
+	max-width: calc(100% - 80px) !important;
 	margin: auto;
 	padding: 40px;
 	background-color: #f7f7f7;
@@ -69,25 +81,115 @@ body {
 .header {
 	font-size: 3rem;
 	margin: 0;
+	margin-bottom: 5px;
 	word-break: break-all;
 }
 
-.question_id {
+.week-num {
 	margin-top: 0;
-	margin-bottom: 40px;
+	margin-bottom: 0;
 	font-weight: lighter;
-}
-
-.content-container p.main-text {
-	margin-bottom: 40px;
 }
 
 .noreply-text {
 	color: #aaa;
+	text-align: center;
 }
 
 .yellow {
 	color: rgb(199,149,2);
+}
+
+/* Ideas related */
+.idea-container {
+	background-color: transparent;
+}
+
+.card {
+	display: inline-block;
+	width: 100%;
+	max-width: 100%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #eee;
+	overflow: hidden;
+	vertical-align: top;
+	margin-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+	.card {
+		display: block !important;
+		width: 100% !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+}
+
+.card-img-wrapper {
+	overflow: hidden;
+}
+
+.card-img-wrapper img {
+	width: 100%;
+	filter: grayscale(100%);
+}
+
+.card-body {
+	width: 100%;
+	padding: 20px;
+}
+
+.card-body * {
+	width: calc(100% - 40px);
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 1rem;
+}
+
+.card-title {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.card-title a {
+	word-break: break-all;
+	color: #000;
+	text-decoration: none;
+	font-size: 1.3rem;
+	font-family: system-ui;
+	font-weight: 500 !important;
+	word-break: break-all;
+}
+
+.card-subtitle {
+	color: #bbb;
+	margin-bottom: 10px;
+}
+
+.card-text {
+	word-break: break-all;
+	margin-bottom: 10px;
+	line-height: 24px;
+	font-family: "Roboto", sans-serif;
+}
+
+.author, .views {
+	font-size: 0.8rem;
+	color: #aaa;
+	margin: 0;
+	width: 100%;
+}
+
+/* Links */
+.link-container {
+	background-color: #000;
+}
+
+.link-container h3 a {
+	color: #FECC4C;
+	text-decoration: none;
 }
 
 /* Footer related */
@@ -101,20 +203,20 @@ footer {
 
 footer table {
 	margin: 0 !important;
-	width: 100% !important;
+	width: 100%;
 }
 
 footer table * {
-	border: 0px !important;
+	border: 0px;
 }
 
 footer td {
-	padding: 0px !important;
+	padding: 0px;
 }
 
 @media only screen and (max-width: 320px) {
 	footer td {
-		text-align: center !important;
+		text-align: center;
 	}
 }
 
@@ -124,9 +226,7 @@ footer p {
 }
 
 footer button {
-	font-family: Arciform, sans-serif;
-	font-size: 1.3rem;
-	outline: none !important;
+	outline: none;
 	border: none;
 	color: var(--color-six);
 	border-width: 1px;
@@ -138,10 +238,8 @@ footer button {
 	margin: 0px;
 } 
 
-footer .brand-name span {
-	margin-left: 0.5rem;
-	font-family: Arciform, sans-serif;
-	font-size: 1.2rem !important;
+footer .brand-name {
+	font-family: Arial, sans-serif;
 }
 
 footer #contact-td {

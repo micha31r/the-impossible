@@ -65,7 +65,7 @@ def explore_email():
 		send_templated_mail(
 			template_name='explore',
 			from_email=settings.EMAIL_HOST_USER,
-			recipient_list=["michaelren0129@gmail.com"],
+			recipient_list=[sub.email],
 			context={
 				'date':date,
 				'from_date':timestamp_from,
@@ -77,17 +77,4 @@ def explore_email():
 		sub.last_sent = today
 		sub.save()
 
-	send_templated_mail(
-		template_name='explore',
-		from_email=settings.EMAIL_HOST_USER,
-		recipient_list=["michaelren0129@gmail.com"],
-		context={
-			'date':date,
-			'from_date':timestamp_from,
-		    'to_date':timestamp_to,
-		    'weekly_ideas':weekly_ideas,
-		    'random_ideas':random_ideas,
-		},
-	)
-
-explore_email(repeat=10, repeat_until=None)
+explore_email(repeat=Task.DAILY, repeat_until=None)

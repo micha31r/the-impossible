@@ -89,5 +89,6 @@ def email_page(request):
 	    'random_ideas':random_ideas,
 	}
 	template_name = "templated_email/explore.email"
+	# template_name = "templated_email/explore_awesome.email"
 	return render(request,template_name,context)
 

@@ -27,22 +27,30 @@
 			<div class="wrapper">
 				<!-- Changing these inline css to external css will break it -->
 				<!-- Inline css really isn't my thing ... -->
-				<div class="header-wrapper" style="width: max-content; max-width: 100%; margin: auto;">
-					<div class="content-container" style="margin:0;">
+				<div class="header-wrapper" style="margin-left: calc((100% - 600px - 80px) / 2);">
+					<div class="content-container" style="transform-origin: top left; transform: rotate(90deg) translate(60px,-680px); width: max-content; position: absolute;">
 						<p>The Impossible's</p>
 						<h1 class="header">Suggestions</h1>
 						<h3 class="week-num"><b>From week {{ date.week }}</b></h3>
 					</div>
-					<img src="{% static 'newsletter/templated_email/tree.jpg' %}" style="width: 680px; max-width: 100%; margin-bottom: 40px;">
+					<img src="{% static 'newsletter/templated_email/tree.jpg' %}" style="width: 500px; max-width: 100%;">
 				</div>
 				<style type="text/css">
 					@media only screen and (max-width: 720px) {
 						.header-wrapper {
 							margin: 0 !important;
 						}
+						.header-wrapper .content-container {
+							/* 80px is from .wrapper padding, the other 80px is from itself */
+							margin-top: 40px !important;
+							transform: none !important;
+							background-color: rgba(0,0,0,0.6) !important;
+						}
+						.header-wrapper .content-container * {
+							color: #fff !important;
+						}
 						.header-wrapper img {
 							width: 100% !important;
-							margin: 0 !important;
 						}
 					}
 					@media only screen and (max-width: 380px) {
