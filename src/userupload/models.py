@@ -33,7 +33,7 @@ def user_directory_path(instance,filename):
 	date = Date()
 	extension = filename.split(".")[-1] 
 	slug = slug_generator(instance.user.id,size=40)
-	return f'uploaded/userid_{instance.user.id}/{extension}/{date.year()}/{date.month()}/{date.day()}/{slug+filename}'
+	return f'uploaded/userid_{instance.user.id}/{extension}/{date.year()}/{date.month()}/{date.day()}/{filename+slug}'
 
 def validate_file_size(value):
     size = value.size
