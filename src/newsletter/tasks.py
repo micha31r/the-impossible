@@ -72,6 +72,7 @@ def explore_email():
 			    'to_date':timestamp_to,
 			    'weekly_ideas':weekly_ideas,
 			    'random_ideas':random_ideas,
+			    'subscriber_slug':sub.slug,
 			},
 		)
 		sub.last_sent = today

@@ -96,6 +96,11 @@ body {
 	text-align: center;
 }
 
+.noreply-text a {
+	color: #aaa;
+	margin-left: 20px;
+}
+
 .yellow {
 	color: rgb(199,149,2);
 }

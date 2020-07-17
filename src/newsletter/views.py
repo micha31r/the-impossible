@@ -96,6 +96,7 @@ def email_page(request):
 	    'to_date':timestamp_to,
 	    'weekly_ideas':weekly_ideas,
 	    'random_ideas':random_ideas,
+	    'subscriber_slug':"EGYJMDVEGHSJKM", # example slug
 	}
 	template_name = "templated_email/explore.email"
 	# template_name = "templated_email/explore_awesome.email"
