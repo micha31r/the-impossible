@@ -16,7 +16,7 @@ body {
 }
 
 .center {
-	width: 400px;
+	width: max-content;
 	max-width: 100%;
 	margin: auto;
 } 
