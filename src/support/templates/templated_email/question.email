@@ -1,5 +1,5 @@
 <!-- Do this in production -->
-<!-- For everylink add http://theimpossible.world before url -->
+<!-- For everylink add http://theimpossible.world before url and static -->
 
 {% load static %}
 {% block html %}
@@ -14,7 +14,7 @@
 			<table class="nav">
 				<tr>
 					<td class="logo-td">
-						<img src="{% static 'component/base/logo_white.svg' %}">
+						<img src="http://theimpossible.world{% static 'component/base/logo_white.svg' %}">
 					</td>
 					<td>
 						<p class="text">
@@ -53,8 +53,8 @@
 						</td>
 						<td id="contact-td">
 							<div class="contact">
-								<button onclick="window.location.href='https://www.instagram.com/micha31r/'"><img src="{% static 'support/templated_email/twitter.svg' %}"></button>
-								<button onclick="window.location.href='https://twitter.com/micha31_r'"><img src="{% static 'support/templated_email/instagram.svg' %}"></button>
+								<button onclick="window.location.href='https://www.instagram.com/micha31r/'"><img src="http://theimpossible.world{% static 'support/templated_email/twitter.svg' %}"></button>
+								<button onclick="window.location.href='https://twitter.com/micha31_r'"><img src="http://theimpossible.world{% static 'support/templated_email/instagram.svg' %}"></button>
 							</div>
 						</td>
 					</tr>
