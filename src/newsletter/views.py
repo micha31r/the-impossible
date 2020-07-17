@@ -67,7 +67,8 @@ def email_page(request):
 		frequency = 3
 	).exclude(frequency=1).distinct()[:email_sum] 
 
-	subscribers = weekly_subs | monthly_subs
+	# Convert qs to list to prevent MySQL unsupported actions
+	subscribers = list(weekly_subs) + list(monthly_subs)
 
 	# Explore Section
 	# Note: current date is not normal date format, its year/week/1
