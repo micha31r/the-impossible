@@ -30,6 +30,8 @@ from the_impossible.ERROR import *
 
 from support.utils import create_corefeed
 
+from newsletter.models import Subscriber
+
 IDEA_PER_PAGE = 20
 NOTIFICATION_PER_PAGE = 50
 USER_PER_PAGE = 20
@@ -88,6 +90,12 @@ def signup_page(request):
 
 						# Send user an welcome email
 						email_welcome(user.username,user.email)
+
+						# Add user to subscriber
+						sub = Subscriber.objects.create(email=user.email)
+						sub.save()
+						profile.subscriber = sub
+						profile.save()
 
 						# Log user in
 						login(request, user)
