@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='subscriber',
             name='last_sent',
-            field=models.DateTimeField(default=datetime.datetime(2020, 7, 17, 2, 3, 3, 359405)),
+            field=models.DateTimeField(auto_now=True),
         ),
     ]

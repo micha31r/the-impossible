@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='subscriber',
             name='last_sent',
-            field=models.TimeField(),
+            field=models.DateTimeField(auto_now=True),
         ),
     ]
