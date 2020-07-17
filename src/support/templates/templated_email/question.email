@@ -1,3 +1,6 @@
+<!-- Do this in production -->
+<!-- For everylink add http://theimpossible.world before url -->
+
 {% load static %}
 {% block html %}
 	{% load inlinecss %}
@@ -15,7 +18,7 @@
 					</td>
 					<td>
 						<p class="text">
-							<a class="my-account" href="{% url 'login_page' %}"><b>GO TO MY ACCOUNT</b></a>
+							<a class="my-account" href="http://theimpossible.world{% url 'login_page' %}"><b>GO TO MY ACCOUNT</b></a>
 						</p>
 					</td>
 				</tr>
@@ -27,8 +30,8 @@
 					<h1 class="header">SUPPORT</h1>
 					<h3 class="question_id"><b>You question number is: {{ question_id }}</b></h3>
 					<p class="main-text">
-						Hi <a class="yellow" href="{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}"><b>@{{ username }}</b></a>, We have recieved your query. <br>
-						It can take a while for our team to read and answer your question, therefore, please <b>do not</b> resend your question. If we haven't contact you after 5 business days, you can write to us on our <a class="yellow" href="{% url 'support_feedback_page' %}"><b>feedback page</b></a> and quote your question ID. <br>
+						Hi <a class="yellow" href="http://theimpossible.world{% url 'account_dashboard_page' username=username content_filter='my' page_num=1 %}"><b>@{{ username }}</b></a>, We have recieved your query. <br>
+						It can take a while for our team to read and answer your question, therefore, please <b>do not</b> resend your question. If we haven't contact you after 5 business days, you can write to us on our <a class="yellow" href="http://theimpossible.world{% url 'support_feedback_page' %}"><b>feedback page</b></a> and quote your question ID. <br>
 				    	<br>
 				    	Regards <br>
 				    	The Impossible Team
@@ -46,7 +49,7 @@
 				<table class="table">
 					<tr id="footer-append-origin1">
 						<td>
-							<button class="brand-name" onclick="window.location.href='{% url 'home_page' %}'"><span>The Impossible @ 2020</span></button>
+							<button class="brand-name" onclick="window.location.href='http://theimpossible.world{% url 'home_page' %}'"><span>The Impossible @ 2020</span></button>
 						</td>
 						<td id="contact-td">
 							<div class="contact">
