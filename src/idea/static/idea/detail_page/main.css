@@ -233,6 +233,7 @@ button[type="submit"] {
 
 .no-header-image {
 	margin: 0;
+	margin-bottom: 20px;
 	min-height: 200px;
 	box-shadow: none;
 }
