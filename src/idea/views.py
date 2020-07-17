@@ -235,6 +235,7 @@ def edit_page(request,pk):
 		if form.is_valid():
 			data = form.cleaned_data
 			if data.get("delete") == 2:
+				idea.comments.all().delete()
 				idea.delete()
 				return redirect("idea_explore_page",date.week(),1)
 
