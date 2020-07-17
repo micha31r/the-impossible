@@ -28,7 +28,8 @@ DISCOVER_OPTION = (
 )
 
 class Notification(models.Model):
-	message = models.CharField(max_length=200)
+	# If this is too short then it may result in HTML error
+	message = models.CharField(max_length=1000)
 	message_status = models.IntegerField(default=1,choices=PUBLISH_OPTION)
 	dismissed = models.BooleanField(default=False)
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
