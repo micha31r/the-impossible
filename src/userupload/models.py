@@ -1,3 +1,4 @@
+import string, random
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.conf import settings
@@ -24,10 +25,15 @@ SUPPORTED_FILE_TYPE = {
 	]
 }
 
+def slug_generator(seed,size=20, chars=string.ascii_uppercase + string.digits):
+	random.seed(seed)
+	return ''.join(random.choice(chars) for _ in range(size))
+
 def user_directory_path(instance,filename):
 	date = Date()
 	extension = filename.split(".")[-1] 
-	return f'uploaded/userid_{instance.user.id}/{extension}/{date.year()}/{date.month()}/{date.day()}/{filename}'
+	slug = slug_generator(instance.user.id,size=40)
+	return f'uploaded/userid_{instance.user.id}/{extension}/{date.year()}/{date.month()}/{date.day()}/{slug+filename}'
 
 def validate_file_size(value):
     size = value.size
