@@ -192,7 +192,7 @@ def create_view(request):
 	
 	if profile.daily_limit <= 0:
 		if profile.daily_limit_timestamp.strftime("%Y-%m-%d") == str(date.now()): 
-			return redirect("home_page")
+			return redirect("idea_limit_page")
 		else:
 			profile.daily_limit = 5
 			profile.daily_limit_timestamp = date.now()
@@ -208,6 +208,12 @@ def create_view(request):
 	profile.daily_limit -= 1
 	profile.save()
 	return redirect("idea_edit_page",pk=obj.id)
+
+# Daily limit reached
+def limit_page(request):
+	ctx = {}
+	template_file = "idea/limit.html"
+	return render(request,template_file,ctx)
 
 @login_required
 def edit_page(request,pk):

@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 from userupload.models import File
 
@@ -65,7 +66,7 @@ class Profile(models.Model):
 
     # Only allow each user to post 5 ideas per day
 	daily_limit = models.IntegerField(default=5)
-	daily_limit_timestamp = models.DateTimeField(auto_now=True)
+	daily_limit_timestamp = models.DateTimeField(default=timezone.now)
 
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
 
