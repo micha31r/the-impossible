@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.conf import settings
 
 from .utils import *
 
@@ -16,3 +18,7 @@ def access_error_page(request):
 
 def handler404(request, exception):
     return render(request, '404.html', status=404)
+
+def robots_txt(request):
+	text = open(settings.BASE_DIR+'/the_impossible/templates/robots.txt', 'r')
+	return HttpResponse(text, content_type='text/plain')

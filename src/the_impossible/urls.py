@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 from .views import (
 	home_page,
+    robots_txt,
     access_error_page,
 )
 
@@ -29,6 +30,7 @@ handler404 = "the_impossible.views.handler404"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name="home_page"),
+    path('robots.txt', robots_txt, name="robots_txt"),
     path('noaccess', access_error_page, name="access_error_page"),
     path('user/', include("usermgmt.urls")),
     path('idea/', include("idea.urls")),
