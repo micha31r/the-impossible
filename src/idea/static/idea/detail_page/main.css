@@ -47,6 +47,31 @@ textarea:focus {
 	background-color: var(--color-third);
 }
 
+.idea-tag-container {
+	margin-top: 50px;
+	max-width: 100%;
+}
+
+.idea-tag {
+	display: inline-block;
+	margin-bottom: 5px;
+	background-color: var(--color-third);
+	padding: 10px;
+	border-radius: 100px;
+}
+
+.idea-tag-yellow {
+	background-color: var(--color-brand);
+}
+
+.idea-tag p {
+	margin: 0;
+	color: rgba(0,0,0,0.3);
+	font-size: 0.8rem;
+	line-height: 0.8rem;
+	font-weight: bold;
+}
+
 /* Author profile image */
 
 .author-profile-wrapper {

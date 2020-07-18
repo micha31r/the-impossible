@@ -11,7 +11,6 @@ from django import forms
 from .forms import (
 	LoginForm,
 	SignUpForm,
-	SearchForm,
 )
 
 from .models import Profile, Notification
@@ -303,10 +302,15 @@ def account_people_page(request,username,follower_page_num,following_page_num):
 	template_file = "usermgmt/account_people.html"
 	return render(request,template_file,ctx)
 
+RESULT_PER_PAGE = 20
+
 @login_required
-def account_meet_page(request):
+def account_meet_page(request,page_num,username):
 	ctx = {}
 	ctx["date"] = date = Date()
+	ctx["page_num"] = page_num
+	if username == "None":
+		username = request.GET.get('username',None)
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 
 	today = date.now()
@@ -342,20 +346,27 @@ def account_meet_page(request):
 		close_profiles.remove(profile)
 	ctx["close_profiles"] = close_profiles
 
-	# Search form
-	ctx["form"] = form = SearchForm(request.POST or None)
-	if form.is_valid():
-		username = form.cleaned_data.get("username")
-		user = User.objects.filter(username=username).first()
-		if not user:
+	if username:
+		ctx["username"] = username
+		users = User.objects.filter(username__icontains=username)
+		if not users:
 			ctx["error"] = SERVER_ERROR["AUTH_NO_USER"]
 		else:
-			ctx["search_profile"] = search_profile = get_object_or_404(Profile, user=user)
-			ctx["recent_ideas"] = recent_ideas = Idea.objects.filter(author=search_profile).order_by("-timestamp")[:4]
-			if Idea.objects.filter(author=search_profile).count() > 4:
-				ctx["more_ideas"] = True
-			# The total number of public ideas(posts) created by this user
-			ctx["idea_count"] = Idea.objects.filter(author=search_profile,publish_status=3).order_by("-timestamp").count()
+			if users.count() > 1: # If there are more than 1 results
+				search_results = Profile.objects.filter(user__in=users)
+				search_results = Paginator(search_results,RESULT_PER_PAGE)
+				ctx["max_page"] = search_results.num_pages
+				try: current_page = search_results.page(page_num) # Get the ideas on the current page
+				except: raise Http404()
+				ctx["search_results"] = current_page 
+			else:
+				user = users.first()
+				ctx["search_profile"] = search_profile = get_object_or_404(Profile, user=user)
+				ctx["recent_ideas"] = recent_ideas = Idea.objects.filter(author=search_profile).order_by("-timestamp")[:4]
+				if Idea.objects.filter(author=search_profile).count() > 4:
+					ctx["more_ideas"] = True
+				# The total number of public ideas(posts) created by this user
+				ctx["idea_count"] = Idea.objects.filter(author=search_profile,publish_status=3).order_by("-timestamp").count()
 
 	template_file = "usermgmt/account_meet.html"
 	return render(request,template_file,ctx)

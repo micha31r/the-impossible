@@ -24,6 +24,15 @@
 				<h5>{{ idea.short_description }}</h5>
 				<p>{{ idea.full_description }}</p>
 				<div id="append-target1"></div>
+				{% if idea.tags %}
+					<div class="idea-tag-container">
+						{% for tag in idea.tags.all %}
+							<div class="idea-tag {% if tag in profile.tags.all %} idea-tag-yellow {% endif %}">
+								<p>{{ tag }}</p>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
 				{% if user == idea.author.user %}
 					<button class="btn btn-yellow-outline bold edit-btn" onclick="window.location.href='{% url 'idea_edit_page' pk=idea.id %}'">Edit Idea</button>
 				{% endif %}
