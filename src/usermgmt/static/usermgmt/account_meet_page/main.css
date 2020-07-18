@@ -250,6 +250,10 @@ button[type="submit"] {
 
 /* Search results */
 
+.entry-count {
+	text-align: center;
+}
+
 .result-profile-wrapper {
 	width: max-content;
 	max-width: 100%;

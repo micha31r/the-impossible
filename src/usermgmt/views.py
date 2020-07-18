@@ -354,6 +354,7 @@ def account_meet_page(request,page_num,username):
 		else:
 			if users.count() > 1: # If there are more than 1 results
 				search_results = Profile.objects.filter(user__in=users)
+				ctx["entry_count"] = search_results.count()
 				search_results = Paginator(search_results,RESULT_PER_PAGE)
 				ctx["max_page"] = search_results.num_pages
 				try: current_page = search_results.page(page_num) # Get the ideas on the current page

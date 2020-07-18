@@ -216,6 +216,13 @@
 						</div>
 					</div>
 				{% elif search_results %}
+					<p class="entry-count">
+		    			<b>
+		    				Results for "{{ username }}"
+		    				<br>
+		    				{{ entry_count }} entries
+		    			</b>
+		    		</p>
 					{% for profile in search_results %}
 						<!-- Author profile -->
 						<div class="result-profile-wrapper">
