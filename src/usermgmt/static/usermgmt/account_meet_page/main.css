@@ -257,7 +257,7 @@ button[type="submit"] {
 .result-profile-wrapper {
 	width: max-content;
 	max-width: 100%;
-	max-height: 150px;
+	max-height: 160px;
 	padding: 20px;
 	border-radius: 20px;
 	border-style: solid;
@@ -297,6 +297,10 @@ td {
 	display: inline-block;
 }
 
+.result-profile-wrapper .info h5 {
+	margin: 0;
+}
+
 .result-profile-wrapper p {
 	margin: 0;
 	color: var(--color-four);
@@ -311,8 +315,19 @@ td {
 	text-decoration: none;
 }
 
+.result-profile-wrapper .username {
+	color: var(--color-brand);
+	text-decoration: none;
+}
+
+.result-profile-wrapper .username:hover {
+	color: var(--color-brand-dark);
+	text-decoration: underline;
+}
+
 .result-profile-wrapper h6 {
 	color: var(--color-five);
+	margin-bottom: 5px;
 }
 
 .result-profile-wrapper .location {

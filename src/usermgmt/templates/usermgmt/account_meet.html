@@ -239,6 +239,7 @@
 												<a href="{% url 'account_dashboard_page' username=profile.user.username content_filter='my' page_num=1 %}">{{ profile }}</a><!-- Follow button -->
 												<a class="follow-btn" href="{% if user.is_authenticated %}{% url 'account_follow_view' username=profile.user.username %}{% else %}{% url 'login_page' %}{% endif %}">{% if profile.user in profile.following.all %}Unfollow{% else %}Follow{% endif%}</a>
 											</h5>
+											<a class="username" href="{% url 'account_dashboard_page' username=profile.user.username content_filter='my' page_num=1 %}">@{{ profile.user.username }}</a>
 											<h6>{% if profile.bio %}{{ profile.bio }}{% else %}(No Bio..){% endif %}</h6>
 											<p class="{% if profile.location %}location{% endif %}">{% if profile.location %}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-flag"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg> {{ profile.location }}{% else %}(No location..){% endif %}</p>
 										</div>

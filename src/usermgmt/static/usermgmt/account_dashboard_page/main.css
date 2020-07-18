@@ -70,7 +70,7 @@ a:hover {
 	color: var(--color-brand-dark); 
 }
 
-.joined-timestamp, .daily-limit, .followers, .following {
+.location, .joined-timestamp, .daily-limit, .followers, .following {
 	display: inline-block;
 	margin-bottom: 0;
 	margin-right: 30px;
