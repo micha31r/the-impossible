@@ -22,6 +22,8 @@ function announcement_padding() {
 	}
 }
 
+var w_width = window.innerWidth; 
+
 auto_run.queue(
 	function() {
 		explore_height();
@@ -29,8 +31,13 @@ auto_run.queue(
 		window.addEventListener(
 			"resize", 
 			function() {
-				explore_height(); 
-				announcement_padding();
+		    	// Do nothing if the width is the same
+			    if ($(window).width() != w_width) { 
+				    // update new width value
+				    w_width = $(window).width();
+				    explore_height(); 
+					announcement_padding();
+				}
 			}
 		);
 	}
