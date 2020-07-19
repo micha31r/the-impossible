@@ -38,6 +38,8 @@ def explore_page(request,week_num,page_num):
 	ctx = {} # Context variables
 	ctx["date"] = date = Date()
 	ctx["week_num"] = week_num
+	# Show page not found if week_num is larger than the current week number
+	if week_num > current_week(): raise Http404()
 	ctx["page_num"] = page_num
 	today = date.now()
 		
