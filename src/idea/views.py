@@ -28,15 +28,18 @@ from .models import (
 	Comment
 )
 
-MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2020, 4, 9))
+MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2019, 4, 9))
 IDEA_PER_PAGE = 12
 COMMENT_PER_PAGE = 3
 
 # Idea related
 
-def explore_page(request,week_num,page_num):
+def explore_page(request,year_num,week_num,page_num):
 	ctx = {} # Context variables
 	ctx["date"] = date = Date()
+	ctx["year_num"] = year_num
+	# Show page not found if year_num is larger than the current year number and smaller than minimum year number
+	if str(year_num) < MINIMUM_DATE.strftime('%Y') or year_num > date.year(): raise Http404()
 	ctx["week_num"] = week_num
 	# Show page not found if week_num is larger than the current week number
 	if week_num > current_week(): raise Http404()
@@ -53,7 +56,8 @@ def explore_page(request,week_num,page_num):
 
 	# Explore Section
 	# Note: current date is not normal date format, its year/week/1
-	current_date = int_date(f"{today.strftime('%Y')}-{week_num}-1")
+	# today.strftime('%Y')
+	current_date = int_date(f"{year_num}-{week_num}-1")
 	ctx['from_date'] = timestamp_from = current_week_dates(*current_date)
 	ctx['to_date'] = timestamp_to = timestamp_from + datetime.timedelta(days=7)
 	# Check if previous and next week numbers are valid
