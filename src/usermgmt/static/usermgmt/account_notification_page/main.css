@@ -51,8 +51,10 @@ nav, footer {
 }
 
 .notification-container {
+	min-width: 300px;
 	width: 100% !important;
 	max-width: 100% !important;
+	min-height: 300px;
 	border-radius: 10px;
 }
 
@@ -60,6 +62,7 @@ nav, footer {
 	.row {
 		max-width: 100% !important;
 		margin: auto !important;
+		min-height: 100vh;
 		height: max-content !important;
 	}
 	.center {
