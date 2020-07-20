@@ -16,3 +16,11 @@ def email_welcome(username,email):
     try:
     	send_mail(subject, message, email_from, recipient_list)
     except: pass
+
+def all_private_notification(qs):
+    all_private = True
+    for notification in qs:
+        if notification.message_status != 1:
+            all_private = False
+            break
+    return all_private

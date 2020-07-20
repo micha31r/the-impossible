@@ -15,7 +15,10 @@ from .forms import (
 
 from .models import Profile, Notification
 
-from .utils import email_welcome
+from .utils import (
+	email_welcome, 
+	all_private_notification
+)
 
 from userupload.models import File
 
@@ -156,6 +159,9 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	
 	# Get 50 most recent notifications
 	ctx["target_notifications"] = target_notifications = target_profile.notification.all().order_by('-pk')[:NOTIFICATION_PER_PAGE]
+	# Check if all notifications are private
+	ctx["all_private"] = all_private_notification(target_notifications)
+
 	# Check for unread notifications
 	if request.user.is_authenticated and request.user == user:
 		for msg in target_notifications:

@@ -51,13 +51,6 @@
 	overflow-y: scroll;
 }
 
-.message-wrapper {
-	margin-bottom: 10px;
-	border-bottom-width: 1px;
-	border-style: solid;
-	border-color: var(--color-ten);
-}
-
 .message-wrapper h6 {
 	color: var(--color-six);
 	margin-bottom: 0;
@@ -78,6 +71,10 @@
 }
 
 .message-wrapper p {
+	padding-bottom: 10px;
 	margin-bottom: 10px;
 	color: var(--color-five);
+	border-bottom-width: 1px;
+	border-style: solid;
+	border-color: var(--color-ten);
 }
