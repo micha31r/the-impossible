@@ -15,14 +15,16 @@
 	<div class="message-container">
 		{% for notification in notifications %}
 			<div class="message-wrapper">
-				{% if notification.message_status == 1 and target_profile.user == user %}
-					<h6>
-						{% if notification in undismissed_notifications %}
-							<span>Unread:</span>
-						{% endif %}
-						{{ notification.message|safe }}
-					</h6>
-					<p>{{ notification.get_message_status_display }} Message</p>
+				{% if notification.message_status == 1 %}
+					{% if target_profile.user == user %}
+						<h6>
+							{% if notification in undismissed_notifications %}
+								<span>Unread:</span>
+							{% endif %}
+							{{ notification.message|safe }}
+						</h6>
+						<p>{{ notification.get_message_status_display }} Message</p>
+					{% endif %}
 				{% else %}
 					<h6>{{ notification.message|safe }}</h6>
 					<p>{{ notification.get_message_status_display }} Message</p>
