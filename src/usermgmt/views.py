@@ -369,9 +369,16 @@ def account_meet_page(request,page_num,username):
 			else:
 				user = users.first()
 				ctx["search_profile"] = search_profile = get_object_or_404(Profile, user=user)
-				ctx["recent_ideas"] = recent_ideas = Idea.objects.filter(author=search_profile).order_by("-timestamp")[:4]
-				if Idea.objects.filter(author=search_profile).count() > 4:
+				recent_ideas = Idea.objects.filter(author=search_profile).order_by("-timestamp")
+				# Remove private ideas if searched user is not the current user
+				if profile != search_profile:
+					recent_ideas = recent_ideas.exclude(publish_status=1)
+				# Remove follower only ideas if searched user is not followed by the current user
+				if not profile.following.filter(username=search_profile.user.username).exists():
+					recent_ideas = recent_ideas.exclude(publish_status=2)
+				if recent_ideas.count() > 4:
 					ctx["more_ideas"] = True
+				ctx["recent_ideas"] = recent_ideas[:4]
 				# The total number of public ideas(posts) created by this user
 				ctx["idea_count"] = Idea.objects.filter(author=search_profile,publish_status=3).order_by("-timestamp").count()
 
