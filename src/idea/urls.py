@@ -19,7 +19,7 @@ from .views import (
 
 urlpatterns = [
 	# Idea
-	path('explore/<int:year_num>/<int:week_num>/<int:page_num>', explore_page, name="idea_explore_page"),
+	path('explore/<int:week_num>/<int:page_num>', explore_page, name="idea_explore_page"),
 	path('feed', feed_page, name="idea_feed_page"),
 	path('detail/<int:pk>', detail_page, name="idea_detail_page"),
 	path('create', create_view, name="idea_create_view"),
