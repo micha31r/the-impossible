@@ -28,7 +28,7 @@ from .models import (
 	Comment
 )
 
-MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2020, 4, 9))
+# MINIMUM_DATE = datetime.datetime.date(datetime.datetime(2020, 4, 9))
 IDEA_PER_PAGE = 12
 COMMENT_PER_PAGE = 3
 
@@ -38,8 +38,8 @@ def explore_page(request,week_num,page_num):
 	ctx = {} # Context variables
 	ctx["date"] = date = Date()
 	ctx["week_num"] = week_num
-	# Show page not found if week_num is larger than the current week number
-	if week_num > current_week(): raise Http404()
+	# Check if week_num is valid
+	if week_num > current_week() or week_num < 0: raise Http404()
 	ctx["page_num"] = page_num
 	today = date.now()
 		
@@ -56,8 +56,8 @@ def explore_page(request,week_num,page_num):
 	current_date = int_date(f"{today.strftime('%Y')}-{week_num}-1")
 	ctx['from_date'] = timestamp_from = current_week_dates(*current_date)
 	ctx['to_date'] = timestamp_to = timestamp_from + datetime.timedelta(days=7)
-	# Check if previous and next week numbers are valid
-	if timestamp_from > MINIMUM_DATE: ctx["previous_week_num"] = week_num - 1
+	# Check if there is previous or next week
+	if week_num > 0: ctx["previous_week_num"] = week_num - 1
 	if week_num < current_week(): ctx["next_week_num"] = week_num + 1
 
 	# Filter by date
