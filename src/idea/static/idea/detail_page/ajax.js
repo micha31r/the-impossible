@@ -4,7 +4,7 @@ function comment_ajax(pk) {
         function() {
             $.ajax(
                 {
-                    url: `/idea/comment/get/`,
+                    url: `/idea/comment/get`,
                     data: {
                         'pk':pk,
                         'comment_num':comment_num,
