@@ -2,7 +2,10 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
-from userupload.models import File
+from userupload.models import (
+	File,
+	slug_generator
+)
 
 User = settings.AUTH_USER_MODEL
 
@@ -37,6 +40,16 @@ class Notification(models.Model):
 
 	def __str__(self):
 		return self.message[:50] + '...' 
+
+class Verification(models.Model):
+	user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
+	slug = models.SlugField(max_length=6,blank=True)
+	def save(self, *args, **kwargs):
+		self.slug = slug_generator(self.id,size=6)
+		super(Verification, self).save(*args, **kwargs)
 
 class Profile(models.Model):
 	user = models.ForeignKey(

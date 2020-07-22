@@ -1,10 +1,11 @@
 from django.core.mail import send_mail
 from django.conf import settings
 
-def email_welcome(username,email):
+def email_welcome(username,email,verification_code):
     subject = 'Joined The Impossible'
     message = f"""
     	Hi @{username}, thanks for joining The Impossible.
+        Your verification code is {verification_code}.
     	If you have any questions, please contact hello@theimpossible.world or write us a message from our website.
     	You will recieved a weekly update about the latest ideas by email. This can be changed in your newsletter settings.
 

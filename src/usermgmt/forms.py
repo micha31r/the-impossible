@@ -67,6 +67,16 @@ class SignUpForm(forms.Form):
         )
     )
 
+class VerificationForm(forms.Form):
+    code = forms.CharField(
+        max_length=6,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder":"Code"
+            }
+        )
+    )
+
 # Below are all account setting related
 
 class ProfileForm(forms.Form):

@@ -9,8 +9,10 @@ SERVER_ERROR = {
 
 	# Signup
 	"AUTH_SIGNUP"						:"Sign up failed",
+	"AUTH_SIGNUP_USERNAME"				:"Username can only include A-Z, 0-9 and _",
 	"AUTH_SIGNUP_USERNAME_TAKEN"		:"Username is taken",
 	"AUTH_SIGNUP_EMAIL_TAKEN"			:"Email is taken",
+	"AUTH_CODE"							:"Incorrect verification code",
 
 	# Access
 	"ACCESS"							:"You don't have access",

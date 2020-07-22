@@ -1,4 +1,4 @@
-import random
+import random, re
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
@@ -11,9 +11,14 @@ from django import forms
 from .forms import (
 	LoginForm,
 	SignUpForm,
+	VerificationForm,
 )
 
-from .models import Profile, Notification
+from .models import (
+	Profile,
+	Verification,
+	Notification,
+)
 
 from .utils import (
 	email_welcome, 
@@ -44,8 +49,7 @@ def signup_page(request):
 	next_page = request.GET.get("next") # Get url of the next page
 	if request.user.is_authenticated:
 		return redirect(next_page or "account_dashboard_page", username=request.user.username, content_filter="my", page_num=1) # Redirect to the next page
-	signup_form = SignUpForm(request.POST or None)
-	ctx["signup_form"] = signup_form
+	ctx["signup_form"] = signup_form = SignUpForm(request.POST or None)
 	if signup_form.is_valid():
 		# Get form inputs
 		first_name = signup_form.cleaned_data.get("first_name")
@@ -55,58 +59,76 @@ def signup_page(request):
 		password = signup_form.cleaned_data.get("password")
 		password_confirmation = signup_form.cleaned_data.get("password_confirmation")
 		# Make sure no user has the same username or email
-		if not User.objects.filter(username=username).first():
-			if not User.objects.filter(email=email).first():
-				if password == password_confirmation: # Confirm password
-					# Create user object
-					user = User.objects.create_user(
-						username=username,
-						email=email,
-						password=password
-					)
-					user.first_name = first_name.capitalize()
-					user.last_name = last_name.capitalize()
-					user.save()
-					if user:
-						# Profile image must have pk of 1 and created by superuser
-						profile_img = File.objects.filter(id=1).first()
-						if profile_img:
-							if not profile_img.user.is_superuser:
-								profile_img = None
+		if not User.objects.filter(username=username, is_active=True).exists():
+			# Check if there is unactive users with the same username
+			if not User.objects.filter(username=username, is_active=False).exists():
+				if not User.objects.filter(email=email).exists():
+					if re.match("^[A-Za-z0-9_]*$", username):
+						if password == password_confirmation: # Confirm password
+							# Create user object
+							user = User.objects.create_user(
+								username=username,
+								email=email,
+								password=password,
+								is_active=False
+							)
+							user.first_name = first_name.capitalize()
+							user.last_name = last_name.capitalize()
+							user.save()
 
-						# Create a profile
-						profile = Profile.objects.create(
-							user=user,
-							profile_img=profile_img or None
-						)
+							# Create a profile
+							profile = Profile.objects.create(user=user)
 
-						# Create Notification
-						message = f"@{username}, welcome to The Impossible. If you have any questions, please contact us"
-						msg = Notification.objects.create(message=message,message_status=1)
-						msg.save()
-						profile.notification.add(msg)
+							# Create Notification
+							message = f"@{username}, welcome to The Impossible. If you have any questions, please contact us"
+							msg = Notification.objects.create(message=message,message_status=1)
+							msg.save()
+							profile.notification.add(msg)
 
-						# Create feed
-						absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(username,'my',1)))
-						profile.core_feed.add(create_corefeed("WELCOME",username=username, absolute_url=absolute_url))
+							# Create feed
+							absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(username,'my',1)))
+							profile.core_feed.add(create_corefeed("WELCOME",username=username, absolute_url=absolute_url))
 
-						# Send user an welcome email
-						email_welcome(user.username,user.email)
+							# Create verification key
+							verification = Verification.objects.create(user=user)
+							verification.save()
 
-						# Add user to subscriber
-						sub = Subscriber.objects.create(email=user.email)
-						sub.save()
-						profile.subscriber = sub
-						profile.save()
+							# Send user an welcome email 
+							email_welcome(user.username,user.email,verification.slug)
 
-						# Log user in
-						login(request, user)
-						return redirect(next_page or "account_dashboard_page", username=user.username, content_filter="my", page_num=1) # Redirect to the next page
-				else: ctx["error"] = SERVER_ERROR["AUTH_PASSWORD_MATCH"]
-			else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_EMAIL_TAKEN"]
+							# Add user to subscriber
+							sub = Subscriber.objects.create(email=user.email)
+							sub.save()
+							profile.subscriber = sub
+							profile.save()
+
+							# Ask user to verify account
+							return redirect("verify_page", username=username)
+						else: ctx["error"] = SERVER_ERROR["AUTH_PASSWORD_MATCH"]
+					else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_USERNAME"]
+				else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_EMAIL_TAKEN"]
+			else:
+				# Ask user to verify account
+				return redirect("verify_page", username=username)
 		else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_USERNAME_TAKEN"]
 	signup_form = SignUpForm()
 	template_file = "usermgmt/signup.html"
+	return render(request,template_file,ctx)
+
+def verify_page(request,username):
+	ctx={}
+	user = get_object_or_404(User,username=username,is_active=False)
+	verification = get_object_or_404(Verification,user=user)
+	ctx["form"] = form = VerificationForm(request.POST or None)
+	if form.is_valid():
+		verification_code = form.cleaned_data.get("code")
+		if verification_code == verification.slug:
+			user.is_active = True
+			user.save()
+			return redirect("login_page")
+		else:
+			ctx["error"] = SERVER_ERROR["AUTH_CODE"]
+	template_file = "usermgmt/verify.html"
 	return render(request,template_file,ctx)
 
 def login_page(request):
@@ -120,6 +142,11 @@ def login_page(request):
 	if login_form.is_valid():
 		username = login_form.cleaned_data.get("username")
 		password = login_form.cleaned_data.get("password")
+		user = get_object_or_404(User,username=username)
+		if not user.is_active:
+			# Ask user to verify account
+			return redirect("verify_page", username=username)
+		# Validate username with password
 		user = authenticate(request, username=username, password=password)
 		if user:
 			login(request, user)
