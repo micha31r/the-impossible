@@ -21,8 +21,9 @@ from .models import (
 )
 
 from .utils import (
-	email_welcome, 
-	all_private_notification
+	welcome_email, 
+	all_private_notification,
+	verification_email
 )
 
 from userupload.models import File
@@ -94,7 +95,7 @@ def signup_page(request):
 							verification.save()
 
 							# Send user an welcome email 
-							email_welcome(user.username,user.email,verification.slug)
+							welcome_email(user.username,user.email,verification.slug)
 
 							# Add user to subscriber
 							sub = Subscriber.objects.create(email=user.email)
@@ -117,7 +118,7 @@ def signup_page(request):
 
 def verify_page(request,username):
 	ctx={}
-	user = get_object_or_404(User,username=username,is_active=False)
+	ctx["user"] = user = get_object_or_404(User,username=username,is_active=False)
 	verification = get_object_or_404(Verification,user=user)
 	ctx["form"] = form = VerificationForm(request.POST or None)
 	if form.is_valid():
@@ -130,6 +131,14 @@ def verify_page(request,username):
 			ctx["error"] = SERVER_ERROR["AUTH_CODE"]
 	template_file = "usermgmt/verify.html"
 	return render(request,template_file,ctx)
+
+def send_code_view(request,username):
+	ctx={}
+	user = get_object_or_404(User,username=username,is_active=False)
+	verification = get_object_or_404(Verification,user=user)
+	# Send user an welcome email 
+	verification_email(user.email,verification.slug)
+	return redirect("verify_page",username)
 
 def login_page(request):
 	ctx = {} # Context variables

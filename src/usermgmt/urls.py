@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
 	signup_page,
 	verify_page,
+	send_code_view,
 	login_page,
 	logout_page,
 	logout_view,
@@ -25,6 +26,7 @@ from .setting_views import (
 urlpatterns = [
 	path('signup', signup_page, name="signup_page"),
 	path('verify/<slug:username>', verify_page, name="verify_page"),
+	path('send-code/<slug:username>', send_code_view, name="send_code_view"),
 	path('login', login_page, name="login_page"),
 	path('logout', logout_page, name="logout_page"),
 	path('logout/comfirmed', logout_view, name="logout_view"),

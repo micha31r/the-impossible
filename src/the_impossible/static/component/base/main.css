@@ -20,22 +20,25 @@ body {
 	background-color: var(--color-six);
 }
 
-.alert-black {
+.alert {
 	font-size: 1.2rem;
-	background-color: var(--color-brand);
 	border-radius: 10px;
+}
+
+.alert svg, .alert img {
+	vertical-align: text-bottom;
+	margin: 0 !important;
+	margin-right: 5px !important;
+}
+
+.alert-black {
+	background-color: var(--color-brand);
 	color: #000;
 }
 
 .btn-black:hover {
 	background-color: var(--color-eleven) !important;
 	border-color: var(--color-eleven) !important;
-}
-
-.alert-black svg, .alert-black img {
-	vertical-align: text-bottom;
-	margin: 0 !important;
-	margin-right: 5px !important;
 }
 
 .alert-black-outline, .btn-black-outline, .btn-black {

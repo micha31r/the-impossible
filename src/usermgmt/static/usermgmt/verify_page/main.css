@@ -3,7 +3,7 @@ body {
 }
 
 .wrapper {
-	/*padding: 40px;*/
+	padding: 0;
 	height: 100vh;
 	min-height: 400px;
 }

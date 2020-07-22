@@ -44,7 +44,7 @@
 						</button>
 					</form>
 					<br>
-					<a href="javascript:history.back()" style="float: right;"><b>Resend</b></a>
+					<a href="{% url 'send_code_view' username=user.username %}" style="float: right;"><b>Resend</b></a>
 				</div>
 			</div>
 		</div>
