@@ -4,7 +4,7 @@
 {% load static %}
 {% block html %}
 	{% load inlinecss %}
-	{% inlinecss "support/templated_email/main.css" %}
+	{% inlinecss "support/templated_email/question.css" %}
 		<head>
 			<!-- Required meta tags -->
 			<meta charset="utf-8">

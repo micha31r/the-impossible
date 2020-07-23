@@ -187,7 +187,8 @@ def account_setting_privacy_page(request):
 				target_profile = get_object_or_404(Profile,user=follower)
 				target_profile.following.remove(profile.user)
 				# Send blocked message to the blocked user
-				message = f"@{profile.user} has blocked you. You can no longer see the user's follower-only posts"
+				absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(profile.user.username,'my',1)))
+				message = f"@<a href='{absolute_url}'>{profile.user.username}</a> has blocked you. You can no longer see the user's follower-only posts"
 				msg = Notification.objects.create(message=message,message_status=1)
 				msg.save()
 				target_profile.notification.add(msg)

@@ -294,7 +294,8 @@ def account_follow_view(request,username):
 	profile = get_object_or_404(Profile,user=request.user)
 	# Check if the current user is blocked by the target user
 	if target_profile.blocked_user.filter(username=request.user.username).exists():
-		message = f"@{username} blocked you, you cannot follow this user"
+		absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(username,'my',1)))
+		message = f"<a href='{absolute_url}'>@{username}</a> blocked you, you cannot follow this user"
 		msg = Notification.objects.create(message=message,message_status=1)
 		msg.save()
 		profile.notification.add(msg)

@@ -7,10 +7,6 @@ nav, footer {
 	height: 100vh;
 }
 
-.row {
-	overflow: scroll;
-}
-
 .center {
 	width: max-content;
 	max-width: 100%;
