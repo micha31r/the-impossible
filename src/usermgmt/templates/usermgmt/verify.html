@@ -22,6 +22,12 @@
 	<body>
 		<link rel="stylesheet" type="text/css" href="{% static 'usermgmt/verify_page/main.css' %}">
 
+		<script type="text/javascript" src="{% static 'usermgmt/verify_page/count_down.js' %}"></script>
+
+		<script type="text/javascript">
+			var resend_link = "{% url 'send_code_view' username=user.username %}";
+		</script>
+		
 		<div class="wrapper">
 			<div class='row align-items-center h-100'>
 				<div class="center">
@@ -44,7 +50,7 @@
 						</button>
 					</form>
 					<br>
-					<a href="{% url 'send_code_view' username=user.username %}" style="float: right;"><b>Resend</b></a>
+					<a href="#" onclick="start_timer();return false;" style="float: right;"><b id="resend-link-text">Resend</b></a>
 				</div>
 			</div>
 		</div>
