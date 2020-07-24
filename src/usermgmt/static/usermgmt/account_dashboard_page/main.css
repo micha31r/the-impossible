@@ -47,6 +47,7 @@ a:hover {
 .username {
 	color: var(--color-six);
 	margin-bottom: 0;
+	word-break: break-all;
 }
 
 .fullname {
