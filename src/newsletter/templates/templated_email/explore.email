@@ -65,7 +65,7 @@
 								<!-- Header image -->
 								{% if idea.header_img.file %}
 									<div class="card-img-wrapper">
-										<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
+										<img src="http://theimpossible.world{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
 									</div>
 								{% endif %}
 
@@ -101,7 +101,7 @@
 								<!-- Header image -->
 								{% if idea.header_img.file %}
 									<div class="card-img-wrapper">
-										<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
+										<img src="http://theimpossible.world{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
 									</div>
 								{% endif %}
 
