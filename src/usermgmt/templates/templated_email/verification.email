@@ -5,7 +5,7 @@
 {% load tags %}
 {% block html %}
 	{% load inlinecss %}
-	{% inlinecss "newsletter/templated_email/verification.css" %}
+	{% inlinecss "usermgmt/templated_email/verification.css" %}
 		<head>
 			<!-- Required meta tags -->
 			<meta charset="utf-8">
@@ -26,7 +26,12 @@
 			</table>
 
 			<div class="wrapper">
-			
+				<div class="content-container">
+					<h3><b>Your 6 digit verification code is:</b></h3>
+					<h1 class="code">{{ verification_code }}</h1>
+					<p>You received this message because you signed up for an account at <b>The Impossible</b>. To activate your account, enter this code when you sign in. (If this is not requested by you, please ignore this email)</p>
+					<p>For more support, email <a class="yellow" href="mailto:hello@theimpossible.world"><b>hello@theimpossible.world</b></a></p>
+				</div>
 			</div>
 
 			<footer>

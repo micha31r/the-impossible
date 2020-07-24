@@ -62,35 +62,6 @@ body {
 	font-family: "Arial", sans-serif;
 }
 
-.header-wrapper {
-	margin-bottom: 80px;
-}
-
-.content-container, .idea-container {
-	width: 600px;
-	max-width: calc(100% - 80px) !important;
-	margin: auto;
-	padding: 40px;
-	background-color: #f7f7f7;
-}
-
-.content-container p {
-	margin: 0px;
-}
-
-.header {
-	font-size: 3rem;
-	margin: 0;
-	margin-bottom: 5px;
-	word-break: break-all;
-}
-
-.week-num {
-	margin-top: 0;
-	margin-bottom: 0;
-	font-weight: lighter;
-}
-
 .noreply-text {
 	color: #aaa;
 	text-align: center;
@@ -105,96 +76,17 @@ body {
 	color: rgb(199,149,2);
 }
 
-/* Ideas related */
-.idea-container {
-	background-color: transparent;
+.content-container {
+	width: 600px;
+	max-width: calc(100% - 80px) !important;
+	padding: 40px;
+	margin: auto;
+	background-color: #f9f9f9;
 }
 
-.card {
-	display: inline-block;
-	width: 100%;
-	max-width: 100%;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #eee;
-	overflow: hidden;
-	vertical-align: top;
-	margin-bottom: 20px;
-	margin-bottom: 20px;
-}
-
-@media only screen and (max-width: 600px) {
-	.card {
-		display: block !important;
-		width: 100% !important;
-		margin-left: auto !important;
-		margin-right: auto !important;
-	}
-}
-
-.card-img-wrapper {
-	overflow: hidden;
-}
-
-.card-img-wrapper img {
-	width: 100%;
-	filter: grayscale(100%);
-}
-
-.card-body {
-	width: 100%;
-	padding: 20px;
-}
-
-.card-body * {
-	width: calc(100% - 40px);
+.code {
 	margin-top: 0;
-	margin-bottom: 0;
-	font-size: 1rem;
-}
-
-.card-title {
-	margin-top: 5px;
-	margin-bottom: 10px;
-}
-
-.card-title a {
-	word-break: break-all;
-	color: #000;
-	text-decoration: none;
-	font-size: 1.3rem;
-	font-family: system-ui;
-	font-weight: 500 !important;
-	word-break: break-all;
-}
-
-.card-subtitle {
-	color: #bbb;
-	margin-bottom: 10px;
-}
-
-.card-text {
-	word-break: break-all;
-	margin-bottom: 10px;
-	line-height: 24px;
-	font-family: "Roboto", sans-serif;
-}
-
-.author, .views {
-	font-size: 0.8rem;
-	color: #aaa;
-	margin: 0;
-	width: 100%;
-}
-
-/* Links */
-.link-container {
-	background-color: #000;
-}
-
-.link-container h3 a {
-	color: #FECC4C;
-	text-decoration: none;
+	font-size: 4rem;
 }
 
 /* Footer related */

@@ -1,6 +1,9 @@
 from django.core.mail import send_mail
 from django.conf import settings
 from background_task import background
+from templated_email import send_templated_mail
+
+from the_impossible.utils import *
 
 def welcome_email(username,email,verification_code):
     subject = 'Joined The Impossible'
@@ -26,6 +29,7 @@ def verification_email(email,verification_code):
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[email],
         context={
+            "date":Date(),
             "verification_code":verification_code
         },
     )

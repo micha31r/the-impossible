@@ -1,9 +1,11 @@
 from django.urls import path
+from django.conf import settings
 
 from .views import (
 	signup_page,
 	verify_page,
 	send_code_view,
+	email_page,
 	login_page,
 	logout_page,
 	logout_view,
@@ -45,3 +47,7 @@ urlpatterns = [
 	path('account/settings/privacy', account_setting_privacy_page, name="account_setting_privacy_page"),
 	path('account/settings/newsletter', account_setting_newsletter_page, name="account_setting_newsletter_page"),
 ]
+
+if settings.DEBUG:
+	# THIS IS FOR TESTING ONLY !!
+	urlpatterns.append(path('email/', email_page, name="usermgmt_email_page"))

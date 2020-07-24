@@ -79,4 +79,4 @@ def explore_email():
 		sub.last_sent = today
 		sub.save()
 
-explore_email(repeat=Task.DAILY, repeat_until=None)
+explore_email(repeat=Task.WEEKLY, repeat_until=None)

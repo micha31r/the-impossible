@@ -140,6 +140,14 @@ def send_code_view(request,username):
 	verification_email(user.email,verification.slug)
 	return redirect("verify_page",username)
 
+# This page is for DEBUG ONLY !!
+def email_page(request):
+	ctx={}
+	ctx["date"] = Date()
+	ctx["verification_code"] = "F28cwJ" # Fake verification code
+	template_file = "templated_email/verification.email"
+	return render(request,template_file,ctx)
+
 def login_page(request):
 	ctx = {} # Context variables
 	ctx["date"] = Date()
