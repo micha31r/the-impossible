@@ -1,5 +1,5 @@
 function resize() {
-	$("#hidden").show(); 
+	$("#hidden").css("display","block"); 
 	var parent_height = $("#hidden").height();
 	var parent_width = $("#hidden").width();
 	if (parent_height <= 5) {
@@ -8,7 +8,7 @@ function resize() {
     $("#file-wrapper").css("height", `${parent_height}`); 
     $("#blur").css("height", `${parent_height}`); 
     $("#blur").css("width", `${parent_width}`); 
-    $("#hidden").hide(); 
+    $("#hidden").css("display","none"); 
 }
 
 // https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
