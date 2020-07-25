@@ -38,13 +38,16 @@ a:hover {
 }
 
 /* Unread notification alert dot */
-.new-notification-dot {
+.new-notification-count {
 	position: absolute;
-	margin-left: -5px;
-	width: 10px;
-	height: 10px;
-	background-color: #FF6161;
+	margin-left: -20px;
+	width: 1rem;
+	height: 1rem;
 	border-radius: 100%;
+	font-size: 0.7rem;
+	line-height: 0.7rem;
+	padding: calc((1rem - 0.7rem) / 2);
+	font-family: "Arial", sans-serif;
 }
 
 /* Explore */

@@ -8,6 +8,7 @@ function center_body() {
 	}
 }
 
+// Set margin top to give way for navbar
 function body_margin() {
 	if ($("nav").css("display") != "none") {
 		var height = $("nav").outerHeight();

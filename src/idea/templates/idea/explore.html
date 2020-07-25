@@ -12,18 +12,23 @@
 
 {% block nav_custom %}
 	<li class="nav-item">
-		<a class="nav-link" href="{% url 'idea_create_view' %}">
+		<a class="nav-link has-label" href="{% url 'idea_create_view' %}">
 			<div class="svg-wrapper">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
 			</div>
+			<p class="element-label">Add Idea</p>
 		</a>
 	</li>
 	{% if user.is_authenticated %}
   		<li class="nav-item">
-    		<a class="nav-link" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}">
+  			{% if user.is_authenticated and new_notification %}
+  				<span class="badge badge-danger new-notification-count">{% if new_notification < 10 %}{{ new_notification }}{% else %}∞{% endif %}</span>
+  			{% endif %}
+    		<a class="nav-link has-label" href="{% url 'account_dashboard_page' username=user.username content_filter='my' page_num=1 %}">
     			<div class="svg-wrapper">
     				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
     			</div>
+    			<p class="element-label">Dashboard</p>
     		</a>
   		</li>
   	{% endif %}

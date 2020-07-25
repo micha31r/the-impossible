@@ -27,12 +27,14 @@
 }
 
 /* Unread notification alert dot */
-.new-notification-dot {
+.new-notification-count {
 	position: absolute;
-	width: 10px;
-	height: 10px;
-	background-color: #FF6161;
+	width: 1rem;
+	height: 1rem;
 	border-radius: 100%;
+	font-size: 0.7rem;
+	line-height: 0.7rem;
+	padding: calc((1rem - 0.7rem) / 2);
 }
 
 .notification-container {
@@ -64,10 +66,6 @@
 
 .message-wrapper a:hover {
 	text-decoration: underline;
-}
-
-.message-wrapper h6 span {
-	color: #FF6161;
 }
 
 .message-wrapper p {

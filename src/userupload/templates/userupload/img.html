@@ -48,17 +48,15 @@
 						</tr>
 					</table>
 				</div>
-				<button class="btn btn-yellow bold submit" type="submit" data-toggle="popover" data-trigger="hover" title="Note" data-content="Image file will show once saved">Save Image</button>
+				
+				<button class="btn btn-yellow bold submit" type="submit" onclick="$('.spinner-border').css('display','inline-block');$('.delete-btn').hide();">Save Image</button>
+
+				<div class="spinner-border" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+
 				{% block delete_img %}
 				{% endblock %}
-				<!-- Show tooltip after hover -->
-				<script type="text/javascript">
-					if (!window.mobileAndTabletCheck()) {
-						$('.submit').popover({
-							trigger: 'hover'
-						})
-					}
-				</script>
 			</div>
 		</form>
 

@@ -206,11 +206,9 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	# Check if all notifications are private
 	ctx["all_private"] = all_private_notification(target_notifications)
 
-	# Check for unread notifications
+	# Count unread notifications
 	if request.user.is_authenticated and request.user == user:
-		for msg in target_notifications:
-			if not msg.dismissed:
-				ctx["new_notification"] = True
+		ctx["new_notification"] = target_profile.notification.filter(dismissed=False).count()
 	# Dismiss notifications
 	ctx["undismissed_notifications"] = []
 	if request.user == user:
@@ -278,11 +276,10 @@ def account_notification_page(request,page_num):
 	except: raise Http404()
 	ctx["notifications"] = current_page 
 
-	# Check for new notifications
-	for msg in current_page:
-		if not msg.dismissed:
-			ctx["new_notification"] = True
-	# Dismiss notifications on this page
+	# Count new notifications
+	ctx["new_notification"] = profile.notification.filter(dismissed=False).count()
+	
+	# Dismiss notifications on THIS PAGE
 	ctx["undismissed_notifications"] = []
 	for notification in current_page:
 		if not notification.dismissed:
