@@ -112,6 +112,7 @@ nav, footer {
 	border-color: var(--color-ten);
 	border-top-width: 1px;
 	word-break: break-all;
+	color: var(--color-six);
 }
 
 .feed-card h6 {

@@ -316,8 +316,13 @@ def edit_page(request,pk):
 				idea.tags.remove(tag)
 
 			idea.save()
-			# Refresh page
-			return redirect("idea_edit_page", pk=idea.id)
+
+			if request.POST.get("redirect_img"):
+				# Redirect to file page
+				return redirect(request.POST.get("redirect_img"))
+			else:
+				# Refresh page
+				return redirect("idea_edit_page", pk=idea.id)
 	else:
 		return redirect("access_error_page")
 	template_file = "idea/edit.html"
@@ -331,6 +336,8 @@ def search_page(request,page_num,name):
 	if name:
 		ctx["name"] = name
 		ctx["page_num"] = page_num
+		if request.user.is_authenticated:
+			ctx["profile"] = get_object_or_404(Profile,user=request.user)
 		ideas = Idea.objects.filter(name__icontains=name).order_by("-timestamp")
 		if ideas.count() > 0:
 			ctx["entry_count"] = ideas.count()

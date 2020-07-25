@@ -20,9 +20,9 @@ def create_corefeed(option,**kwargs):
 					<li>Location</li>
 					<li>Followers and Following</li>
 				</ul>
-				Lastly, if you wish to terminate your account, 
+				<p>Lastly, if you wish to terminate your account, 
 				please email <a href="mailto: hello@theimpossible.world">\"hello@theimpossible.world\"</a>. 
-				(All data will be deleted)
+				(All data will be deleted)</p>
 
 			"""
 		}
