@@ -79,7 +79,7 @@ body {
 	display: none;
 	position: fixed;
 	color: var(--color-first);
-	background-color: rgba(0,0,0,0.7);
+	background-color: var(--color-six);
 	border-radius: 5px;
 	padding: 10px;
 	padding-top: 5px;
@@ -89,6 +89,8 @@ body {
 	margin-bottom: 0;
 	word-break: keep-all;
 	white-space: nowrap;
+	filter: var(--invert-filter);
+	opacity: 0.8;
 	/* Make the label unclickable */
 	pointer-events: none;
 	z-index: 10;
