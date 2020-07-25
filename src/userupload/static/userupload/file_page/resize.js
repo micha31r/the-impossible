@@ -11,6 +11,13 @@ function resize() {
     $("#hidden").css("display","none"); 
 }
 
+function show_spinner() {
+	if ($("#id_file").val() && $("#id_description").val()) {
+		$('.spinner-border').css('display','inline-block');
+		$('.delete-btn').hide();
+	}
+}
+
 // https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
 function preview_image() {
     var oFReader = new FileReader();
