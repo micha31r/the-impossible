@@ -199,7 +199,7 @@ def account_dashboard_page(request,username,content_filter,page_num):
 	if request.user.is_authenticated:
 		ctx["profile"] = get_object_or_404(Profile,user=request.user)
 	# The profile for the viewed user
-	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user)
+	ctx["target_profile"] = target_profile = get_object_or_404(Profile,user=user,user__is_active=True)
 	
 	# Get 50 most recent notifications
 	ctx["target_notifications"] = target_notifications = target_profile.notification.all().order_by('-pk')[:NOTIFICATION_PER_PAGE]
@@ -294,7 +294,7 @@ def account_notification_page(request,page_num):
 def account_follow_view(request,username):
 	target_profile = get_object_or_404(
 		Profile,
-		user=get_object_or_404(User,username=username)
+		user=get_object_or_404(User,username=username,is_active=True)
 	)
 	profile = get_object_or_404(Profile,user=request.user)
 	# Check if the current user is blocked by the target user
