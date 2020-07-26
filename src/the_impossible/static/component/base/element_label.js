@@ -1,3 +1,28 @@
+// Jquery is required
+var label_css = {
+	/* Hide all labels */
+	"display": "none",
+	"position": "fixed",
+	"color": "var(--color-first)",
+	"background-color": "var(--color-six)",
+	"border-radius": "5px",
+	"padding": "10px",
+	"padding-top": "5px",
+	"padding-bottom": "5px",
+	"font-family": "'Arial', sans-serif",
+	"font-size": "1rem",
+	"margin-bottom": "0",
+	"word-break": "keep-all",
+	"white-space": "nowrap",
+	"filter": "var(--invert-filter)",
+	"opacity": "0.8",
+	/* Make the label unclickable */
+	"pointer-events": "none",
+	/* Make sure the label is above other absolute elements */
+	/* Dropdown menu's z-index is 1000 */
+	"z-index": "1001",
+};
+
 // Set button label's position to mouse position
 function element_label_position(event) {
 	var label = $(".element-label:visible");
@@ -29,9 +54,10 @@ function element_label_overflow(label) {
 		label.css("top", $(window).height() - 10 - label.outerHeight());
 	}
 }
-
-auto_run.queue( 
+ 
+auto_run.queue(
 	function() {
+		$(".element-label").css(label_css);
 		// Show label when hovered
 		$(".has-label").each(
 			function() {

@@ -74,28 +74,6 @@ body {
 	background-color: transparent;
 }
 
-.element-label {
-	/* Hide all labels */
-	display: none;
-	position: fixed;
-	color: var(--color-first);
-	background-color: var(--color-six);
-	border-radius: 5px;
-	padding: 10px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	font-family: "Arial", sans-serif;
-	font-size: 1rem;
-	margin-bottom: 0;
-	word-break: keep-all;
-	white-space: nowrap;
-	filter: var(--invert-filter);
-	opacity: 0.8;
-	/* Make the label unclickable */
-	pointer-events: none;
-	z-index: 10;
-}
-
 .wrapper {
 	padding: 40px;
 }
