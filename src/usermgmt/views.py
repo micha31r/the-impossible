@@ -370,12 +370,14 @@ def account_meet_page(request,page_num,username):
 	random_profiles = Profile.objects.filter(
 		timestamp__gte = date.now() - datetime.timedelta(days=182),
 		timestamp__lte = date.now() + datetime.timedelta(days=1),
+		user__is_active = True,
 	).distinct().exclude(user=profile.user).exclude(discover_setting=1)
 	ctx["random_profiles"] = random.sample(list(random_profiles), min(random_profiles.count(), 20))
 
 	# Find users with the same interest (same favourite tags)
 	like_minded_profiles = Profile.objects.filter(
 		tags__in=profile.tags.all(),
+		user__is_active = True,
 	).distinct().exclude(user=profile.user).exclude(discover_setting=1)
 	ctx["like_minded_profiles"] = random.sample(list(like_minded_profiles), min(like_minded_profiles.count(), 20))
 
@@ -386,7 +388,7 @@ def account_meet_page(request,page_num,username):
 	for following_profile in followings:
 		# Find 3 random users followed by people that you follow
 		users = random.sample(list(following_profile.following.all()), min(following_profile.following.count(), 3))
-		users = Profile.objects.filter(user__in=users).exclude(discover_setting=1)
+		users = Profile.objects.filter(user__in=users,user__is_active=True).exclude(discover_setting=1)
 		close_profiles = close_profiles + list(set(users) - set(close_profiles))
 	
 	# Remove yourself from list
@@ -396,7 +398,7 @@ def account_meet_page(request,page_num,username):
 
 	if username:
 		ctx["username"] = username
-		users = User.objects.filter(username__icontains=username)
+		users = User.objects.filter(username__icontains=username,is_active=True)
 		if not users:
 			ctx["error"] = SERVER_ERROR["AUTH_NO_USER"]
 		else:
