@@ -12,6 +12,7 @@ function center_body() {
 function body_margin() {
 	if ($("nav").css("display") != "none") {
 		var height = $("nav").outerHeight();
+		console.log(height)
 		$(".main-container").css("margin-top",`${height}px`);
 	}
 }
@@ -19,7 +20,8 @@ function body_margin() {
 auto_run.queue( 
 	function() {
 		center_body();
-		body_margin();
+		// Set body margin .5 seconds after page loads
+		setTimeout(body_margin, 500);
 		window.addEventListener(
 			"resize", 
 			function() {
