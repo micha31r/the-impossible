@@ -16,6 +16,9 @@ SUPPORTED_FILE_TYPE = {
 	"image":[
 		"png",
 		"jpg",
+		"JPG",
+		"jpeg",
+		"JPEG",
 		"gif",
 		"svg"
 	],
