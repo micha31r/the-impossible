@@ -83,7 +83,7 @@
 				{% for target_profile in random_profiles %}
 					<div class="profile-wrapper">
 						<div class="target-profile-img-wrapper">
-							{% if target_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
+							{% if target_profile.profile_img.file.url %}<img alt="profile image" class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
 						</div>
 						<div class="profile-content-wrapper">
 							<p>{{ target_profile.user.get_full_name }}</p>
@@ -97,7 +97,7 @@
 				{% for target_profile in like_minded_profiles %}
 					<div class="profile-wrapper">
 						<div class="target-profile-img-wrapper">
-							{% if target_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
+							{% if target_profile.profile_img.file.url %}<img alt="profile image" class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
 						</div>
 						<div class="profile-content-wrapper">
 							<p>{{ target_profile.user.get_full_name }}</p>
@@ -111,7 +111,7 @@
 				{% for target_profile in close_profiles %}
 					<div class="profile-wrapper">
 						<div class="target-profile-img-wrapper">
-							{% if target_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
+							{% if target_profile.profile_img.file.url %}<img alt="profile image" class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">{% endif %}
 						</div>
 						<div class="profile-content-wrapper">
 							<p>{{ target_profile.user.get_full_name }}</p>
@@ -153,7 +153,7 @@
 									<!-- Header image -->
 									{% if idea.header_img.file %}
 										<div class="card-img-wrapper">
-											<img src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
+											<img alt="header image" src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}">
 										</div>
 
 										<!-- Circle like button -->
@@ -191,7 +191,7 @@
 					{% endif %}
 					<div class="search-profile-container">
 						<div class="target-profile-img-wrapper">
-							{% if search_profile.profile_img.file.url %}<img class="target-profile-img" src="{{ search_profile.profile_img.file.url }}">{% endif %}
+							{% if search_profile.profile_img.file.url %}<img alt="profile image" class="target-profile-img" src="{{ search_profile.profile_img.file.url }}">{% endif %}
 						</div>
 						<div class="profile-content-wrapper">
 							<h3><b>{{ search_profile.user.get_full_name }}</b></h3>
@@ -232,7 +232,7 @@
 								<tr>
 									<td>
 										<div class="result-profile-img-wrapper">
-											<a href="{% url 'account_dashboard_page' username=result.user.username content_filter='my' page_num=1 %}">{% if result.profile_img %}<img class="result-profile-img" src="{{ result.profile_img.file.url }}">{% endif %}</a>
+											<a href="{% url 'account_dashboard_page' username=result.user.username content_filter='my' page_num=1 %}">{% if result.profile_img %}<img alt="profile image" class="result-profile-img" src="{{ result.profile_img.file.url }}">{% endif %}</a>
 										</div>
 									</td>
 									<td>

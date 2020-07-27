@@ -32,7 +32,7 @@
 						{% for follower in followers %}
 							<div class="profile-wrapper">
 								<div class="target-profile-img-wrapper">
-									{% if follower.profile_img.file.url %}<img class="target-profile-img" src="{{ follower.profile_img.file.url }}">{% endif %}
+									{% if follower.profile_img.file.url %}<img alt="profile image" class="target-profile-img" src="{{ follower.profile_img.file.url }}">{% endif %}
 								</div>
 								<div class="profile-content-wrapper">
 									<h6><b>{{ follower.user.get_full_name }}</b></h6>
@@ -51,7 +51,7 @@
 						{% for following in followings %}
 							<div class="profile-wrapper">
 								<div class="target-profile-img-wrapper">
-									{% if following.profile_img.file.url %}<img class="target-profile-img" src="{{ following.profile_img.file.url }}">{% endif %}
+									{% if following.profile_img.file.url %}<img alt="profile image" class="target-profile-img" src="{{ following.profile_img.file.url }}">{% endif %}
 								</div>
 								<div class="profile-content-wrapper">
 									<h6><b>{{ following.user.get_full_name }}</b></h6>

@@ -28,7 +28,7 @@
 									<h6>{{ idea.short_description }}</h6>
 								</div>
 								{% if idea.header_img %}
-									<img src="{{ idea.header_img.file.url }}">
+									<img alt="header image" src="{{ idea.header_img.file.url }}">
 								{% endif %}
 								<div class="text-wrapper">
 									<p>{{ idea.full_description|truncatechars:400 }}</p>

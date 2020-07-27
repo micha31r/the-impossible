@@ -17,7 +17,7 @@
 	<script type="text/javascript" src="{% static 'newsletter/ajax.js' %}"></script>
 
 	<div class="vertical-split-card">
-		<img class="vertical-card-img" src="{% static 'newsletter/astronaut.png' %}">
+		<img alt="astronaut" class="vertical-card-img" src="{% static 'newsletter/astronaut.png' %}">
 
 		<div class="vertical-card-body">
 			<h1>Don't want to missout?</h1>
@@ -31,7 +31,7 @@
 
 			<div id="join-form">
 				<input type="email" id="email" placeholder="Email address">
-				<button class="btn btn-light join-newsletter-submit" onclick="join_newsletter_ajax($('#email').val());"><img src="{% static 'component/feather_svg/check.svg' %}"></button>
+				<button class="btn btn-light join-newsletter-submit" onclick="join_newsletter_ajax($('#email').val());"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></button>
 			</div>
 		</div>
 	</div>

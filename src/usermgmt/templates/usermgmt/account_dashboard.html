@@ -84,7 +84,7 @@
 			<div class="target-profile-img-wrapper">
 				<a class="has-label" {% if target_profile.user == user %} href="{% if target_profile.profile_img %}{% url 'userupload_profile_img_page' profile_pk=target_profile.pk file_pk=target_profile.profile_img.pk %}{% else %}{% url 'userupload_profile_img_page' profile_pk=target_profile.pk file_pk=None %}{% endif %}" {% endif %}>
 					{% if target_profile.profile_img %}
-						<img class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">
+						<img alt="profile image" class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">
 					{% endif %}
 					<p class="element-label">Change Profile Image</p>
 				</a>
@@ -188,7 +188,7 @@
 						{% if follower.profile_img.file %}
 							<div class="profile-img-border">
 								<div class="profile-img-wrapper">
-									<a href="{% url 'account_dashboard_page' username=follower.user.username content_filter='my' page_num=1 %}"><img class="profile-img" src="{{ follower.profile_img.file.url }}"></a>
+									<a href="{% url 'account_dashboard_page' username=follower.user.username content_filter='my' page_num=1 %}"><img alt="profile image" class="profile-img" src="{{ follower.profile_img.file.url }}"></a>
 								</div>
 							</div>
 						{% endif %}

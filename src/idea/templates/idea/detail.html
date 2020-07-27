@@ -44,7 +44,7 @@
 					<tr>
 						<td>
 							<div class="author-profile-img-wrapper">
-								<a href="{% url 'account_dashboard_page' username=idea.author.user.username content_filter='my' page_num=1 %}">{% if idea.author.profile_img %}<img class="author-profile-img" src="{{ idea.author.profile_img.file.url }}">{% endif %}</a>
+								<a href="{% url 'account_dashboard_page' username=idea.author.user.username content_filter='my' page_num=1 %}">{% if idea.author.profile_img %}<img alt="profile image" class="author-profile-img" src="{{ idea.author.profile_img.file.url }}">{% endif %}</a>
 							</div>
 						</td>
 						<td>
@@ -106,14 +106,14 @@
 		<div class="right-container">
 			<div class="file-wrapper {% if not idea.header_img %}no-header-image{% endif %}">
 				{% if idea.header_img %}
-					<img src="{{ idea.header_img.file.url }}">
+					<img alt="header image" src="{{ idea.header_img.file.url }}">
 				{% else %}
 					<h1 class="no-content-text"><span>No Image</span></h1>
 				{% endif %}
 			</div>
 			{% for image in idea.body_img.all %}
 				<div class="file-wrapper">
-					<img src="{{ image.file.url }}">
+					<img alt="body image" src="{{ image.file.url }}">
 				</div>
 			{% endfor %}
 		</div>
