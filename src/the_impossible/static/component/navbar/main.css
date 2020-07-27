@@ -80,6 +80,7 @@ nav .btn:focus {
 /* Svg icon stuff */
 
 nav .svg-wrapper {
+	display: block;
 	width: max-content;
 	height: max-content;
 	vertical-align: middle;
