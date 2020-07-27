@@ -4,12 +4,12 @@
 
 {% block title %}
 	<title>@{{ target_profile.user.username }} - The Impossible</title>
+
+	<!-- Lato Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block nav_custom %}
-	<!-- Lato Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
 	<li class="nav-item">
 		<a class="nav-link has-label" href="{% url 'idea_explore_page' week_num=date.week page_num=1 %}">
 			<div class="svg-wrapper">
@@ -69,9 +69,6 @@
 {% endblock %}
 
 {% block content %}
-	<!-- Lato Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
 	<!-- Pagination css -->
 	<link rel="stylesheet" type="text/css" href="{% static 'idea/pagination/main.css' %}">
 
