@@ -24,6 +24,8 @@ __Current library versions:__
   * Sqlparse 0.3.1
   * [Bootstrap](https://getbootstrap.com/) 4
 
+__Icons used are from [Feather](https://feathericons.com/)__
+
 # Start a local server for testing:
 ```bash
 # Clone this repository
