@@ -15,7 +15,7 @@
 			<table class="nav">
 				<tr>
 					<td class="logo-td">
-						<img src="http://theimpossible.world{% static 'component/base/logo_white.svg' %}">
+						<img alt="the impossible logo" src="http://theimpossible.world{% static 'component/base/logo_white.svg' %}">
 					</td>
 					<td>
 						<p class="text">
@@ -42,8 +42,8 @@
 						</td>
 						<td id="contact-td">
 							<div class="contact">
-								<button onclick="window.location.href='https://www.instagram.com/micha31r/'"><img src="http://theimpossible.world{% static 'usermgmt/templated_email/twitter.svg' %}"></button>
-								<button onclick="window.location.href='https://twitter.com/micha31_r'"><img src="http://theimpossible.world{% static 'usermgmt/templated_email/instagram.svg' %}"></button>
+								<button onclick="window.location.href='https://www.instagram.com/micha31r/'"><img alt="" src="http://theimpossible.world{% static 'usermgmt/templated_email/twitter.svg' %}"></button>
+								<button onclick="window.location.href='https://twitter.com/micha31_r'"><img alt="" src="http://theimpossible.world{% static 'usermgmt/templated_email/instagram.svg' %}"></button>
 							</div>
 						</td>
 					</tr>
