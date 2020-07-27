@@ -14,4 +14,4 @@ urlpatterns = [
 
 if settings.DEBUG:
 	# THIS IS FOR TESTING ONLY !!
-	urlpatterns.append(path('email/', email_page, name="newsletter_email_page"))
+	urlpatterns.append(path('email', email_page, name="newsletter_email_page"))
