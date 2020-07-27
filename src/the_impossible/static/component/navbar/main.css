@@ -16,7 +16,7 @@ nav {
 
 /* 768 is the collapse point of the medium sized navbar */
 @media only screen and (max-width: 768px) {
-	.navbar-nav form {
+	.navbar form {
 		display: none;
 	}
 } 
@@ -28,12 +28,12 @@ nav {
 
 /* Search form */
 
-.navbar-nav form {
+.navbar form {
 	max-height: 100%;
 	margin: 0 !important;
 }
 
-.navbar-nav form input {
+.navbar form input {
 	font-family: sans-serif;
 	height: max-content;
 	border-radius: 200px;
@@ -43,15 +43,15 @@ nav {
 	padding: 10px;
 }
 
-.navbar-nav form input:focus {
+.navbar form input:focus {
 	background-color: var(--color-third);
 }
 
-.navbar-nav form input::placeholder {
+.navbar form input::placeholder {
 	color: var(--color-four);
 }
 
-.navbar-nav form button {
+.navbar form button {
 	padding-left: 6px;
 }
 
