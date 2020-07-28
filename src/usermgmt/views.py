@@ -359,7 +359,9 @@ def account_meet_page(request,page_num,username):
 	ctx["page_num"] = page_num
 	if username == "None":
 		username = request.GET.get('username',None)
-		username = username.replace("@","")
+		# Remove @ from search input
+		if isinstance(username, str):
+			username = username.replace("@","")
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 
 	today = date.now()
