@@ -79,7 +79,7 @@
 	<div class="wrapper user-info">
 		<div class="user-info-container">
 			<div class="target-profile-img-wrapper">
-				<a class="has-label" {% if target_profile.user == user %} href="{% if target_profile.profile_img %}{% url 'userupload_profile_img_page' profile_pk=target_profile.pk file_pk=target_profile.profile_img.pk %}{% else %}{% url 'userupload_profile_img_page' profile_pk=target_profile.pk file_pk=None %}{% endif %}" {% endif %}>
+				<a {% if target_profile.user == user %} class="has-label" href="{% if target_profile.profile_img %}{% url 'userupload_profile_img_page' profile_pk=target_profile.pk file_pk=target_profile.profile_img.pk %}{% else %}{% url 'userupload_profile_img_page' profile_pk=target_profile.pk file_pk=None %}{% endif %}" {% endif %}>
 					{% if target_profile.profile_img %}
 						<img alt="profile image" class="target-profile-img" src="{{ target_profile.profile_img.file.url }}">
 					{% endif %}
