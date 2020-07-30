@@ -95,7 +95,7 @@ def signup_page(request):
 							verification.save()
 
 							# Send user an welcome email 
-							welcome_email(user.username,user.email,verification.slug)
+							verification_email(user.email,verification.slug)
 
 							# Add user to subscriber
 							sub = Subscriber.objects.create(email=user.email)
