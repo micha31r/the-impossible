@@ -6,6 +6,7 @@ cssutils==1.0.2
 Django==2.2.7
 django-background-tasks==1.2.5
 django-compat==1.0.15
+django-csp==3.6
 django-inlinecss==0.3.0
 django-render-block==0.7
 django-templated-email==2.3.0

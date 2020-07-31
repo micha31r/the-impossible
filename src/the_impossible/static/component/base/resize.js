@@ -12,7 +12,6 @@ function center_body() {
 function body_margin() {
 	if ($("nav").css("display") != "none") {
 		var height = $("nav").outerHeight();
-		console.log(height)
 		$(".main-container").css("margin-top",`${height}px`);
 	}
 }
