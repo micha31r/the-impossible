@@ -77,31 +77,12 @@ def signup_page(request):
 							user.last_name = last_name.capitalize()
 							user.save()
 
-							# Create a profile
-							profile = Profile.objects.create(user=user)
-
-							# Create Notification
-							message = f"@{username}, welcome to The Impossible. If you have any questions, please contact us"
-							msg = Notification.objects.create(message=message,message_status=1)
-							msg.save()
-							profile.notification.add(msg)
-
-							# Create feed
-							absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(username,'my',1)))
-							profile.core_feed.add(create_corefeed("WELCOME",username=username, absolute_url=absolute_url))
-
 							# Create verification key
 							verification = Verification.objects.create(user=user)
 							verification.save()
 
 							# Send user an welcome email 
 							verification_email(user.email,verification.slug)
-
-							# Add user to subscriber
-							sub = Subscriber.objects.create(email=user.email)
-							sub.save()
-							profile.subscriber = sub
-							profile.save()
 
 							# Ask user to verify account
 							return redirect("verify_page", username=username)
@@ -126,6 +107,28 @@ def verify_page(request,username):
 		if verification_code == verification.slug:
 			user.is_active = True
 			user.save()
+
+			# Create a profile
+			profile = Profile.objects.create(user=user)
+
+			# Create Notification
+			message = f"@{user.username}, welcome to The Impossible. If you have any questions, please contact us"
+			msg = Notification.objects.create(message=message,message_status=1)
+			msg.save()
+			profile.notification.add(msg)
+
+			# Create feed
+			absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(username,'my',1)))
+			profile.core_feed.add(create_corefeed("WELCOME",username=username, absolute_url=absolute_url))
+
+			# Add user to subscriber list, make sure there is no duplicate email address
+			sub = Subscriber.objects.filter(email=user.email).first()
+			if not sub:
+				sub = Subscriber.objects.create(email=user.email)
+				sub.save()
+			profile.subscriber = sub
+			profile.save()
+
 			return redirect("login_page")
 		else:
 			ctx["error"] = SERVER_ERROR["AUTH_CODE"]
