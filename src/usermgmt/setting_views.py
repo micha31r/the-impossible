@@ -205,8 +205,10 @@ def account_setting_newsletter_page(request):
 	ctx["profile"] = profile = get_object_or_404(Profile,user=request.user)
 
 	if not profile.subscriber:
-		obj = Subscriber.objects.create(email=request.user.email)
-		obj.save()
+		obj = Subscriber.objects.filter(email=request.user.email).first()
+		if not obj:
+			obj = Subscriber.objects.create(email=request.user.email)
+			obj.save()
 		profile.subscriber = obj
 		profile.save()
 
