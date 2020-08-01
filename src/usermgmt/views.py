@@ -49,7 +49,7 @@ def signup_page(request):
 	ctx["date"] = Date()
 	next_page = request.GET.get("next") # Get url of the next page
 	if request.user.is_authenticated:
-		return redirect(next_page or "account_dashboard_page", username=request.user.username, content_filter="my", page_num=1) # Redirect to the next page
+		return redirect(next_page or "usermgmt:account_dashboard_page", username=request.user.username, content_filter="my", page_num=1) # Redirect to the next page
 	ctx["signup_form"] = signup_form = SignUpForm(request.POST or None)
 	if signup_form.is_valid():
 		# Get form inputs
@@ -85,13 +85,13 @@ def signup_page(request):
 							verification_email(user.email,verification.slug)
 
 							# Ask user to verify account
-							return redirect("verify_page", username=username)
+							return redirect("usermgmt:verify_page", username=username)
 						else: ctx["error"] = SERVER_ERROR["AUTH_PASSWORD_MATCH"]
 					else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_USERNAME"]
 				else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_EMAIL_TAKEN"]
 			else:
 				# Ask user to verify account
-				return redirect("verify_page", username=username)
+				return redirect("usermgmt:verify_page", username=username)
 		else: ctx["error"] = SERVER_ERROR["AUTH_SIGNUP_USERNAME_TAKEN"]
 	signup_form = SignUpForm()
 	template_file = "usermgmt/signup.html"
@@ -118,7 +118,7 @@ def verify_page(request,username):
 			profile.notification.add(msg)
 
 			# Create feed
-			absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(username,'my',1)))
+			absolute_url = request.build_absolute_uri(reverse('usermgmt:account_dashboard_page', args=(username,'my',1)))
 			profile.core_feed.add(create_corefeed("WELCOME",username=username, absolute_url=absolute_url))
 
 			# Add user to subscriber list, make sure there is no duplicate email address
@@ -129,7 +129,7 @@ def verify_page(request,username):
 			profile.subscriber = sub
 			profile.save()
 
-			return redirect("login_page")
+			return redirect("usermgmt:login_page")
 		else:
 			ctx["error"] = SERVER_ERROR["AUTH_CODE"]
 	template_file = "usermgmt/verify.html"
@@ -141,7 +141,7 @@ def send_code_view(request,username):
 	verification = get_object_or_404(Verification,user=user)
 	# Send user an welcome email 
 	verification_email(user.email,verification.slug)
-	return redirect("verify_page",username)
+	return redirect("usermgmt:verify_page",username)
 
 # This page is for DEBUG ONLY !!
 def email_page(request):
@@ -156,7 +156,7 @@ def login_page(request):
 	ctx["date"] = Date()
 	next_page = request.GET.get("next") # Get url of the next page
 	if request.user.is_authenticated:
-		return redirect(next_page or "account_dashboard_page", username=request.user.username, content_filter="my", page_num=1) # Redirect to the next page
+		return redirect(next_page or "usermgmt:account_dashboard_page", username=request.user.username, content_filter="my", page_num=1) # Redirect to the next page
 	login_form = LoginForm(request.POST or None)
 	ctx["login_form"] = login_form
 	if login_form.is_valid():
@@ -165,12 +165,12 @@ def login_page(request):
 		user = get_object_or_404(User,username=username)
 		if not user.is_active:
 			# Ask user to verify account
-			return redirect("verify_page", username=username)
+			return redirect("usermgmt:verify_page", username=username)
 		# Validate username with password
 		user = authenticate(request, username=username, password=password)
 		if user:
 			login(request, user)
-			return redirect(next_page or "account_dashboard_page", username=user.username, content_filter="my", page_num=1) # Redirect to the next page
+			return redirect(next_page or "usermgmt:account_dashboard_page", username=user.username, content_filter="my", page_num=1) # Redirect to the next page
 		else: 
 			# Display error if user is not found
 			ctx["error"] = SERVER_ERROR["AUTH_LOGIN"]
@@ -188,7 +188,7 @@ def logout_page(request):
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect("login_page")
+    return redirect("usermgmt:login_page")
 
 def account_dashboard_page(request,username,content_filter,page_num):
 	ctx = {}
@@ -302,7 +302,7 @@ def account_follow_view(request,username):
 	profile = get_object_or_404(Profile,user=request.user)
 	# Check if the current user is blocked by the target user
 	if target_profile.blocked_user.filter(username=request.user.username).exists():
-		absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(username,'my',1)))
+		absolute_url = request.build_absolute_uri(reverse('usermgmt:account_dashboard_page', args=(username,'my',1)))
 		message = f"<a href='{absolute_url}'>@{username}</a> has blocked you, you cannot follow this user"
 		msg = Notification.objects.create(message=message,message_status=1)
 		msg.save()
@@ -314,7 +314,7 @@ def account_follow_view(request,username):
 		else:
 			profile.following.add(target_profile.user)
 	profile.save()
-	return redirect("account_dashboard_page",username=username,content_filter="my",page_num=1)
+	return redirect("usermgmt:account_dashboard_page",username=username,content_filter="my",page_num=1)
 
 @login_required
 def account_people_page(request,username,follower_page_num,following_page_num):

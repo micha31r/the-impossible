@@ -157,7 +157,7 @@ def detail_page(request,pk):
 			elif idea.author.comment_setting == 3:
 				proceed = True
 			if proceed:
-				absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(profile.user.username,'my',1)))
+				absolute_url = request.build_absolute_uri(reverse('usermgmt:account_dashboard_page', args=(profile.user.username,'my',1)))
 				message = f"<a href='{absolute_url}'>@{profile.user.username}</a> has commented on your post <a href='{request.path}'>\"{idea.name}\"</a>"
 				msg = Notification.objects.create(message=message,message_status=1)
 				msg.save()
@@ -171,7 +171,7 @@ def detail_page(request,pk):
 			if user:
 				profile = Profile.objects.filter(user=user).first()
 				# Send the mentioned user a notification
-				absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(request.user.username,'my',1)))
+				absolute_url = request.build_absolute_uri(reverse('usermgmt:account_dashboard_page', args=(request.user.username,'my',1)))
 				message = f"<a href='{absolute_url}'>@{request.user.username}</a> mentioned you in a comment in <a href='{request.path}'>\"{idea.name}\"</a>"
 				msg = Notification.objects.create(message=message,message_status=2)
 				msg.save()
@@ -266,7 +266,7 @@ def edit_page(request,pk):
 					if proceed:
 						profile = Profile.objects.filter(user=user).first()
 						# Send the mentioned user a notification
-						user_absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(request.user.username,'my',1)))
+						user_absolute_url = request.build_absolute_uri(reverse('usermgmt:account_dashboard_page', args=(request.user.username,'my',1)))
 						message = f"<a href='{user_absolute_url}'>@{request.user.username}</a> mentioned you in <a href='{idea_absolute_url}'>\"{idea.name}\"</a>"
 						msg = Notification.objects.create(message=message,message_status=2)
 						msg.save()
@@ -274,7 +274,7 @@ def edit_page(request,pk):
 						profile.notification.add(msg)
 					else:
 						# Tell the current user that certain uses can't be mentioned
-						user_absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(username,'my',1)))
+						user_absolute_url = request.build_absolute_uri(reverse('usermgmt:account_dashboard_page', args=(username,'my',1)))
 						message = f"<a href='{user_absolute_url}'>@{username}</a> is not mentioned due to <a href='{idea_absolute_url}'>\"{idea.name}\"</a>s publish setting"
 						msg = Notification.objects.create(message=message,message_status=1)
 						msg.save()
@@ -298,7 +298,7 @@ def edit_page(request,pk):
 			# Notify followers if publish setting is set to followers-only or public
 			if not idea.notified and (idea.publish_status == 2 or idea.publish_status == 3):
 				idea.notified = True
-				user_absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(request.user.username,'my',1)))
+				user_absolute_url = request.build_absolute_uri(reverse('usermgmt:account_dashboard_page', args=(request.user.username,'my',1)))
 				message = f"<a href='{user_absolute_url}'>@{request.user.username}</a> has created a new post <a href='{idea_absolute_url}'>\"{idea.name}\"</a>"
 				msg = Notification.objects.create(message=message,message_status=1)
 				msg.save()
@@ -381,7 +381,7 @@ def like_view(request):
 					elif idea.author.like_setting == 3:
 						proceed = True
 					if proceed:
-						user_absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(user.username,'my',1)))
+						user_absolute_url = request.build_absolute_uri(reverse('usermgmt:account_dashboard_page', args=(user.username,'my',1)))
 						idea_absolute_url = request.build_absolute_uri(reverse('idea:detail_page', args=(pk,)))
 						message = f"<a href='{user_absolute_url}'>@{user.username}</a> has liked your post <a href='{idea_absolute_url}'>\"{idea.name}\"</a>"
 						msg = Notification.objects.create(message=message,message_status=1)

@@ -27,7 +27,7 @@ def idea_img_page(request,idea_pk,file_pk,field):
 	# file_pk can be an integer or None
 	ctx["file"] = file = File.objects.filter(pk=file_pk.isdigit() and file_pk or -1).first()
 	ctx["form"] = form = FileForm(request.POST or None, request.FILES or None)
-	ctx["redirect_name"] = redirect_name = "idea:edit_page"
+	ctx["redirect_name"] = redirect_name = "edit_page"
 
 	ctx["obj"] = idea = get_object_or_404(Idea, pk=idea_pk)
 
@@ -63,7 +63,7 @@ def idea_img_page(request,idea_pk,file_pk,field):
 					elif field == "body":
 						idea.body_img.add(file)
 					idea.save()
-					return redirect(redirect_name,pk=idea_pk)
+					return redirect(f"idea:{redirect_name}",pk=idea_pk)
 
 				# Invalid file type
 				else:
@@ -71,7 +71,7 @@ def idea_img_page(request,idea_pk,file_pk,field):
 			# If user didn't replace the old file
 			elif file.file:
 				# This only work if the url name starts with the model's name. E.G: idea_edit_page
-				return redirect(redirect_name,pk=idea_pk)
+				return redirect(f"idea:{redirect_name}",pk=idea_pk)
 	else:
 		return redirect("access_error_page")
 	template_file = "userupload/idea_img.html"
@@ -81,7 +81,7 @@ def idea_img_page(request,idea_pk,file_pk,field):
 def idea_img_delete_page(request,redirect_name,obj_pk,file_pk):
 	file = get_object_or_404(File, pk=file_pk)
 	file.delete()
-	return redirect(redirect_name,pk=obj_pk)
+	return redirect(f"idea:{redirect_name}",pk=obj_pk)
 
 @login_required
 def profile_img_page(request,profile_pk,file_pk):
@@ -123,7 +123,7 @@ def profile_img_page(request,profile_pk,file_pk):
 					# Link file to parent object
 					profile.profile_img = file
 					profile.save()
-					return redirect(redirect_name,username=request.user.username,content_filter="my",page_num=1)
+					return redirect(f"usermgmt:{redirect_name}",username=request.user.username,content_filter="my",page_num=1)
 
 				# Invalid file type
 				else:
@@ -131,7 +131,7 @@ def profile_img_page(request,profile_pk,file_pk):
 			# If user didn't replace the old file
 			elif file.file:
 				# This only work if the url name starts with the model's name. E.G: idea_edit_page
-				return redirect(redirect_name,username=request.user.username,content_filter="my",page_num=1)
+				return redirect(f"usermgmt:{redirect_name}",username=request.user.username,content_filter="my",page_num=1)
 	else:
 		return redirect("access_error_page")
 	template_file = "userupload/profile_img.html"
@@ -141,6 +141,6 @@ def profile_img_page(request,profile_pk,file_pk):
 def profile_img_delete_page(request,redirect_name,username,content_filter,page_num,file_pk):
 	file = get_object_or_404(File, pk=file_pk)
 	file.delete()
-	return redirect(redirect_name,username=username,content_filter=content_filter,page_num=page_num)
+	return redirect(f"usermgmt:{redirect_name}",username=username,content_filter=content_filter,page_num=page_num)
 
 

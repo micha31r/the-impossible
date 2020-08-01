@@ -44,15 +44,15 @@
 					<tr>
 						<td>
 							<div class="author-profile-img-wrapper">
-								<a href="{% url 'account_dashboard_page' username=idea.author.user.username content_filter='my' page_num=1 %}">{% if idea.author.profile_img %}<img alt="profile image" class="author-profile-img" src="{{ idea.author.profile_img.file.url }}">{% endif %}</a>
+								<a href="{% url 'usermgmt:account_dashboard_page' username=idea.author.user.username content_filter='my' page_num=1 %}">{% if idea.author.profile_img %}<img alt="profile image" class="author-profile-img" src="{{ idea.author.profile_img.file.url }}">{% endif %}</a>
 							</div>
 						</td>
 						<td>
 							<div class="info">
 								<p>Written By</p>
 								<h5>
-									<a href="{% url 'account_dashboard_page' username=idea.author.user.username content_filter='my' page_num=1 %}">{{ idea.author }}</a><!-- Follow button -->
-									<a class="follow-btn" href="{% if user.is_authenticated %}{% url 'account_follow_view' username=idea.author.user.username %}{% else %}{% url 'login_page' %}{% endif %}">{% if idea.author.user in profile.following.all %}Unfollow{% else %}Follow{% endif%}</a>
+									<a href="{% url 'usermgmt:account_dashboard_page' username=idea.author.user.username content_filter='my' page_num=1 %}">{{ idea.author }}</a><!-- Follow button -->
+									<a class="follow-btn" href="{% if user.is_authenticated %}{% url 'usermgmt:account_follow_view' username=idea.author.user.username %}{% else %}{% url 'usermgmt:login_page' %}{% endif %}">{% if idea.author.user in profile.following.all %}Unfollow{% else %}Follow{% endif%}</a>
 								</h5>
 								<h6>{% if idea.author.bio %}{{ idea.author.bio|truncatechars:60 }}{% else %}(No Bio..){% endif %}</h6>
 							</div>

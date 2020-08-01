@@ -25,6 +25,8 @@ from .setting_views import (
 	account_setting_newsletter_page,
 )
 
+app_name = 'usermgmt'
+
 urlpatterns = [
 	path('signup', signup_page, name="signup_page"),
 	path('verify/<slug:username>', verify_page, name="verify_page"),
@@ -50,4 +52,4 @@ urlpatterns = [
 
 if settings.DEBUG:
 	# THIS IS FOR TESTING ONLY !!
-	urlpatterns.append(path('email', email_page, name="usermgmt_email_page"))
+	urlpatterns.append(path('email', email_page, name="email_page"))

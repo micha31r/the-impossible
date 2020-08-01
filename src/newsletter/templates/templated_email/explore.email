@@ -127,9 +127,9 @@
 				{% endif %}
 				<div class="content-container link-container">
 					<h3><a href="http://theimpossible.world{% url 'idea:explore_page' week_num=date.week page_num=1 %}">EXPLORE MORE</a></h3>
-					<h3><a href="http://theimpossible.world{% url 'account_meet_page' page_num=1 username=None %}">CONNECT</a></h3>
-					<h3><a href="http://theimpossible.world{% url 'login_page' %}">MY ACCOUNT</a></h3>
-					<h3><a href="http://theimpossible.world{% url 'account_setting_newsletter_page' %}">EMAIL NOTIFICATION SETTINGS</a></h3>
+					<h3><a href="http://theimpossible.world{% url 'usermgmt:account_meet_page' page_num=1 username=None %}">CONNECT</a></h3>
+					<h3><a href="http://theimpossible.world{% url 'usermgmt:login_page' %}">MY ACCOUNT</a></h3>
+					<h3><a href="http://theimpossible.world{% url 'usermgmt:account_setting_newsletter_page' %}">EMAIL NOTIFICATION SETTINGS</a></h3>
 				</div>
 				<div class="content-container">
 					<p class="noreply-text">
