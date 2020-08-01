@@ -162,8 +162,8 @@ def login_page(request):
 	if login_form.is_valid():
 		username = login_form.cleaned_data.get("username")
 		password = login_form.cleaned_data.get("password")
-		user = get_object_or_404(User,username=username)
-		if not user.is_active:
+		user = User.objects.filter(username=username).first()
+		if user and not user.is_active:
 			# Ask user to verify account
 			return redirect("usermgmt:verify_page", username=username)
 		# Validate username with password
