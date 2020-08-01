@@ -134,7 +134,7 @@
 				<div class="content-container">
 					<p class="noreply-text">
 						<b>(Do not reply to this email)</b>
-						<a href="http://theimpossible.world{% url 'newsletter_unenroll_page' slug=subscriber_slug %}">Unsubscribe?</a>
+						<a href="http://theimpossible.world{% url 'newsletter:unenroll_page' slug=subscriber_slug %}">Unsubscribe?</a>
 					</p>
 				</div>
 			</div>
