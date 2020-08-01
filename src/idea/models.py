@@ -81,7 +81,7 @@ class Idea(models.Model):
 	last_edit = models.DateTimeField(auto_now=True)
 
 	def get_absolute_url(self):
-		return reverse('idea_detail_page', kwargs={'pk':self.pk})
+		return reverse('idea:detail_page', args=(self.pk,))
 
 	def __str__(self):
 		return self.name
