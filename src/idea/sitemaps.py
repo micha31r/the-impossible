@@ -31,7 +31,7 @@ class IdeaSitemap(Sitemap):
 
 	def items(self):
 		# Return the top 1000 most viewed ideas - with a reasonable amount of words
-		qs = Idea.objects.annotate(view_count=Count('viewed_user'),text_length=Length('full_description')).filter(publish_status=3,text_length__gte=500).order_by('-view_count')[:1000]
+		qs = Idea.objects.annotate(view_count=Count('viewed_user'),text_length=Length('full_description')).filter(publish_status=3,text_length__gte=500).order_by('-view_count')[:10000]
 		return qs
 
 	# Last edited

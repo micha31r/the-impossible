@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.urls import reverse
 
 from userupload.models import (
 	File,
@@ -82,6 +83,9 @@ class Profile(models.Model):
 	daily_limit_timestamp = models.DateTimeField(default=timezone.now)
 
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
+
+	def get_absolute_url(self):
+		return reverse('usermgmt:account_dashboard_page', args=(self.user.username,"my",1))
 
 	def __str__(self):
 		full_name = "Anonymous"
