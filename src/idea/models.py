@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
+from django.urls import reverse
 
 from usermgmt.models import (
 	Profile,
@@ -78,6 +79,9 @@ class Idea(models.Model):
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now
 	last_edit = models.DateTimeField(auto_now=True)
+
+	def get_absolute_url(self):
+		return reverse('idea_detail_page', kwargs={'pk':self.pk})
 
 	def __str__(self):
 		return self.name

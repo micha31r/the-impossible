@@ -34,7 +34,7 @@
 					</div>
 				{% endif %}
 				{% if user == idea.author.user %}
-					<button class="btn btn-yellow-outline bold edit-btn" onclick="window.location.href='{% url 'idea_edit_page' pk=idea.id %}'">Edit Idea</button>
+					<button class="btn btn-yellow-outline bold edit-btn" onclick="window.location.href='{% url 'idea:edit_page' pk=idea.id %}'">Edit Idea</button>
 				{% endif %}
 			</div>
 
@@ -87,7 +87,7 @@
 						<div class="comment-wrapper">
 							<h6>{{ comment.full_description }}</h6>
 							<p class="small">{{ comment.author }}</p>
-							<a class="small {% if comment.author.user == user %} delete-link {% endif %}" {% if comment.author.user == user %} href="{% url 'idea_comment_delete_view' comment_pk=comment.pk idea_pk=idea.pk %}" {% endif %}><span>Last Edited <span class="time">{{ comment.last_edit }}</span></span></a>
+							<a class="small {% if comment.author.user == user %} delete-link {% endif %}" {% if comment.author.user == user %} href="{% url 'idea:comment_delete_view' comment_pk=comment.pk idea_pk=idea.pk %}" {% endif %}><span>Last Edited <span class="time">{{ comment.last_edit }}</span></span></a>
 						</div>
 					{% endfor %}
 				<span>

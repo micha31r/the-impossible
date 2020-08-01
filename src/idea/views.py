@@ -195,7 +195,7 @@ def create_view(request):
 	
 	if profile.daily_limit_timestamp.strftime("%Y-%m-%d") == str(date.now()):
 		if profile.daily_limit <= 0:
-			return redirect("idea_limit_page")
+			return redirect("idea:limit_page")
 	else:
 		profile.daily_limit = 5
 		profile.daily_limit_timestamp = date.now()
@@ -210,7 +210,7 @@ def create_view(request):
 	obj.save()
 	profile.daily_limit -= 1
 	profile.save()
-	return redirect("idea_edit_page",pk=obj.id)
+	return redirect("idea:edit_page",pk=obj.id)
 
 # Daily limit reached
 def limit_page(request):
@@ -246,12 +246,12 @@ def edit_page(request,pk):
 			if data.get("delete") == 2:
 				idea.comments.all().delete()
 				idea.delete()
-				return redirect("idea_explore_page",date.week(),1)
+				return redirect("idea:explore_page",date.week(),1)
 
 			idea.name = escape_html(data.get("name"))
 			idea.short_description = data.get("short_description")
 
-			idea_absolute_url = request.build_absolute_uri(reverse('idea_detail_page', args=(pk,)))
+			idea_absolute_url = request.build_absolute_uri(reverse('idea:detail_page', args=(pk,)))
 
 			# Search description for @ users
 			usernames = set(at_filter(data.get("full_description"))) - set(usernames_before_edit)
@@ -322,7 +322,7 @@ def edit_page(request,pk):
 				return redirect(request.POST.get("redirect_img"))
 			else:
 				# Refresh page
-				return redirect("idea_edit_page", pk=idea.id)
+				return redirect("idea:edit_page", pk=idea.id)
 	else:
 		return redirect("access_error_page")
 	template_file = "idea/edit.html"
@@ -382,7 +382,7 @@ def like_view(request):
 						proceed = True
 					if proceed:
 						user_absolute_url = request.build_absolute_uri(reverse('account_dashboard_page', args=(user.username,'my',1)))
-						idea_absolute_url = request.build_absolute_uri(reverse('idea_detail_page', args=(pk,)))
+						idea_absolute_url = request.build_absolute_uri(reverse('idea:detail_page', args=(pk,)))
 						message = f"<a href='{user_absolute_url}'>@{user.username}</a> has liked your post <a href='{idea_absolute_url}'>\"{idea.name}\"</a>"
 						msg = Notification.objects.create(message=message,message_status=1)
 						msg.save()
@@ -426,7 +426,7 @@ def comment_delete_view(request,comment_pk,idea_pk):
 	comment = get_object_or_404(Comment, pk=comment_pk)
 	if comment.author.user == request.user:
 		comment.delete()
-	return redirect("idea_detail_page", pk=idea_pk)
+	return redirect("idea:detail_page", pk=idea_pk)
 
 @login_required
 def comment_get_view(request):

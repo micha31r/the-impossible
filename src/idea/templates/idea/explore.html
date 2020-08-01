@@ -12,7 +12,7 @@
 
 {% block nav_custom %}
 	<li class="nav-item">
-		<a class="nav-link has-label" href="{% url 'idea_create_view' %}">
+		<a class="nav-link has-label" href="{% url 'idea:create_view' %}">
 			<span class="svg-wrapper">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
 			</span>
@@ -54,10 +54,10 @@
 
 			<!-- Change Week -->
 			{% if previous_week_num != None %}
-				<button class="btn btn-week btn-yellow-outline" onclick="window.location.href='{% url 'idea_explore_page' week_num=previous_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></button>
+				<button class="btn btn-week btn-yellow-outline" onclick="window.location.href='{% url 'idea:explore_page' week_num=previous_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></button>
 			{% endif %}
 			{% if next_week_num != None %}
-				<button class="btn btn-week btn-yellow" onclick="window.location.href='{% url 'idea_explore_page' week_num=next_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-first)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
+				<button class="btn btn-week btn-yellow" onclick="window.location.href='{% url 'idea:explore_page' week_num=next_week_num page_num=1 %}'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-first)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
 			{% endif %}
 		</div>
 
@@ -93,10 +93,10 @@
 				{% for idea in random_ideas %}
 					<div class="discover-card">
 
-						<a href="{% url 'idea_detail_page' pk=idea.pk %}"><div class="img-border"><img class="header-img" src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}"></div></a>
+						<a href="{% url 'idea:detail_page' pk=idea.pk %}"><div class="img-border"><img class="header-img" src="{{ idea.header_img.file.url }}" alt="{{ idea.header_img.description }}"></div></a>
 
 						<!-- Title -->
-						<h5 class="card-title"><a href="{% url 'idea_detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
+						<h5 class="card-title"><a href="{% url 'idea:detail_page' pk=idea.pk %}">{{ idea.name }}</a></h5>
 
 						<!-- Short description -->
 						<h6 class="card-subtitle mb-2">{{ idea.short_description|truncatechars:50 }}</h6>
@@ -115,7 +115,7 @@
 	<div class="wrapper search-wrapper">
 		<h3>Looking for something?</h3>
 		<h5><b>Search it here:</b></h5>
-		<form action="{% url 'idea_search_page' page_num=1 name=None %}">
+		<form action="{% url 'idea:search_page' page_num=1 name=None %}">
 	  		<input placeholder="Idea Name" name="name" required="required">
 	  		<button class="btn btn-yellow-outline" type="submit">
   				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -125,7 +125,7 @@
 
 	<!-- Feed button -->
 	{% if user.is_authenticated %}
-		<button class="btn btn-yellow feed-button" onclick="window.location.href='{% url 'idea_feed_page' %}'">
+		<button class="btn btn-yellow feed-button" onclick="window.location.href='{% url 'idea:feed_page' %}'">
 			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
 		</button>
 	{% endif %}

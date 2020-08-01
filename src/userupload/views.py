@@ -27,7 +27,7 @@ def idea_img_page(request,idea_pk,file_pk,field):
 	# file_pk can be an integer or None
 	ctx["file"] = file = File.objects.filter(pk=file_pk.isdigit() and file_pk or -1).first()
 	ctx["form"] = form = FileForm(request.POST or None, request.FILES or None)
-	ctx["redirect_name"] = redirect_name = "idea_edit_page"
+	ctx["redirect_name"] = redirect_name = "idea:edit_page"
 
 	ctx["obj"] = idea = get_object_or_404(Idea, pk=idea_pk)
 
