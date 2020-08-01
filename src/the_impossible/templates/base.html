@@ -6,8 +6,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<meta name="description" content="A social media platform focused on discussing and sharing ideas.">
-  		<meta name="keywords" content="idea, ideas, share ideas, new ideas, creative ideas, project ideas, innovative ideas, idea sharing platform, theimpossible, the impossible, theimpossible world, the impossible world, social media">
+		{% block meta %}
+			<meta name="description" content="A social media platform focused on discussing and sharing innovative ideas.">
+	  		<meta name="keywords" content="share ideas, cool ideas, creative ideas, project ideas, innovative ideas, idea sharing platform, theimpossible, the impossible, theimpossible world, the impossible world">
+	  	{% endblock %}
 
 		<!-- Reset CSS -->
 		<link rel="stylesheet" type="text/css" href="{% static 'component/base/reset.css' %}">

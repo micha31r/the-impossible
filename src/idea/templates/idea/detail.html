@@ -2,6 +2,11 @@
 {% load static %}
 {% load tags %}
 
+{% block meta %}
+	<meta name="description" content="{{ idea.full_description }}">
+	<meta name="keywords" content="{{ idea.name }}">
+{% endblock %}
+
 {% block title %}
 	<title>{{ idea.name }} - The Impossible</title>
 {% endblock %}

@@ -2,6 +2,11 @@
 {% load static %}
 {% load tags %}
 
+{% block meta %}
+	<meta name="description" content="Search for users on The Impossible">
+	<meta name="keywords" content="{{ idea.name }}">
+{% endblock %}
+
 {% block title %}
 	<title>Connect - The Impossible</title>
 {% endblock %}
