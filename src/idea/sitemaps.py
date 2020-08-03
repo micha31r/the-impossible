@@ -8,26 +8,24 @@ from .models import Idea
 from the_impossible.utils import Date
 
 class StaticSitemap(Sitemap):
-	changefreq = "weekly"
+	changefreq = "daily"
 	priority = 0.8
 
 	def items(self):
 		return [
 			'idea:explore_page',
-			'idea:search_page',
 		]
 
 	def location(self, item):
 		date = Date()
 		args = {
 			'idea:explore_page':(date.week(),1),
-			'idea:search_page':(1,None),
 		}
 		return reverse(item, args=args[item])
 
 class IdeaSitemap(Sitemap):    
 	changefreq = "weekly"
-	priority = 0.7
+	priority = 0.6
 
 	def items(self):
 		# Return the top 1000 most viewed ideas - with a reasonable amount of words

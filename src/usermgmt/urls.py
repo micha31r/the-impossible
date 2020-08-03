@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 
-from .sitemaps import StaticSitemap, ProfileSitemap
+from .sitemaps import ProfileSitemap
 
 from .views import (
 	signup_page,
@@ -29,7 +29,6 @@ from .setting_views import (
 )
 
 sitemaps = {
-	'static': StaticSitemap,
     'profiles': ProfileSitemap
 }
 

@@ -8,28 +8,28 @@ from .models import Profile
 
 from the_impossible.utils import Date
 
-class StaticSitemap(Sitemap):
-	changefreq = "yearly"
-	priority = 0.5
+# class StaticSitemap(Sitemap):
+# 	changefreq = "yearly"
+# 	priority = 0.5
 
-	def items(self):
-		return [
-			'usermgmt:login_page',
-			'usermgmt:signup_page',
-			'usermgmt:account_meet_page',
-		]
+# 	def items(self):
+# 		return [
+# 			'usermgmt:login_page',
+# 			'usermgmt:signup_page',
+# 			'usermgmt:account_meet_page',
+# 		]
 
-	def location(self, item):
-		date = Date()
-		args = {
-			'usermgmt:login_page':None,
-			'usermgmt:signup_page':None,
-			'usermgmt:account_meet_page':(1,None),
-		}
-		return reverse(item, args=args[item])
+# 	def location(self, item):
+# 		date = Date()
+# 		args = {
+# 			'usermgmt:login_page':None,
+# 			'usermgmt:signup_page':None,
+# 			'usermgmt:account_meet_page':(1,None),
+# 		}
+# 		return reverse(item, args=args[item])
 
 class ProfileSitemap(Sitemap):    
-	changefreq = "monthly"
+	changefreq = "daily"
 	priority = 0.2
 
 	def items(self):
