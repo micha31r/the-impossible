@@ -1,7 +1,12 @@
+import string, random
 from django.db import models
 from django.conf import settings
 
 User = settings.AUTH_USER_MODEL
+
+def slug_generator(seed,size=20, chars=string.ascii_letters + string.digits):
+	random.seed(seed)
+	return ''.join(random.choice(chars) for _ in range(size))
 
 class ChatGroup(models.Model):
 
@@ -15,6 +20,8 @@ class ChatGroup(models.Model):
 	)
 
 	name = models.CharField(max_length=200)
+	slug = models.SlugField(blank=True)
+	key = models.SlugField(blank=True)
 
 	# Each group can have a maximum of 500 members
 	member = models.ManyToManyField(
@@ -26,11 +33,19 @@ class ChatGroup(models.Model):
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True) 
 
-	def add_member(self):
-		if self.member.count() < 500:
-			self.member.add(user)
-			self.save()
-			return True
+	def save(self, *args, **kwargs):
+		super().save(*args, **kwargs)
+		self.slug = slug_generator(self.id+len(self.name), size=10)
+		self.key = slug_generator(self.id, size=6)
+		super().save(*args, **kwargs)
+
+	def add_member(self,user):
+		# Requesting member(user) must be an active user
+		if user.is_active:
+			if self.member.count() < 500:
+				self.member.add(user)
+				self.save()
+				return True
 		return False
 
 	# If this group has only 2 members than it's considered as direct messaging
@@ -42,15 +57,24 @@ class ChatGroup(models.Model):
 	def __str__(self):
 		return self.name
 
-# Users must approve each other before direct messaging
-# The owner of a chat group must grant permission before a user can be added to a group
+# New users must be approved before added to a chat
 class ChatPermission(models.Model):
+	
 	user = models.ForeignKey(
 		User,
 		on_delete=models.CASCADE
 	)
 
-	group_id = models.SlugField(max_length=16)
+	permitted = models.BooleanField(default=False)
+	group = models.ForeignKey(
+		ChatGroup,
+		related_name="group",
+		on_delete=models.CASCADE
+	)
+
+	def delete(self, *args, **kwargs):
+		self.group.member.remove(self.user)
+		super(Image, self).delete(*args, **kwargs)
 	
 
 class ChatMessage(models.Model):

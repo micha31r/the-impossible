@@ -128,7 +128,7 @@ nav, footer {
 	color: var(--color-six);
 }
 
-.feed-card ul {
+.feed-card ul, ol {
 	color: var(--color-five);
 	/* Default ul style */
 	display: block; 
@@ -138,6 +138,10 @@ nav, footer {
 	margin-left: 0; 
 	margin-right: 0; 
 	padding-left: 40px;
+}
+
+.feed-card ol {
+	list-style-type: decimal;
 }
 
 .feed-card a {

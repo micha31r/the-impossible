@@ -27,7 +27,7 @@
 			<div class="idea-content">
 				<h2>{{ idea.name }}</h2>
 				<h5>{{ idea.short_description }}</h5>
-				<p>{{ idea.full_description }}</p>
+				<p>{{ idea.full_description|linebreaks }}</p>
 				<div id="append-target1"></div>
 				{% if idea.tags %}
 					<div class="idea-tag-container">
@@ -90,7 +90,7 @@
 				<span id="append-target2">
 					{% for comment in comments %}
 						<div class="comment-wrapper">
-							<h6>{{ comment.full_description }}</h6>
+							<h6>{{ comment.full_description|linebreaks }}</h6>
 							<p class="small">{{ comment.author }}</p>
 							<a class="small {% if comment.author.user == user %} delete-link {% endif %}" {% if comment.author.user == user %} href="{% url 'idea:comment_delete_view' comment_pk=comment.pk idea_pk=idea.pk %}" {% endif %}><span>Last Edited <span class="time">{{ comment.last_edit }}</span></span></a>
 						</div>

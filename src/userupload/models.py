@@ -28,7 +28,7 @@ SUPPORTED_FILE_TYPE = {
 	]
 }
 
-def slug_generator(seed,size=20, chars=string.ascii_uppercase + string.digits):
+def slug_generator(seed,size=20, chars=string.ascii_letters + string.digits):
 	random.seed(seed)
 	return ''.join(random.choice(chars) for _ in range(size))
 
