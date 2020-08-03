@@ -19,9 +19,6 @@
 	<!-- Resize js -->
 	<script type="text/javascript" src="{% static 'idea/edit_page/resize.js' %}"></script>
 
-	<!-- Delete confirm js -->
-	<script type="text/javascript" src="{% static 'idea/edit_page/delete_confirm.js' %}"></script>
-
 	<div class="wrapper">
 		<form method="post">
 	    	{% csrf_token %}
@@ -68,8 +65,7 @@
 								<td id="delete-button">
 									<!-- Delete button -->
 									<h5><b>Delete Idea:</b></h5>
-									<p id="hidden" style="display:none;">{{ form.delete }}</p>
-									<button class="btn btn-black-outline bold" id="confirm-button" onclick="click_confirm('hidden','confirm-button'); return false;">Reveal</button>
+									<p>{{ form.delete }}</p>
 								</td>
 							</tr>
 							<tr id="append-target3"></tr>
