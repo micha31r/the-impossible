@@ -26,15 +26,32 @@ class ChatGroup(models.Model):
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True) 
 
-	def add_member(user):
+	def add_member(self):
 		if self.member.count() < 500:
 			self.member.add(user)
 			self.save()
 			return True
 		return False
 
+	# If this group has only 2 members than it's considered as direct messaging
+	def is_direct(self):
+		if self.member.all().count() == 2:
+			return True
+		return False
+
 	def __str__(self):
 		return self.name
+
+# Users must approve each other before direct messaging
+# The owner of a chat group must grant permission before a user can be added to a group
+class ChatPermission(models.Model):
+	user = models.ForeignKey(
+		User,
+		on_delete=models.CASCADE
+	)
+
+	group_id = models.SlugField(max_length=16)
+	
 
 class ChatMessage(models.Model):
 
