@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.sitemaps.views import sitemap
 
-from .sitemaps import StaticSitemap, IdeaSitemap
+from .sitemaps import StaticSitemap
 
 from .views import (
 	# Idea
@@ -21,8 +21,7 @@ from .views import (
 )
 
 sitemaps = {
-	'static': StaticSitemap,
-    'ideas': IdeaSitemap
+	'static': StaticSitemap
 }
 
 app_name = 'idea'
