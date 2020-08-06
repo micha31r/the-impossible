@@ -266,3 +266,11 @@ select[name="delete"] {
 	color: var(--color-four);
 }
 
+.view-idea {
+	color: var(--color-brand);
+}
+
+.view-idea:hover {
+	color: var(--color-brand-dark);
+}
+

@@ -30,11 +30,11 @@ def join_page(request):
 	return render(request,template_file,ctx)
 
 @login_required
-def chat_page(request,group):
+def chat_page(request,slug):
 	ctx = {}
 	ctx["date"] = Date()
 
-	group = get_object_or_404(ChatGroup, pk=pk)
+	group = get_object_or_404(ChatGroup, slug=slug)
 	permission = get_object_or_404(ChatPermission, group=group)
 
 	# Requesting user must be a verified member from this group
