@@ -37,7 +37,6 @@ urlpatterns = [
     path('userupload/', include("userupload.urls")),
     path('newsletter/', include("newsletter.urls")),
     path('support/', include("support.urls")),
-    path('chat/', include("chat.urls")),
 ]
 
 # if settings.DEBUG:
