@@ -81,7 +81,7 @@
 
 				{% include 'form_error.html' %}
 
-				{{ form.full_description }}
+				{{ form.content }}
 					
 				<button class="btn btn-dark btn-black bold submit" type="submit">Post Comment</button>
 			</form>
@@ -90,7 +90,7 @@
 				<span id="append-target2">
 					{% for comment in comments %}
 						<div class="comment-wrapper">
-							<h6>{{ comment.full_description|linebreaks }}</h6>
+							<h6>{{ comment.content|linebreaks }}</h6>
 							<p class="small">{{ comment.author }}</p>
 							<a class="small {% if comment.author.user == user %} delete-link {% endif %}" {% if comment.author.user == user %} href="{% url 'idea:comment_delete_view' comment_pk=comment.pk idea_pk=idea.pk %}" {% endif %}><span>Last Edited <span class="time">{{ comment.last_edit }}</span></span></a>
 						</div>

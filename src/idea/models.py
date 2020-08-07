@@ -34,7 +34,7 @@ class Comment(models.Model):
 	)
 
     # Content
-	full_description = models.TextField(max_length=280,blank=False,unique=False)
+	content = models.TextField(max_length=280,blank=False,unique=False)
 	
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True) # default=timezone.now

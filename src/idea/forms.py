@@ -42,11 +42,11 @@ class CommentForm(forms.ModelForm):
         model = Comment
         # Don't use "__all__", in this case the form won't validate
         fields = [
-            "full_description",
+            "content",
         ]
         widgets = {
-            'full_description': forms.Textarea(attrs={'placeholder': 'Content (Max 500), use @username to mention other users'}),
+            'content': forms.Textarea(attrs={'placeholder': 'Content (Max 500), use @username to mention other users'}),
         }
         labels={
-            "full_description":"",
+            "content":"",
         }

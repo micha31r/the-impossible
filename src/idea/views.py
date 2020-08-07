@@ -141,7 +141,7 @@ def detail_page(request,pk):
 		data = form.cleaned_data
 		comment = Comment.objects.create(
 			author = profile,
-			full_description = data.get("full_description")
+			content = data.get("content")
 		)
 		comment.save()
 		idea.comments.add(comment)
@@ -165,7 +165,7 @@ def detail_page(request,pk):
 				idea.author.save()
 
 		# Search description for @ users
-		usernames = at_filter(comment.full_description)
+		usernames = at_filter(comment.content)
 		for username in usernames:
 			user = User.objects.filter(username=username).first()
 			if user:
@@ -184,6 +184,9 @@ def detail_page(request,pk):
 				msg.save()
 				idea.author.notification.add(msg)
 				idea.author.save()
+
+		# Clear form
+		ctx["form"] = CommentForm()
 
 	template_file = "idea/detail.html"
 	return render(request,template_file,ctx)
