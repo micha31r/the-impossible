@@ -8,6 +8,26 @@ def slug_generator(seed,size=20, chars=string.ascii_letters + string.digits):
 	random.seed(seed)
 	return ''.join(random.choice(chars) for _ in range(size))
 
+class ChatMessage(models.Model):
+
+	# Order data by name
+	class Meta:
+		ordering = ['-id']
+
+	user = models.ForeignKey(
+		User,
+		on_delete=models.SET_NULL,
+		null=True
+	)
+
+	message = models.CharField(max_length=1000)
+
+	# Timestamp
+	timestamp = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.name
+
 class ChatGroup(models.Model):
 
 	# Order data by name
@@ -27,6 +47,13 @@ class ChatGroup(models.Model):
 	member = models.ManyToManyField(
 		User,
 		related_name="member",
+		blank=True
+	)
+
+	# set related_name to "messages" so it doesn't conflict with ChatMessage.message
+	message = models.ManyToManyField(
+		ChatMessage,
+		related_name="messages",
 		blank=True
 	)
 
@@ -72,43 +99,12 @@ class ChatPermission(models.Model):
 		on_delete=models.CASCADE
 	)
 
+	# Timestamp
+	timestamp = models.DateTimeField(auto_now_add=True) 
+
 	def delete(self, *args, **kwargs):
 		self.group.member.remove(self.user)
 		super(Image, self).delete(*args, **kwargs)
-	
-
-class ChatMessage(models.Model):
-
-	# Order data by name
-	class Meta:
-		ordering = ['-id']
-
-	user = models.ForeignKey(
-		User,
-		on_delete=models.CASCADE
-	)
-
-	to_user = models.ForeignKey(
-		User,
-		on_delete=models.CASCADE,
-		related_name="to_user",
-		blank=True,
-	)
-
-	to_group = models.ForeignKey(
-		ChatGroup,
-		on_delete=models.CASCADE,
-		related_name="to_group",
-		blank=True,
-	)
-
-	message = models.CharField(max_length=1000)
-
-	# Timestamp
-	timestamp = models.DateTimeField(auto_now_add=True)
-
-	def __str__(self):
-		return self.name
 
 
 

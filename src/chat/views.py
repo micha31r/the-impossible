@@ -35,7 +35,7 @@ def chat_page(request,slug):
 	ctx["date"] = Date()
 
 	group = get_object_or_404(ChatGroup, slug=slug)
-	permission = get_object_or_404(ChatPermission, group=group)
+	permission = get_object_or_404(ChatPermission, user=request.user, group=group)
 
 	# Requesting user must be a verified member from this group
 	if not group.member.filter(username=username).exists() or not permission.permitted:
