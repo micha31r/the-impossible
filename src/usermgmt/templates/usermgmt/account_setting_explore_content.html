@@ -21,6 +21,26 @@
 
 	<h5>Favourite Tags:</h5>
 	{{ form.tags }}
+
+	<hr class="section-seperator">
+
+	<h5>{{ form.use_tag_filter.label }}:</h5>
+	<p>(Select at least 1 tag to use filter)</p>
+	{% for radio in form.use_tag_filter %}
+		<div class="radio">
+		    {{ radio }}
+		</div>
+	{% endfor %}
+
+	<!-- Add span element to each radio button -->
+	<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio -->
+	<script type="text/javascript">
+		$( ".radio label" ).each(
+			function() {
+				$(this).append("<span class='checkmark'></span>");
+			}
+		);
+	</script>
 	
 	<button class="btn btn-yellow bold" type="submit">Update Settings</button>
 </form>

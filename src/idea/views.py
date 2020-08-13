@@ -77,7 +77,7 @@ def explore_page(request,week_num,page_num):
 
 	# Discover Section
 	# Retrieve all ideas from the past 6 months
-	if fav_tags:
+	if request.user.is_authenticated and profile.use_tag_filter == 2 and fav_tags:
 		ideas = Idea.objects.filter(
 			timestamp__gte = date.now() - datetime.timedelta(days=182),
 			timestamp__lte = date.now() + datetime.timedelta(days=1),

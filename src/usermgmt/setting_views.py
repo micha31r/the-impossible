@@ -101,16 +101,24 @@ def account_setting_explore_content_page(request):
 	for tag in profile.tags.all():
 		qs = qs.exclude(name=tag.name)
 	ctx["tags"] = qs
+
 	form.fields["tags_remain"].widget = forms.SelectMultiple(choices=[(choice.id, choice) for choice in qs])
+	form.fields["use_tag_filter"].initial = profile.use_tag_filter
 
 	if form.is_valid():
 		data = form.cleaned_data
 		# Add tags
 		for tag in eval(data.get('tags_remain') or "[]"): # convert
 			profile.tags.add(tag)
+
 		# Remove tags
 		for tag in data.get('tags'):
 			profile.tags.remove(tag)
+
+		profile.use_tag_filter = 1
+		if profile.tags.count() > 0:
+			profile.use_tag_filter = data.get("use_tag_filter")
+
 		profile.save()
 
 	ctx["form_template_page"]="usermgmt/account_setting_explore_content.html"
@@ -224,6 +232,5 @@ def account_setting_newsletter_page(request):
 	ctx["form_template_page"]="usermgmt/account_setting_newsletter.html"
 	template_file = "usermgmt/account_setting.html"
 	return render(request,template_file,ctx)
-
 
 

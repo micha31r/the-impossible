@@ -32,6 +32,11 @@ DISCOVER_OPTION = (
     (2,"Discoverable"),
 )
 
+USE_TAG_FILTER_OPTION = (
+	(1,"Filter Off"),
+    (2,"Filter On"),
+)
+
 class Notification(models.Model):
 	# If this is too short then it may result in HTML error
 	message = models.CharField(max_length=1000)
@@ -70,6 +75,9 @@ class Profile(models.Model):
 	
 	core_feed = models.ManyToManyField("support.CoreFeed",blank=True,related_name="core_feed")
 	subscriber = models.ForeignKey("newsletter.Subscriber",on_delete=models.SET_NULL,blank=True,null=True)
+
+	# Whether to the user's favourite tags as content filter in explore
+	use_tag_filter = models.IntegerField(default=1,choices=USE_TAG_FILTER_OPTION)
 
 	# Social settings
 	like_setting = models.IntegerField(default=3,choices=LIKE_OPTION)
