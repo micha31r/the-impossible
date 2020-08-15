@@ -107,7 +107,7 @@
 
 .card-text {
 	color: var(--color-six);
-	word-break: break-all;
+	overflow-wrap: break-word;
 }
 
 .author, .views {

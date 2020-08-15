@@ -195,6 +195,7 @@ a:hover {
 
 .discover-card .card-subtitle {
 	color: var(--color-four);
+	overflow-wrap: break-word;
 }
 
 .discover-card .card-text {
@@ -203,6 +204,7 @@ a:hover {
 
 .discover-card .author {
 	color: var(--color-four);
+	overflow-wrap: break-word;
 }
 
 /* ------------ */

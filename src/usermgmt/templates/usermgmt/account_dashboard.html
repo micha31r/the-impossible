@@ -95,10 +95,15 @@
 				<h1 class="username">@{{ username }}</h1>
 				<h5 class="fullname">{{ target_profile.user.get_full_name }}</h5>
 			</div>
-			<p class="bio">{{ target_profile.bio }}</p>
-			{% if target_profile.website %}
-				<a class="website" href="{{ target_profile.website }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> {{ target_profile.website }}</a>
-			{% endif %}
+			<div class="bio-link-wrapper">
+				<p class="bio">{{ target_profile.bio }}</p>
+				{% if target_profile.website %}
+					<a class="website" href="{{ target_profile.website }}">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+						{{ target_profile.website }}
+					</a>
+				{% endif %}
+			</div>
 			{% if target_profile.location %}
 				<p class="location">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-flag"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>

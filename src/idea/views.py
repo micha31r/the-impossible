@@ -391,7 +391,7 @@ def like_view(request):
 						msg.save()
 						idea.author.notification.add(msg)
 						idea.author.save()
-				data["action"] = "liked"			
+				data["action"] = "liked"
 		else:
 			raise CustomError("AjaxInvalid")
 	except:
