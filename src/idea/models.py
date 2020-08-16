@@ -41,7 +41,7 @@ class Comment(models.Model):
 	last_edit = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
-		return self.full_description[:50] + '...' 
+		return self.content[:50] + '...' 
 
 class Idea(models.Model):
 
@@ -82,6 +82,15 @@ class Idea(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('idea:detail_page', args=(self.pk,))
+
+	def delete(self, *args, **kwargs):
+		# Delete linked objects
+		self.comments.all().delete()
+		self.body_img.all().delete()
+		if self.header_img:
+			self.header_img.delete()
+
+		super(Idea,self).delete(*args,**kwargs)
 
 	def __str__(self):
 		return self.name

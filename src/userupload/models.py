@@ -1,4 +1,4 @@
-import string, random
+import string, random, os
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.conf import settings
@@ -55,6 +55,13 @@ class File(models.Model):
 	# Timestamp
 	timestamp = models.DateTimeField(auto_now_add=True) 
 	last_edit = models.DateTimeField(auto_now=True)
+
+	def delete(self, *args, **kwargs):
+		# Delete uploaded file
+		if os.path.isfile(self.file.path):
+			os.remove(self.file.path)
+
+		super(File,self).delete(*args,**kwargs)
 
 	def __str__(self):
 		name = self.file.name.split("/")[-1].split(".")[0]
