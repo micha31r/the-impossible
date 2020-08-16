@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, JsonResponse
 from django.core.paginator import Paginator
@@ -49,6 +50,11 @@ def idea_header_img_page(request,idea_pk):
 					)
 				else: # replace file
 					file.description = form.cleaned_data.get("description")
+
+					# Delete the old file
+					if os.path.isfile(file.file.path):
+						os.remove(file.file.path)
+
 					file.file = uploaded_file
 					file.save()
 				file.save()
@@ -109,6 +115,11 @@ def idea_body_img_page(request,idea_pk,file_pk):
 					)
 				else: # replace file
 					file.description = form.cleaned_data.get("description")
+
+					# Delete the old file
+					if os.path.isfile(file.file.path):
+						os.remove(file.file.path)
+
 					file.file = uploaded_file
 					file.save()
 				file.save()
@@ -165,6 +176,11 @@ def profile_img_page(request):
 					)
 				else: # replace file
 					file.description = form.cleaned_data.get("description")
+
+					# Delete the old file
+					if os.path.isfile(file.file.path):
+						os.remove(file.file.path)
+					
 					file.file = uploaded_file
 					file.save()
 				file.save()
