@@ -7,9 +7,12 @@ from .models import (
 	ChatGroup,
 )
 
+from the_impossible.utils import *
+
 @login_required
 def home_page(request):
 	ctx = {}
+	ctx["date"] = Date()
 	user = request.user
 
 	# Retrieve all chat groups that containers this user
@@ -20,6 +23,7 @@ def home_page(request):
 @login_required
 def app_page(request, chat_group_slug):
 	ctx = {}
+	ctx["date"] = Date()
 	ctx["chat_group_slug"] = chat_group_slug
 
 	group = get_object_or_404(ChatGroup,slug=chat_group_slug)
