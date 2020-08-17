@@ -19,8 +19,8 @@ function body_margin() {
 auto_run.queue( 
 	function() {
 		center_body();
-		// Set body margin .5 seconds after page loads
-		setTimeout(body_margin, 500);
+		// Set body margin .05 seconds after page loads
+		setTimeout(body_margin, 50);
 		window.addEventListener(
 			"resize", 
 			function() {
