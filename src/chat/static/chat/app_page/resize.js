@@ -5,6 +5,7 @@ function resize_app() {
 		sibling_width = $(".chat-group-list").outerWidth();
 	}
 	$(".app-container").width(window_width - sibling_width);
+	$(".app-container").height($(window).height() - $("nav").height());
 	$(".chat-message-input-container").width(window_width - sibling_width);
 }
 
@@ -14,13 +15,17 @@ function resize_chat_log() {
 	$("#chat-log-container").outerHeight(parent_height - sibling_height);
 }
 
-window.addEventListener(
-	"resize", 
+auto_run.queue(
 	function() {
 		resize_app();
 		resize_chat_log();
+		
+		window.addEventListener(
+			"resize", 
+			function() {
+				resize_app();
+				resize_chat_log();
+			}
+		);
 	}
 );
-
-resize_app();
-resize_chat_log();
