@@ -1,11 +1,11 @@
 function resize_app() {
 	var window_width = $(window).width();
 	var sibling_width = 0;
-	if ($("#show-chat-group-list").css("display") != "block") {
+	if (window_width > 800) {
 		sibling_width = $(".chat-group-list").outerWidth();
 	}
 	$(".app-container").width(window_width - sibling_width);
-	$(".app-container").height($(window).height() - $("nav").height());
+	$(".app-container").height($(window).height() - $("nav").outerHeight());
 	$(".chat-message-input-container").width(window_width - sibling_width);
 }
 
