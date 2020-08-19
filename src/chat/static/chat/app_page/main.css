@@ -54,10 +54,6 @@
 
 /* Chat group list */
 
-#show-chat-group-list .svg-wrapper {
-	background-color: var(--color-third);
-}
-
 .chat-group-list {
 	position: fixed;
 	width: 300px;
