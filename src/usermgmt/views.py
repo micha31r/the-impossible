@@ -353,7 +353,7 @@ def account_people_page(request,username,follower_page_num,following_page_num):
 	template_file = "usermgmt/account_people.html"
 	return render(request,template_file,ctx)
 
-RESULT_PER_PAGE = 20
+RESULT_PER_PAGE = 10
 
 @login_required
 def account_meet_page(request,page_num,username):
@@ -402,6 +402,7 @@ def account_meet_page(request,page_num,username):
 		close_profiles.remove(profile)
 	ctx["close_profiles"] = close_profiles
 
+	# Search for user
 	if username:
 		ctx["username"] = username
 		users = User.objects.filter(username__icontains=username,is_active=True)
