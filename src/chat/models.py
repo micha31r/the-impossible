@@ -62,8 +62,10 @@ class ChatGroup(models.Model):
 
 	def save(self, *args, **kwargs):
 		super().save(*args, **kwargs)
-		self.slug = slug_generator(self.id+len(self.name), size=10)
-		self.key = slug_generator(self.id, size=6)
+		if not self.slug:
+			self.slug = slug_generator(self.id+len(self.name), size=10)
+		if not self.key:
+			self.key = slug_generator(self.id, size=6)
 		super().save(*args, **kwargs)
 
 	def add_member(self,user):

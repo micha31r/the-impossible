@@ -54,7 +54,8 @@ class Verification(models.Model):
     )
 	slug = models.SlugField(max_length=6,blank=True)
 	def save(self, *args, **kwargs):
-		self.slug = slug_generator(self.id,size=6)
+		if not self.slug:
+			self.slug = slug_generator(self.id,size=6)
 		super(Verification, self).save(*args, **kwargs)
 
 class Profile(models.Model):
