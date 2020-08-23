@@ -16,7 +16,7 @@
 			<table class="nav">
 				<tr>
 					<td class="logo-td">
-						<img src="http://theimpossible.world{% static 'component/base/logo_white.svg' %}">
+						<img alt="the impossible logo" src="http://theimpossible.world{% static 'component/base/logo_white.svg' %}">
 					</td>
 					<td>
 						<p class="text">
