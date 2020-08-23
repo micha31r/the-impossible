@@ -23,7 +23,8 @@ class Subscriber(models.Model):
 	last_sent = models.DateTimeField(default=timezone.now)
 
 	def save(self, *args, **kwargs):
-		self.slug = slug_generator(self.id)
+		if not self.slug:
+			self.slug = slug_generator(self.id)
 		super().save(*args, **kwargs)
 
 	def __str__(self):
