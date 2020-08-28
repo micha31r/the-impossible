@@ -5,7 +5,8 @@
 ![Explore Section Light](preview_imgs/explore_light.png)
 ![Explore Section Dark](preview_imgs/explore_dark.png)
 ![Detail Section](preview_imgs/detail.png)
-![Idea Editor](preview_imgs/edit_idea.png)
+![Idea Editor 1](preview_imgs/edit_idea1.png)
+![Idea Editor 2](preview_imgs/edit_idea2.png)
 ![Edit Profile](preview_imgs/edit_profile.png)
 
 ##
