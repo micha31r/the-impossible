@@ -9,4 +9,3 @@ A social media platform for sharing ideas
 ![Detail Section](preview/detail.png)
 ![Idea Editor 1](preview/edit_idea1.png)
 ![Idea Editor 2](preview/edit_idea2.png)
-![Edit Profile](preview/edit_profile.png)
